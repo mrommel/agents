@@ -22,6 +22,7 @@
 		040FBE4C20113FAB00D397E2 /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE4B20113FAB00D397E2 /* Texture.swift */; };
 		040FBE4E2011404600D397E2 /* PathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE4D2011404600D397E2 /* PathFinder.swift */; };
 		040FBE512011430400D397E2 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 040FBE502011430400D397E2 /* sprites.atlas */; };
+		040FBE532011D80B00D397E2 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE522011D80B00D397E2 /* OptionViewController.swift */; };
 		612838CF6ADF041C55D1A728 /* Pods_agentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F9F5759196E7E81CD0F565 /* Pods_agentsTests.framework */; };
 		6B42F3C8D330A305DDEC5BA7 /* Pods_agents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BD55899141983D7AB5D100 /* Pods_agents.framework */; };
 		A177B3F4EC3A4EE9F323D581 /* Pods_agentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69BF508E176189B5AA661DD3 /* Pods_agentsUITests.framework */; };
@@ -66,6 +67,10 @@
 		040FBE4B20113FAB00D397E2 /* Texture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
 		040FBE4D2011404600D397E2 /* PathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFinder.swift; sourceTree = "<group>"; };
 		040FBE502011430400D397E2 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		040FBE522011D80B00D397E2 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
+		040FBE5C2012397A00D397E2 /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@3x.png"; sourceTree = "<group>"; };
+		040FBE5D2012397A00D397E2 /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@1x.png"; sourceTree = "<group>"; };
+		040FBE5E2012397A00D397E2 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		0E24DEA7718FB9EFC831BE68 /* Pods-agentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agentsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-agentsTests/Pods-agentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		67EBB2AF45C6557B146DB1D4 /* Pods-agentsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agentsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-agentsUITests/Pods-agentsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		69BF508E176189B5AA661DD3 /* Pods_agentsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_agentsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,7 +141,6 @@
 				040FBE4F201142E400D397E2 /* Resources */,
 				040FBE0F201137BA00D397E2 /* AppDelegate.swift */,
 				040FBE13201137BA00D397E2 /* Main.storyboard */,
-				040FBE19201137BA00D397E2 /* Assets.xcassets */,
 				040FBE1B201137BA00D397E2 /* LaunchScreen.storyboard */,
 				040FBE1E201137BA00D397E2 /* Info.plist */,
 				040FBE16201137BA00D397E2 /* agents.xcdatamodeld */,
@@ -176,6 +180,7 @@
 			children = (
 				040FBE11201137BA00D397E2 /* GameViewController.swift */,
 				040FBE4420113D8200D397E2 /* MenuViewController.swift */,
+				040FBE522011D80B00D397E2 /* OptionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -193,7 +198,11 @@
 		040FBE4F201142E400D397E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				040FBE5D2012397A00D397E2 /* iTunesArtwork@1x.png */,
+				040FBE5E2012397A00D397E2 /* iTunesArtwork@2x.png */,
+				040FBE5C2012397A00D397E2 /* iTunesArtwork@3x.png */,
 				040FBE502011430400D397E2 /* sprites.atlas */,
+				040FBE19201137BA00D397E2 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -522,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040FBE18201137BA00D397E2 /* agents.xcdatamodeld in Sources */,
+				040FBE532011D80B00D397E2 /* OptionViewController.swift in Sources */,
 				040FBE4C20113FAB00D397E2 /* Texture.swift in Sources */,
 				040FBE4E2011404600D397E2 /* PathFinder.swift in Sources */,
 				040FBE4520113D8200D397E2 /* MenuViewController.swift in Sources */,
