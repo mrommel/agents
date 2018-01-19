@@ -92,12 +92,12 @@ class GameScene: SKScene {
 	}
 	
 	//2
-	let view2D:SKSpriteNode
-	let layer2DHighlight:SKNode
+	let view2D: SKSpriteNode
+	let layer2DHighlight: SKNode
 	
-	let viewIso:SKSpriteNode
-	let layerIsoGround:SKNode
-	let layerIsoObjects:SKNode
+	let viewIso: SKSpriteNode
+	let layerIsoGround: SKNode
+	let layerIsoObjects: SKNode
 	
 	//3
 	var tiles:[[(Int, Int)]]
@@ -108,6 +108,8 @@ class GameScene: SKScene {
 	
 	let nthFrame = 6
 	var nthFrameCount = 0
+	
+	var cam: SKCameraNode!
 	
 	//4
 	override init(size: CGSize) {
@@ -131,14 +133,14 @@ class GameScene: SKScene {
 		layerIsoObjects = SKNode()
 		
 		super.init(size: size)
-		self.anchorPoint = CGPoint(x:0.5, y:0.5)
+		self.anchorPoint = CGPoint(x:0.5, y:0.2)
 	}
 	
 	//5
 	override func didMove(to view: SKView) {
 		
 		let deviceScale = self.size.width/667
-		
+
 		view2D.position = CGPoint(x:-self.size.width*0.48, y:self.size.height*0.43)
 		let view2DScale = CGFloat(0.4)
 		view2D.xScale = deviceScale * view2DScale
@@ -153,6 +155,16 @@ class GameScene: SKScene {
 		viewIso.addChild(layerIsoGround)
 		viewIso.addChild(layerIsoObjects)
 		addChild(viewIso)
+		
+		self.cam = SKCameraNode() //initialize and assign an instance of SKCameraNode to the cam variable.
+		self.cam.xScale = 1 // 0.25
+		self.cam.yScale = 1 // 0.25 //the scale sets the zoom level of the camera on the given position
+		
+		self.camera = cam //set the scene's camera to reference cam
+		self.addChild(cam) //make the cam a childElement of the scene itself.
+		
+		// position the camera on the gamescene.
+		self.cam.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
 		
 		placeAllTiles2D()
 		placeAllTilesIso()
@@ -481,6 +493,22 @@ class GameScene: SKScene {
 		}
 		
 	}
+	
+	// moving the map around
+	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+		
+		for touch in touches {
+			let location = touch.location(in: self.layerIsoGround)
+			let previousLocation = touch.previousLocation(in: self.layerIsoGround)
+			let deltaX = (location.x) - (previousLocation.x)
+			let deltaY = (location.y) - (previousLocation.y)
+			
+			print("moved: \(deltaX), \(deltaY)")
+			self.cam.position.x -= deltaX * 0.5
+			self.cam.position.y -= deltaY * 0.5
+		}
+	}
+	
 	override func update(_ currentTime: CFTimeInterval) {
 		
 		hero.tileSpriteIso.position = point2DToIso(p: hero.tileSprite2D.position)
