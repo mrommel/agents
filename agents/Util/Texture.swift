@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-func textureImage(tile:Tile, direction:Direction, action:Action) -> String {
+func textureImageFor(tile: Tile, in direction: Direction, with action: Action) -> String {
 	
 	switch tile {
 	case .Droid:
@@ -76,50 +76,50 @@ class TextureDroid: TextureObject  {
 		
 		//Idle
 		texturesIso[Action.Idle.rawValue] = [
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.N, action: Action.Idle)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.NE, action: Action.Idle)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.E, action: Action.Idle)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.SE, action: Action.Idle)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.S, action: Action.Idle)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.SW, action: Action.Idle)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.W, action: Action.Idle)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.NW, action: Action.Idle)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .N, with: .Idle)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .NE, with: .Idle)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .E, with: .Idle)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .SE, with: .Idle)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .S, with: .Idle)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .SW, with: .Idle)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .W, with: .Idle)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .NW, with: .Idle)),
 		]
 		
 		//Move
 		texturesIso[Action.Move.rawValue] = [
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.N, action: Action.Move)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.NE, action: Action.Move)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.E, action: Action.Move)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.SE, action: Action.Move)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.S, action: Action.Move)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.SW, action: Action.Move)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.W, action: Action.Move)),
-			SKTexture(imageNamed: "iso_3d_"+textureImage(tile: Tile.Droid, direction: Direction.NW, action: Action.Move)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .N, with: .Move)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .NE, with: .Move)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .E, with: .Move)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .SE, with: .Move)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .S, with: .Move)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .SW, with: .Move)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .W, with: .Move)),
+			SKTexture(imageNamed: "iso_3d_" + textureImageFor(tile: .Droid, in: .NW, with: .Move)),
 		]
 		
 		//Idle
 		textures2D[Action.Idle.rawValue] = [
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.N, action: Action.Idle)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.NE, action: Action.Idle)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.E, action: Action.Idle)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.SE, action: Action.Idle)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.S, action: Action.Idle)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.SW, action: Action.Idle)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.W, action: Action.Idle)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.NW, action: Action.Idle)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .N, with: .Idle)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .NE, with: .Idle)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .E, with: .Idle)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .SE, with: .Idle)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .S, with: .Idle)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .SW, with: .Idle)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .W, with: .Idle)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .NW, with: .Idle)),
 		]
 		
 		//Move
 		textures2D[Action.Move.rawValue] = [
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.N, action: Action.Move)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.NE, action: Action.Move)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.E, action: Action.Move)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.SE, action: Action.Move)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.S, action: Action.Move)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.SW, action: Action.Move)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.W, action: Action.Move)),
-			SKTexture(imageNamed: textureImage(tile: Tile.Droid, direction: Direction.NW, action: Action.Move)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .N, with: .Move)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .NE, with: .Move)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .E, with: .Move)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .SE, with: .Move)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .S, with: .Move)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .SW, with: .Move)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .W, with: .Move)),
+			SKTexture(imageNamed: textureImageFor(tile: .Droid, in: .NW, with: .Move)),
 		]
 	}
 }

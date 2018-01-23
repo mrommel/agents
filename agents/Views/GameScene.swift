@@ -172,7 +172,7 @@ class GameScene: SKScene {
 	
 	func placeTile2D(tile:Tile, direction:Direction, position:CGPoint) {
 		
-		let tileSprite = SKSpriteNode(imageNamed: textureImage(tile: tile, direction: direction, action: Action.Idle))
+		let tileSprite = SKSpriteNode(imageNamed: textureImageFor(tile: tile, in: direction, with: .Idle))
 		
 		if (tile == hero.tile) {
 			hero.tileSprite2D = tileSprite
@@ -213,7 +213,7 @@ class GameScene: SKScene {
 	
 	func placeTileIso(tile:Tile, direction:Direction, position:CGPoint) {
 		
-		let tileSprite = SKSpriteNode(imageNamed: "iso_3d_"+textureImage(tile: tile, direction: direction, action: Action.Idle))
+		let tileSprite = SKSpriteNode(imageNamed: "iso_3d_" + textureImageFor(tile: tile, in: direction, with: .Idle))
 		
 		if (tile == hero.tile) {
 			hero.tileSpriteIso = tileSprite
@@ -394,7 +394,7 @@ class GameScene: SKScene {
 		layer2DHighlight.removeAllChildren()
 		
 		for i in 0..<path.count {
-			let highlightTile = SKSpriteNode(imageNamed: textureImage(tile: Tile.Ground, direction: Direction.N, action: Action.Idle))
+			let highlightTile = SKSpriteNode(imageNamed: textureImageFor(tile: .Ground, in: .N, with: .Idle))
 			highlightTile.position = pointTileIndexToPoint2D(point: path[i])
 			highlightTile.anchorPoint = CGPoint(x: 0, y: 0)
 			
