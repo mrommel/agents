@@ -50,9 +50,11 @@ func textureImageFor(tile: Tile, in direction: Direction, with action: Action) -
 		case .W:return "wall_w"
 		case .NW:return "wall_nw"
 		}
+	case .Grass:
+		return "grass"
 	}
-	
 }
+
 protocol TextureObject {
 	static var sharedInstance: TextureDroid {get}
 	var texturesIso:[[SKTexture]?] {get}

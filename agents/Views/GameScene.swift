@@ -9,81 +9,6 @@
 import UIKit
 import SpriteKit
 
-
-func + (left: CGPoint, right: CGPoint) -> CGPoint {
-	return CGPoint(x: left.x + right.x, y: left.y + right.y)
-}
-
-func - (left: CGPoint, right: CGPoint) -> CGPoint {
-	return CGPoint(x: left.x - right.x, y: left.y - right.y)
-}
-
-func * (point: CGPoint, scalar: CGPoint) -> CGPoint {
-	return CGPoint(x: point.x * scalar.x, y: point.y * scalar.y)
-}
-
-func / (point: CGPoint, scalar: CGPoint) -> CGPoint {
-	return CGPoint(x: point.x / scalar.x, y: point.y / scalar.y)
-}
-
-func distance(p1: CGPoint, p2: CGPoint) -> CGFloat {
-	return CGFloat(hypotf(Float(p1.x) - Float(p2.x), Float(p1.y) - Float(p2.y)))
-}
-
-func round(point:CGPoint) -> CGPoint {
-	return CGPoint(x: round(point.x), y: round(point.y))
-}
-
-func floor(point:CGPoint) -> CGPoint {
-	return CGPoint(x: floor(point.x), y: floor(point.y))
-}
-
-func ceil(point:CGPoint) -> CGPoint {
-	return CGPoint(x: ceil(point.x), y: ceil(point.y))
-}
-
-enum Direction: Int {
-	
-	case N,NE,E,SE,S,SW,W,NW
-	
-	var description:String {
-		switch self {
-		case .N:return "North"
-		case .NE:return "North East"
-		case .E:return "East"
-		case .SE:return "South East"
-		case .S:return "South"
-		case .SW:return "South West"
-		case .W:return "West"
-		case .NW:return "North West"
-		}
-	}
-}
-
-enum Tile: Int {
-	
-	case Ground, Wall, Droid
-	
-	var description:String {
-		switch self {
-		case .Ground:return "Ground"
-		case .Wall:return "Wall"
-		case .Droid:return "Droid"
-		}
-	}
-}
-
-enum Action: Int {
-	case Idle, Move
-	
-	var description:String {
-		switch self {
-		case .Idle:return "Idle"
-		case .Move:return "Move"
-		}
-	}
-}
-
 class GameScene: SKScene {
 	
 	//1
@@ -100,9 +25,9 @@ class GameScene: SKScene {
 	let layerIsoObjects: SKNode
 	
 	//3
-	var tiles:[[(Int, Int)]]
+	var tiles:[[(Tile, Direction)]]
 	
-	let tileSize = (width:32, height:32)
+	let tileSize = (width: 32, height: 32)
 	
 	let hero = Droid()
 	
@@ -114,16 +39,16 @@ class GameScene: SKScene {
 	//4
 	override init(size: CGSize) {
 		
-		tiles =     [[(1,7), (1,0), (1,0), (1,0), (1,0), (1,0), (1,0), (1,0), (1,1)]]
-		tiles.append([(1,6), (0,0), (0,0), (0,0), (0,0), (0,0), (0,0), (0,0), (1,2)])
-		tiles.append([(1,6), (0,0), (2,2), (0,0), (0,0), (0,0), (0,0), (0,0), (1,2)])
-		tiles.append([(1,6), (0,0), (0,0), (0,0), (0,0), (1,5), (1,4), (1,4), (1,5)])
-		tiles.append([(1,6), (0,0), (0,0), (1,7), (0,0), (0,0), (0,0), (0,0), (0,0)])
-		tiles.append([(1,6), (0,0), (0,0), (1,6), (0,0), (0,0), (0,0), (0,0), (0,0)])
-		tiles.append([(1,6), (0,0), (0,0), (1,5), (1,4), (1,4), (1,1), (0,0), (0,0)])
-		tiles.append([(1,6), (0,0), (0,0), (0,0), (0,0), (0,0), (1,2), (0,0), (0,0)])
-		tiles.append([(1,6), (0,0), (0,0), (0,0), (0,0), (0,0), (1,3), (0,0), (0,0)])
-		tiles.append([(1,5), (1,4), (1,4), (1,3), (0,0), (0,0), (0,0), (0,0), (0,0)])
+		tiles =     [[(.Wall,.NW), (.Wall,.N), (.Wall,.N), (.Wall,.N), (.Wall,.N), (.Wall,.N), (.Wall,.N), (.Wall,.N), (.Wall,.NE)]]
+		tiles.append([(.Wall,.W), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Wall,.E)])
+		tiles.append([(.Wall,.W), (.Ground,.N), (.Droid,.E), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Wall,.E)])
+		tiles.append([(.Wall,.W), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Wall,.SW), (.Wall,.S), (.Wall,.S), (.Wall,.SW)])
+		tiles.append([(.Wall,.W), (.Ground,.N), (.Ground,.N), (.Wall,.NW), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N)])
+		tiles.append([(.Wall,.W), (.Ground,.N), (.Ground,.N), (.Wall,.W), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N)])
+		tiles.append([(.Wall,.W), (.Ground,.N), (.Ground,.N), (.Wall,.SW), (.Wall,.S), (.Wall,.S), (.Wall,.NE), (.Ground,.N), (.Ground,.N)])
+		tiles.append([(.Wall,.W), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Wall,.E), (.Ground,.N), (.Ground,.N)])
+		tiles.append([(.Wall,.W), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Wall,.SE), (.Ground,.N), (.Ground,.N)])
+		tiles.append([(.Wall,.SW), (.Wall,.S), (.Wall,.S), (.Wall,.SE), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N), (.Ground,.N)])
 		
 		view2D = SKSpriteNode()
 		layer2DHighlight = SKNode()
@@ -141,7 +66,7 @@ class GameScene: SKScene {
 		
 		let deviceScale = self.size.width/667
 
-		view2D.position = CGPoint(x:-self.size.width*0.48, y:self.size.height*0.43)
+		view2D.position = CGPoint(x: -self.size.width * 0.48, y: self.size.height * 0.43)
 		let view2DScale = CGFloat(0.4)
 		view2D.xScale = deviceScale * view2DScale
 		view2D.yScale = deviceScale * view2DScale
@@ -149,7 +74,7 @@ class GameScene: SKScene {
 		layer2DHighlight.zPosition = 999
 		view2D.addChild(layer2DHighlight)
 		
-		viewIso.position = CGPoint(x:self.size.width*0, y:self.size.height*0.25)
+		viewIso.position = CGPoint(x: self.size.width * 0, y: self.size.height * 0.25)
 		viewIso.xScale = deviceScale
 		viewIso.yScale = deviceScale
 		viewIso.addChild(layerIsoGround)
@@ -170,7 +95,7 @@ class GameScene: SKScene {
 		placeAllTilesIso()
 	}
 	
-	func placeTile2D(tile:Tile, direction:Direction, position:CGPoint) {
+	func placeTile2D(tile: Tile, direction: Direction, position: CGPoint) {
 		
 		let tileSprite = SKSpriteNode(imageNamed: textureImageFor(tile: tile, in: direction, with: .Idle))
 		
@@ -181,7 +106,7 @@ class GameScene: SKScene {
 		
 		tileSprite.position = position
 		
-		tileSprite.anchorPoint = CGPoint(x:0, y:0)
+		tileSprite.anchorPoint = CGPoint(x: 0, y: 0)
 		
 		view2D.addChild(tileSprite)
 		
@@ -195,23 +120,24 @@ class GameScene: SKScene {
 			
 			for j in 0..<row.count {
 				
-				let tile = Tile(rawValue: row[j].0)!
-				let direction = Direction(rawValue: row[j].1)!
+				let tile = row[j].0
+				let direction = row[j].1
 				
 				let point = CGPoint(x: (j*tileSize.width), y: -(i*tileSize.height))
 				
+				// add ground below player
 				if (tile == Tile.Droid) {
-					placeTile2D(tile: Tile.Ground, direction:direction, position:point)
+					placeTile2D(tile: Tile.Ground, direction: direction, position: point)
 				}
 				
-				placeTile2D(tile: tile, direction:direction, position:point)
+				placeTile2D(tile: tile, direction: direction, position: point)
 			}
 			
 		}
 		
 	}
 	
-	func placeTileIso(tile:Tile, direction:Direction, position:CGPoint) {
+	func placeTileIso(tile: Tile, direction: Direction, position: CGPoint) {
 		
 		let tileSprite = SKSpriteNode(imageNamed: "iso_3d_" + textureImageFor(tile: tile, in: direction, with: .Idle))
 		
@@ -239,8 +165,8 @@ class GameScene: SKScene {
 			
 			for j in 0..<row.count {
 				
-				let tile = Tile(rawValue: row[j].0)!
-				let direction = Direction(rawValue: row[j].1)!
+				let tile = row[j].0
+				let direction = row[j].1
 				
 				let point = point2DToIso(p: CGPoint(x: (j*tileSize.width), y: -(i*tileSize.height)))
 				
@@ -335,6 +261,7 @@ class GameScene: SKScene {
 		}
 		
 	}
+	
 	func traversableTiles() -> [[Int]] {
 		
 		//1
@@ -351,7 +278,7 @@ class GameScene: SKScene {
 		
 		//3
 		for i in 0..<tiles.count {
-			let tt = tiles[i].map{i in binarize(num: i.0)}
+			let tt = tiles[i].map{i in binarize(num: i.0.rawValue)}
 			tTiles.append(tt)
 		}
 		

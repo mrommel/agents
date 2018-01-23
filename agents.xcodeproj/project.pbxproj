@@ -23,6 +23,10 @@
 		040FBE4E2011404600D397E2 /* PathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE4D2011404600D397E2 /* PathFinder.swift */; };
 		040FBE512011430400D397E2 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 040FBE502011430400D397E2 /* sprites.atlas */; };
 		040FBE532011D80B00D397E2 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE522011D80B00D397E2 /* OptionViewController.swift */; };
+		040FBE6120171A9700D397E2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE6020171A9700D397E2 /* Tile.swift */; };
+		040FBE6320171EB500D397E2 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE6220171EB500D397E2 /* Action.swift */; };
+		040FBE6520171ED500D397E2 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE6420171ED500D397E2 /* Direction.swift */; };
+		040FBE6720171F2300D397E2 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE6620171F2300D397E2 /* CGPointExtension.swift */; };
 		612838CF6ADF041C55D1A728 /* Pods_agentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F9F5759196E7E81CD0F565 /* Pods_agentsTests.framework */; };
 		6B42F3C8D330A305DDEC5BA7 /* Pods_agents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BD55899141983D7AB5D100 /* Pods_agents.framework */; };
 		A177B3F4EC3A4EE9F323D581 /* Pods_agentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69BF508E176189B5AA661DD3 /* Pods_agentsUITests.framework */; };
@@ -71,6 +75,10 @@
 		040FBE5C2012397A00D397E2 /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@3x.png"; sourceTree = "<group>"; };
 		040FBE5D2012397A00D397E2 /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@1x.png"; sourceTree = "<group>"; };
 		040FBE5E2012397A00D397E2 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		040FBE6020171A9700D397E2 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		040FBE6220171EB500D397E2 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		040FBE6420171ED500D397E2 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		040FBE6620171F2300D397E2 /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		0E24DEA7718FB9EFC831BE68 /* Pods-agentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agentsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-agentsTests/Pods-agentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		67EBB2AF45C6557B146DB1D4 /* Pods-agentsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agentsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-agentsUITests/Pods-agentsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		69BF508E176189B5AA661DD3 /* Pods_agentsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_agentsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +143,7 @@
 		040FBE0E201137BA00D397E2 /* agents */ = {
 			isa = PBXGroup;
 			children = (
+				040FBE5F20171A7F00D397E2 /* Map */,
 				040FBE4620113F4400D397E2 /* Util */,
 				040FBE4320113D6700D397E2 /* ViewControllers */,
 				040FBE4020113D2C00D397E2 /* Views */,
@@ -188,6 +197,7 @@
 		040FBE4620113F4400D397E2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				040FBE6620171F2300D397E2 /* CGPointExtension.swift */,
 				040FBE4920113F8700D397E2 /* Character.swift */,
 				040FBE4B20113FAB00D397E2 /* Texture.swift */,
 				040FBE4D2011404600D397E2 /* PathFinder.swift */,
@@ -205,6 +215,16 @@
 				040FBE19201137BA00D397E2 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		040FBE5F20171A7F00D397E2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				040FBE6020171A9700D397E2 /* Tile.swift */,
+				040FBE6220171EB500D397E2 /* Action.swift */,
+				040FBE6420171ED500D397E2 /* Direction.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		74489EA867635B6185F2E35A /* Pods */ = {
@@ -531,15 +551,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				040FBE18201137BA00D397E2 /* agents.xcdatamodeld in Sources */,
+				040FBE6320171EB500D397E2 /* Action.swift in Sources */,
 				040FBE532011D80B00D397E2 /* OptionViewController.swift in Sources */,
 				040FBE4C20113FAB00D397E2 /* Texture.swift in Sources */,
 				040FBE4E2011404600D397E2 /* PathFinder.swift in Sources */,
 				040FBE4520113D8200D397E2 /* MenuViewController.swift in Sources */,
+				040FBE6720171F2300D397E2 /* CGPointExtension.swift in Sources */,
 				040FBE4A20113F8700D397E2 /* Character.swift in Sources */,
 				040FBE4820113F5E00D397E2 /* Global.swift in Sources */,
 				040FBE12201137BA00D397E2 /* GameViewController.swift in Sources */,
 				040FBE4220113D4700D397E2 /* GameScene.swift in Sources */,
+				040FBE6120171A9700D397E2 /* Tile.swift in Sources */,
 				040FBE10201137BA00D397E2 /* AppDelegate.swift in Sources */,
+				040FBE6520171ED500D397E2 /* Direction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
