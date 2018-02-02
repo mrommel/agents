@@ -9,6 +9,18 @@
 import UIKit
 import SpriteKit
 
+struct GameSceneConstants {
+	
+	struct ZLevels {
+		static let terrain: CGFloat = 1.0
+		static let focus: CGFloat = 2.0
+		static let feature: CGFloat = 3.0
+	
+		static let labels: CGFloat = 50.0
+	}
+	
+}
+
 class GameScene: SKScene {
 	
 	//1
@@ -16,51 +28,37 @@ class GameScene: SKScene {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	//2
-	let view2D: SKSpriteNode
-	let layer2DHighlight: SKNode
-	
 	let viewHex: SKSpriteNode
 	let layerHexGround: SKNode
 	let layerHexObjects: SKNode
+	var focusSprite: SKSpriteNode?
 	
 	let mapDisplay = HexMapDisplay()
 	let map = TileHexMap(width: 15, height: 15, initialValue: Tile(withTerrain: .ocean))
 	
-	let nthFrame = 6
-	var nthFrameCount = 0
-	
 	var cam: SKCameraNode!
+	
+	// debug
+	let positionLabel = SKLabelNode(fontNamed: "Chalkduster")
 	
 	//4
 	override init(size: CGSize) {
-		
-		view2D = SKSpriteNode()
-		layer2DHighlight = SKNode()
 		
 		viewHex = SKSpriteNode()
 		layerHexGround = SKNode()
 		layerHexObjects = SKNode()
 		
-		// map
-		map.set(tile: Tile(withTerrain: .grass), at: HexPoint(x: 5, y: 4))
-		
 		super.init(size: size)
 		self.anchorPoint = CGPoint(x:0.5, y:0.2)
+		
+		// manipulate map
+		initializeMap()
 	}
 	
 	//5
 	override func didMove(to view: SKView) {
 		
 		let deviceScale = self.size.width/667
-
-		view2D.position = CGPoint(x: -self.size.width * 0.48, y: self.size.height * 0.43)
-		let view2DScale = CGFloat(0.4)
-		view2D.xScale = deviceScale * view2DScale
-		view2D.yScale = deviceScale * view2DScale
-		addChild(view2D)
-		layer2DHighlight.zPosition = 999
-		view2D.addChild(layer2DHighlight)
 		
 		viewHex.position = CGPoint(x: self.size.width * 0, y: self.size.height * 0.25)
 		viewHex.xScale = deviceScale
@@ -80,18 +78,54 @@ class GameScene: SKScene {
 		self.cam.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
 		
 		placeAllTilesHex()
+		placeFocusHex()
+		
+		// debug
+		self.positionLabel.text = String("0, 0")
+		self.positionLabel.fontSize = 10
+		self.positionLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+		self.positionLabel.zPosition = GameSceneConstants.ZLevels.labels
+		
+		self.cam.addChild(self.positionLabel)
+	}
+	
+	func initializeMap() {
+		
+		// need to set different tile per position (constructor sets one tile only)
+		for i in 0..<map.tiles.columns {
+			for j in 0..<map.tiles.rows {
+				if Int.random(min: 0, max: 5) < 3 {
+					map.set(tile: Tile(withTerrain: .grass), at: HexPoint(x: i, y: j))
+				} else {
+					map.set(tile: Tile(withTerrain: .ocean), at: HexPoint(x: i, y: j))
+				}
+				
+				if Int.random(min: 0, max: 5) < 1 {
+					map.set(feature: .forest_mixed, at: HexPoint(x: i, y: j))
+				} else if Int.random(min: 0, max: 5) < 1 {
+					map.set(feature: .forest_pine, at: HexPoint(x: i, y: j))
+				}
+			}
+		}
 	}
 	
 	func placeTileHex(tile: Tile, position: CGPoint) {
 		
 		// place terrain
 		let tileSprite = SKSpriteNode(imageNamed: tile.terrain.textureNameHex)
-		tileSprite.position = position		
+		tileSprite.position = position
+		tileSprite.zPosition = GameSceneConstants.ZLevels.terrain
 		tileSprite.anchorPoint = CGPoint(x:0, y:0)
 		layerHexGround.addChild(tileSprite)
 		
 		// place forests etc
-		//layerHexObjects.addChild(tileSprite)
+		for feature in tile.features {
+			let featureSprite = SKSpriteNode(imageNamed: feature.textureNameHex)
+			featureSprite.position = position
+			featureSprite.zPosition = GameSceneConstants.ZLevels.feature
+			featureSprite.anchorPoint = CGPoint(x:0, y:0)
+			layerHexObjects.addChild(featureSprite)
+		}
 	}
 	
 	func placeAllTilesHex() {
@@ -99,12 +133,24 @@ class GameScene: SKScene {
 		for i in 0..<map.tiles.columns {
 			for j in 0..<map.tiles.rows {
 				let tile = map.tiles[i, j]
-				let pt = HexPoint(x: i, y: j)
-				let screenPoint = mapDisplay.toScreen(hex: pt)
+				let screenPoint = mapDisplay.toScreen(hex: HexPoint(x: i, y: j))
 				
 				placeTileHex(tile: tile, position: screenPoint)
 			}
 		}
+	}
+	
+	func placeFocusHex() {
+		
+		self.focusSprite = SKSpriteNode(imageNamed: "hex_cursor@2x")
+		self.focusSprite?.position = mapDisplay.toScreen(hex: HexPoint(x: 0, y: 0))
+		self.focusSprite?.zPosition = GameSceneConstants.ZLevels.focus
+		self.focusSprite?.anchorPoint = CGPoint(x: 0, y: 0)
+		layerHexGround.addChild(self.focusSprite!)
+	}
+	
+	func moveFocus(to hex: HexPoint) {
+		self.focusSprite?.position = mapDisplay.toScreen(hex: hex)
 	}
 	
 	func findPathFrom(from: HexPoint, to: HexPoint) -> [HexPoint]? {
@@ -118,32 +164,19 @@ class GameScene: SKScene {
 		}
 	}
 	
-	func highlightPath2D(path: [HexPoint]) {
-		
-		//clear previous path
-		layer2DHighlight.removeAllChildren()
-		
-		/*for i in 0..<path.count {
-			let highlightTile = SKSpriteNode(imageNamed: Terrain.grass.textureName)
-			highlightTile.position = pointTileIndexToPoint2D(point: path[i])
-			highlightTile.anchorPoint = CGPoint(x: 0, y: 0)
-			
-			highlightTile.color = SKColor(red: 1.0, green: 0, blue: 0, alpha: 0.25+((CGFloat(i)/CGFloat(path.count))*0.25))
-			highlightTile.colorBlendFactor = 1.0
-			
-			layer2DHighlight.addChild(highlightTile)
-		}*/
-	}
-	
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
-		//////////////////////////////////////////////////////////
-		// Original code that we still need
-		//////////////////////////////////////////////////////////
-		
 		let touch = touches.first!
-		let touchLocation = touch.location(in: viewHex)
+		var touchLocation = touch.location(in: self.layerHexGround)
 		
+		// FIXME: hm, not sure why this is needed
+		touchLocation.x -= 20
+		touchLocation.y -= 15
+		
+		let position = HexPoint(cube: mapDisplay.toHexCube(screen: touchLocation))
+		
+		self.positionLabel.text = "\(position)"
+		self.moveFocus(to: position)
 	}
 	
 	// moving the map around
@@ -152,28 +185,16 @@ class GameScene: SKScene {
 		for touch in touches {
 			let location = touch.location(in: self.layerHexGround)
 			let previousLocation = touch.previousLocation(in: self.layerHexGround)
+			
 			let deltaX = (location.x) - (previousLocation.x)
 			let deltaY = (location.y) - (previousLocation.y)
 			
-			print("moved: \(deltaX), \(deltaY)")
 			self.cam.position.x -= deltaX * 0.5
 			self.cam.position.y -= deltaY * 0.5
 		}
 	}
 	
 	override func update(_ currentTime: CFTimeInterval) {
-		
-		/*hero.tileSpriteIso.position = point2DToIso(p: hero.tileSprite2D.position)
-		
-		nthFrameCount += 1
-		
-		if (nthFrameCount == nthFrame) {
-			nthFrameCount = 0
-			updateOnNthFrame()
-		}*/
-	}
-	func updateOnNthFrame() {
-		
-		//sortDepth()
+
 	}
 }

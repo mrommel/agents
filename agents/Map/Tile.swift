@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Terrain: Int {
+enum Terrain {
 	
 	case plain
 	case grass
@@ -25,17 +25,6 @@ enum Terrain: Int {
 		}
 	}
 	
-	var textureName: String {
-		switch self {
-		case .plain:
-			return "plain"
-		case .grass:
-			return "grass"
-		case .ocean:
-			return "ocean"
-		}
-	}
-	
 	var textureNameHex: String {
 		switch self {
 		case .plain:
@@ -48,10 +37,54 @@ enum Terrain: Int {
 	}
 }
 
+enum Feature {
+	
+	case forest_mixed
+	case forest_pine
+	
+	var description: String {
+		switch self {
+		case .forest_mixed:
+			return "Mixed Forest"
+		case .forest_pine:
+			return "Pine Forest"
+		}
+	}
+	
+	var textureNameHex: String {
+		switch self {
+		case .forest_mixed:
+			return "hex_forest_mixed_summer1"
+		case .forest_pine:
+			return "hex_forest_pine_summer1"
+		}
+	}
+}
+
 class Tile {
 	var terrain: Terrain
+	var features: [Feature]
 	
 	init(withTerrain terrain: Terrain) {
 		self.terrain = terrain
+		self.features = []
+	}
+	
+	func set(feature: Feature) {
+		if !self.has(feature: feature) {
+			features.append(feature)
+		}
+	}
+	
+	func remove(feature: Feature) {
+		if self.has(feature: feature) {
+			if let index = self.features.index(of: feature) {
+				features.remove(at: index)
+			}
+		}
+	}
+	
+	func has(feature: Feature) -> Bool {
+		return self.features.contains(where: { $0 == feature })
 	}
 }

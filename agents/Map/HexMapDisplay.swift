@@ -16,7 +16,7 @@ class HexMapDisplay {
 	//var offsetY: Int = 0
 	
 	init() {
-		layout = HexLayout(orientation: HexOrientation.flat, size: CGSize(width: 18, height: 18), origin: CGPoint.zero)
+		layout = HexLayout(orientation: HexOrientation.flat, size: CGSize(width: 24, height: 18), origin: CGPoint.zero)
 	}
 	
 	func toScreen(cube: HexCube) -> CGPoint {

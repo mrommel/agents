@@ -47,7 +47,28 @@ class HexMap<T> {
 	}
 }
 
-class TileHexMap: HexMap<Tile>, PathfinderDataSource {
+class TileHexMap: HexMap<Tile> {
+	
+	func set(terrain: Terrain, at hex: HexPoint) {
+		if let tile = self.tile(at: hex) {
+			tile.terrain = terrain
+		}
+	}
+	
+	func set(feature: Feature, at hex: HexPoint) {
+		if let tile = self.tile(at: hex) {
+			tile.set(feature: feature)
+		}
+	}
+	
+	func remove(feature: Feature, at hex: HexPoint) {
+		if let tile = self.tile(at: hex) {
+			tile.remove(feature: feature)
+		}
+	}
+}
+
+extension TileHexMap: PathfinderDataSource {
 	
 	func walkableAdjacentTilesCoords(forTileCoord coord: HexPoint) -> [HexPoint] {
 		
