@@ -49,11 +49,15 @@ class HexMap<T> {
 
 class TileHexMap: HexMap<Tile> {
 	
+	/// MARK: terrain
+	
 	func set(terrain: Terrain, at hex: HexPoint) {
 		if let tile = self.tile(at: hex) {
 			tile.terrain = terrain
 		}
 	}
+	
+	/// MARK: features
 	
 	func set(feature: Feature, at hex: HexPoint) {
 		if let tile = self.tile(at: hex) {
@@ -64,6 +68,14 @@ class TileHexMap: HexMap<Tile> {
 	func remove(feature: Feature, at hex: HexPoint) {
 		if let tile = self.tile(at: hex) {
 			tile.remove(feature: feature)
+		}
+	}
+	
+	/// MARK: continent
+	
+	func set(continent: Continent?, at hex: HexPoint) {
+		if let tile = self.tile(at: hex) {
+			tile.continent = continent
 		}
 	}
 }

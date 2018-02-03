@@ -25,9 +25,12 @@
 		040FBE6720171F2300D397E2 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE6620171F2300D397E2 /* CGPointExtension.swift */; };
 		040FBE692017B4A300D397E2 /* AStarPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE682017B4A300D397E2 /* AStarPathFinder.swift */; };
 		040FBE6F2017D3EF00D397E2 /* HexMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE6E2017D3EF00D397E2 /* HexMap.swift */; };
+		04481D9320249C95001F04FA /* BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9220249C95001F04FA /* BitArray.swift */; };
 		04F0384A20221C1F0011B79C /* HexLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384920221C1F0011B79C /* HexLayout.swift */; };
 		04F0384C20221C6D0011B79C /* HexPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384B20221C6D0011B79C /* HexPoint.swift */; };
 		04F0384E202221080011B79C /* HexMapDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384D202221080011B79C /* HexMapDisplay.swift */; };
+		04F038502024997F0011B79C /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384F2024997F0011B79C /* Continent.swift */; };
+		04F03852202499BC0011B79C /* ContinentFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F03851202499BC0011B79C /* ContinentFinder.swift */; };
 		04F12D54201A6B8D007A8817 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F12D53201A6B8D007A8817 /* Array2D.swift */; };
 		04F12D56201A7531007A8817 /* IntegerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F12D55201A7531007A8817 /* IntegerExtension.swift */; };
 		04F12D58201A758F007A8817 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F12D57201A758F007A8817 /* FloatExtension.swift */; };
@@ -82,9 +85,12 @@
 		040FBE682017B4A300D397E2 /* AStarPathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPathFinder.swift; sourceTree = "<group>"; };
 		040FBE6E2017D3EF00D397E2 /* HexMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMap.swift; sourceTree = "<group>"; };
 		041B7A51202111ED00EBF4D6 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = agents/Playground.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		04481D9220249C95001F04FA /* BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitArray.swift; sourceTree = "<group>"; };
 		04F0384920221C1F0011B79C /* HexLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexLayout.swift; sourceTree = "<group>"; };
 		04F0384B20221C6D0011B79C /* HexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPoint.swift; sourceTree = "<group>"; };
 		04F0384D202221080011B79C /* HexMapDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapDisplay.swift; sourceTree = "<group>"; };
+		04F0384F2024997F0011B79C /* Continent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Continent.swift; sourceTree = "<group>"; };
+		04F03851202499BC0011B79C /* ContinentFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentFinder.swift; sourceTree = "<group>"; };
 		04F12D53201A6B8D007A8817 /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		04F12D55201A7531007A8817 /* IntegerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerExtension.swift; sourceTree = "<group>"; };
 		04F12D57201A758F007A8817 /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 				04F12D53201A6B8D007A8817 /* Array2D.swift */,
 				04F12D55201A7531007A8817 /* IntegerExtension.swift */,
 				04F12D57201A758F007A8817 /* FloatExtension.swift */,
+				04481D9220249C95001F04FA /* BitArray.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -237,6 +244,8 @@
 				04F0384920221C1F0011B79C /* HexLayout.swift */,
 				04F0384B20221C6D0011B79C /* HexPoint.swift */,
 				04F0384D202221080011B79C /* HexMapDisplay.swift */,
+				04F0384F2024997F0011B79C /* Continent.swift */,
+				04F03851202499BC0011B79C /* ContinentFinder.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -576,11 +585,14 @@
 				040FBE12201137BA00D397E2 /* GameViewController.swift in Sources */,
 				04F12D56201A7531007A8817 /* IntegerExtension.swift in Sources */,
 				040FBE692017B4A300D397E2 /* AStarPathFinder.swift in Sources */,
+				04F038502024997F0011B79C /* Continent.swift in Sources */,
 				040FBE4220113D4700D397E2 /* GameScene.swift in Sources */,
 				040FBE6120171A9700D397E2 /* Tile.swift in Sources */,
 				04F0384C20221C6D0011B79C /* HexPoint.swift in Sources */,
 				040FBE10201137BA00D397E2 /* AppDelegate.swift in Sources */,
 				040FBE6F2017D3EF00D397E2 /* HexMap.swift in Sources */,
+				04481D9320249C95001F04FA /* BitArray.swift in Sources */,
+				04F03852202499BC0011B79C /* ContinentFinder.swift in Sources */,
 				040FBE6520171ED500D397E2 /* HexDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

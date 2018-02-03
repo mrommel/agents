@@ -19,6 +19,7 @@ class HexPoint {
 }
 
 class HexCube {
+	
 	let q: Int
 	let r: Int
 	let s: Int
@@ -153,6 +154,18 @@ extension HexPoint {
 		let selfCube = HexCube(hex: self)
 		let hexCube = HexCube(hex: hex)
 		return selfCube.distance(to: hexCube)
+	}
+	
+	// returns the direction of the neighbor (or nil when this is not a neighbor)
+	func direction(towards hex: HexPoint) -> HexDirection? {
+		
+		for direction in HexDirection.all {
+			if self.neighbor(in: direction) == hex {
+				return direction
+			}
+		}
+		
+		return nil
 	}
 }
 

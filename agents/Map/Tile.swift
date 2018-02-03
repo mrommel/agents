@@ -62,8 +62,10 @@ enum Feature {
 }
 
 class Tile {
+	
 	var terrain: Terrain
 	var features: [Feature]
+	var continent: Continent?
 	
 	init(withTerrain terrain: Terrain) {
 		self.terrain = terrain

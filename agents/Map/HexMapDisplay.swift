@@ -19,6 +19,13 @@ class HexMapDisplay {
 		layout = HexLayout(orientation: HexOrientation.flat, size: CGSize(width: 24, height: 18), origin: CGPoint.zero)
 	}
 	
+	func angle(from: HexPoint, towards: HexPoint) -> Int {
+		let fromScreenPoint = self.toScreen(hex: from)
+		let towardsScreenPoint = self.toScreen(hex: towards)
+		
+		return Int(atan2(towardsScreenPoint.x - fromScreenPoint.x, towardsScreenPoint.y - fromScreenPoint.y) * (180.0 / CGFloat(Double.pi)))
+	}
+	
 	func toScreen(cube: HexCube) -> CGPoint {
 		let m = self.layout.orientation
 		let x = (m.f0 * Double(cube.q) + m.f1 * Double(cube.r)) * Double(self.layout.size.width)

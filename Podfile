@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 target 'agents' do
@@ -7,11 +7,11 @@ target 'agents' do
 	pod 'SwiftRecord', '0.0.6'
 	pod 'SwiftEventBus', '~> 2.1.2'
 
-    	target 'agentsTests' do
-        	inherit! :search_paths
-    	end
+	target 'agentsTests' do
+		inherit! :search_paths
+	end
     
-    	target 'agentsUITests' do
-        	inherit! :search_paths
-    	end
+	target 'agentsUITests' do
+		inherit! :search_paths
+	end
 end
