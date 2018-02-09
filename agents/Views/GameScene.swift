@@ -15,10 +15,9 @@ struct GameSceneConstants {
 		static let terrain: CGFloat = 1.0
 		static let focus: CGFloat = 2.0
 		static let feature: CGFloat = 3.0
-	
+		static let sprite: CGFloat = 5.0
 		static let labels: CGFloat = 50.0
 	}
-	
 }
 
 class GameScene: SKScene {
@@ -165,124 +164,13 @@ class GameScene: SKScene {
 		layerHexGround.addChild(self.focusSprite!)
 	}
 	
-	func placeGuy() {
-		
-		self.guy = SKSpriteNode(imageNamed: "professor0")
-		self.guy?.position = mapDisplay.toScreen(hex: guyHex)
-		self.guy?.zPosition = GameSceneConstants.ZLevels.focus + 1
-		self.guy?.anchorPoint = CGPoint(x: 0, y: 0)
-		layerHexGround.addChild(self.guy!)
-	}
-	
-	func animateGuyDown(to hex: HexPoint) {
-		
-		let textureAtlasWalkDown = SKTextureAtlas(named: "professor_walk_down")
-		let walkDownFrames = ["professor18", "professor19", "professor20", "professor21", "professor22", "professor23", "professor24", "professor25", "professor26"].map { textureAtlasWalkDown.textureNamed($0) }
-		let walkDown = SKAction.animate(with: walkDownFrames, timePerFrame: 0.2)
-		
-		let moveDown = SKAction.move(to: self.mapDisplay.toScreen(hex: hex), duration: walkDown.duration)
-		
-		let animate = SKAction.group([walkDown, moveDown])
-		self.guy?.run(animate, completion: {
-			self.guyHex = hex
-		})
-	}
-	
-	func animateGuyUp(to hex: HexPoint) {
-		
-		let textureAtlasWalkUp = SKTextureAtlas(named: "professor_walk_up")
-		let walkUpFrames = ["professor0", "professor1", "professor2", "professor3", "professor4", "professor5", "professor6", "professor7", "professor8"].map { textureAtlasWalkUp.textureNamed($0) }
-		let walkUp = SKAction.animate(with: walkUpFrames, timePerFrame: 0.2)
-		
-		let moveUp = SKAction.move(to: self.mapDisplay.toScreen(hex: hex), duration: walkUp.duration)
-		
-		let animate = SKAction.group([walkUp, moveUp])
-		self.guy?.run(animate, completion: {
-			self.guyHex = hex
-		})
-	}
-	
-	func animateGuyLeft(to hex: HexPoint) {
-		
-		let textureAtlasWalkLeft = SKTextureAtlas(named: "professor_walk_left")
-		let walkLeftFrames = ["professor9", "professor10", "professor11", "professor12", "professor13", "professor14", "professor15", "professor16", "professor17"].map { textureAtlasWalkLeft.textureNamed($0) }
-		let walkLeft = SKAction.animate(with: walkLeftFrames, timePerFrame: 0.2)
-		
-		let moveLeft = SKAction.move(to: self.mapDisplay.toScreen(hex: hex), duration: walkLeft.duration)
-		
-		let animate = SKAction.group([walkLeft, moveLeft])
-		self.guy?.run(animate, completion: {
-			self.guyHex = hex
-		})
-	}
-	
-	func animateGuyRight(to hex: HexPoint) {
-		
-		let textureAtlasWalkRight = SKTextureAtlas(named: "professor_walk_right")
-		let walkRightFrames = ["professor27", "professor28", "professor29", "professor30", "professor31", "professor32", "professor33", "professor34", "professor35"].map { textureAtlasWalkRight.textureNamed($0) }
-		let walkRight = SKAction.animate(with: walkRightFrames, timePerFrame: 0.2)
-		
-		let moveRight = SKAction.move(to: self.mapDisplay.toScreen(hex: hex), duration: walkRight.duration)
-		
-		let animate = SKAction.group([walkRight, moveRight])
-		self.guy?.run(animate, completion: {
-			self.guyHex = hex
-		})
-	}
-	
-	func degreesToDirection(degrees: Int) -> HexDirection {
-		
-		var degrees = degrees
-		if (degrees < 0) {
-			degrees = degrees + 360
-		}
-		
-		if 30 < degrees && degrees <= 90 {
-			return .northeast
-		} else if 90 < degrees && degrees <= 150 {
-			return .southeast
-		} else if 150 < degrees && degrees <= 210 {
-			return .south
-		} else if 210 < degrees && degrees <= 270 {
-			return .southwest
-		} else if 270 < degrees && degrees <= 330 {
-			return .northwest
-		} else {
-			return .north
-		}
-	}
-	
-	func animateGuy(to hex: HexPoint) {
-		
-		let direction = degreesToDirection(degrees: self.mapDisplay.angle(from: self.guyHex, towards: hex))
-
-		switch direction {
-		case .north:
-			self.animateGuyUp(to: hex)
-			break
-		case .northeast:
-			self.animateGuyRight(to: hex)
-			break
-		case .southeast:
-			self.animateGuyRight(to: hex)
-			break
-		case .south:
-			self.animateGuyDown(to: hex)
-			break
-		case .southwest:
-			self.animateGuyLeft(to: hex)
-			break
-		case .northwest:
-			self.animateGuyLeft(to: hex)
-			break
-		}
-	}
-	
 	func moveFocus(to hex: HexPoint) {
+		
 		self.focusSprite?.position = mapDisplay.toScreen(hex: hex)
 		
-		// TODO: run pathfinder instead
-		self.animateGuy(to: hex)
+		if let path = self.findPathFrom(from: self.guyHex, to: hex) {
+			self.animateGuy(on: path)
+		}
 	}
 	
 	func findPathFrom(from: HexPoint, to: HexPoint) -> [HexPoint]? {
@@ -335,3 +223,4 @@ class GameScene: SKScene {
 
 	}
 }
+

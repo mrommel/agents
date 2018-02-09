@@ -88,7 +88,7 @@ extension TileHexMap: PathfinderDataSource {
 		
 		for direction in HexDirection.all {
 			let neighbor = coord.neighbor(in: direction)
-			if self.valid(point: neighbor) && self.tile(at: neighbor)?.terrain == .grass {
+			if self.valid(point: neighbor) /*&& self.tile(at: neighbor)?.terrain == .grass*/ {
 				walkableCoords.append(neighbor)
 			}
 		}
