@@ -45,6 +45,10 @@ class HexCube {
 	}
 }
 
+func + (left: HexCube, right: HexCube) -> HexCube {
+	return HexCube(q: left.q + right.q, r: left.r + right.r, s: left.s + right.s)
+}
+
 extension HexDirection {
 	
 	var cubeDirection: HexCube {
@@ -131,9 +135,13 @@ extension HexPoint {
 		self.init(x: cube.q + (cube.s + (cube.s&1)) / 2, y: cube.s)
 	}
 	
-	func neighbor(in direction: HexDirection) -> HexPoint {
+	/*func neighbor(in direction: HexDirection) -> HexPoint {
 		let parity = self.x & 1
 		return self + (parity == 1 ? direction.axialDirectionOdd : direction.axialDirectionEven)
+	}*/
+	func neighbor(in direction: HexDirection) -> HexPoint {
+		let cubeNeighbor = HexCube(hex: self) + direction.cubeDirection
+		return HexPoint(cube: cubeNeighbor)
 	}
 	
 	func neighbors() -> [HexPoint] {
