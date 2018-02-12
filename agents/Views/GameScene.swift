@@ -32,8 +32,10 @@ class GameScene: SKScene {
 	let layerHexObjects: SKNode
 	var focusSprite: SKSpriteNode?
 	
-	var guy: SKSpriteNode?
-	var guyHex: HexPoint = HexPoint(x: 0, y: 0)
+	//var guy: SKSpriteNode?
+	//var guyHex: HexPoint = HexPoint(x: 0, y: 0)
+	var professor: Professor?
+	var egyptLady: EgyptLady?
 	
 	let mapDisplay = HexMapDisplay()
 	let map = TileHexMap(width: 15, height: 15, initialValue: Tile(withTerrain: .ocean))
@@ -82,7 +84,8 @@ class GameScene: SKScene {
 		placeAllTilesHex()
 		placeFocusHex()
 		
-		placeGuy()
+		placeProfessor()
+		placeEgyptLady()
 		
 		// debug
 		self.positionLabel.text = String("0, 0")
@@ -122,6 +125,16 @@ class GameScene: SKScene {
 		
 		let finder = ContinentFinder(width: map.tiles.columns, height: map.tiles.rows)
 		finder.execute(on: map)
+	}
+	
+	func placeProfessor() {
+		self.professor = Professor(at: HexPoint(x: 0, y: 0), mapDisplay: self.mapDisplay)
+		layerHexGround.addChild((self.professor?.sprite)!)
+	}
+	
+	func placeEgyptLady() {
+		self.egyptLady = EgyptLady(at: HexPoint(x: 1, y: 1), mapDisplay: self.mapDisplay)
+		layerHexGround.addChild((self.egyptLady?.sprite)!)
 	}
 	
 	func placeTileHex(tile: Tile, position: CGPoint) {
@@ -168,8 +181,11 @@ class GameScene: SKScene {
 		
 		self.focusSprite?.position = mapDisplay.toScreen(hex: hex)
 		
-		if let path = self.findPathFrom(from: self.guyHex, to: hex) {
-			self.animateGuy(on: path)
+		/*if let path = self.findPathFrom(from: (self.professor?.position)!, to: hex) {
+			self.professor?.animate(on: path)
+		}*/
+		if let path = self.findPathFrom(from: (self.egyptLady?.position)!, to: hex) {
+			self.egyptLady?.animate(on: path)
 		}
 	}
 	
