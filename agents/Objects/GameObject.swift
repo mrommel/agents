@@ -20,10 +20,24 @@ class GameObjectAtlas {
 	}
 }
 
+enum GameObjectState {
+	
+	case idle
+	case walking
+	case dead
+}
+
 class GameObject {
 	
-	var sprite: SKSpriteNode
+	let identifier: String
 	var position: HexPoint
+	var state: GameObjectState = .idle {
+		didSet {
+			print("state changed from \(oldValue) to \(state)")
+		}
+	}
+	
+	var sprite: SKSpriteNode
 	let mapDisplay: HexMapDisplay
 	
 	var atlasDown: GameObjectAtlas?
@@ -31,7 +45,8 @@ class GameObject {
 	var atlasRight: GameObjectAtlas?
 	var atlasLeft: GameObjectAtlas?
 	
-	init(at point: HexPoint, sprite: String, mapDisplay: HexMapDisplay) {
+	init(with identifier: String, at point: HexPoint, sprite: String, mapDisplay: HexMapDisplay) {
+		self.identifier = identifier
 		self.mapDisplay = mapDisplay
 		self.position = point
 		self.sprite = SKSpriteNode(imageNamed: sprite)
@@ -40,67 +55,16 @@ class GameObject {
 		self.sprite.anchorPoint = CGPoint(x: -0.25, y: -0.25)
 	}
 	
-	func animateDown(to hex: HexPoint, completion block: @escaping () -> Swift.Void) {
+	func animate(to hex: HexPoint, on atlas: GameObjectAtlas?, completion block: @escaping () -> Swift.Void) {
 		
-		if let atlasDown = self.atlasDown {
-			let textureAtlasWalkDown = SKTextureAtlas(named: atlasDown.atlasName)
-			let walkDownFrames = atlasDown.textures.map { textureAtlasWalkDown.textureNamed($0) }
-			let walkDown = SKAction.animate(with: walkDownFrames, timePerFrame: 2.0 / Double(walkDownFrames.count))
+		if let atlas = atlas {
+			let textureAtlasWalk = SKTextureAtlas(named: atlas.atlasName)
+			let walkFrames = atlas.textures.map { textureAtlasWalk.textureNamed($0) }
+			let walk = SKAction.animate(with: [walkFrames, walkFrames, walkFrames].flatMap{$0}, timePerFrame: 2.0 / Double(walkFrames.count * 3))
 			
-			let moveDown = SKAction.move(to: self.mapDisplay.toScreen(hex: hex), duration: walkDown.duration)
+			let move = SKAction.move(to: self.mapDisplay.toScreen(hex: hex), duration: walk.duration)
 			
-			let animate = SKAction.group([walkDown, moveDown])
-			self.sprite.run(animate, completion: {
-				self.position = hex
-				block()
-			})
-		}
-	}
-	
-	func animateUp(to hex: HexPoint, completion block: @escaping () -> Swift.Void) {
-		
-		if let atlasUp = self.atlasUp {
-			let textureAtlasWalkUp = SKTextureAtlas(named: atlasUp.atlasName)
-			let walkUpFrames = atlasUp.textures.map { textureAtlasWalkUp.textureNamed($0) }
-			let walkUp = SKAction.animate(with: walkUpFrames, timePerFrame: 2.0 / Double(walkUpFrames.count))
-			
-			let moveUp = SKAction.move(to: self.mapDisplay.toScreen(hex: hex), duration: walkUp.duration)
-			
-			let animate = SKAction.group([walkUp, moveUp])
-			self.sprite.run(animate, completion: {
-				self.position = hex
-				block()
-			})
-		}
-	}
-	
-	func animateLeft(to hex: HexPoint, completion block: @escaping () -> Swift.Void) {
-		
-		if let atlasLeft = self.atlasLeft {
-			let textureAtlasWalkLeft = SKTextureAtlas(named: atlasLeft.atlasName)
-			let walkLeftFrames = atlasLeft.textures.map { textureAtlasWalkLeft.textureNamed($0) }
-			let walkLeft = SKAction.animate(with: walkLeftFrames, timePerFrame: 2.0 / Double(walkLeftFrames.count))
-			
-			let moveLeft = SKAction.move(to: self.mapDisplay.toScreen(hex: hex), duration: walkLeft.duration)
-			
-			let animate = SKAction.group([walkLeft, moveLeft])
-			self.sprite.run(animate, completion: {
-				self.position = hex
-				block()
-			})
-		}
-	}
-	
-	func animateRight(to hex: HexPoint, completion block: @escaping () -> Swift.Void) {
-		
-		if let atlasRight = self.atlasRight {
-			let textureAtlasWalkRight = SKTextureAtlas(named: atlasRight.atlasName)
-			let walkRightFrames = atlasRight.textures.map { textureAtlasWalkRight.textureNamed($0) }
-			let walkRight = SKAction.animate(with: walkRightFrames, timePerFrame: 2.0 / Double(walkRightFrames.count))
-			
-			let moveRight = SKAction.move(to: self.mapDisplay.toScreen(hex: hex), duration: walkRight.duration)
-			
-			let animate = SKAction.group([walkRight, moveRight])
+			let animate = SKAction.group([walk, move])
 			self.sprite.run(animate, completion: {
 				self.position = hex
 				block()
@@ -114,23 +78,26 @@ class GameObject {
 		
 		switch direction {
 		case .north:
-			self.animateUp(to: to, completion: block)
+			self.animate(to: to, on: self.atlasUp, completion: block)
 			break
 		case .northeast, .southeast:
-			self.animateRight(to: to, completion: block)
+			self.animate(to: to, on: self.atlasRight, completion: block)
 			break
 		case .south:
-			self.animateDown(to: to, completion: block)
+			self.animate(to: to, on: self.atlasDown, completion: block)
 			break
 		case .southwest, .northwest:
-			self.animateLeft(to: to, completion: block)
+			self.animate(to: to, on: self.atlasLeft, completion: block)
 			break
 		}
 	}
 	
 	func animate(on path: [HexPoint]) {
 		
+		self.state = .walking
+		
 		guard path.count > 0 else {
+			self.state = .idle
 			return
 		}
 		
@@ -142,4 +109,19 @@ class GameObject {
 			})
 		}
 	}
+	
+	func clean() {
+		sprite.removeFromParent()
+	}
+}
+
+extension GameObject: Equatable {
+	
+	var hashValue: Int {
+		return self.identifier.hashValue
+	}
+}
+
+func == (first: GameObject, second: GameObject) -> Bool {
+	return first.identifier == second.identifier
 }

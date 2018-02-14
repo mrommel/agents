@@ -11,8 +11,22 @@ import SceneKit
 
 class EgyptLady: GameObject {
 	
-	init(at point: HexPoint, mapDisplay: HexMapDisplay) {
-		super.init(at: point, sprite: "lady0", mapDisplay: mapDisplay)
+	init(with identifier: String, at point: HexPoint, mapDisplay: HexMapDisplay) {
+		super.init(with: identifier, at: point, sprite: "lady0", mapDisplay: mapDisplay)
+		
+		self.sprite.anchorPoint = CGPoint(x: -1.0, y: -0.5)
+		
+		self.atlasDown = GameObjectAtlas(atlasName: "egyptlady", textures: ["lady0", "lady1", "lady2", "lady3"])
+		self.atlasUp = GameObjectAtlas(atlasName: "egyptlady", textures: ["lady12", "lady13", "lady14", "lady15"])
+		self.atlasLeft = GameObjectAtlas(atlasName: "egyptlady", textures: ["lady4", "lady5", "lady6", "lady7"])
+		self.atlasRight = GameObjectAtlas(atlasName: "egyptlady", textures: ["lady8", "lady9", "lady10", "lady11"])
+	}
+}
+
+class EgyptBoy: GameObject {
+	
+	init(with identifier: String, at point: HexPoint, mapDisplay: HexMapDisplay) {
+		super.init(with: identifier, at: point, sprite: "lady0", mapDisplay: mapDisplay)
 		
 		self.sprite.anchorPoint = CGPoint(x: -1.0, y: -0.5)
 		

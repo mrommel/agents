@@ -14,6 +14,7 @@ project to collect some nice ui work and some ai approaches
 * http://www.gdunlimited.net/resources/image/1357/modern-girl-2
 * http://rpgfusionv2.forumsrpg.com/t1803-38-charas-autochtones-desert-indiens
 * http://untamed.wild-refuge.net/rmxpresources.php?characters
+* https://forums.rpgmakerweb.com/index.php?threads/whtdragons-animals-and-running-horses-now-with-more-dragons.53552/
 * crop sprite set: convert -crop 49x58 alien.png alien%d.png
 
 ## to do

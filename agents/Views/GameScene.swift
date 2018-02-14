@@ -34,8 +34,10 @@ class GameScene: SKScene {
 	
 	//var guy: SKSpriteNode?
 	//var guyHex: HexPoint = HexPoint(x: 0, y: 0)
-	var professor: Professor?
-	var egyptLady: EgyptLady?
+	//var professor: Professor?
+	//var egyptLady: EgyptLady?
+	//var rabbit: Rabbit?
+	let engine: GameObjectEngine
 	
 	let mapDisplay = HexMapDisplay()
 	let map = TileHexMap(width: 15, height: 15, initialValue: Tile(withTerrain: .ocean))
@@ -51,6 +53,8 @@ class GameScene: SKScene {
 		viewHex = SKSpriteNode()
 		layerHexGround = SKNode()
 		layerHexObjects = SKNode()
+		
+		self.engine = GameObjectEngine()
 		
 		super.init(size: size)
 		self.anchorPoint = CGPoint(x:0.5, y:0.2)
@@ -83,9 +87,7 @@ class GameScene: SKScene {
 		
 		placeAllTilesHex()
 		placeFocusHex()
-		
-		placeProfessor()
-		placeEgyptLady()
+		placeGameObjects()
 		
 		// debug
 		self.positionLabel.text = String("0, 0")
@@ -127,14 +129,19 @@ class GameScene: SKScene {
 		finder.execute(on: map)
 	}
 	
-	func placeProfessor() {
-		self.professor = Professor(at: HexPoint(x: 0, y: 0), mapDisplay: self.mapDisplay)
-		layerHexGround.addChild((self.professor?.sprite)!)
-	}
-	
-	func placeEgyptLady() {
-		self.egyptLady = EgyptLady(at: HexPoint(x: 1, y: 1), mapDisplay: self.mapDisplay)
-		layerHexGround.addChild((self.egyptLady?.sprite)!)
+	func placeGameObjects() {
+		
+		let professor = Professor(with: "professor", at: HexPoint(x: 0, y: 0), mapDisplay: self.mapDisplay)
+		layerHexGround.addChild(professor.sprite)
+		self.engine.add(gameObject: professor)
+		
+		let egyptLady = EgyptLady(with: "egyptLady", at: HexPoint(x: 1, y: 1), mapDisplay: self.mapDisplay)
+		layerHexGround.addChild(egyptLady.sprite)
+		self.engine.add(gameObject: egyptLady)
+		
+		let rabbit = Rabbit(with: "rabbit", at: HexPoint(x: 3, y: 2), mapDisplay: self.mapDisplay)
+		layerHexGround.addChild(rabbit.sprite)
+		self.engine.add(gameObject: rabbit)
 	}
 	
 	func placeTileHex(tile: Tile, position: CGPoint) {
@@ -184,8 +191,10 @@ class GameScene: SKScene {
 		/*if let path = self.findPathFrom(from: (self.professor?.position)!, to: hex) {
 			self.professor?.animate(on: path)
 		}*/
-		if let path = self.findPathFrom(from: (self.egyptLady?.position)!, to: hex) {
-			self.egyptLady?.animate(on: path)
+		if let currentObject = self.engine.objects.first {
+			if let path = self.findPathFrom(from: currentObject.position, to: hex) {
+				currentObject.animate(on: path)
+			}
 		}
 	}
 	
@@ -236,7 +245,7 @@ class GameScene: SKScene {
 	}
 	
 	override func update(_ currentTime: CFTimeInterval) {
-
+		self.engine.update(currentTime)
 	}
 }
 

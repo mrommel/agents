@@ -22,6 +22,7 @@ class ContinentFinder {
 		return value != ContinentConstants.kNotAnalyzed && value != ContinentConstants.kNoContinent
 	}
 	
+	@discardableResult
 	func execute(on map: TileHexMap) -> [Continent] {
 		
 		for x in 0..<self.continentIdentifiers.columns {
