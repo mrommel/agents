@@ -7,36 +7,48 @@
 //
 
 import Foundation
+import SpriteKit
 
 class GameObjectEngine {
 	
-	var objects: [GameObject]
+	fileprivate var objects: [GameObject]
+	fileprivate let layer: SKNode
+	fileprivate let scene: GameScene
+	var focusedObject: GameObject? = nil
 	
-	init() {
+	init(on layer: SKNode, in scene: GameScene) {
 		self.objects = []
+		self.layer = layer
+		self.scene = scene
 	}
 	
 	func add(gameObject: GameObject) {
+		gameObject.engine = self
+		self.layer.addChild(gameObject.sprite)
 		self.objects.append(gameObject)
 	}
 	
-	func update(_ currentTime: CFTimeInterval) {
+	func update(with currentTime: CFTimeInterval) {
 		
 		for object in self.objects {
-			switch object.state {
-			case .idle:
-				if object.position == HexPoint(x: 3, y: 3) {
-					object.state = .dead
-				}
-				break
-			case .walking:
-				break
-			case .dead:
+			
+			// update each object
+			object.update(with: currentTime)
+			
+			// remove dead objects
+			if object.state == GameObjectActions.dead {
 				object.clean()
 				let objectIndex = self.objects.index(where: { return $0 == object })
 				self.objects.remove(at: objectIndex!)
-				break
 			}
 		}
+	}
+	
+	func object(at hex: HexPoint) -> GameObject? {
+		return self.objects.first(where: { return $0.position == hex })
+	}
+	
+	func navigate(segue: String) {
+		self.scene.viewController?.performSegue(withIdentifier: segue, sender: nil)
 	}
 }

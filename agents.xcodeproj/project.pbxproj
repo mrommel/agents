@@ -29,6 +29,9 @@
 		04481D9E2031F314001F04FA /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9D2031F314001F04FA /* Professor.swift */; };
 		04481DA02031F333001F04FA /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9F2031F333001F04FA /* GameObject.swift */; };
 		04481DA22031F67A001F04FA /* EgyptLady.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481DA12031F67A001F04FA /* EgyptLady.swift */; };
+		0451D5952037637700E7C882 /* EgyptBoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D5942037637700E7C882 /* EgyptBoy.swift */; };
+		0451D597203765A100E7C882 /* Village.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D596203765A100E7C882 /* Village.swift */; };
+		0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D59820376EB900E7C882 /* VillageViewController.swift */; };
 		04F0384A20221C1F0011B79C /* HexLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384920221C1F0011B79C /* HexLayout.swift */; };
 		04F0384C20221C6D0011B79C /* HexPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384B20221C6D0011B79C /* HexPoint.swift */; };
 		04F0384E202221080011B79C /* HexMapDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384D202221080011B79C /* HexMapDisplay.swift */; };
@@ -39,6 +42,7 @@
 		04F12D58201A758F007A8817 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F12D57201A758F007A8817 /* FloatExtension.swift */; };
 		04FC594B20338C7600251E7F /* Rabbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC594A20338C7600251E7F /* Rabbit.swift */; };
 		04FC594D2034484C00251E7F /* GameObjectEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC594C2034484C00251E7F /* GameObjectEngine.swift */; };
+		04FC596E20372A6A00251E7F /* GameObjectAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC596D20372A6A00251E7F /* GameObjectAction.swift */; };
 		612838CF6ADF041C55D1A728 /* Pods_agentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F9F5759196E7E81CD0F565 /* Pods_agentsTests.framework */; };
 		6B42F3C8D330A305DDEC5BA7 /* Pods_agents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BD55899141983D7AB5D100 /* Pods_agents.framework */; };
 		A177B3F4EC3A4EE9F323D581 /* Pods_agentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69BF508E176189B5AA661DD3 /* Pods_agentsUITests.framework */; };
@@ -94,6 +98,9 @@
 		04481D9D2031F314001F04FA /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		04481D9F2031F333001F04FA /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		04481DA12031F67A001F04FA /* EgyptLady.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgyptLady.swift; sourceTree = "<group>"; };
+		0451D5942037637700E7C882 /* EgyptBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgyptBoy.swift; sourceTree = "<group>"; };
+		0451D596203765A100E7C882 /* Village.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Village.swift; sourceTree = "<group>"; };
+		0451D59820376EB900E7C882 /* VillageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageViewController.swift; sourceTree = "<group>"; };
 		04F0384920221C1F0011B79C /* HexLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexLayout.swift; sourceTree = "<group>"; };
 		04F0384B20221C6D0011B79C /* HexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPoint.swift; sourceTree = "<group>"; };
 		04F0384D202221080011B79C /* HexMapDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapDisplay.swift; sourceTree = "<group>"; };
@@ -104,6 +111,7 @@
 		04F12D57201A758F007A8817 /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		04FC594A20338C7600251E7F /* Rabbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rabbit.swift; sourceTree = "<group>"; };
 		04FC594C2034484C00251E7F /* GameObjectEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObjectEngine.swift; sourceTree = "<group>"; };
+		04FC596D20372A6A00251E7F /* GameObjectAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObjectAction.swift; sourceTree = "<group>"; };
 		0E24DEA7718FB9EFC831BE68 /* Pods-agentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agentsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-agentsTests/Pods-agentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		67EBB2AF45C6557B146DB1D4 /* Pods-agentsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agentsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-agentsUITests/Pods-agentsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		69BF508E176189B5AA661DD3 /* Pods_agentsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_agentsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +225,7 @@
 				040FBE11201137BA00D397E2 /* GameViewController.swift */,
 				040FBE4420113D8200D397E2 /* MenuViewController.swift */,
 				040FBE522011D80B00D397E2 /* OptionViewController.swift */,
+				0451D59820376EB900E7C882 /* VillageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -265,10 +274,13 @@
 			isa = PBXGroup;
 			children = (
 				04481D9F2031F333001F04FA /* GameObject.swift */,
+				04FC596D20372A6A00251E7F /* GameObjectAction.swift */,
 				04FC594C2034484C00251E7F /* GameObjectEngine.swift */,
 				04481D9D2031F314001F04FA /* Professor.swift */,
 				04481DA12031F67A001F04FA /* EgyptLady.swift */,
+				0451D5942037637700E7C882 /* EgyptBoy.swift */,
 				04FC594A20338C7600251E7F /* Rabbit.swift */,
+				0451D596203765A100E7C882 /* Village.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -616,12 +628,16 @@
 				04481D9E2031F314001F04FA /* Professor.swift in Sources */,
 				040FBE6F2017D3EF00D397E2 /* HexMap.swift in Sources */,
 				04481DA02031F333001F04FA /* GameObject.swift in Sources */,
+				0451D5952037637700E7C882 /* EgyptBoy.swift in Sources */,
+				0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */,
 				04481D9320249C95001F04FA /* BitArray.swift in Sources */,
 				04481DA22031F67A001F04FA /* EgyptLady.swift in Sources */,
 				04FC594D2034484C00251E7F /* GameObjectEngine.swift in Sources */,
+				0451D597203765A100E7C882 /* Village.swift in Sources */,
 				04FC594B20338C7600251E7F /* Rabbit.swift in Sources */,
 				04F03852202499BC0011B79C /* ContinentFinder.swift in Sources */,
 				040FBE6520171ED500D397E2 /* HexDirection.swift in Sources */,
+				04FC596E20372A6A00251E7F /* GameObjectAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

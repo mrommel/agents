@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -51,10 +52,35 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </skView>
                     <navigationItem key="navigationItem" id="8Av-A8-alp"/>
+                    <connections>
+                        <segue destination="qLs-v1-Jwq" kind="push" identifier="showVillage" id="GwO-c0-LsS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGM-Tk-e7K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1949.5999999999999" y="-231.63418290854574"/>
+        </scene>
+        <!--Village-->
+        <scene sceneID="4Cp-g5-4UG">
+            <objects>
+                <viewController title="Village" id="qLs-v1-Jwq" customClass="VillageViewController" customModule="agents" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3kZ-Pg-msO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="village0" translatesAutoresizingMaskIntoConstraints="NO" id="wU4-Td-gI7">
+                                <rect key="frame" x="76" y="83" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NHP-za-Qgg"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Village" id="aDb-1I-pE4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Cj-zK-bZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2746" y="-231"/>
         </scene>
         <!--Option View Controller-->
         <scene sceneID="63r-bG-Kfe">
@@ -104,4 +130,7 @@
             <point key="canvasLocation" x="435.19999999999999" y="-230.28485757121442"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="village0" width="41" height="37"/>
+    </resources>
 </document>

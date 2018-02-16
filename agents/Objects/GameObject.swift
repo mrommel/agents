@@ -20,18 +20,13 @@ class GameObjectAtlas {
 	}
 }
 
-enum GameObjectState {
-	
-	case idle
-	case walking
-	case dead
-}
-
 class GameObject {
 	
 	let identifier: String
+	weak var engine: GameObjectEngine?
+	
 	var position: HexPoint
-	var state: GameObjectState = .idle {
+	var state: GameObjectAction = GameObjectActions.idle {
 		didSet {
 			print("state changed from \(oldValue) to \(state)")
 		}
@@ -55,6 +50,14 @@ class GameObject {
 		self.sprite.anchorPoint = CGPoint(x: -0.25, y: -0.25)
 	}
 	
+	func actions() -> [GameObjectAction]? {
+		return nil
+	}
+	
+	func execute(action: GameObjectAction) {
+		print("This should not happen. Try to execute \(action) on object of type \(self.identifier). Please override `execute` in class.")
+	}
+	
 	func animate(to hex: HexPoint, on atlas: GameObjectAtlas?, completion block: @escaping () -> Swift.Void) {
 		
 		if let atlas = atlas {
@@ -72,7 +75,7 @@ class GameObject {
 		}
 	}
 	
-	func animate(from: HexPoint, to: HexPoint, completion block: @escaping () -> Swift.Void) {
+	func walk(from: HexPoint, to: HexPoint, completion block: @escaping () -> Swift.Void) {
 		
 		let direction = self.mapDisplay.screenDirection(from: from, towards: to)
 		
@@ -92,22 +95,24 @@ class GameObject {
 		}
 	}
 	
-	func animate(on path: [HexPoint]) {
-		
-		self.state = .walking
+	func walk(on path: [HexPoint]) {
 		
 		guard path.count > 0 else {
-			self.state = .idle
+			self.state = GameObjectActions.idle
 			return
 		}
 		
 		if let point = path.first {
 			let pathWithoutFirst = Array(path.suffix(from: 1))
 			
-			self.animate(from: self.position, to: point, completion: {
-				self.animate(on: pathWithoutFirst)
+			self.walk(from: self.position, to: point, completion: {
+				self.walk(on: pathWithoutFirst)
 			})
 		}
+	}
+	
+	func update(with currentTime: CFTimeInterval) {
+		// NOOP
 	}
 	
 	func clean() {

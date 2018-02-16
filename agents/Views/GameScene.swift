@@ -15,6 +15,7 @@ struct GameSceneConstants {
 		static let terrain: CGFloat = 1.0
 		static let focus: CGFloat = 2.0
 		static let feature: CGFloat = 3.0
+		static let staticSprite: CGFloat = 4.0
 		static let sprite: CGFloat = 5.0
 		static let labels: CGFloat = 50.0
 	}
@@ -22,22 +23,18 @@ struct GameSceneConstants {
 
 class GameScene: SKScene {
 	
-	//1
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
+	var viewController: UIViewController?
 	
 	let viewHex: SKSpriteNode
 	let layerHexGround: SKNode
 	let layerHexObjects: SKNode
 	var focusSprite: SKSpriteNode?
 	
-	//var guy: SKSpriteNode?
-	//var guyHex: HexPoint = HexPoint(x: 0, y: 0)
-	//var professor: Professor?
-	//var egyptLady: EgyptLady?
-	//var rabbit: Rabbit?
-	let engine: GameObjectEngine
+	var engine: GameObjectEngine? = nil
 	
 	let mapDisplay = HexMapDisplay()
 	let map = TileHexMap(width: 15, height: 15, initialValue: Tile(withTerrain: .ocean))
@@ -53,8 +50,6 @@ class GameScene: SKScene {
 		viewHex = SKSpriteNode()
 		layerHexGround = SKNode()
 		layerHexObjects = SKNode()
-		
-		self.engine = GameObjectEngine()
 		
 		super.init(size: size)
 		self.anchorPoint = CGPoint(x:0.5, y:0.2)
@@ -131,17 +126,16 @@ class GameScene: SKScene {
 	
 	func placeGameObjects() {
 		
+		self.engine = GameObjectEngine(on: layerHexGround, in: self)
+		
 		let professor = Professor(with: "professor", at: HexPoint(x: 0, y: 0), mapDisplay: self.mapDisplay)
-		layerHexGround.addChild(professor.sprite)
-		self.engine.add(gameObject: professor)
+		self.engine?.add(gameObject: professor)
 		
 		let egyptLady = EgyptLady(with: "egyptLady", at: HexPoint(x: 1, y: 1), mapDisplay: self.mapDisplay)
-		layerHexGround.addChild(egyptLady.sprite)
-		self.engine.add(gameObject: egyptLady)
+		self.engine?.add(gameObject: egyptLady)
 		
 		let rabbit = Rabbit(with: "rabbit", at: HexPoint(x: 3, y: 2), mapDisplay: self.mapDisplay)
-		layerHexGround.addChild(rabbit.sprite)
-		self.engine.add(gameObject: rabbit)
+		self.engine?.add(gameObject: rabbit)
 	}
 	
 	func placeTileHex(tile: Tile, position: CGPoint) {
@@ -188,14 +182,45 @@ class GameScene: SKScene {
 		
 		self.focusSprite?.position = mapDisplay.toScreen(hex: hex)
 		
-		/*if let path = self.findPathFrom(from: (self.professor?.position)!, to: hex) {
-			self.professor?.animate(on: path)
-		}*/
-		if let currentObject = self.engine.objects.first {
-			if let path = self.findPathFrom(from: currentObject.position, to: hex) {
-				currentObject.animate(on: path)
+		if let currentFocusedObject = self.engine?.focusedObject {
+			if currentFocusedObject.state == GameObjectActions.walk {
+				
+				if let path = self.findPathFrom(from: currentFocusedObject.position, to: hex) {
+					currentFocusedObject.walk(on: path)
+					return
+				}
 			}
 		}
+		
+		if let focusedObject = self.engine?.object(at: hex) {
+			
+			if focusedObject != self.engine?.focusedObject {
+				self.engine?.focusedObject = focusedObject
+				print("new focused object: \(focusedObject.identifier)")
+			} else {
+				if let actions = self.engine?.focusedObject?.actions() {
+					showActionPicker(for: (self.engine?.focusedObject!)!, with: actions)
+				}
+			}
+		}
+	}
+	
+	func showActionPicker(for gameObject: GameObject, with gameObjectActions: [GameObjectAction]) {
+		let alertController = UIAlertController(title: gameObject.identifier, message: "What would you like to do?", preferredStyle: .actionSheet)
+		
+		for gameObjectAction in gameObjectActions {
+			let actionButton = UIAlertAction(title: gameObjectAction.identifier, style: .default, handler: { (action) -> Void in
+				gameObject.execute(action: gameObjectAction)
+			})
+			alertController.addAction(actionButton)
+		}
+		
+		let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+			print("Cancel button tapped")
+		})
+		alertController.addAction(cancelButton)
+
+		self.viewController?.navigationController!.present(alertController, animated: true, completion: nil)
 	}
 	
 	func findPathFrom(from: HexPoint, to: HexPoint) -> [HexPoint]? {
@@ -245,7 +270,7 @@ class GameScene: SKScene {
 	}
 	
 	override func update(_ currentTime: CFTimeInterval) {
-		self.engine.update(currentTime)
+		self.engine?.update(with: currentTime)
 	}
 }
 
