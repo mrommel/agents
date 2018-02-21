@@ -13,6 +13,7 @@ class Village: GameObject {
 	
 	static let openVillage = GameObjectAction(named: "OpenVillage")
 	static let plantField = GameObjectAction(named: "PlantField")
+	static let selectedField = GameObjectActionWithPoint(named: "SelectedField")
 	
 	var counter: Double = 0.0
 	
@@ -34,13 +35,17 @@ class Village: GameObject {
 	
 	override func execute(action: GameObjectAction) {
 		if action == Village.openVillage {
-			print("...")
 			self.engine?.navigate(segue: "showVillage")
 		} else if action == Village.plantField {
-			print("plantField")
+	
+			self.engine?.askNeighbor(of: self, for: Village.selectedField)
+			
+		} else if action == Village.selectedField {
+			
+			let selectedAction = action as! GameObjectActionWithPoint
 			
 			// spawn a field
-			let field = Field(with: "field", at: self.position, mapDisplay: self.mapDisplay)
+			let field = Field(with: "field", at: selectedAction.point!, mapDisplay: self.mapDisplay)
 			self.engine?.add(gameObject: field)
 		}
 	}

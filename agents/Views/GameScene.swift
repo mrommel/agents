@@ -223,6 +223,25 @@ class GameScene: SKScene {
 		self.viewController?.navigationController!.present(alertController, animated: true, completion: nil)
 	}
 	
+	func showNeighborPicker(of gameObject: GameObject, for gameObjectAction: GameObjectActionWithPoint) {
+		let alertController = UIAlertController(title: gameObject.identifier, message: "Where?", preferredStyle: .actionSheet)
+		
+		for neighbor in gameObject.position.neighbors() {
+			let actionButton = UIAlertAction(title: "\(neighbor)", style: .default, handler: { (action) -> Void in
+				gameObjectAction.point = neighbor
+				gameObject.execute(action: gameObjectAction)
+			})
+			alertController.addAction(actionButton)
+		}
+
+		let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+			print("Cancel button tapped")
+		})
+		alertController.addAction(cancelButton)
+		
+		self.viewController?.navigationController!.present(alertController, animated: true, completion: nil)
+	}
+	
 	func findPathFrom(from: HexPoint, to: HexPoint) -> [HexPoint]? {
  
 		if self.map.valid(point: to) {

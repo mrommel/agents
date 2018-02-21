@@ -12,7 +12,7 @@ class GameObjectAction {
 	
 	let identifier: String
 	
-	init(named identifier:String) {
+	init(named identifier: String) {
 		self.identifier = identifier
 	}
 }
@@ -32,6 +32,15 @@ extension GameObjectAction: Equatable {
 
 func == (first: GameObjectAction, second: GameObjectAction) -> Bool {
 	return first.identifier == second.identifier
+}
+
+class GameObjectActionWithPoint: GameObjectAction {
+	
+	var point: HexPoint? = nil
+	
+	override init(named identifier: String) {
+		super.init(named: identifier)
+	}
 }
 
 struct GameObjectActions {

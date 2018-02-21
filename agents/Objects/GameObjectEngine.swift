@@ -51,4 +51,9 @@ class GameObjectEngine {
 	func navigate(segue: String) {
 		self.scene.viewController?.performSegue(withIdentifier: segue, sender: nil)
 	}
+	
+	func askNeighbor(of gameObject: GameObject, for action: GameObjectActionWithPoint) {
+		
+		self.scene.showNeighborPicker(of: gameObject, for: action)
+	}
 }
