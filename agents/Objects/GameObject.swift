@@ -40,6 +40,8 @@ class GameObject {
 	var atlasRight: GameObjectAtlas?
 	var atlasLeft: GameObjectAtlas?
 	
+	var lastTime: CFTimeInterval = 0
+	
 	init(with identifier: String, at point: HexPoint, sprite: String, mapDisplay: HexMapDisplay) {
 		self.identifier = identifier
 		self.mapDisplay = mapDisplay
