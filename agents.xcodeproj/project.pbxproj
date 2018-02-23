@@ -33,6 +33,7 @@
 		0451D597203765A100E7C882 /* Village.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D596203765A100E7C882 /* Village.swift */; };
 		0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D59820376EB900E7C882 /* VillageViewController.swift */; };
 		04C4C549203DB92B00477A1F /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4C548203DB92B00477A1F /* Field.swift */; };
+		04C4C54B20405EF600477A1F /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4C54A20405EF600477A1F /* Building.swift */; };
 		04F0384A20221C1F0011B79C /* HexLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384920221C1F0011B79C /* HexLayout.swift */; };
 		04F0384C20221C6D0011B79C /* HexPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384B20221C6D0011B79C /* HexPoint.swift */; };
 		04F0384E202221080011B79C /* HexMapDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384D202221080011B79C /* HexMapDisplay.swift */; };
@@ -103,6 +104,7 @@
 		0451D596203765A100E7C882 /* Village.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Village.swift; sourceTree = "<group>"; };
 		0451D59820376EB900E7C882 /* VillageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageViewController.swift; sourceTree = "<group>"; };
 		04C4C548203DB92B00477A1F /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		04C4C54A20405EF600477A1F /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		04F0384920221C1F0011B79C /* HexLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexLayout.swift; sourceTree = "<group>"; };
 		04F0384B20221C6D0011B79C /* HexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPoint.swift; sourceTree = "<group>"; };
 		04F0384D202221080011B79C /* HexMapDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapDisplay.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				04F0384D202221080011B79C /* HexMapDisplay.swift */,
 				04F0384F2024997F0011B79C /* Continent.swift */,
 				04F03851202499BC0011B79C /* ContinentFinder.swift */,
+				04C4C54A20405EF600477A1F /* Building.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				04F12D58201A758F007A8817 /* FloatExtension.swift in Sources */,
 				040FBE4820113F5E00D397E2 /* Global.swift in Sources */,
 				04C4C549203DB92B00477A1F /* Field.swift in Sources */,
+				04C4C54B20405EF600477A1F /* Building.swift in Sources */,
 				040FBE12201137BA00D397E2 /* GameViewController.swift in Sources */,
 				04F12D56201A7531007A8817 /* IntegerExtension.swift in Sources */,
 				040FBE692017B4A300D397E2 /* AStarPathFinder.swift in Sources */,

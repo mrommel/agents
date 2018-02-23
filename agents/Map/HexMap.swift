@@ -78,6 +78,14 @@ class TileHexMap: HexMap<Tile> {
 			tile.continent = continent
 		}
 	}
+	
+	/// MARK: building
+	
+	func set(building: Building, at hex: HexPoint) {
+		if let tile = self.tile(at: hex) {
+			tile.building = building
+		}
+	}
 }
 
 extension TileHexMap: PathfinderDataSource {

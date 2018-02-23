@@ -117,6 +117,10 @@ class GameObject {
 		// NOOP
 	}
 	
+	func canApply(action: GameObjectAction, on: HexPoint) -> Bool {
+		return false
+	}
+	
 	func clean() {
 		sprite.removeFromParent()
 	}

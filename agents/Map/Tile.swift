@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 enum Terrain {
 	
@@ -64,12 +65,18 @@ enum Feature {
 class Tile {
 	
 	var terrain: Terrain
+	var terrainSprite: SKSpriteNode?
+	
 	var features: [Feature]
+	var featureSprites: [SKSpriteNode] = []
+	
 	var continent: Continent?
+	var building: Building
 	
 	init(withTerrain terrain: Terrain) {
 		self.terrain = terrain
 		self.features = []
+		self.building = .none
 	}
 	
 	func set(feature: Feature) {

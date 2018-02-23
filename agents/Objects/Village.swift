@@ -12,8 +12,12 @@ import SpriteKit
 class Village: GameObject {
 	
 	static let openVillage = GameObjectAction(named: "OpenVillage")
+	
 	static let plantField = GameObjectAction(named: "PlantField")
 	static let selectedField = GameObjectActionWithPoint(named: "SelectedField")
+	
+	static let chopForest = GameObjectAction(named: "ChopForest")
+	static let selectedForest = GameObjectActionWithPoint(named: "SelectedForest")
 	
 	var counter: Double = 0.0
 	
@@ -30,24 +34,74 @@ class Village: GameObject {
 	}
 	
 	override func actions() -> [GameObjectAction] {
-		return [Village.openVillage, Village.plantField]
+		return [Village.openVillage, Village.plantField, Village.chopForest]
 	}
 	
 	override func execute(action: GameObjectAction) {
+		
 		if action == Village.openVillage {
 			self.engine?.navigate(segue: "showVillage")
 		} else if action == Village.plantField {
-	
 			self.engine?.askNeighbor(of: self, for: Village.selectedField)
-			
 		} else if action == Village.selectedField {
 			
 			let selectedAction = action as! GameObjectActionWithPoint
 			
-			// spawn a field
+			// add to map
+			self.engine?.scene.map.set(building: .wheat, at: selectedAction.point!)
+			
+			// spawn a field game object
 			let field = Field(with: "field", at: selectedAction.point!, mapDisplay: self.mapDisplay)
 			self.engine?.add(gameObject: field)
+			
+			// make reference to village
+			// ...
+		} else if action == Village.chopForest {
+			self.engine?.askNeighbor(of: self, for: Village.selectedForest)
+		} else if action == Village.selectedForest {
+		
+			let selectedAction = action as! GameObjectActionWithPoint
+			
+			if let tile = self.engine?.scene.map.tile(at: selectedAction.point!), let point = selectedAction.point {
+				
+				// remove forest
+				if tile.has(feature: .forest_mixed) {
+					self.engine?.scene.map.remove(feature: .forest_mixed, at: point)
+				} else if tile.has(feature: .forest_pine) {
+					self.engine?.scene.map.remove(feature: .forest_pine, at: point)
+				}
+				
+				// remove sprites
+				for sprite in tile.featureSprites {
+					sprite.removeFromParent()
+				}
+				tile.featureSprites = []
+				
+				tile.terrainSprite?.removeFromParent()
+				tile.terrainSprite = nil
+				
+				let screenPoint = self.mapDisplay.toScreen(hex: point)
+				self.engine?.scene.placeTileHex(tile: tile, position: screenPoint)
+				
+				// collect wood
+				// ...
+			}
 		}
+	}
+	
+	override func canApply(action: GameObjectAction, on point: HexPoint) -> Bool {
+		
+		if action == Village.selectedField {
+			if let tile = self.engine?.scene.map.tile(at: point) {
+				return tile.terrain != .ocean && tile.building == .none && !(tile.has(feature: .forest_mixed) || tile.has(feature: .forest_pine))
+			}
+		} else {
+			if let tile = self.engine?.scene.map.tile(at: point) {
+				return tile.terrain != .ocean && (tile.has(feature: .forest_mixed) || tile.has(feature: .forest_pine))
+			}
+		}
+		
+		return false
 	}
 	
 	override func update(with currentTime: CFTimeInterval) {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum HexDirection {
 	
@@ -37,6 +38,23 @@ enum HexDirection {
 			return "South West"
 		case .northwest:
 			return "North West"
+		}
+	}
+	
+	var pickerImage: UIImage? {
+		switch self {
+		case .north:
+			return UIImage(named: "hex_neighbors_n")
+		case .northeast:
+			return UIImage(named: "hex_neighbors_ne")
+		case .southeast:
+			return UIImage(named: "hex_neighbors_se")
+		case .south:
+			return UIImage(named: "hex_neighbors_s")
+		case .southwest:
+			return UIImage(named: "hex_neighbors_sw")
+		case .northwest:
+			return UIImage(named: "hex_neighbors_nw")
 		}
 	}
 }

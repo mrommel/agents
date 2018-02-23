@@ -13,7 +13,7 @@ class GameObjectEngine {
 	
 	fileprivate var objects: [GameObject]
 	fileprivate let layer: SKNode
-	fileprivate let scene: GameScene
+	let scene: GameScene
 	var focusedObject: GameObject? = nil
 	
 	init(on layer: SKNode, in scene: GameScene) {

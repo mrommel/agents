@@ -141,19 +141,23 @@ class GameScene: SKScene {
 	func placeTileHex(tile: Tile, position: CGPoint) {
 		
 		// place terrain
-		let tileSprite = SKSpriteNode(imageNamed: tile.terrain.textureNameHex)
-		tileSprite.position = position
-		tileSprite.zPosition = GameSceneConstants.ZLevels.terrain
-		tileSprite.anchorPoint = CGPoint(x:0, y:0)
-		layerHexGround.addChild(tileSprite)
+		let terrainSprite = SKSpriteNode(imageNamed: tile.terrain.textureNameHex)
+		terrainSprite.position = position
+		terrainSprite.zPosition = GameSceneConstants.ZLevels.terrain
+		terrainSprite.anchorPoint = CGPoint(x: 0, y: 0)
+		layerHexGround.addChild(terrainSprite)
+		
+		tile.terrainSprite = terrainSprite
 		
 		// place forests etc
 		for feature in tile.features {
 			let featureSprite = SKSpriteNode(imageNamed: feature.textureNameHex)
 			featureSprite.position = position
 			featureSprite.zPosition = GameSceneConstants.ZLevels.feature // maybe need to come from feature itself
-			featureSprite.anchorPoint = CGPoint(x:0, y:0)
+			featureSprite.anchorPoint = CGPoint(x: 0, y: 0)
 			layerHexObjects.addChild(featureSprite)
+			
+			tile.featureSprites.append(featureSprite)
 		}
 	}
 	
@@ -226,12 +230,21 @@ class GameScene: SKScene {
 	func showNeighborPicker(of gameObject: GameObject, for gameObjectAction: GameObjectActionWithPoint) {
 		let alertController = UIAlertController(title: gameObject.identifier, message: "Where?", preferredStyle: .actionSheet)
 		
-		for neighbor in gameObject.position.neighbors() {
-			let actionButton = UIAlertAction(title: "\(neighbor)", style: .default, handler: { (action) -> Void in
-				gameObjectAction.point = neighbor
-				gameObject.execute(action: gameObjectAction)
-			})
-			alertController.addAction(actionButton)
+		for direction in HexDirection.all {
+			
+			let neighbor = gameObject.position.neighbor(in: direction)
+			if gameObject.canApply(action: gameObjectAction, on: neighbor) {
+				
+				let actionButton = UIAlertAction(title: "\(direction)", style: .default, handler: { (action) -> Void in
+					gameObjectAction.point = neighbor
+					gameObject.execute(action: gameObjectAction)
+				})
+				
+				if let image = direction.pickerImage {
+					actionButton.setValue(image, forKey: "image")
+				}
+				alertController.addAction(actionButton)
+			}
 		}
 
 		let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in

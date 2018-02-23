@@ -53,7 +53,7 @@ class Field: GameObject {
 			break
 		}
 		
-		self.sprite.texture = SKTexture.init(imageNamed: self.fieldState.rawValue)
+		self.sprite.texture = SKTexture(imageNamed: self.fieldState.rawValue)
 	}
 	
 	override func update(with currentTime: CFTimeInterval) {
