@@ -275,9 +275,17 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		041B98FB2045EFC0001F0E16 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
 		04481D9C2031F300001F04FA /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				041B98FB2045EFC0001F0E16 /* Structures */,
 				04481D9F2031F333001F04FA /* GameObject.swift */,
 				04FC596D20372A6A00251E7F /* GameObjectAction.swift */,
 				04FC594C2034484C00251E7F /* GameObjectEngine.swift */,

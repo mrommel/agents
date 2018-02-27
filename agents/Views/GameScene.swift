@@ -13,11 +13,112 @@ struct GameSceneConstants {
 	
 	struct ZLevels {
 		static let terrain: CGFloat = 1.0
-		static let focus: CGFloat = 2.0
-		static let feature: CGFloat = 3.0
-		static let staticSprite: CGFloat = 4.0
-		static let sprite: CGFloat = 5.0
+		static let area: CGFloat = 2.0
+		static let focus: CGFloat = 3.0
+		static let feature: CGFloat = 4.0
+		static let staticSprite: CGFloat = 5.0
+		static let sprite: CGFloat = 6.0
 		static let labels: CGFloat = 50.0
+	}
+}
+
+protocol AreaDelegate {
+	func changed(area: Area?)
+}
+
+class Area {
+	
+	var onPointsChanged: ((_ points: [HexPoint])->())?
+	
+	var identifier: String
+	var points: [HexPoint] {
+		didSet {
+			onPointsChanged?(points)
+		}
+	}
+	
+	init(with identifier: String) {
+		self.identifier = identifier
+		self.points = []
+	}
+	
+	func add(point: HexPoint) {
+		self.points.append(point)
+	}
+}
+
+class AreaSprites {
+	
+	private let node: SKNode?
+	private let mapDisplay: HexMapDisplay?
+	private var sprites: [SKSpriteNode]
+	
+	init(on node: SKNode?, with mapDisplay: HexMapDisplay?) {
+		self.node = node
+		self.mapDisplay = mapDisplay
+		self.sprites = []
+	}
+	
+	func texture(for point: HexPoint, in points: [HexPoint]) -> String {
+		
+		var tex = "hex_border_"
+		
+		if !points.contains(where: { $0 == point.neighbor(in: .north) }) {
+			tex += "n_"
+		}
+		
+		if !points.contains(where: { $0 == point.neighbor(in: .northeast) }) {
+			tex += "ne_"
+		}
+		
+		if !points.contains(where: { $0 == point.neighbor(in: .southeast) }) {
+			tex += "se_"
+		}
+		
+		if !points.contains(where: { $0 == point.neighbor(in: .south) }) {
+			tex += "s_"
+		}
+		
+		if !points.contains(where: { $0 == point.neighbor(in: .southwest) }) {
+			tex += "sw_"
+		}
+		
+		if !points.contains(where: { $0 == point.neighbor(in: .northwest) }) {
+			tex += "nw_"
+		}
+		
+		if tex == "hex_border_" {
+			return "hex_border_all"
+		}
+		
+		tex.removeLast()
+		return tex
+	}
+	
+	func rebuild(with points: [HexPoint]) {
+		
+		// remove old sprites
+		for sprite in self.sprites {
+			sprite.removeFromParent()
+		}
+		self.sprites.removeAll()
+		
+		for point in points {
+			
+			if let position = self.mapDisplay?.toScreen(hex: point) {
+			
+				// missing:
+				// * hex_border_n_ne_s_sw_nw,
+				// * hex_border_n_ne_s_nw,
+				// * hex_border_n_se_s_sw_nw
+				let textureName = self.texture(for: point, in: points)
+				let sprite = SKSpriteNode(imageNamed: textureName)
+				sprite.position = position
+				sprite.zPosition = GameSceneConstants.ZLevels.area
+				sprite.anchorPoint = CGPoint(x: 0, y: 0)
+				self.node?.addChild(sprite)
+			}
+		}
 	}
 }
 
@@ -136,6 +237,17 @@ class GameScene: SKScene {
 		
 		let rabbit = Rabbit(with: "rabbit", at: HexPoint(x: 3, y: 2), mapDisplay: self.mapDisplay)
 		self.engine?.add(gameObject: rabbit)
+		
+		let areaSprites = AreaSprites(on: layerHexGround, with: self.mapDisplay)
+		
+		let area = Area(with: "red")
+		area.onPointsChanged = { points in
+			print("now we have \(points.count) pts")
+			areaSprites.rebuild(with: points)
+		}
+		area.add(point: HexPoint(x: 0,y: 0))
+		area.add(point: HexPoint(x: 1,y: 0))
+		area.add(point: HexPoint(x: 0,y: 1))
 	}
 	
 	func placeTileHex(tile: Tile, position: CGPoint) {
