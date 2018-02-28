@@ -237,15 +237,23 @@ class GameScene: SKScene {
 		self.engine?.add(gameObject: rabbit)
 		
 		let areaSprites = AreaSprites(on: layerHexGround, with: self.mapDisplay)
-		
 		let area = Area(with: "red")
 		area.onPointsChanged = { points in
-			print("now we have \(points.count) pts")
 			areaSprites.rebuild(with: points)
 		}
+		
 		area.add(point: HexPoint(x: 0,y: 0))
 		area.add(point: HexPoint(x: 1,y: 0))
+		area.add(point: HexPoint(x: 2,y: 0))
 		area.add(point: HexPoint(x: 0,y: 1))
+		area.add(point: HexPoint(x: 1,y: 1))
+		area.add(point: HexPoint(x: 0,y: 2))
+		area.add(point: HexPoint(x: 0,y: 3))
+		area.add(point: HexPoint(x: 0,y: 4))
+		area.add(point: HexPoint(x: 0,y: 5))
+		area.add(point: HexPoint(x: 1,y: 5))
+		
+		//
 	}
 	
 	func placeTileHex(tile: Tile, position: CGPoint) {
