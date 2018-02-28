@@ -106,17 +106,15 @@ class AreaSprites {
 		for point in points {
 			
 			if let position = self.mapDisplay?.toScreen(hex: point) {
-			
-				// missing:
-				// * hex_border_n_ne_s_sw_nw,
-				// * hex_border_n_ne_s_nw,
-				// * hex_border_n_se_s_sw_nw
+
 				let textureName = self.texture(for: point, in: points)
 				let sprite = SKSpriteNode(imageNamed: textureName)
 				sprite.position = position
 				sprite.zPosition = GameSceneConstants.ZLevels.area
 				sprite.anchorPoint = CGPoint(x: 0, y: 0)
 				self.node?.addChild(sprite)
+				
+				self.sprites.append(sprite)
 			}
 		}
 	}
