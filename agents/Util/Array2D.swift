@@ -8,18 +8,18 @@
 
 import Foundation
 
-public struct Array2D<T> {
+public class Array2D<T: Equatable> {
 	public let columns: Int
 	public let rows: Int
-	fileprivate var array: [T]
+	fileprivate var array: Array<T?> = Array<T?>()
 	
-	public init(columns: Int, rows: Int, initialValue: T) {
+	public init(columns: Int, rows: Int) {
 		self.columns = columns
 		self.rows = rows
-		array = .init(repeating: initialValue, count: rows*columns)
+		self.array = Array<T?>(repeating: nil, count: rows * columns)
 	}
 	
-	public subscript(column: Int, row: Int) -> T {
+	public subscript(column: Int, row: Int) -> T? {
 		get {
 			precondition(column < columns, "Column \(column) Index is out of range. Array<T>(columns: \(columns), rows:\(rows))")
 			precondition(row < rows, "Row \(row) Index is out of range. Array<T>(columns: \(columns), rows:\(rows))")
@@ -29,6 +29,41 @@ public struct Array2D<T> {
 			precondition(column < columns, "Column \(column) Index is out of range. Array<T>(columns: \(columns), rows:\(rows))")
 			precondition(row < rows, "Row \(row) Index is out of range. Array<T>(columns: \(columns), rows:\(rows))")
 			array[row*columns + column] = newValue
+		}
+	}
+}
+
+// MARK: fill methods
+
+extension Array2D {
+	
+	func fill(with value: T) {
+		for x in 0..<self.columns {
+			for y in 0..<self.rows {
+				self[x, y] = value
+			}
+		}
+	}
+	
+	func fill(with function: (Int, Int) -> T) {
+		for x in 0..<self.columns {
+			for y in 0..<self.rows {
+				self[x, y] = function(x, y)
+			}
+		}
+	}
+}
+
+// MARK: grid method
+
+extension Array2D {
+	
+	subscript(gridPoint: HexPoint) -> T? {
+		get {
+			return array[(gridPoint.y * columns) + gridPoint.x]
+		}
+		set(newValue) {
+			array[(gridPoint.y * columns) + gridPoint.x] = newValue
 		}
 	}
 }

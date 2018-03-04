@@ -9,61 +9,9 @@
 import Foundation
 import SpriteKit
 
-enum Terrain {
-	
-	case plain
-	case grass
-	case ocean
-	
-	var description: String {
-		switch self {
-		case .plain:
-			return "Plain"
-		case .grass:
-			return "Grass"
-		case .ocean:
-			return "Ocean"
-		}
-	}
-	
-	var textureNameHex: String {
-		switch self {
-		case .plain:
-			return "hex_plain"
-		case .grass:
-			return "hex_grass"
-		case .ocean:
-			return "hex_ocean"
-		}
-	}
-}
-
-enum Feature {
-	
-	case forest_mixed
-	case forest_pine
-	
-	var description: String {
-		switch self {
-		case .forest_mixed:
-			return "Mixed Forest"
-		case .forest_pine:
-			return "Pine Forest"
-		}
-	}
-	
-	var textureNameHex: String {
-		switch self {
-		case .forest_mixed:
-			return "hex_forest_mixed_summer1"
-		case .forest_pine:
-			return "hex_forest_pine_summer1"
-		}
-	}
-}
-
 class Tile {
 	
+	var point: HexPoint?
 	var terrain: Terrain
 	var terrainSprite: SKSpriteNode?
 	
@@ -73,7 +21,12 @@ class Tile {
 	var continent: Continent?
 	var building: Building
 	
-	init(withTerrain terrain: Terrain) {
+	var river: River?
+	var riverFlowNorth: FlowDirection = .none
+	var riverFlowNorthEast: FlowDirection = .none
+	var riverFlowSouthEast: FlowDirection = .none
+	
+	init(at point: HexPoint, with terrain: Terrain) {
 		self.terrain = terrain
 		self.features = []
 		self.building = .none
@@ -97,3 +50,152 @@ class Tile {
 		return self.features.contains(where: { $0 == feature })
 	}
 }
+
+extension Tile: Equatable {
+	static func ==(lhs: Tile, rhs: Tile) -> Bool {
+		
+		guard lhs.point != nil else {
+			return false
+		}
+		
+		guard rhs.point != nil else {
+			return false
+		}
+		
+		return lhs.point == rhs.point
+	}
+}
+
+extension Tile {
+	
+	func set(river: River?, with flow: FlowDirection) throws {
+		self.river = river
+		
+		try setRiver(flow: flow)
+	}
+	
+	func isRiver() -> Bool {
+		
+		return self.river != nil && (self.isRiverInNorth() || self.isRiverInNorthEast() || self.isRiverInSouthEast())
+	}
+	
+	public func isRiverIn(direction: HexDirection) throws -> Bool {
+		switch direction {
+		case .north:
+			return self.isRiverInNorth()
+		case .northeast:
+			return self.isRiverInNorthEast()
+		case .southwest:
+			return self.isRiverInSouthEast()
+			
+		default:
+			throw FlowDirectionError.Unsupported(flow: .none, in: direction)
+		}
+	}
+	
+	public func setRiver(flow: FlowDirection) throws {
+		
+		switch flow {
+		case .northEast:
+			try self.setRiverFlowInSouthEast(flow: flow)
+			break
+		case .southWest:
+			try self.setRiverFlowInSouthEast(flow: flow)
+			break
+			
+		case .northWest:
+			try self.setRiverFlowInNorthEast(flow: flow)
+			break
+		case .southEast:
+			try self.setRiverFlowInNorthEast(flow: flow)
+			break
+			
+		case .east:
+			try self.setRiverFlowInNorth(flow: flow)
+			break
+		case .west:
+			try self.setRiverFlowInNorth(flow: flow)
+			break
+		default:
+			throw FlowDirectionError.Unsupported(flow: flow, in: .north)
+		}
+	}
+	
+	public func setRiver(flow: FlowDirection, in direction: HexDirection) throws {
+		
+		switch direction {
+		case .north:
+			try self.setRiverFlowInNorth(flow: flow)
+			break
+		case .northeast:
+			try self.setRiverFlowInNorthEast(flow: flow)
+			break
+		case .southeast:
+			try self.setRiverFlowInSouthEast(flow: flow)
+			break
+		default:
+			throw FlowDirectionError.Unsupported(flow: flow, in: direction)
+		}
+	}
+	
+	// river in north can flow from east or west direction
+	public func isRiverInNorth() -> Bool {
+		return self.riverFlowNorth == .east || self.riverFlowNorth == .west
+	}
+	
+	public func setRiverFlowInNorth(flow: FlowDirection) throws {
+		
+		guard flow == .east || flow == .west else {
+			throw FlowDirectionError.Unsupported(flow: flow, in: .north)
+		}
+		
+		self.riverFlowNorth = flow
+	}
+	
+	// river in north east can flow to northwest or southeast direction
+	public func isRiverInNorthEast() -> Bool {
+		return self.riverFlowNorthEast == .northWest || self.riverFlowNorthEast == .southEast
+	}
+	
+	public func setRiverFlowInNorthEast(flow: FlowDirection) throws {
+		
+		guard flow == .northWest || flow == .southEast else {
+			throw FlowDirectionError.Unsupported(flow: flow, in: .northeast)
+		}
+		
+		self.riverFlowNorthEast = flow
+	}
+	
+	// river in south east can flow to northeast or southwest direction
+	public func isRiverInSouthEast() -> Bool {
+		return self.riverFlowSouthEast == .southWest || self.riverFlowSouthEast == .northEast
+	}
+	
+	public func setRiverFlowInSouthEast(flow: FlowDirection) throws {
+		
+		guard flow == .southWest || flow == .northEast else {
+			throw FlowDirectionError.Unsupported(flow: flow, in: .southeast)
+		}
+		
+		self.riverFlowSouthEast = flow
+	}
+	
+	public var flows: [FlowDirection] {
+		var result: [FlowDirection] = []
+		
+		if self.isRiverInNorth() {
+			result.append(self.riverFlowNorth)
+		}
+		
+		if self.isRiverInNorthEast() {
+			result.append(self.riverFlowNorthEast)
+		}
+		
+		if self.isRiverInSouthEast() {
+			result.append(self.riverFlowSouthEast)
+		}
+		
+		return result
+	}
+}
+

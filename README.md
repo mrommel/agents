@@ -19,4 +19,4 @@ project to collect some nice ui work and some ai approaches
 
 ## to do
 * have multiple agents
-*
+* add game logic, scenarios, story

@@ -136,7 +136,7 @@ class GameScene: SKScene {
 	var engine: GameObjectEngine? = nil
 	
 	let mapDisplay = HexMapDisplay()
-	let map = TileHexMap(width: 15, height: 15, initialValue: Tile(withTerrain: .ocean))
+	let map = TileHexMap(width: 15, height: 15)
 	
 	var cam: SKCameraNode!
 	
@@ -203,9 +203,9 @@ class GameScene: SKScene {
 				if Int.random(min: 0, max: 5) < 3 {
 					
 					if Int.random(min: 0, max: 5) < 3 {
-						map.set(tile: Tile(withTerrain: .grass), at: pt)
+						map.set(tile: Tile(at: pt, with: .grass), at: pt)
 					} else {
-						map.set(tile: Tile(withTerrain: .plain), at: pt)
+						map.set(tile: Tile(at: pt, with: .plain), at: pt)
 					}
 					
 					if Int.random(min: 0, max: 5) < 1 {
@@ -214,7 +214,7 @@ class GameScene: SKScene {
 						map.set(feature: .forest_pine, at: pt)
 					}
 				} else {
-					map.set(tile: Tile(withTerrain: .ocean), at: pt)
+					map.set(tile: Tile(at: pt, with: .ocean), at: pt)
 				}
 			}
 		}
@@ -286,7 +286,7 @@ class GameScene: SKScene {
 				let tile = map.tiles[i, j]
 				let screenPoint = mapDisplay.toScreen(hex: HexPoint(x: i, y: j))
 				
-				placeTileHex(tile: tile, position: screenPoint)
+				placeTileHex(tile: tile!, position: screenPoint)
 			}
 		}
 	}

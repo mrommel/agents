@@ -8,12 +8,12 @@
 
 import Foundation
 
-class HexMap<T> {
+class HexMap<T: Equatable> {
 	
 	var tiles: Array2D<T>
 	
-	init(width: Int, height: Int, initialValue: T) {
-		self.tiles = Array2D<T>(columns: width, rows: height, initialValue: initialValue)
+	init(width: Int, height: Int) {
+		self.tiles = Array2D<T>(columns: width, rows: height)
 	}
 	
 	func valid(point: HexPoint) -> Bool {
@@ -48,6 +48,9 @@ class HexMap<T> {
 }
 
 class TileHexMap: HexMap<Tile> {
+	
+	// own properties
+	var rivers: [River] = []
 	
 	/// MARK: terrain
 	
@@ -84,6 +87,42 @@ class TileHexMap: HexMap<Tile> {
 	func set(building: Building, at hex: HexPoint) {
 		if let tile = self.tile(at: hex) {
 			tile.building = building
+		}
+	}
+	
+	// MARK: river
+	func flows(at position: HexPoint) -> [FlowDirection] {
+		
+		// check bounds
+		guard self.valid(point: position) else {
+			return []
+		}
+		
+		let tile = self.tiles[position]
+		if let flows = tile?.flows {
+			return flows
+		}
+		
+		return []
+	}
+	
+	public func add(river: River) {
+		
+		self.rivers.append(river)
+		
+		for riverPoint in river.points {
+			
+			// check bounds
+			guard self.valid(point: riverPoint.point) else {
+				continue
+			}
+			
+			let tile = self.tiles[riverPoint.point]
+			do {
+				try tile?.set(river: river, with: riverPoint.flowDirection)
+			} catch {
+				print("something weird happend")
+			}
 		}
 	}
 }

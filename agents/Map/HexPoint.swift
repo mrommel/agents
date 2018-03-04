@@ -175,6 +175,42 @@ extension HexPoint {
 		
 		return nil
 	}
+	
+	func adjacentPoints(of corner: HexPointCorner) -> [HexPoint] {
+		
+		var neighboring = [HexPoint]()
+		
+		neighboring.append(self)
+		
+		switch corner {
+		case .northeast:
+			neighboring.append(self.neighbor(in: .north))
+			neighboring.append(self.neighbor(in: .northeast))
+			break
+		case .east:
+			neighboring.append(self.neighbor(in: .northeast))
+			neighboring.append(self.neighbor(in: .southeast))
+			break
+		case .southeast:
+			neighboring.append(self.neighbor(in: .southeast))
+			neighboring.append(self.neighbor(in: .south))
+			break
+		case .southwest:
+			neighboring.append(self.neighbor(in: .south))
+			neighboring.append(self.neighbor(in: .southwest))
+			break
+		case .west:
+			neighboring.append(self.neighbor(in: .southwest))
+			neighboring.append(self.neighbor(in: .northwest))
+			break
+		case .northwest:
+			neighboring.append(self.neighbor(in: .northwest))
+			neighboring.append(self.neighbor(in: .north))
+			break
+		}
+		
+		return neighboring
+	}
 }
 
 extension HexPoint: Hashable, Equatable {

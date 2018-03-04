@@ -14,7 +14,8 @@ class ContinentFinder {
 	
 	init(width: Int, height: Int) {
 		
-		self.continentIdentifiers = Array2D<Int>(columns: width, rows: height, initialValue: ContinentConstants.kNotAnalyzed)
+		self.continentIdentifiers = Array2D<Int>(columns: width, rows: height)
+		self.continentIdentifiers.fill(with: ContinentConstants.kNotAnalyzed)
 	}
 	
 	func evaluated(value: Int) -> Bool {
@@ -39,12 +40,12 @@ class ContinentFinder {
 				
 				let continentIdentifier = self.continentIdentifiers[x, y]
 					
-				if self.evaluated(value: continentIdentifier) {
+				if self.evaluated(value: continentIdentifier!) {
 						
 					var continent = continents.first(where: { $0.identifier == continentIdentifier })
 						
 					if continent == nil {
-						continent = Continent(identifier: continentIdentifier, name: "Continent \(continentIdentifier)", on: map)
+						continent = Continent(identifier: continentIdentifier!, name: "Continent \(continentIdentifier ?? -1)", on: map)
 						continents.append(continent!)
 					}
 						
@@ -72,11 +73,11 @@ class ContinentFinder {
 			let c2 = map.valid(point: p2) ? self.continentIdentifiers[p2.x, p2.y] : ContinentConstants.kNotAnalyzed
 			let c3 = map.valid(point: p3) ? self.continentIdentifiers[p3.x, p3.y] : ContinentConstants.kNotAnalyzed
 			
-			if self.evaluated(value: c1) {
+			if self.evaluated(value: c1!) {
 				self.continentIdentifiers[x, y] = c1
-			} else if self.evaluated(value: c2) {
+			} else if self.evaluated(value: c2!) {
 				self.continentIdentifiers[x, y] = c2
-			} else if self.evaluated(value: c3) {
+			} else if self.evaluated(value: c3!) {
 				self.continentIdentifiers[x, y] = c3
 			} else {
 				let freeIdentifier = self.firstFreeIdentifier()
@@ -84,12 +85,12 @@ class ContinentFinder {
 			}
 			
 			// handle continent joins
-			if self.evaluated(value: c1) && self.evaluated(value: c2) && c1 != c2 {
-				self.replace(oldIdentifier: c2, withIdentifier: c1)
-			} else if self.evaluated(value: c2) && self.evaluated(value: c3) && c2 != c3 {
-				self.replace(oldIdentifier: c2, withIdentifier: c3)
-			} else if self.evaluated(value: c1) && self.evaluated(value: c3) && c1 != c3 {
-				self.replace(oldIdentifier: c1, withIdentifier: c3)
+			if self.evaluated(value: c1!) && self.evaluated(value: c2!) && c1 != c2 {
+				self.replace(oldIdentifier: c2!, withIdentifier: c1!)
+			} else if self.evaluated(value: c2!) && self.evaluated(value: c3!) && c2 != c3 {
+				self.replace(oldIdentifier: c2!, withIdentifier: c3!)
+			} else if self.evaluated(value: c1!) && self.evaluated(value: c3!) && c1 != c3 {
+				self.replace(oldIdentifier: c1!, withIdentifier: c3!)
 			}
 			
 		} else {
@@ -104,9 +105,10 @@ class ContinentFinder {
 		for x in 0..<self.continentIdentifiers.columns {
 			for y in 0..<self.continentIdentifiers.rows {
 				
-				let c = self.continentIdentifiers[x, y]
-				if c >= 0 && c < 256 {
-					freeIdentifiers[c] = false
+				if let c = self.continentIdentifiers[x, y] {
+					if c >= 0 && c < 256 {
+						freeIdentifiers[c] = false
+					}
 				}
 			}
 		}
