@@ -42,6 +42,7 @@
 		041B991D204C8C6F001F0E16 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B991C204C8C6F001F0E16 /* Terrain.swift */; };
 		041B991F204C8CAB001F0E16 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B991E204C8CAB001F0E16 /* Feature.swift */; };
 		041B9921204C9219001F0E16 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9920204C9219001F0E16 /* Area.swift */; };
+		041B9923204D7FC1001F0E16 /* AreaSprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9922204D7FC1001F0E16 /* AreaSprites.swift */; };
 		04481D9320249C95001F04FA /* BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9220249C95001F04FA /* BitArray.swift */; };
 		04481D9E2031F314001F04FA /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9D2031F314001F04FA /* Professor.swift */; };
 		04481DA02031F333001F04FA /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9F2031F333001F04FA /* GameObject.swift */; };
@@ -130,6 +131,7 @@
 		041B991C204C8C6F001F0E16 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		041B991E204C8CAB001F0E16 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		041B9920204C9219001F0E16 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
+		041B9922204D7FC1001F0E16 /* AreaSprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSprites.swift; sourceTree = "<group>"; };
 		04481D9220249C95001F04FA /* BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitArray.swift; sourceTree = "<group>"; };
 		04481D9D2031F314001F04FA /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		04481D9F2031F333001F04FA /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				04FC594A20338C7600251E7F /* Rabbit.swift */,
 				0451D596203765A100E7C882 /* Village.swift */,
 				04C4C548203DB92B00477A1F /* Field.swift */,
+				041B9922204D7FC1001F0E16 /* AreaSprites.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				04FC596E20372A6A00251E7F /* GameObjectAction.swift in Sources */,
 				041B9921204C9219001F0E16 /* Area.swift in Sources */,
 				041B9919204C5137001F0E16 /* ArrayExtension.swift in Sources */,
+				041B9923204D7FC1001F0E16 /* AreaSprites.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

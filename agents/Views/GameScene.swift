@@ -22,79 +22,6 @@ struct GameSceneConstants {
 	}
 }
 
-class AreaSprites {
-	
-	private let node: SKNode?
-	private let mapDisplay: HexMapDisplay?
-	private var sprites: [SKSpriteNode]
-	
-	init(on node: SKNode?, with mapDisplay: HexMapDisplay?) {
-		self.node = node
-		self.mapDisplay = mapDisplay
-		self.sprites = []
-	}
-	
-	func texture(for point: HexPoint, in points: [HexPoint]) -> String {
-		
-		var tex = "hex_border_"
-		
-		if !points.contains(where: { $0 == point.neighbor(in: .north) }) {
-			tex += "n_"
-		}
-		
-		if !points.contains(where: { $0 == point.neighbor(in: .northeast) }) {
-			tex += "ne_"
-		}
-		
-		if !points.contains(where: { $0 == point.neighbor(in: .southeast) }) {
-			tex += "se_"
-		}
-		
-		if !points.contains(where: { $0 == point.neighbor(in: .south) }) {
-			tex += "s_"
-		}
-		
-		if !points.contains(where: { $0 == point.neighbor(in: .southwest) }) {
-			tex += "sw_"
-		}
-		
-		if !points.contains(where: { $0 == point.neighbor(in: .northwest) }) {
-			tex += "nw_"
-		}
-		
-		if tex == "hex_border_" {
-			return "hex_border_all"
-		}
-		
-		tex.removeLast()
-		return tex
-	}
-	
-	func rebuild(with points: [HexPoint]) {
-		
-		// remove old sprites
-		for sprite in self.sprites {
-			sprite.removeFromParent()
-		}
-		self.sprites.removeAll()
-		
-		for point in points {
-			
-			if let position = self.mapDisplay?.toScreen(hex: point) {
-
-				let textureName = self.texture(for: point, in: points)
-				let sprite = SKSpriteNode(imageNamed: textureName)
-				sprite.position = position
-				sprite.zPosition = GameSceneConstants.ZLevels.area
-				sprite.anchorPoint = CGPoint(x: 0, y: 0)
-				self.node?.addChild(sprite)
-				
-				self.sprites.append(sprite)
-			}
-		}
-	}
-}
-
 class GameScene: SKScene {
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -211,7 +138,7 @@ class GameScene: SKScene {
 		let rabbit = Rabbit(with: "rabbit", at: HexPoint(x: 3, y: 2), mapDisplay: self.mapDisplay)
 		self.engine?.add(gameObject: rabbit)
 		
-		let areaSprites = AreaSprites(on: layerHexGround, with: self.mapDisplay)
+		let areaSprites = AreaSprites(with: self.mapDisplay)
 		let area = Area(with: "red")
 		area.onPointsChanged = { points in
 			areaSprites.rebuild(with: points)
@@ -229,6 +156,8 @@ class GameScene: SKScene {
 		area.add(point: HexPoint(x: 1,y: 5))
 		
 		//
+		
+		layerHexGround.addChild(areaSprites)
 	}
 	
 	func placeTileHex(tile: Tile, position: CGPoint) {
