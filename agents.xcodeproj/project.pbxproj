@@ -41,6 +41,7 @@
 		041B991B204C8BAE001F0E16 /* HexPointCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B991A204C8BAE001F0E16 /* HexPointCorner.swift */; };
 		041B991D204C8C6F001F0E16 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B991C204C8C6F001F0E16 /* Terrain.swift */; };
 		041B991F204C8CAB001F0E16 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B991E204C8CAB001F0E16 /* Feature.swift */; };
+		041B9921204C9219001F0E16 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9920204C9219001F0E16 /* Area.swift */; };
 		04481D9320249C95001F04FA /* BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9220249C95001F04FA /* BitArray.swift */; };
 		04481D9E2031F314001F04FA /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9D2031F314001F04FA /* Professor.swift */; };
 		04481DA02031F333001F04FA /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9F2031F333001F04FA /* GameObject.swift */; };
@@ -128,6 +129,7 @@
 		041B991A204C8BAE001F0E16 /* HexPointCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPointCorner.swift; sourceTree = "<group>"; };
 		041B991C204C8C6F001F0E16 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		041B991E204C8CAB001F0E16 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		041B9920204C9219001F0E16 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		04481D9220249C95001F04FA /* BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitArray.swift; sourceTree = "<group>"; };
 		04481D9D2031F314001F04FA /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		04481D9F2031F333001F04FA /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				04C4C54A20405EF600477A1F /* Building.swift */,
 				041B991C204C8C6F001F0E16 /* Terrain.swift */,
 				041B991E204C8CAB001F0E16 /* Feature.swift */,
+				041B9920204C9219001F0E16 /* Area.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				04F03852202499BC0011B79C /* ContinentFinder.swift in Sources */,
 				040FBE6520171ED500D397E2 /* HexDirection.swift in Sources */,
 				04FC596E20372A6A00251E7F /* GameObjectAction.swift in Sources */,
+				041B9921204C9219001F0E16 /* Area.swift in Sources */,
 				041B9919204C5137001F0E16 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
