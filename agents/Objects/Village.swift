@@ -25,7 +25,7 @@ class Village: GameObject {
 		super.init(with: identifier, at: point, sprite: "village0", mapDisplay: mapDisplay)
 		
 		self.sprite.zPosition = GameSceneConstants.ZLevels.staticSprite
-		self.sprite.anchorPoint = CGPoint(x: -0.1, y: -0.0)
+		self.sprite.anchorPoint = CGPoint(x: -0.0, y: -0.0)
 		
 		self.atlasDown = GameObjectAtlas(atlasName: "village", textures: ["village0"])
 		self.atlasUp = GameObjectAtlas(atlasName: "village", textures: ["village0"])
