@@ -70,7 +70,7 @@ class MapGenerator {
 		self.springLocations = []
 	}
 	
-	func generateGrid(with options: MapGeneratorOptions) -> TileHexMap? {
+	func generate(with options: MapGeneratorOptions) -> TileHexMap? {
 		
 		// prepare result value
 		let grid = TileHexMap(width: self.width, height: self.height)
@@ -283,9 +283,11 @@ class MapGenerator {
 				
 				if self.terrain[x, y] == Terrain.ocean {
 					
-					grid?.set(terrain: .ocean, at: gridPoint)
-					
-					// TODO: also add shore
+					if heightMap[x, y]! > 0.1 {
+						grid?.set(terrain: .ocean, at: gridPoint)
+					} else {
+						grid?.set(terrain: .shore, at: gridPoint)
+					}
 				} else {
 					
 					let terrainVal = self.biome(elevation: heightMap[x, y]!, moisture: moistureMap[x, y]!, climate: self.zones[x, y]!)

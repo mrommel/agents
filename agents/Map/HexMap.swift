@@ -49,6 +49,17 @@ class HexMap<T: Equatable> {
 
 class TileHexMap: HexMap<Tile> {
 	
+	override init(width: Int, height: Int) {
+		super.init(width: width, height: height)
+		
+		for x in 0..<width {
+			for y in 0..<height {
+				let pt = HexPoint(x: x, y: y)
+				self.set(tile: Tile(at: pt, with: .ocean), at: pt)
+			}
+		}
+	}
+	
 	// own properties
 	var rivers: [River] = []
 	

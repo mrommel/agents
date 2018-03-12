@@ -38,7 +38,7 @@ class GameScene: SKScene {
 	var engine: GameObjectEngine? = nil
 	
 	let mapDisplay = HexMapDisplay()
-	let map = TileHexMap(width: 15, height: 15)
+	var map = TileHexMap(width: 15, height: 15)
 	
 	var cam: SKCameraNode!
 	
@@ -54,9 +54,6 @@ class GameScene: SKScene {
 		
 		super.init(size: size)
 		self.anchorPoint = CGPoint(x:0.5, y:0.2)
-		
-		// manipulate map
-		initializeMap()
 	}
 	
 	//5
@@ -81,9 +78,11 @@ class GameScene: SKScene {
 		// position the camera on the gamescene.
 		self.cam.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
 		
+		// initialize map
+		initializeMap()
 		placeAllTilesHex()
 		placeFocusHex()
-		placeGameObjects()
+		//placeGameObjects()
 		
 		// debug
 		self.positionLabel.text = String("0, 0")
@@ -96,33 +95,20 @@ class GameScene: SKScene {
 	
 	func initializeMap() {
 		
-		// need to set different tile per position (constructor sets one tile only)
-		for i in 0..<map.tiles.columns {
-			for j in 0..<map.tiles.rows {
-				
-				let pt = HexPoint(x: i, y: j)
-				
-				if Int.random(min: 0, max: 5) < 3 {
-					
-					if Int.random(min: 0, max: 5) < 3 {
-						map.set(tile: Tile(at: pt, with: .grass), at: pt)
-					} else {
-						map.set(tile: Tile(at: pt, with: .plain), at: pt)
-					}
-					
-					if Int.random(min: 0, max: 5) < 1 {
-						map.set(feature: .forest_mixed, at: pt)
-					} else if Int.random(min: 0, max: 5) < 1 {
-						map.set(feature: .forest_pine, at: pt)
-					}
-				} else {
-					map.set(tile: Tile(at: pt, with: .ocean), at: pt)
-				}
-			}
+		let mapSize = MapSize.standard
+		let options = MapGeneratorOptions(withSize: mapSize, zone: .earth, waterPercentage: 0.4, rivers: 12)
+		
+		let mapGenerator = MapGenerator(width: mapSize.width, height: mapSize.height)
+		mapGenerator.completionHandler = { progress in
+			print("progress \(progress)")
 		}
 		
-		let finder = ContinentFinder(width: map.tiles.columns, height: map.tiles.rows)
-		finder.execute(on: map)
+		if let map = mapGenerator.generate(with: options) {
+			self.map = map
+			
+			let finder = ContinentFinder(width: map.tiles.columns, height: map.tiles.rows)
+			finder.execute(on: map)
+		}
 	}
 	
 	func placeGameObjects() {

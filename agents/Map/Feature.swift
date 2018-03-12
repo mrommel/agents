@@ -42,13 +42,13 @@ enum Feature {
 		case .forest_pine:
 			return "hex_forest_pine_summer1"
 		case .forest_rain:
-			return "---" // TODO
+			return "hex_forest_rain"
 		case .oasis:
-			return "---" // TODO
+			return "hex_oasis"
 		case .hill:
-			return "---" // TODO
+			return "hex_hill"
 		case .mountain:
-			return "---" // TODO
+			return "hex_mountain"
 		}
 	}
 }

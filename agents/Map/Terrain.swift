@@ -16,6 +16,7 @@ enum Terrain {
 	case tundra
 	case snow
 	case ocean
+	case shore
 	
 	// types for map generation
 	case water
@@ -23,12 +24,14 @@ enum Terrain {
 	
 	var description: String {
 		switch self {
+		case .ocean:
+			return "Ocean"
+		case .shore:
+			return "Shore"
 		case .plain:
 			return "Plain"
 		case .grass:
 			return "Grass"
-		case .ocean:
-			return "Ocean"
 		case .desert:
 			return "Desert"
 		case .tundra:
@@ -46,22 +49,26 @@ enum Terrain {
 	
 	var textureNameHex: String {
 		switch self {
+		case .ocean:
+			return "hex_ocean"
+		case .shore:
+			return "hex_shore"
 		case .plain:
 			return "hex_plain"
 		case .grass:
 			return "hex_grass"
 		case .desert:
-			return "hex_desert" // TODO
+			return "hex_desert"
 		case .tundra:
-			return "hex_tundra" // TODO
+			return "hex_tundra"
 		case .snow:
-			return "hex_snow" // TODO
-		case .ocean:
-			return "hex_ocean"
+			return "hex_snow"
 			
 		// -------
-		case .water, .ground:
-			return "---"
+		case .water:
+			return "hex_water"
+		case .ground:
+			return "hex_ground"
 		}
 	}
 }
