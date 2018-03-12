@@ -63,6 +63,31 @@ class TileHexMap: HexMap<Tile> {
 	// own properties
 	var rivers: [River] = []
 	
+	/// MARK: caldera
+	
+	func calderaSouth(at hex: HexPoint) -> Bool {
+		return hex.y == self.tiles.rows - 1
+	}
+	
+	func calderaEast(at hex: HexPoint) -> Bool {
+		return hex.x == self.tiles.columns - 1
+	}
+	
+	func caldera(at hex: HexPoint) -> String? {
+		let calderaIsSouth = self.calderaSouth(at: hex)
+		let calderaIsEast = self.calderaEast(at: hex)
+		
+		if calderaIsSouth || calderaIsEast {
+			return calderaIsSouth && calderaIsEast ? "hex_board" : calderaIsSouth ? "hex_board_south" : hex.y % 2 == 1 ? "hex_board_east" : "hex_board_southeast"
+		}
+		
+		if hex.x == 0 && hex.y % 2 == 1  {
+			return "hex_board_west"
+		}
+		
+		return nil
+	}
+	
 	/// MARK: terrain
 	
 	func set(terrain: Terrain, at hex: HexPoint) {

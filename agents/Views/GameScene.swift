@@ -13,6 +13,7 @@ struct GameSceneConstants {
 	
 	struct ZLevels {
 		static let terrain: CGFloat = 1.0
+		static let caldera: CGFloat = 1.5
 		static let area: CGFloat = 2.0
 		static let focus: CGFloat = 3.0
 		static let feature: CGFloat = 4.0
@@ -80,9 +81,6 @@ class GameScene: SKScene {
 		
 		// initialize map
 		initializeMap()
-		placeAllTilesHex()
-		placeFocusHex()
-		//placeGameObjects()
 		
 		// debug
 		self.positionLabel.text = String("0, 0")
@@ -108,6 +106,10 @@ class GameScene: SKScene {
 			
 			let finder = ContinentFinder(width: map.tiles.columns, height: map.tiles.rows)
 			finder.execute(on: map)
+			
+			placeAllTilesHex()
+			placeFocusHex()
+			//placeGameObjects()
 		}
 	}
 	
@@ -166,6 +168,17 @@ class GameScene: SKScene {
 			layerHexObjects.addChild(featureSprite)
 			
 			tile.featureSprites.append(featureSprite)
+		}
+		
+		// add board (but only on caldera)
+		if let point = tile.point {
+			if let calderaName = map.caldera(at: point) {
+				let calderaSprite = SKSpriteNode(imageNamed: calderaName)
+				calderaSprite.position = position
+				calderaSprite.zPosition = GameSceneConstants.ZLevels.caldera
+				calderaSprite.anchorPoint = CGPoint(x: 0, y: 0.09)
+				layerHexGround.addChild(calderaSprite)
+			}
 		}
 	}
 	
