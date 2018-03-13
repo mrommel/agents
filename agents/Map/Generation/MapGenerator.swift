@@ -284,9 +284,9 @@ class MapGenerator {
 				if self.terrain[x, y] == Terrain.ocean {
 					
 					if heightMap[x, y]! > 0.1 {
-						grid?.set(terrain: .ocean, at: gridPoint)
-					} else {
 						grid?.set(terrain: .shore, at: gridPoint)
+					} else {
+						grid?.set(terrain: .ocean, at: gridPoint)
 					}
 				} else {
 					

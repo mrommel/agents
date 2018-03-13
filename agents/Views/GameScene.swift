@@ -17,6 +17,7 @@ struct GameSceneConstants {
 		static let area: CGFloat = 2.0
 		static let focus: CGFloat = 3.0
 		static let feature: CGFloat = 4.0
+		static let featureUpper: CGFloat = 4.1
 		static let staticSprite: CGFloat = 5.0
 		static let sprite: CGFloat = 6.0
 		static let labels: CGFloat = 50.0
@@ -163,7 +164,7 @@ class GameScene: SKScene {
 		for feature in tile.features {
 			let featureSprite = SKSpriteNode(imageNamed: feature.textureNameHex)
 			featureSprite.position = position
-			featureSprite.zPosition = GameSceneConstants.ZLevels.feature // maybe need to come from feature itself
+			featureSprite.zPosition = feature.zLevel // GameSceneConstants.ZLevels.feature // maybe need to come from feature itself
 			featureSprite.anchorPoint = CGPoint(x: 0, y: 0)
 			layerHexObjects.addChild(featureSprite)
 			

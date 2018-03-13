@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SceneKit
 
 enum Feature {
 	
@@ -49,6 +50,23 @@ enum Feature {
 			return "hex_hill"
 		case .mountain:
 			return "hex_mountain"
+		}
+	}
+	
+	var zLevel: CGFloat {
+		switch self {
+		case .forest_mixed:
+			return GameSceneConstants.ZLevels.featureUpper
+		case .forest_pine:
+			return GameSceneConstants.ZLevels.featureUpper
+		case .forest_rain:
+			return GameSceneConstants.ZLevels.featureUpper
+		case .oasis:
+			return GameSceneConstants.ZLevels.feature
+		case .hill:
+			return GameSceneConstants.ZLevels.feature
+		case .mountain:
+			return GameSceneConstants.ZLevels.feature
 		}
 	}
 }
