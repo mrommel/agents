@@ -110,7 +110,7 @@ class GameScene: SKScene {
 			
 			placeAllTilesHex()
 			placeFocusHex()
-			//placeGameObjects()
+			placeGameObjects()
 		}
 	}
 	
@@ -124,10 +124,10 @@ class GameScene: SKScene {
 		let egyptLady = EgyptLady(with: "egyptLady", at: HexPoint(x: 1, y: 1), mapDisplay: self.mapDisplay)
 		self.engine?.add(gameObject: egyptLady)
 		
-		let rabbit = Rabbit(with: "rabbit", at: HexPoint(x: 3, y: 2), mapDisplay: self.mapDisplay)
-		self.engine?.add(gameObject: rabbit)
+		//let rabbit = Rabbit(with: "rabbit", at: HexPoint(x: 3, y: 2), mapDisplay: self.mapDisplay)
+		//self.engine?.add(gameObject: rabbit)
 		
-		let areaSprites = AreaSprites(with: self.mapDisplay)
+		/*let areaSprites = AreaSprites(with: self.mapDisplay)
 		let area = Area(with: "red")
 		area.onPointsChanged = { points in
 			areaSprites.rebuild(with: points)
@@ -146,7 +146,7 @@ class GameScene: SKScene {
 		
 		//
 		
-		layerHexGround.addChild(areaSprites)
+		layerHexGround.addChild(areaSprites)*/
 	}
 	
 	func placeTileHex(tile: Tile, position: CGPoint) {

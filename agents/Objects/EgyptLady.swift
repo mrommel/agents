@@ -23,6 +23,12 @@ class EgyptLady: GameObject {
 	}
 	
 	override func actions() -> [GameObjectAction] {
-		return []
+		return [GameObjectActions.walk]
+	}
+	
+	override func execute(action: GameObjectAction) {
+		if action == GameObjectActions.walk {
+			self.state = GameObjectActions.walk
+		}
 	}
 }
