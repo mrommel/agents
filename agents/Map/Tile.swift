@@ -68,6 +68,21 @@ extension Tile: Equatable {
 }
 
 extension Tile {
+
+	var water: Bool {
+		get {
+			return self.terrain == .ocean || self.terrain == .shore
+		}
+	}
+	
+	var ground: Bool {
+		get {
+			return !self.water
+		}
+	}
+}
+
+extension Tile {
 	
 	func set(river: River?, with flow: FlowDirection) throws {
 		self.river = river

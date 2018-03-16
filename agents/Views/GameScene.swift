@@ -152,7 +152,14 @@ class GameScene: SKScene {
 	func placeTileHex(tile: Tile, position: CGPoint) {
 		
 		// place terrain
-		let terrainSprite = SKSpriteNode(imageNamed: tile.terrain.textureNameHex)
+		var textureName = ""
+		if let coastTexture = self.map.coastTexture(at: tile.point!) {
+			textureName = coastTexture
+		} else {
+			textureName = tile.terrain.textureNameHex
+		}
+		
+		let terrainSprite = SKSpriteNode(imageNamed: textureName)
 		terrainSprite.position = position
 		terrainSprite.zPosition = GameSceneConstants.ZLevels.terrain
 		terrainSprite.anchorPoint = CGPoint(x: 0, y: 0)

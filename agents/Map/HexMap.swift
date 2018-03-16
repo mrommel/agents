@@ -96,6 +96,58 @@ class TileHexMap: HexMap<Tile> {
 		}
 	}
 	
+	/// MARK: coast
+	
+	func isCoast(at point: HexPoint) -> Bool {
+		
+		if let tile = self.tile(at: point) {
+			if !tile.water {
+				return false
+			}
+		}
+		
+		for neighbor in point.neighbors() {
+			if let neighborTile = self.tile(at: neighbor) {
+			
+				if neighborTile.ground {
+					return true
+				}
+			}
+		}
+		
+		return false
+	}
+	
+	func isCoastAt(x: Int, y: Int) -> Bool {
+		return self.isCoast(at: HexPoint(x: x, y: y))
+	}
+	
+	func coastTexture(at point: HexPoint) -> String? {
+		if let tile = self.tile(at: point) {
+			if !tile.water {
+				return nil
+			}
+		}
+		
+		var texture = "beach" // "beach-n-ne-se-s-sw-nw"
+		for dir in HexDirection.all {
+			let neighbor = point.neighbor(in: dir)
+			
+			if let neighborTile = self.tile(at: neighbor) {
+				
+				if neighborTile.ground {
+					texture += ("-" + dir.short)
+				}
+			}
+		}
+		
+		if texture == "beach" {
+			return nil
+		}
+		
+		return texture
+	}
+	
 	/// MARK: features
 	
 	func set(feature: Feature, at hex: HexPoint) {

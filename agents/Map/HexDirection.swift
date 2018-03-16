@@ -24,6 +24,23 @@ enum HexDirection {
 		}
 	}
 	
+	var short: String {
+		switch self {
+		case .north:
+			return "n"
+		case .northeast:
+			return "ne"
+		case .southeast:
+			return "se"
+		case .south:
+			return "s"
+		case .southwest:
+			return "sw"
+		case .northwest:
+			return "nw"
+		}
+	}
+	
 	var description: String {
 		switch self {
 		case .north:
