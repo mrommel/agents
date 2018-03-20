@@ -17,7 +17,8 @@ struct GameSceneConstants {
 		static let area: CGFloat = 2.0
 		static let focus: CGFloat = 3.0
 		static let feature: CGFloat = 4.0
-		static let featureUpper: CGFloat = 4.1
+		static let road: CGFloat = 4.1
+		static let featureUpper: CGFloat = 4.5
 		static let staticSprite: CGFloat = 5.0
 		static let sprite: CGFloat = 6.0
 		static let labels: CGFloat = 50.0
@@ -94,7 +95,7 @@ class GameScene: SKScene {
 	
 	func initializeMap() {
 		
-		let mapSize = MapSize.standard
+		let mapSize = MapSize.huge
 		let options = MapGeneratorOptions(withSize: mapSize, zone: .earth, waterPercentage: 0.4, rivers: 12)
 		
 		let mapGenerator = MapGenerator(width: mapSize.width, height: mapSize.height)
@@ -107,6 +108,9 @@ class GameScene: SKScene {
 			
 			let finder = ContinentFinder(width: map.tiles.columns, height: map.tiles.rows)
 			finder.execute(on: map)
+			
+			map.tile(at: HexPoint(x: 2, y: 2))?.road = true
+			map.tile(at: HexPoint(x: 2, y: 3))?.road = true
 			
 			placeAllTilesHex()
 			placeFocusHex()
@@ -166,6 +170,14 @@ class GameScene: SKScene {
 		layerHexGround.addChild(terrainSprite)
 		
 		tile.terrainSprite = terrainSprite
+		
+		if let roadTexture = map.roadTexture(at: tile.point!) {
+			let terrainSprite = SKSpriteNode(imageNamed: roadTexture)
+			terrainSprite.position = position
+			terrainSprite.zPosition = GameSceneConstants.ZLevels.road
+			terrainSprite.anchorPoint = CGPoint(x: 0, y: 0)
+			layerHexGround.addChild(terrainSprite)
+		}
 		
 		// place forests etc
 		for feature in tile.features {

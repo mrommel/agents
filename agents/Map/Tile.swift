@@ -26,6 +26,8 @@ class Tile {
 	var riverFlowNorthEast: FlowDirection = .none
 	var riverFlowSouthEast: FlowDirection = .none
 	
+	var road: Bool = false
+	
 	init(at point: HexPoint, with terrain: Terrain) {
 		self.point = point
 		self.terrain = terrain

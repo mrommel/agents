@@ -148,6 +148,35 @@ class TileHexMap: HexMap<Tile> {
 		return texture
 	}
 	
+	/// MARK: roads
+	
+	func roadTexture(at point: HexPoint) -> String? {
+		
+		if let tile = self.tile(at: point) {
+			if !tile.road {
+				return nil
+			}
+		}
+		
+		var texture = "hex_road" // "road-n-ne-se-s-sw-nw"
+		for dir in HexDirection.all {
+			let neighbor = point.neighbor(in: dir)
+			
+			if let neighborTile = self.tile(at: neighbor) {
+				
+				if neighborTile.road {
+					texture += ("_" + dir.short)
+				}
+			}
+		}
+		
+		if texture == "hex_road" {
+			return "hex_road_none"
+		}
+		
+		return texture
+	}
+	
 	/// MARK: features
 	
 	func set(feature: Feature, at hex: HexPoint) {
