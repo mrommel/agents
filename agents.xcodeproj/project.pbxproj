@@ -43,6 +43,8 @@
 		041B991F204C8CAB001F0E16 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B991E204C8CAB001F0E16 /* Feature.swift */; };
 		041B9921204C9219001F0E16 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9920204C9219001F0E16 /* Area.swift */; };
 		041B9923204D7FC1001F0E16 /* AreaSprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9922204D7FC1001F0E16 /* AreaSprites.swift */; };
+		0447FDF62087A8D200FB6DF8 /* HexPointWithCornerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF52087A8D200FB6DF8 /* HexPointWithCornerTests.swift */; };
+		0447FDF82087AA5000FB6DF8 /* HeightMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF72087AA5000FB6DF8 /* HeightMapTests.swift */; };
 		04481D9320249C95001F04FA /* BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9220249C95001F04FA /* BitArray.swift */; };
 		04481D9E2031F314001F04FA /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9D2031F314001F04FA /* Professor.swift */; };
 		04481DA02031F333001F04FA /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9F2031F333001F04FA /* GameObject.swift */; };
@@ -132,6 +134,8 @@
 		041B991E204C8CAB001F0E16 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		041B9920204C9219001F0E16 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		041B9922204D7FC1001F0E16 /* AreaSprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSprites.swift; sourceTree = "<group>"; };
+		0447FDF52087A8D200FB6DF8 /* HexPointWithCornerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPointWithCornerTests.swift; sourceTree = "<group>"; };
+		0447FDF72087AA5000FB6DF8 /* HeightMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightMapTests.swift; sourceTree = "<group>"; };
 		04481D9220249C95001F04FA /* BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitArray.swift; sourceTree = "<group>"; };
 		04481D9D2031F314001F04FA /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		04481D9F2031F333001F04FA /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -238,7 +242,7 @@
 		040FBE26201137BB00D397E2 /* agentsTests */ = {
 			isa = PBXGroup;
 			children = (
-				040FBE27201137BB00D397E2 /* RiverTests.swift */,
+				0447FDF32087A8B300FB6DF8 /* Map */,
 				040FBE29201137BB00D397E2 /* Info.plist */,
 			);
 			path = agentsTests;
@@ -347,6 +351,24 @@
 				041B990E204C4BBB001F0E16 /* HexPointWithCorner.swift */,
 				041B9914204C4D0D001F0E16 /* FlowDirection.swift */,
 				041B991A204C8BAE001F0E16 /* HexPointCorner.swift */,
+			);
+			path = Generation;
+			sourceTree = "<group>";
+		};
+		0447FDF32087A8B300FB6DF8 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0447FDF42087A8BD00FB6DF8 /* Generation */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		0447FDF42087A8BD00FB6DF8 /* Generation */ = {
+			isa = PBXGroup;
+			children = (
+				040FBE27201137BB00D397E2 /* RiverTests.swift */,
+				0447FDF52087A8D200FB6DF8 /* HexPointWithCornerTests.swift */,
+				0447FDF72087AA5000FB6DF8 /* HeightMapTests.swift */,
 			);
 			path = Generation;
 			sourceTree = "<group>";
@@ -750,6 +772,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				040FBE28201137BB00D397E2 /* RiverTests.swift in Sources */,
+				0447FDF62087A8D200FB6DF8 /* HexPointWithCornerTests.swift in Sources */,
+				0447FDF82087AA5000FB6DF8 /* HeightMapTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

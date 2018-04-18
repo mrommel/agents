@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// class that holds a `HexPoint` as well as a `HexPointCorner`
 public class HexPointWithCorner: Hashable {
 	
 	let point: HexPoint
@@ -18,9 +19,7 @@ public class HexPointWithCorner: Hashable {
 		self.corner = corner
 	}
 	
-	/**
-	Returns a unique number that represents this location.
-	*/
+	/// Returns a unique number that represents this location.
 	public var hashValue: Int {
 		return self.point.hashValue << 4 + self.corner.rawValue
 	}

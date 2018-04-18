@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// climate zone a `Tile` can be in
 enum ClimateZone: Int {
 	
 	case polar
@@ -16,6 +17,7 @@ enum ClimateZone: Int {
 	case subtropic
 	case tropic
 	
+	/// get a more moderate `ClimateZone`
 	var moderate: ClimateZone {
 		switch self {
 		case .polar:
