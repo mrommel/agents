@@ -172,11 +172,13 @@ class GameScene: SKScene {
 		tile.terrainSprite = terrainSprite
 		
 		if let roadTexture = map.roadTexture(at: tile.point!) {
-			let terrainSprite = SKSpriteNode(imageNamed: roadTexture)
-			terrainSprite.position = position
-			terrainSprite.zPosition = GameSceneConstants.ZLevels.road
-			terrainSprite.anchorPoint = CGPoint(x: 0, y: 0)
-			layerHexGround.addChild(terrainSprite)
+			let roadSprite = SKSpriteNode(imageNamed: roadTexture)
+			roadSprite.position = position
+			roadSprite.zPosition = GameSceneConstants.ZLevels.road
+			roadSprite.anchorPoint = CGPoint(x: 0, y: 0)
+			layerHexGround.addChild(roadSprite)
+			
+			tile.roadSprite = roadSprite
 		}
 		
 		// place forests etc

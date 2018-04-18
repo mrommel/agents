@@ -13,7 +13,7 @@
 		040FBE18201137BA00D397E2 /* agents.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE16201137BA00D397E2 /* agents.xcdatamodeld */; };
 		040FBE1A201137BA00D397E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 040FBE19201137BA00D397E2 /* Assets.xcassets */; };
 		040FBE1D201137BA00D397E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040FBE1B201137BA00D397E2 /* LaunchScreen.storyboard */; };
-		040FBE28201137BB00D397E2 /* agentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE27201137BB00D397E2 /* agentsTests.swift */; };
+		040FBE28201137BB00D397E2 /* RiverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE27201137BB00D397E2 /* RiverTests.swift */; };
 		040FBE33201137BB00D397E2 /* agentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE32201137BB00D397E2 /* agentsUITests.swift */; };
 		040FBE4220113D4700D397E2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE4120113D4700D397E2 /* GameScene.swift */; };
 		040FBE4520113D8200D397E2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE4420113D8200D397E2 /* MenuViewController.swift */; };
@@ -33,7 +33,7 @@
 		041B990B204C4B3B001F0E16 /* MapSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B990A204C4B3B001F0E16 /* MapSize.swift */; };
 		041B990D204C4B5A001F0E16 /* ClimateZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B990C204C4B5A001F0E16 /* ClimateZone.swift */; };
 		041B990F204C4BBB001F0E16 /* HexPointWithCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B990E204C4BBB001F0E16 /* HexPointWithCorner.swift */; };
-		041B9912204C4C07001F0E16 /* RiverPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9910204C4C06001F0E16 /* RiverPoint.swift */; };
+		041B9912204C4C07001F0E16 /* RiverEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9910204C4C06001F0E16 /* RiverEdge.swift */; };
 		041B9913204C4C07001F0E16 /* River.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9911204C4C07001F0E16 /* River.swift */; };
 		041B9915204C4D0D001F0E16 /* FlowDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9914204C4D0D001F0E16 /* FlowDirection.swift */; };
 		041B9917204C50E5001F0E16 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9916204C50E5001F0E16 /* Random.swift */; };
@@ -95,7 +95,7 @@
 		040FBE1C201137BA00D397E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		040FBE1E201137BA00D397E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		040FBE23201137BB00D397E2 /* agentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = agentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		040FBE27201137BB00D397E2 /* agentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = agentsTests.swift; sourceTree = "<group>"; };
+		040FBE27201137BB00D397E2 /* RiverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiverTests.swift; sourceTree = "<group>"; };
 		040FBE29201137BB00D397E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		040FBE2E201137BB00D397E2 /* agentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = agentsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		040FBE32201137BB00D397E2 /* agentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = agentsUITests.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		041B990A204C4B3B001F0E16 /* MapSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSize.swift; sourceTree = "<group>"; };
 		041B990C204C4B5A001F0E16 /* ClimateZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateZone.swift; sourceTree = "<group>"; };
 		041B990E204C4BBB001F0E16 /* HexPointWithCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPointWithCorner.swift; sourceTree = "<group>"; };
-		041B9910204C4C06001F0E16 /* RiverPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiverPoint.swift; sourceTree = "<group>"; };
+		041B9910204C4C06001F0E16 /* RiverEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiverEdge.swift; sourceTree = "<group>"; };
 		041B9911204C4C07001F0E16 /* River.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = River.swift; sourceTree = "<group>"; };
 		041B9914204C4D0D001F0E16 /* FlowDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowDirection.swift; sourceTree = "<group>"; };
 		041B9916204C50E5001F0E16 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		040FBE26201137BB00D397E2 /* agentsTests */ = {
 			isa = PBXGroup;
 			children = (
-				040FBE27201137BB00D397E2 /* agentsTests.swift */,
+				040FBE27201137BB00D397E2 /* RiverTests.swift */,
 				040FBE29201137BB00D397E2 /* Info.plist */,
 			);
 			path = agentsTests;
@@ -338,7 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				041B9911204C4C07001F0E16 /* River.swift */,
-				041B9910204C4C06001F0E16 /* RiverPoint.swift */,
+				041B9910204C4C06001F0E16 /* RiverEdge.swift */,
 				041B9903204C3D24001F0E16 /* MapGenerator.swift */,
 				041B9907204C4988001F0E16 /* PerlinGenerator.swift */,
 				041B9905204C42D7001F0E16 /* HeightMap.swift */,
@@ -464,7 +464,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Michael Rommel";
 				TargetAttributes = {
 					040FBE0B201137BA00D397E2 = {
@@ -726,7 +726,7 @@
 				0451D5952037637700E7C882 /* EgyptBoy.swift in Sources */,
 				0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */,
 				04481D9320249C95001F04FA /* BitArray.swift in Sources */,
-				041B9912204C4C07001F0E16 /* RiverPoint.swift in Sources */,
+				041B9912204C4C07001F0E16 /* RiverEdge.swift in Sources */,
 				041B990D204C4B5A001F0E16 /* ClimateZone.swift in Sources */,
 				04481DA22031F67A001F04FA /* EgyptLady.swift in Sources */,
 				041B990F204C4BBB001F0E16 /* HexPointWithCorner.swift in Sources */,
@@ -749,7 +749,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				040FBE28201137BB00D397E2 /* agentsTests.swift in Sources */,
+				040FBE28201137BB00D397E2 /* RiverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +810,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -817,6 +818,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -867,6 +869,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -874,6 +877,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

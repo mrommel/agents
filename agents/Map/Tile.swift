@@ -27,6 +27,7 @@ class Tile {
 	var riverFlowSouthEast: FlowDirection = .none
 	
 	var road: Bool = false
+	var roadSprite: SKSpriteNode? = nil
 	
 	init(at point: HexPoint, with terrain: Terrain) {
 		self.point = point
