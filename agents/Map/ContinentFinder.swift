@@ -10,7 +10,7 @@ import Foundation
 
 class ContinentFinder {
 		
-	var continentIdentifiers: Array2D<Int>
+	private var continentIdentifiers: Array2D<Int>
 	
 	init(width: Int, height: Int) {
 		

@@ -14,7 +14,6 @@
 		040FBE1A201137BA00D397E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 040FBE19201137BA00D397E2 /* Assets.xcassets */; };
 		040FBE1D201137BA00D397E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040FBE1B201137BA00D397E2 /* LaunchScreen.storyboard */; };
 		040FBE28201137BB00D397E2 /* RiverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE27201137BB00D397E2 /* RiverTests.swift */; };
-		040FBE33201137BB00D397E2 /* agentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE32201137BB00D397E2 /* agentsUITests.swift */; };
 		040FBE4220113D4700D397E2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE4120113D4700D397E2 /* GameScene.swift */; };
 		040FBE4520113D8200D397E2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE4420113D8200D397E2 /* MenuViewController.swift */; };
 		040FBE4820113F5E00D397E2 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FBE4720113F5E00D397E2 /* Global.swift */; };
@@ -45,6 +44,8 @@
 		041B9923204D7FC1001F0E16 /* AreaSprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B9922204D7FC1001F0E16 /* AreaSprites.swift */; };
 		0447FDF62087A8D200FB6DF8 /* HexPointWithCornerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF52087A8D200FB6DF8 /* HexPointWithCornerTests.swift */; };
 		0447FDF82087AA5000FB6DF8 /* HeightMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF72087AA5000FB6DF8 /* HeightMapTests.swift */; };
+		0447FDFA20891E2100FB6DF8 /* TileHexMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF920891E2100FB6DF8 /* TileHexMapTests.swift */; };
+		0447FDFC20891EEF00FB6DF8 /* ContinentFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDFB20891EEF00FB6DF8 /* ContinentFinderTests.swift */; };
 		04481D9320249C95001F04FA /* BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9220249C95001F04FA /* BitArray.swift */; };
 		04481D9E2031F314001F04FA /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9D2031F314001F04FA /* Professor.swift */; };
 		04481DA02031F333001F04FA /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9F2031F333001F04FA /* GameObject.swift */; };
@@ -67,18 +68,10 @@
 		04FC596E20372A6A00251E7F /* GameObjectAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC596D20372A6A00251E7F /* GameObjectAction.swift */; };
 		612838CF6ADF041C55D1A728 /* Pods_agentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F9F5759196E7E81CD0F565 /* Pods_agentsTests.framework */; };
 		6B42F3C8D330A305DDEC5BA7 /* Pods_agents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BD55899141983D7AB5D100 /* Pods_agents.framework */; };
-		A177B3F4EC3A4EE9F323D581 /* Pods_agentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69BF508E176189B5AA661DD3 /* Pods_agentsUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		040FBE24201137BB00D397E2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 040FBE04201137BA00D397E2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 040FBE0B201137BA00D397E2;
-			remoteInfo = agents;
-		};
-		040FBE2F201137BB00D397E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 040FBE04201137BA00D397E2 /* Project object */;
 			proxyType = 1;
@@ -99,9 +92,6 @@
 		040FBE23201137BB00D397E2 /* agentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = agentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		040FBE27201137BB00D397E2 /* RiverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiverTests.swift; sourceTree = "<group>"; };
 		040FBE29201137BB00D397E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		040FBE2E201137BB00D397E2 /* agentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = agentsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		040FBE32201137BB00D397E2 /* agentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = agentsUITests.swift; sourceTree = "<group>"; };
-		040FBE34201137BB00D397E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		040FBE4120113D4700D397E2 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		040FBE4420113D8200D397E2 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		040FBE4720113F5E00D397E2 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -136,6 +126,8 @@
 		041B9922204D7FC1001F0E16 /* AreaSprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSprites.swift; sourceTree = "<group>"; };
 		0447FDF52087A8D200FB6DF8 /* HexPointWithCornerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPointWithCornerTests.swift; sourceTree = "<group>"; };
 		0447FDF72087AA5000FB6DF8 /* HeightMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightMapTests.swift; sourceTree = "<group>"; };
+		0447FDF920891E2100FB6DF8 /* TileHexMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileHexMapTests.swift; sourceTree = "<group>"; };
+		0447FDFB20891EEF00FB6DF8 /* ContinentFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentFinderTests.swift; sourceTree = "<group>"; };
 		04481D9220249C95001F04FA /* BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitArray.swift; sourceTree = "<group>"; };
 		04481D9D2031F314001F04FA /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		04481D9F2031F333001F04FA /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -184,14 +176,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		040FBE2B201137BB00D397E2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A177B3F4EC3A4EE9F323D581 /* Pods_agentsUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -201,7 +185,6 @@
 				041B98FE204C3A7C001F0E16 /* README.md */,
 				040FBE0E201137BA00D397E2 /* agents */,
 				040FBE26201137BB00D397E2 /* agentsTests */,
-				040FBE31201137BB00D397E2 /* agentsUITests */,
 				040FBE0D201137BA00D397E2 /* Products */,
 				74489EA867635B6185F2E35A /* Pods */,
 				E813670B1670416ED19D1B96 /* Frameworks */,
@@ -213,7 +196,6 @@
 			children = (
 				040FBE0C201137BA00D397E2 /* agents.app */,
 				040FBE23201137BB00D397E2 /* agentsTests.xctest */,
-				040FBE2E201137BB00D397E2 /* agentsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,15 +228,6 @@
 				040FBE29201137BB00D397E2 /* Info.plist */,
 			);
 			path = agentsTests;
-			sourceTree = "<group>";
-		};
-		040FBE31201137BB00D397E2 /* agentsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				040FBE32201137BB00D397E2 /* agentsUITests.swift */,
-				040FBE34201137BB00D397E2 /* Info.plist */,
-			);
-			path = agentsUITests;
 			sourceTree = "<group>";
 		};
 		040FBE4020113D2C00D397E2 /* Views */ = {
@@ -359,6 +332,8 @@
 			isa = PBXGroup;
 			children = (
 				0447FDF42087A8BD00FB6DF8 /* Generation */,
+				0447FDF920891E2100FB6DF8 /* TileHexMapTests.swift */,
+				0447FDFB20891EEF00FB6DF8 /* ContinentFinderTests.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -458,27 +433,6 @@
 			productReference = 040FBE23201137BB00D397E2 /* agentsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		040FBE2D201137BB00D397E2 /* agentsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 040FBE3D201137BB00D397E2 /* Build configuration list for PBXNativeTarget "agentsUITests" */;
-			buildPhases = (
-				403E8D3E8A47C4E840431402 /* [CP] Check Pods Manifest.lock */,
-				040FBE2A201137BB00D397E2 /* Sources */,
-				040FBE2B201137BB00D397E2 /* Frameworks */,
-				040FBE2C201137BB00D397E2 /* Resources */,
-				42418A5A0BE98222D76D70B2 /* [CP] Embed Pods Frameworks */,
-				31E2932674710E6A42866935 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				040FBE30201137BB00D397E2 /* PBXTargetDependency */,
-			);
-			name = agentsUITests;
-			productName = agentsUITests;
-			productReference = 040FBE2E201137BB00D397E2 /* agentsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -494,11 +448,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					040FBE22201137BB00D397E2 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 040FBE0B201137BA00D397E2;
-					};
-					040FBE2D201137BB00D397E2 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 040FBE0B201137BA00D397E2;
@@ -520,7 +469,6 @@
 			targets = (
 				040FBE0B201137BA00D397E2 /* agents */,
 				040FBE22201137BB00D397E2 /* agentsTests */,
-				040FBE2D201137BB00D397E2 /* agentsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -539,13 +487,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		040FBE21201137BB00D397E2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		040FBE2C201137BB00D397E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -571,21 +512,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		31E2932674710E6A42866935 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-agentsUITests/Pods-agentsUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		36529D408974F22B089909CB /* [CP] Copy Pods Resources */ = {
@@ -625,39 +551,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-agents/Pods-agents-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		403E8D3E8A47C4E840431402 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-agentsUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		42418A5A0BE98222D76D70B2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-agentsUITests/Pods-agentsUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		852AF7E5A9B1618039EE46D8 /* [CP] Copy Pods Resources */ = {
@@ -771,17 +664,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0447FDFA20891E2100FB6DF8 /* TileHexMapTests.swift in Sources */,
 				040FBE28201137BB00D397E2 /* RiverTests.swift in Sources */,
 				0447FDF62087A8D200FB6DF8 /* HexPointWithCornerTests.swift in Sources */,
+				0447FDFC20891EEF00FB6DF8 /* ContinentFinderTests.swift in Sources */,
 				0447FDF82087AA5000FB6DF8 /* HeightMapTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		040FBE2A201137BB00D397E2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				040FBE33201137BB00D397E2 /* agentsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,11 +679,6 @@
 			isa = PBXTargetDependency;
 			target = 040FBE0B201137BA00D397E2 /* agents */;
 			targetProxy = 040FBE24201137BB00D397E2 /* PBXContainerItemProxy */;
-		};
-		040FBE30201137BB00D397E2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 040FBE0B201137BA00D397E2 /* agents */;
-			targetProxy = 040FBE2F201137BB00D397E2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -999,40 +881,6 @@
 			};
 			name = Release;
 		};
-		040FBE3E201137BB00D397E2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C596E4DD43F81191D757F3F3 /* Pods-agentsUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5BL95TH4B9;
-				INFOPLIST_FILE = agentsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miro.agentsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = agents;
-			};
-			name = Debug;
-		};
-		040FBE3F201137BB00D397E2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67EBB2AF45C6557B146DB1D4 /* Pods-agentsUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5BL95TH4B9;
-				INFOPLIST_FILE = agentsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.miro.agentsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = agents;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1059,15 +907,6 @@
 			buildConfigurations = (
 				040FBE3B201137BB00D397E2 /* Debug */,
 				040FBE3C201137BB00D397E2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		040FBE3D201137BB00D397E2 /* Build configuration list for PBXNativeTarget "agentsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				040FBE3E201137BB00D397E2 /* Debug */,
-				040FBE3F201137BB00D397E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
