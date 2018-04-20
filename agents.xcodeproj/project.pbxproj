@@ -46,6 +46,8 @@
 		0447FDF82087AA5000FB6DF8 /* HeightMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF72087AA5000FB6DF8 /* HeightMapTests.swift */; };
 		0447FDFA20891E2100FB6DF8 /* TileHexMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF920891E2100FB6DF8 /* TileHexMapTests.swift */; };
 		0447FDFC20891EEF00FB6DF8 /* ContinentFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDFB20891EEF00FB6DF8 /* ContinentFinderTests.swift */; };
+		0447FDFE208A22F200FB6DF8 /* AreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDFD208A22F200FB6DF8 /* AreaTests.swift */; };
+		0447FE00208A293E00FB6DF8 /* HexPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDFF208A293E00FB6DF8 /* HexPointTests.swift */; };
 		04481D9320249C95001F04FA /* BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9220249C95001F04FA /* BitArray.swift */; };
 		04481D9E2031F314001F04FA /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9D2031F314001F04FA /* Professor.swift */; };
 		04481DA02031F333001F04FA /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9F2031F333001F04FA /* GameObject.swift */; };
@@ -128,6 +130,8 @@
 		0447FDF72087AA5000FB6DF8 /* HeightMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightMapTests.swift; sourceTree = "<group>"; };
 		0447FDF920891E2100FB6DF8 /* TileHexMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileHexMapTests.swift; sourceTree = "<group>"; };
 		0447FDFB20891EEF00FB6DF8 /* ContinentFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentFinderTests.swift; sourceTree = "<group>"; };
+		0447FDFD208A22F200FB6DF8 /* AreaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaTests.swift; sourceTree = "<group>"; };
+		0447FDFF208A293E00FB6DF8 /* HexPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPointTests.swift; sourceTree = "<group>"; };
 		04481D9220249C95001F04FA /* BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitArray.swift; sourceTree = "<group>"; };
 		04481D9D2031F314001F04FA /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		04481D9F2031F333001F04FA /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 				0447FDF42087A8BD00FB6DF8 /* Generation */,
 				0447FDF920891E2100FB6DF8 /* TileHexMapTests.swift */,
 				0447FDFB20891EEF00FB6DF8 /* ContinentFinderTests.swift */,
+				0447FDFD208A22F200FB6DF8 /* AreaTests.swift */,
+				0447FDFF208A293E00FB6DF8 /* HexPointTests.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -665,7 +671,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0447FDFA20891E2100FB6DF8 /* TileHexMapTests.swift in Sources */,
+				0447FE00208A293E00FB6DF8 /* HexPointTests.swift in Sources */,
 				040FBE28201137BB00D397E2 /* RiverTests.swift in Sources */,
+				0447FDFE208A22F200FB6DF8 /* AreaTests.swift in Sources */,
 				0447FDF62087A8D200FB6DF8 /* HexPointWithCornerTests.swift in Sources */,
 				0447FDFC20891EEF00FB6DF8 /* ContinentFinderTests.swift in Sources */,
 				0447FDF82087AA5000FB6DF8 /* HeightMapTests.swift in Sources */,
