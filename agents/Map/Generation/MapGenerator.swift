@@ -299,9 +299,9 @@ class MapGenerator {
 						switch terrainVal {
 						case .grass:
 							if self.zones[x, y]! == .subtropic {
-								grid?.set(feature: .forest_rain, at: gridPoint)
+								grid?.set(feature: .forestRain, at: gridPoint)
 							} else {
-								grid?.set(feature: .forest_mixed, at: gridPoint)
+								grid?.set(feature: .forestMixed, at: gridPoint)
 							}
 							break
 						case .desert:
@@ -309,13 +309,13 @@ class MapGenerator {
 							break
 						case .plain:
 							if self.zones[x, y]! == .subtropic {
-								grid?.set(feature: .forest_rain, at: gridPoint)
+								grid?.set(feature: .forestRain, at: gridPoint)
 							} else {
-								grid?.set(feature: .forest_rain, at: gridPoint)
+								grid?.set(feature: .forestRain, at: gridPoint)
 							}
 							break
 						case .tundra:
-							grid?.set(feature: .forest_pine, at: gridPoint)
+							grid?.set(feature: .forestPine, at: gridPoint)
 							break
 						default:
 							break

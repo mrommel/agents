@@ -25,8 +25,8 @@ func / (point: CGPoint, scalar: CGPoint) -> CGPoint {
 	return CGPoint(x: point.x / scalar.x, y: point.y / scalar.y)
 }
 
-func distance(p1: CGPoint, p2: CGPoint) -> CGFloat {
-	return CGFloat(hypotf(Float(p1.x) - Float(p2.x), Float(p1.y) - Float(p2.y)))
+func distance(point1: CGPoint, point2: CGPoint) -> CGFloat {
+	return CGFloat(hypotf(Float(point1.x) - Float(point2.x), Float(point1.y) - Float(point2.y)))
 }
 
 func round(point: CGPoint) -> CGPoint {

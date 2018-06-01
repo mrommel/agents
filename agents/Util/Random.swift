@@ -33,8 +33,8 @@ extension Double {
      
      - returns: Double
      */
-    public static func random(min: Double, max: Double) -> Double {
-        return Double.random * (max - min) + min
+    public static func random(minimum: Double, maximum: Double) -> Double {
+        return Double.random * (maximum - minimum) + minimum
     }
     
     public static func rad2Deg(angleInRad: Double) -> Double {

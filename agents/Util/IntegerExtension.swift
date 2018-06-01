@@ -21,30 +21,30 @@ extension Int {
 	// Returns a random Int point number between 0 and Int.max.
 	public static var random: Int {
 		get {
-			return Int.random(num: Int.max)
+			return Int.random(number: Int.max)
 		}
 	}
 	
 	/**
 	Random integer between 0 and n-1.
 	
-	- parameter num: Int
+	- parameter number: Int
 	
 	- returns: Int
 	*/
-	public static func random(num: Int) -> Int {
-		return Int(arc4random_uniform(UInt32(num)))
+	public static func random(number: Int) -> Int {
+		return Int(arc4random_uniform(UInt32(number)))
 	}
 	
 	/**
 	Random integer between min and max
 	
-	- parameter min: Int
-	- parameter max: Int
+	- parameter minimum: Int
+	- parameter maximum: Int
 	
 	- returns: Int
 	*/
-	public static func random(min: Int = 0, max: Int) -> Int {
-		return Int.random(num: max - min + 1) + min
+	public static func random(minimum: Int = 0, maximum: Int) -> Int {
+		return Int.random(number: maximum - minimum + 1) + minimum
 	}
 }

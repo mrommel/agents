@@ -37,33 +37,33 @@ extension Array2D where T: Comparable {
 
 	var minimum: T {
 		get {
-			var mn: T = self[0, 0]!
+			var minimumValue: T = self[0, 0]!
 
 			for x in 0..<self.columns {
 				for y in 0..<self.rows {
-					if mn > self[x, y]! {
-						mn = self[x, y]!
+					if minimumValue > self[x, y]! {
+						minimumValue = self[x, y]!
 					}
 				}
 			}
 
-			return mn
+			return minimumValue
 		}
 	}
 
 	var maximum: T {
 		get {
-			var mx: T = self[0, 0]!
+			var maximumValue: T = self[0, 0]!
 
 			for x in 0..<self.columns {
 				for y in 0..<self.rows {
-					if mx < self[x, y]! {
-						mx = self[x, y]!
+					if maximumValue < self[x, y]! {
+						maximumValue = self[x, y]!
 					}
 				}
 			}
 
-			return mx
+			return maximumValue
 		}
 	}
 }

@@ -33,5 +33,5 @@ public enum HexPointCorner: Int {
 }
 
 public func randomGridPointCorner() -> HexPointCorner {
-	return HexPointCorner(rawValue: Int.random(num: 6))!
+	return HexPointCorner(rawValue: Int.random(number: 6))!
 }

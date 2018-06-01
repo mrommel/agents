@@ -65,10 +65,10 @@ class Village: GameObject {
 			if let tile = self.engine?.scene.map.tile(at: selectedAction.point!), let point = selectedAction.point {
 				
 				// remove forest
-				if tile.has(feature: .forest_mixed) {
-					self.engine?.scene.map.remove(feature: .forest_mixed, at: point)
-				} else if tile.has(feature: .forest_pine) {
-					self.engine?.scene.map.remove(feature: .forest_pine, at: point)
+				if tile.has(feature: .forestMixed) {
+					self.engine?.scene.map.remove(feature: .forestMixed, at: point)
+				} else if tile.has(feature: .forestPine) {
+					self.engine?.scene.map.remove(feature: .forestPine, at: point)
 				}
 				
 				// remove sprites
@@ -93,11 +93,11 @@ class Village: GameObject {
 		
 		if action == Village.selectedField {
 			if let tile = self.engine?.scene.map.tile(at: point) {
-				return tile.terrain != .ocean && tile.building == .none && !(tile.has(feature: .forest_mixed) || tile.has(feature: .forest_pine))
+				return tile.terrain != .ocean && tile.building == .none && !(tile.has(feature: .forestMixed) || tile.has(feature: .forestPine))
 			}
 		} else {
 			if let tile = self.engine?.scene.map.tile(at: point) {
-				return tile.terrain != .ocean && (tile.has(feature: .forest_mixed) || tile.has(feature: .forest_pine))
+				return tile.terrain != .ocean && (tile.has(feature: .forestMixed) || tile.has(feature: .forestPine))
 			}
 		}
 		

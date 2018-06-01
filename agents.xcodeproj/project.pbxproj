@@ -406,8 +406,7 @@
 				040FBE08201137BA00D397E2 /* Sources */,
 				040FBE09201137BA00D397E2 /* Frameworks */,
 				040FBE0A201137BA00D397E2 /* Resources */,
-				3FA224E271C20723784F9DA6 /* [CP] Embed Pods Frameworks */,
-				852AF7E5A9B1618039EE46D8 /* [CP] Copy Pods Resources */,
+				045DEC5020C1D1180088DB2B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -426,8 +425,6 @@
 				040FBE1F201137BB00D397E2 /* Sources */,
 				040FBE20201137BB00D397E2 /* Frameworks */,
 				040FBE21201137BB00D397E2 /* Resources */,
-				945703357CB8C9F0C86B5DF7 /* [CP] Embed Pods Frameworks */,
-				36529D408974F22B089909CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -502,6 +499,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		045DEC5020C1D1180088DB2B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n\tswiftlint\nelse\n\techo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		282AAACC1EF3867CE7C0E32D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -518,75 +528,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		36529D408974F22B089909CB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-agentsTests/Pods-agentsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3FA224E271C20723784F9DA6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-agents/Pods-agents-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PiwikTracker/PiwikTracker.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftEventBus/SwiftEventBus.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftRecord/SwiftRecord.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PiwikTracker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEventBus.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRecord.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-agents/Pods-agents-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		852AF7E5A9B1618039EE46D8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-agents/Pods-agents-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		945703357CB8C9F0C86B5DF7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-agentsTests/Pods-agentsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FBF17B79AB99C006E92D4B40 /* [CP] Check Pods Manifest.lock */ = {

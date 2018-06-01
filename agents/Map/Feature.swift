@@ -11,9 +11,9 @@ import SceneKit
 
 enum Feature {
 	
-	case forest_mixed
-	case forest_pine
-	case forest_rain
+	case forestMixed
+	case forestPine
+	case forestRain
 	case oasis
 	
 	case hill
@@ -21,11 +21,11 @@ enum Feature {
 	
 	var description: String {
 		switch self {
-		case .forest_mixed:
+		case .forestMixed:
 			return "Mixed Forest"
-		case .forest_pine:
+		case .forestPine:
 			return "Pine Forest"
-		case .forest_rain:
+		case .forestRain:
 			return "Rain Forest"
 		case .oasis:
 			return "Oasis"
@@ -38,11 +38,11 @@ enum Feature {
 	
 	var textureNameHex: String {
 		switch self {
-		case .forest_mixed:
+		case .forestMixed:
 			return "hex_forest_mixed_summer1"
-		case .forest_pine:
+		case .forestPine:
 			return "hex_forest_pine_summer1"
-		case .forest_rain:
+		case .forestRain:
 			return "hex_forest_rain"
 		case .oasis:
 			return "hex_oasis"
@@ -55,11 +55,11 @@ enum Feature {
 	
 	var zLevel: CGFloat {
 		switch self {
-		case .forest_mixed:
+		case .forestMixed:
 			return GameSceneConstants.ZLevels.featureUpper
-		case .forest_pine:
+		case .forestPine:
 			return GameSceneConstants.ZLevels.featureUpper
-		case .forest_rain:
+		case .forestRain:
 			return GameSceneConstants.ZLevels.featureUpper
 		case .oasis:
 			return GameSceneConstants.ZLevels.feature
