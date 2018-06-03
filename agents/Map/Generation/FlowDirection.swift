@@ -72,12 +72,12 @@ enum FlowDirection: String {
 }
 
 enum FlowDirectionError: Error, Equatable {
-	case Unsupported(flow: FlowDirection, in: HexDirection)
+	case unsupported(flow: FlowDirection, in: HexDirection)
 }
 
 func == (lhs: FlowDirectionError, rhs: FlowDirectionError) -> Bool {
 	switch (lhs, rhs) {
-	case (.Unsupported(let leftFlow, let leftDir), .Unsupported(let rightFlow, let rightDir)):
+	case (.unsupported(let leftFlow, let leftDir), .unsupported(let rightFlow, let rightDir)):
 		return leftFlow == rightFlow && leftDir == rightDir
 	}
 }

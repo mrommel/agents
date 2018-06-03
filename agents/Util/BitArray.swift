@@ -125,9 +125,9 @@ public struct BitArray {
 		checkIndex(index)
 		let bit = valueAtIndex(index)
 
-		for i in (index + 1)..<count {
-			let iBit = valueAtIndex(i)
-			setValue(iBit, atIndex: i - 1)
+		for indexValue in (index + 1)..<count {
+			let iBit = valueAtIndex(indexValue)
+			setValue(iBit, atIndex: indexValue - 1)
 		}
 
 		removeLast()
@@ -216,8 +216,8 @@ extension BitArray: MutableCollection {
 	/// - Parameter i: A valid index of the collection. `i` must be less than
 	///   `endIndex`.
 	/// - Returns: The index value immediately after `i`.
-	public func index(after i: Int) -> Int {
-		return i + 1
+	public func index(after indexValue: Int) -> Int {
+		return indexValue + 1
 	}
 
 	/// Provides random access to individual bits using square bracket noation.

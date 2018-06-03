@@ -44,16 +44,16 @@ class HeightMap: Array2D<Float> {
 		for x in 0..<self.columns {
 			for y in 0..<self.rows {
 				
-				let e0 = 1.00 * generator.perlinNoise(x: 1.0 * Float(x), y: 1.0 * Float(y), z: 0, t: 0)
-				let e1 = 0.50 * generator.perlinNoise(x: 2.0 * Float(x), y: 2.0 * Float(y), z: 0, t: 0)
-				let e2 = 0.25 * generator.perlinNoise(x: 4.0 * Float(x), y: 4.0 * Float(y), z: 0, t: 0)
+				let value0 = 1.00 * generator.perlinNoise(x: 1.0 * Float(x), y: 1.0 * Float(y), z: 0, t: 0)
+				let value1 = 0.50 * generator.perlinNoise(x: 2.0 * Float(x), y: 2.0 * Float(y), z: 0, t: 0)
+				let value2 = 0.25 * generator.perlinNoise(x: 4.0 * Float(x), y: 4.0 * Float(y), z: 0, t: 0)
 				
-				var val = abs(e0 + e1 + e2)
-				if val > 1 {
-					val = 1
+				var value = abs(value0 + value1 + value2)
+				if value > 1 {
+					value = 1
 				}
 				
-				self[x, y] = powf(val, 1.97)
+				self[x, y] = powf(value, 1.97)
 			}
 		}
 	}

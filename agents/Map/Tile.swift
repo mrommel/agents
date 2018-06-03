@@ -108,7 +108,7 @@ extension Tile {
 			return self.isRiverInSouthEast()
 			
 		default:
-			throw FlowDirectionError.Unsupported(flow: .none, in: direction)
+			throw FlowDirectionError.unsupported(flow: .none, in: direction)
 		}
 	}
 	
@@ -136,7 +136,7 @@ extension Tile {
 			try self.setRiverFlowInNorth(flow: flow)
 			break
 		default:
-			throw FlowDirectionError.Unsupported(flow: flow, in: .north)
+			throw FlowDirectionError.unsupported(flow: flow, in: .north)
 		}
 	}
 	
@@ -153,7 +153,7 @@ extension Tile {
 			try self.setRiverFlowInSouthEast(flow: flow)
 			break
 		default:
-			throw FlowDirectionError.Unsupported(flow: flow, in: direction)
+			throw FlowDirectionError.unsupported(flow: flow, in: direction)
 		}
 	}
 	
@@ -165,7 +165,7 @@ extension Tile {
 	public func setRiverFlowInNorth(flow: FlowDirection) throws {
 		
 		guard flow == .east || flow == .west else {
-			throw FlowDirectionError.Unsupported(flow: flow, in: .north)
+			throw FlowDirectionError.unsupported(flow: flow, in: .north)
 		}
 		
 		self.riverFlowNorth = flow
@@ -179,7 +179,7 @@ extension Tile {
 	public func setRiverFlowInNorthEast(flow: FlowDirection) throws {
 		
 		guard flow == .northWest || flow == .southEast else {
-			throw FlowDirectionError.Unsupported(flow: flow, in: .northeast)
+			throw FlowDirectionError.unsupported(flow: flow, in: .northeast)
 		}
 		
 		self.riverFlowNorthEast = flow
@@ -193,7 +193,7 @@ extension Tile {
 	public func setRiverFlowInSouthEast(flow: FlowDirection) throws {
 		
 		guard flow == .southWest || flow == .northEast else {
-			throw FlowDirectionError.Unsupported(flow: flow, in: .southeast)
+			throw FlowDirectionError.unsupported(flow: flow, in: .southeast)
 		}
 		
 		self.riverFlowSouthEast = flow

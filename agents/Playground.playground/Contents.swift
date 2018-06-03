@@ -32,9 +32,9 @@ class HexOrientation {
 	
 	let f0, f1, f2, f3: Double
 	let b0, b1, b2, b3: Double
-	let start_angle: Double // in multiples of 60°
+	let startAngle: Double // in multiples of 60°
 	
-	init(f0: Double, f1: Double, f2: Double, f3: Double, b0: Double, b1: Double, b2: Double, b3: Double, start_angle: Double) {
+	init(f0: Double, f1: Double, f2: Double, f3: Double, b0: Double, b1: Double, b2: Double, b3: Double, startAngle: Double) {
 		
 		self.f0 = f0
 		self.f1 = f1
@@ -44,7 +44,7 @@ class HexOrientation {
 		self.b1 = b1
 		self.b2 = b2
 		self.b3 = b3
-		self.start_angle = start_angle
+		self.startAngle = startAngle
 	}
 	
 	static let flat = HexOrientation(f0: 3.0 / 2.0, f1: 0, f2: sqrt(3.0) / 2.0, f3: sqrt(3.0), b0: 2.0 / 3.0, b1: 0.0, b2: -1.0 / 3.0, b3: sqrt(3.0) / 3.0, start_angle: 0.0)
@@ -174,14 +174,12 @@ func / (point: HexPoint, scalar: HexPoint) -> HexPoint {
 	return HexPoint(x: point.x / scalar.x, y: point.y / scalar.y)
 }
 
-func lerp(a: Double, b: Double, t: Double) -> Double {
-	//return a + (b - a) * t
-	return a * (1.0 - t) + b * t
+func lerp(minimum: Double, maximum: Double, weight: Double) -> Double {
+	return minimum * (1.0 - weight) + maximum * weight
 }
 
-func lerp(a: Int, b: Int, t: Double) -> Double {
-	//return Double(a) + Double(b - a) * t
-	return Double(a) * (1.0 - t) + Double(b) * t
+func lerp(minimum: Int, maximum: Int, weight: Double) -> Double {
+	return Double(minimum) * (1.0 - weight) + Double(maximum) * weight
 }
 
 extension HexPoint {
@@ -216,37 +214,37 @@ extension HexCube {
 	/// double value constructor
 	/// values are rounded
 	///
-	convenience init(dq: Double, dr: Double, ds: Double) {
+	convenience init(qDouble: Double, rDouble: Double, sDouble: Double) {
 		
-		var rq: Int = lround(dq)
-		var rr: Int = lround(dr)
-		var rs: Int = lround(ds)
+		var qRounded: Int = lround(qDouble)
+		var rRounded: Int = lround(rDouble)
+		var sRounded: Int = lround(sDouble)
 		
-		let q_diff = abs(Double(rq) - dq)
-		let r_diff = abs(Double(rr) - dr)
-		let s_diff = abs(Double(rs) - ds)
+		let qDiff = abs(Double(qRounded) - qDouble)
+		let rDiff = abs(Double(rRounded) - rDouble)
+		let sDiff = abs(Double(sRounded) - sDouble)
 		
-		if q_diff > r_diff && q_diff > s_diff {
-			rq = -rr - rs
-		} else if r_diff > s_diff {
-			rr = -rq - rs
+		if qDiff > rDiff && qDiff > sDiff {
+			qRounded = -rRounded - sRounded
+		} else if rDiff > sDiff {
+			rRounded = -qRounded - sRounded
 		} else {
-			rs = -rq - rr
+			sRounded = -qRounded - rRounded
 		}
 		
-		self.init(q: rq, r: rr, s: rs)
+		self.init(q: qRounded, r: rRounded, s: sRounded)
 	}
 	
 	func line(to target: HexCube) -> [HexCube] {
 		let length = self.distance(to: target)
 		var result: [HexCube] = []
 		
-		for i in 0..<(length + 1) {
-			let t = (1.0 / Double(length)) * Double(i)
-			let c = HexCube(dq: lerp(a: Double(self.q) + 1e-6, b: Double(target.q) + 1e-6, t: t),
-							dr: lerp(a: Double(self.r) + 1e-6, b: Double(target.r) + 1e-6, t: t),
-							ds: lerp(a: Double(self.s) + 1e-6, b: Double(target.s) + 1e-6, t: t))
-			result.append(c)
+		for index in 0..<(length + 1) {
+			let weigth = (1.0 / Double(length)) * Double(index)
+			let cube = HexCube(qDouble: lerp(minimum: Double(self.q) + 1e-6, maximum: Double(target.q) + 1e-6, weight: weigth),
+							   rDouble: lerp(minimum: Double(self.r) + 1e-6, maximum: Double(target.r) + 1e-6, weight: weigth),
+							   sDouble: lerp(minimum: Double(self.s) + 1e-6, maximum: Double(target.s) + 1e-6, weight: weigth))
+			result.append(cube)
 		}
 		
 		return result
@@ -301,33 +299,77 @@ class Tile {
 class HexMapDisplay {
 	
 	let layout: HexLayout
-	//var offsetX: Int = 0
-	//var offsetY: Int = 0
 	
 	init() {
-		layout = HexLayout(orientation: HexOrientation.flat, size: CGSize(width: 30, height: 30), origin: CGPoint.zero)
+		layout = HexLayout(orientation: HexOrientation.flat, size: CGSize(width: 24, height: 18), origin: CGPoint.zero)
+	}
+	
+	func screenAngle(from: HexPoint, towards: HexPoint) -> Int {
+		
+		let fromScreenPoint = self.toScreen(hex: from)
+		let towardsScreenPoint = self.toScreen(hex: towards)
+		
+		let deltax = towardsScreenPoint.x - fromScreenPoint.x
+		let deltay = towardsScreenPoint.y - fromScreenPoint.y
+		
+		return Int(atan2(deltax, deltay) * (180.0 / CGFloat(Double.pi)))
+	}
+	
+	func degreesToDirection(degrees: Int) -> HexDirection {
+		
+		var degrees = degrees
+		if (degrees < 0) {
+			degrees += 360
+		}
+		
+		if 30 < degrees && degrees <= 90 {
+			return .northeast
+		} else if 90 < degrees && degrees <= 150 {
+			return .southeast
+		} else if 150 < degrees && degrees <= 210 {
+			return .south
+		} else if 210 < degrees && degrees <= 270 {
+			return .southwest
+		} else if 270 < degrees && degrees <= 330 {
+			return .northwest
+		} else {
+			return .north
+		}
+	}
+	
+	func screenDirection(from: HexPoint, towards: HexPoint) -> HexDirection {
+		
+		let angle = self.screenAngle(from: from, towards: towards)
+		return degreesToDirection(degrees: angle)
 	}
 	
 	func toScreen(cube: HexCube) -> CGPoint {
-		let m = self.layout.orientation
-		let x = (m.f0 * Double(cube.q) + m.f1 * Double(cube.r)) * Double(self.layout.size.width)
-		let y = (m.f2 * Double(cube.q) + m.f3 * Double(cube.r)) * Double(self.layout.size.height)
+		
+		let orientationMatrix = self.layout.orientation
+		let x = (orientationMatrix.f0 * Double(cube.q) + orientationMatrix.f1 * Double(cube.r)) * Double(self.layout.size.width)
+		let y = (orientationMatrix.f2 * Double(cube.q) + orientationMatrix.f3 * Double(cube.r)) * Double(self.layout.size.height)
 		return CGPoint(x: x + Double(self.layout.origin.x), y: y + Double(self.layout.origin.y))
 	}
 	
+	func toScreen(hex: HexPoint) -> CGPoint {
+		
+		return toScreen(cube: HexCube(hex: hex))
+	}
+	
 	func toHexCube(screen: CGPoint) -> HexCube {
-		let m = self.layout.orientation
-		let pt = CGPoint(x: (Double(screen.x) - Double(layout.origin.x)) / Double(layout.size.width),
-						 y: (Double(screen.y) - Double(layout.origin.y)) / Double(layout.size.height))
-		let q = m.b0 * Double(pt.x) + m.b1 * Double(pt.y)
-		let r = m.b2 * Double(pt.x) + m.b3 * Double(pt.y)
-		return HexCube(dq: q, dr: r, ds: -q - r)
+		
+		let orientationMatrix = self.layout.orientation
+		let point = CGPoint(x: (Double(screen.x) - Double(layout.origin.x)) / Double(layout.size.width),
+							y: (Double(screen.y) - Double(layout.origin.y)) / Double(layout.size.height))
+		let q = orientationMatrix.b0 * Double(point.x) + orientationMatrix.b1 * Double(point.y)
+		let r = orientationMatrix.b2 * Double(point.x) + orientationMatrix.b3 * Double(point.y)
+		return HexCube(qDouble: q, rDouble: r, sDouble: -q - r)
 	}
 }
 
 print("---")
 let cube = HexCube(q: 0, r: 0, s: 0)
-let cube_n = HexCube(q: 0, r: 5, s: -5)
+/*let cube_n = HexCube(q: 0, r: 5, s: -5)
 let cube_nw = HexCube(q: -5, r: 5, s: 0)
 let cube_nw2 = HexCube(q: -2, r: 3, s: -1)
 
@@ -341,6 +383,6 @@ print("line: \(line)")
 
 let map = HexMap<Tile>(width: 5, height: 5, initialValue: Tile(terrain: "ocean"))
 print("tile: \(map.tile(x: 1, y: 1)!.terrain)")
-
+*/
 
 

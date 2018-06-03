@@ -29,7 +29,7 @@ class River {
 
 		self.name = name
 
-		if cornerPoints.count > 0 {
+		if !cornerPoints.isEmpty {
 			var prev = cornerPoints.first
 			for point in cornerPoints.suffix(from: 1) {
 
@@ -91,9 +91,9 @@ class River {
 				return RiverEdge(with: southWestNeighbor, and: .northWest)
 			}
 		} else {
-			let dir = from.point.direction(towards: to.point)
+			let direction = from.point.direction(towards: to.point)
 
-			switch dir! {
+			switch direction! {
 			case .northeast:
 				// GridPointWithCorner(11,6 / east), to: GridPointWithCorner(12,6 / southEast)
 				// GridPointWithCorner(17,10 / east), to: GridPointWithCorner(18,10 / southEast)
@@ -101,39 +101,33 @@ class River {
 					let southEastNeighbor = from.point.neighbor(in: .southeast)
 					return RiverEdge(with: southEastNeighbor, and: .east)
 				}
-				break
 			case .southeast:
 				// GridPointWithCorner(1,12 / southEast), to: GridPointWithCorner(2,13 / southWest)
 				if from.corner == .southeast && to.corner == .southwest {
 					let southNeighbor = from.point.neighbor(in: .south)
 					return RiverEdge(with: southNeighbor, and: .southEast)
 				}
-				break
 			case .south:
 				// GridPointWithCorner(11,0 / southWest), to: GridPointWithCorner(11,1 / west)
 				if from.corner == .southwest && to.corner == .west {
 					let southWestNeighbor = from.point.neighbor(in: .southwest)
 					return RiverEdge(with: southWestNeighbor, and: .southWest)
 				}
-				break
 			case .southwest:
 				// GridPointWithCorner(19,1 / west), to: GridPointWithCorner(18,2 / northWest)
 				if from.corner == .west && to.corner == .northwest {
 					return RiverEdge(with: to.point, and: .west)
 				}
-				break
 			case .northwest:
 				// GridPointWithCorner(6,6 / northWest), to: GridPointWithCorner(5,5 / northEast)
 				if from.corner == .northwest && to.corner == .northeast {
 					return RiverEdge(with: to.point, and: .northWest)
 				}
-				break
 			case .north:
 				// GridPointWithCorner(5,13 / northEast), to: GridPointWithCorner(5,12 / east)
 				if from.corner == .northeast && to.corner == .east {
 					return RiverEdge(with: to.point, and: .northEast)
 				}
-				break
 			}
 		}
 

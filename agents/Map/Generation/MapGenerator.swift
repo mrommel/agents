@@ -250,10 +250,10 @@ class MapGenerator {
 						} else {
 							// check neighbors
 							var distance = Int.max
-							let pt = HexPoint(x: x, y: y)
-							for dir in HexDirection.all {
+							let point = HexPoint(x: x, y: y)
+							for direction in HexDirection.all {
 
-								let neighbor = pt.neighbor(in: dir)
+								let neighbor = point.neighbor(in: direction)
 								if neighbor.x >= 0 && neighbor.x < self.width && neighbor.y >= 0 && neighbor.y < self.height {
 
 									if self.distanceToCoast[x, y] != Int.max {
@@ -443,21 +443,21 @@ class MapGenerator {
 	func heightOf(corner: HexPointCorner, at gridPoint: HexPoint, on heightMap: HeightMap) -> Float {
 
 		let adjacentPoints = gridPoint.adjacentPoints(of: corner)
-		var num: Float = 0.0
+		var amountOfPoints: Float = 0.0
 		var height: Float = 0.0
 
 		for adjacentPoint in adjacentPoints {
 			// check if adjacentPoint is on map
 			if adjacentPoint.x >= 0 && adjacentPoint.x < self.width && adjacentPoint.y >= 0 && adjacentPoint.y < self.height {
-				num += 1.0
+				amountOfPoints += 1.0
 				if let heightValue = heightMap[adjacentPoint.x, adjacentPoint.y] {
 					height += heightValue
 				}
 			}
 		}
 
-		if num > 0 {
-			return height / num
+		if amountOfPoints > 0 {
+			return height / amountOfPoints
 		} else {
 			return 0.0
 		}
@@ -511,8 +511,8 @@ class MapGenerator {
 				// TODO: river sometimes get stuck and end in lakes
 
 				result.append(lowestGridPointWithCorner)
-				let tmp = self.followRiver(at: lowestGridPointWithCorner, on: heightMap, depth: depth - 1)
-				result.append(contentsOf: tmp)
+				let newRiverTile = self.followRiver(at: lowestGridPointWithCorner, on: heightMap, depth: depth - 1)
+				result.append(contentsOf: newRiverTile)
 			}
 		}
 

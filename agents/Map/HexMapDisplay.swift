@@ -10,31 +10,31 @@ import Foundation
 import SpriteKit
 
 class HexMapDisplay {
-	
+
 	let layout: HexLayout
-	
+
 	init() {
 		layout = HexLayout(orientation: HexOrientation.flat, size: CGSize(width: 24, height: 18), origin: CGPoint.zero)
 	}
-	
+
 	func screenAngle(from: HexPoint, towards: HexPoint) -> Int {
-		
+
 		let fromScreenPoint = self.toScreen(hex: from)
 		let towardsScreenPoint = self.toScreen(hex: towards)
-		
-		let dx = towardsScreenPoint.x - fromScreenPoint.x
-		let dy = towardsScreenPoint.y - fromScreenPoint.y
-		
-		return Int(atan2(dx, dy) * (180.0 / CGFloat(Double.pi)))
+
+		let deltax = towardsScreenPoint.x - fromScreenPoint.x
+		let deltay = towardsScreenPoint.y - fromScreenPoint.y
+
+		return Int(atan2(deltax, deltay) * (180.0 / CGFloat(Double.pi)))
 	}
-	
+
 	func degreesToDirection(degrees: Int) -> HexDirection {
-		
+
 		var degrees = degrees
 		if (degrees < 0) {
-			degrees = degrees + 360
+			degrees += 360
 		}
-		
+
 		if 30 < degrees && degrees <= 90 {
 			return .northeast
 		} else if 90 < degrees && degrees <= 150 {
@@ -49,33 +49,33 @@ class HexMapDisplay {
 			return .north
 		}
 	}
-	
+
 	func screenDirection(from: HexPoint, towards: HexPoint) -> HexDirection {
-		
+
 		let angle = self.screenAngle(from: from, towards: towards)
 		return degreesToDirection(degrees: angle)
 	}
-	
+
 	func toScreen(cube: HexCube) -> CGPoint {
-		
-		let m = self.layout.orientation
-		let x = (m.f0 * Double(cube.q) + m.f1 * Double(cube.r)) * Double(self.layout.size.width)
-		let y = (m.f2 * Double(cube.q) + m.f3 * Double(cube.r)) * Double(self.layout.size.height)
+
+		let orientationMatrix = self.layout.orientation
+		let x = (orientationMatrix.f0 * Double(cube.q) + orientationMatrix.f1 * Double(cube.r)) * Double(self.layout.size.width)
+		let y = (orientationMatrix.f2 * Double(cube.q) + orientationMatrix.f3 * Double(cube.r)) * Double(self.layout.size.height)
 		return CGPoint(x: x + Double(self.layout.origin.x), y: y + Double(self.layout.origin.y))
 	}
-	
+
 	func toScreen(hex: HexPoint) -> CGPoint {
-		
+
 		return toScreen(cube: HexCube(hex: hex))
 	}
-	
+
 	func toHexCube(screen: CGPoint) -> HexCube {
-		
-		let m = self.layout.orientation
-		let pt = CGPoint(x: (Double(screen.x) - Double(layout.origin.x)) / Double(layout.size.width),
-						 y: (Double(screen.y) - Double(layout.origin.y)) / Double(layout.size.height))
-		let q = m.b0 * Double(pt.x) + m.b1 * Double(pt.y)
-		let r = m.b2 * Double(pt.x) + m.b3 * Double(pt.y)
-		return HexCube(dq: q, dr: r, ds: -q - r)
+
+		let orientationMatrix = self.layout.orientation
+		let point = CGPoint(x: (Double(screen.x) - Double(layout.origin.x)) / Double(layout.size.width),
+			y: (Double(screen.y) - Double(layout.origin.y)) / Double(layout.size.height))
+		let q = orientationMatrix.b0 * Double(point.x) + orientationMatrix.b1 * Double(point.y)
+		let r = orientationMatrix.b2 * Double(point.x) + orientationMatrix.b3 * Double(point.y)
+		return HexCube(qDouble: q, rDouble: r, sDouble: -q - r)
 	}
 }
