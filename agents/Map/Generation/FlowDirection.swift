@@ -9,22 +9,22 @@
 import Foundation
 
 enum FlowDirection: String {
-	
+
 	case none = ""
 	case any = "*"
-	
+
 	// flow of river on north edge
 	case west = "w"
 	case east = "e"
-	
+
 	// flow of river on ne edge
 	case northWest = "nw"
 	case southEast = "se"
-	
+
 	// flow of river on se edge
 	case northEast = "ne"
 	case southWest = "sw"
-	
+
 	public static func enumFrom(string: String) -> FlowDirection {
 		switch string {
 		case "west":
@@ -41,13 +41,13 @@ enum FlowDirection: String {
 			return .southWest
 		case "none":
 			return .none
-			
+
 		default:
 			print("--> FlowDirection.enumFromString \(string) not handled")
 			return .none
 		}
 	}
-	
+
 	public var stringValue: String {
 		switch self {
 		case .west:

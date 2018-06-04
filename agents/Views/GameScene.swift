@@ -262,7 +262,7 @@ class GameScene: SKScene {
 			alertController.addAction(actionButton)
 		}
 
-		let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+		let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) -> Void in
 			print("Cancel button tapped")
 		})
 		alertController.addAction(cancelButton)
@@ -290,7 +290,7 @@ class GameScene: SKScene {
 			}
 		}
 
-		let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+		let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) -> Void in
 			print("Cancel button tapped")
 		})
 		alertController.addAction(cancelButton)
@@ -348,4 +348,3 @@ class GameScene: SKScene {
 		self.engine?.update(with: currentTime)
 	}
 }
-

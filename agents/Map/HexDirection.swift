@@ -10,20 +10,18 @@ import Foundation
 import UIKit
 
 enum HexDirection {
-	
+
 	case north
 	case northeast
 	case southeast
 	case south
 	case southwest
 	case northwest
-	
+
 	static var all: [HexDirection] {
-		get {
-			return [.north, .northeast, .southeast, .south, .southwest, .northwest]
-		}
+		return [.north, .northeast, .southeast, .south, .southwest, .northwest]
 	}
-	
+
 	var short: String {
 		switch self {
 		case .north:
@@ -40,7 +38,7 @@ enum HexDirection {
 			return "nw"
 		}
 	}
-	
+
 	var description: String {
 		switch self {
 		case .north:
@@ -57,7 +55,7 @@ enum HexDirection {
 			return "North West"
 		}
 	}
-	
+
 	var pickerImage: UIImage? {
 		switch self {
 		case .north:

@@ -9,7 +9,7 @@
 import Foundation
 
 extension Int {
-	
+
 	public func sign() -> Int {
 		return (self < 0 ? -1 : 1)
 	}
@@ -17,14 +17,12 @@ extension Int {
 }
 
 extension Int {
-	
+
 	// Returns a random Int point number between 0 and Int.max.
 	public static var random: Int {
-		get {
-			return Int.random(number: Int.max)
-		}
+		return Int.random(number: Int.max)
 	}
-	
+
 	/**
 	Random integer between 0 and n-1.
 	
@@ -35,7 +33,7 @@ extension Int {
 	public static func random(number: Int) -> Int {
 		return Int(arc4random_uniform(UInt32(number)))
 	}
-	
+
 	/**
 	Random integer between min and max
 	

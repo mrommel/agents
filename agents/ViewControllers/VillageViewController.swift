@@ -9,7 +9,7 @@
 import UIKit
 
 class VillageViewController: UIViewController {
-	
+
 	override func viewDidLoad() {
 		self.title = "Village"
 	}

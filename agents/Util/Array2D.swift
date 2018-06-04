@@ -11,12 +11,12 @@ import Foundation
 public class Array2D<T: Equatable> {
 	public let columns: Int
 	public let rows: Int
-	fileprivate var array: Array<T?> = Array<T?>()
+	fileprivate var array: [T?] = [T?]()
 
 	public init(columns: Int, rows: Int) {
 		self.columns = columns
 		self.rows = rows
-		self.array = Array<T?>(repeating: nil, count: rows * columns)
+		self.array = [T?](repeating: nil, count: rows * columns)
 	}
 
 	public subscript(column: Int, row: Int) -> T? {
@@ -36,35 +36,31 @@ public class Array2D<T: Equatable> {
 extension Array2D where T: Comparable {
 
 	var minimum: T {
-		get {
-			var minimumValue: T = self[0, 0]!
+		var minimumValue: T = self[0, 0]!
 
-			for x in 0..<self.columns {
-				for y in 0..<self.rows {
-					if minimumValue > self[x, y]! {
-						minimumValue = self[x, y]!
-					}
+		for x in 0..<self.columns {
+			for y in 0..<self.rows {
+				if minimumValue > self[x, y]! {
+					minimumValue = self[x, y]!
 				}
 			}
-
-			return minimumValue
 		}
+
+		return minimumValue
 	}
 
 	var maximum: T {
-		get {
-			var maximumValue: T = self[0, 0]!
+		var maximumValue: T = self[0, 0]!
 
-			for x in 0..<self.columns {
-				for y in 0..<self.rows {
-					if maximumValue < self[x, y]! {
-						maximumValue = self[x, y]!
-					}
+		for x in 0..<self.columns {
+			for y in 0..<self.rows {
+				if maximumValue < self[x, y]! {
+					maximumValue = self[x, y]!
 				}
 			}
-
-			return maximumValue
 		}
+
+		return maximumValue
 	}
 }
 

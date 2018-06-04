@@ -76,10 +76,7 @@ public class PerlinGenerator {
 		return 0
 	}
 
-	public func dotProductI(x0: Float, x1: Int8,
-		y0: Float, y1: Int8,
-		z0: Float, z1: Int8,
-		t0: Float, t1: Int8) -> Float {
+	public func dotProductI(x0: Float, x1: Int8, y0: Float, y1: Int8, z0: Float, z1: Int8, t0: Float, t1: Int8) -> Float {
 		return self.productOf(a: x0, b: x1) +
 			self.productOf(a: y0, b: y1) +
 			self.productOf(a: z0, b: z1) +
@@ -196,4 +193,3 @@ public class PerlinGenerator {
 	}
 }
 // swiftlint:enable variable_name
-

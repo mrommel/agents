@@ -9,10 +9,10 @@
 import Foundation
 
 class Game {
-	
+
 	//var map: HexMap
-	
+
 	init(named name: String) {
-		
+
 	}
 }

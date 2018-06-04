@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfZ-5g-dyB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfZ-5g-dyB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,8 +35,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="MLs-J8-cGL"/>
                     <connections>
-                        <segue destination="lTt-1J-9Rc" kind="push" identifier="goToGame" id="mZM-xf-IoE"/>
-                        <segue destination="0QQ-bF-xqL" kind="push" identifier="goToOptions" id="5RP-dI-zJq"/>
+                        <segue destination="lTt-1J-9Rc" kind="showDetail" identifier="goToGame" id="mZM-xf-IoE"/>
+                        <segue destination="0QQ-bF-xqL" kind="showDetail" identifier="goToOptions" id="5RP-dI-zJq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icT-ej-57z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -53,7 +53,7 @@
                     </skView>
                     <navigationItem key="navigationItem" id="8Av-A8-alp"/>
                     <connections>
-                        <segue destination="qLs-v1-Jwq" kind="push" identifier="showVillage" id="GwO-c0-LsS"/>
+                        <segue destination="qLs-v1-Jwq" kind="showDetail" identifier="showVillage" id="GwO-c0-LsS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGM-Tk-e7K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -131,6 +131,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="village0" width="41" height="37"/>
+        <image name="village0" width="48" height="48"/>
     </resources>
 </document>

@@ -9,9 +9,9 @@
 import Foundation
 
 class GameObjectAction {
-	
+
 	let identifier: String
-	
+
 	init(named identifier: String) {
 		self.identifier = identifier
 	}
@@ -24,7 +24,7 @@ extension GameObjectAction: CustomDebugStringConvertible {
 }
 
 extension GameObjectAction: Equatable {
-	
+
 	var hashValue: Int {
 		return self.identifier.hashValue
 	}
@@ -35,16 +35,16 @@ func == (first: GameObjectAction, second: GameObjectAction) -> Bool {
 }
 
 class GameObjectActionWithPoint: GameObjectAction {
-	
-	var point: HexPoint? = nil
-	
+
+	var point: HexPoint?
+
 	override init(named identifier: String) {
 		super.init(named: identifier)
 	}
 }
 
 struct GameObjectActions {
-	
+
 	static let idle = GameObjectAction(named: "Idle")
 	static let walk = GameObjectAction(named: "Walk")
 	static let dead = GameObjectAction(named: "Dead")

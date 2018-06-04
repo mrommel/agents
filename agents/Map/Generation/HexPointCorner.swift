@@ -23,13 +23,13 @@ There are 6 (0-5) corners
 ```
 */
 public enum HexPointCorner: Int {
-	
-	case northeast  = 0
-	case east       = 1
-	case southeast  = 2
-	case southwest  = 3
-	case west       = 4
-	case northwest  = 5
+
+	case northeast = 0
+	case east = 1
+	case southeast = 2
+	case southwest = 3
+	case west = 4
+	case northwest = 5
 }
 
 public func randomGridPointCorner() -> HexPointCorner {

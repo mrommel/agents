@@ -26,9 +26,7 @@ class MapGeneratorOptions {
 	let waterPercentage: Float
 	let rivers: Int
 
-	required public init(withSize size: MapSize,
-		zone: ClimateZoneOption,
-		waterPercentage: Float, rivers: Int) {
+	required public init(withSize size: MapSize, zone: ClimateZoneOption, waterPercentage: Float, rivers: Int) {
 
 		self.mapSize = size
 		self.climateZoneOption = zone
@@ -37,8 +35,7 @@ class MapGeneratorOptions {
 	}
 }
 
-public typealias CompletionHandler = (Float) -> (Void)
-
+public typealias CompletionHandler = (Float) -> Void
 
 class MapGenerator {
 
@@ -94,22 +91,16 @@ class MapGenerator {
 		switch options.climateZoneOption {
 		case .earth:
 			self.setClimateZones()
-			break
 		case .polarOnly:
 			self.setClimateZones(with: .polar)
-			break
 		case .subpolarOnly:
 			self.setClimateZones(with: .subpolar)
-			break
 		case .temperateOnly:
 			self.setClimateZones(with: .temperate)
-			break
 		case .subtropicOnly:
 			self.setClimateZones(with: .subtropic)
-			break
 		case .tropicOnly:
 			self.setClimateZones(with: .tropic)
-			break
 		}
 
 		if let completionHandler = self.completionHandler {
@@ -303,20 +294,16 @@ class MapGenerator {
 							} else {
 								grid?.set(feature: .forestMixed, at: gridPoint)
 							}
-							break
 						case .desert:
 							grid?.set(feature: .oasis, at: gridPoint)
-							break
 						case .plain:
 							if self.zones[x, y]! == .subtropic {
 								grid?.set(feature: .forestRain, at: gridPoint)
 							} else {
 								grid?.set(feature: .forestRain, at: gridPoint)
 							}
-							break
 						case .tundra:
 							grid?.set(feature: .forestPine, at: gridPoint)
-							break
 						default:
 							break
 						}

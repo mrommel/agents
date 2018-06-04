@@ -14,7 +14,7 @@ class GameObjectEngine {
 	fileprivate var objects: [GameObject]
 	fileprivate let layer: SKNode
 	let scene: GameScene
-	var focusedObject: GameObject? = nil
+	var focusedObject: GameObject?
 
 	init(on layer: SKNode, in scene: GameScene) {
 		self.objects = []

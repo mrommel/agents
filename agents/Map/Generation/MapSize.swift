@@ -9,7 +9,7 @@
 import Foundation
 
 enum MapSize {
-	
+
 	case test // 5x5
 	case duel // 10x8
 	case tiny // 14x12
@@ -17,7 +17,7 @@ enum MapSize {
 	case standard // 22x20
 	case large // 26x24
 	case huge // 30x28
-	
+
 	public var width: Int {
 		switch self {
 		case .test:
@@ -36,7 +36,7 @@ enum MapSize {
 			return 30
 		}
 	}
-	
+
 	public var height: Int {
 		switch self {
 		case .test:

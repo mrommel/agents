@@ -8,37 +8,35 @@
 
 import Foundation
 
-protocol AreaDelegate {
+protocol AreaDelegate: class {
 	func changed(area: Area?)
 }
 
 /// class that holds a couple of points
 class Area {
-	
-	var onPointsChanged: ((_ points: [HexPoint])->())?
-	
+
+	var onPointsChanged: ((_ points: [HexPoint]) -> Void)?
+
 	var identifier: String
 	private var points: [HexPoint] {
 		didSet {
 			onPointsChanged?(points)
 		}
 	}
-	
+
 	var count: Int {
-		get {
-			return self.points.count
-		}
+		return self.points.count
 	}
-	
+
 	// MARK: constructors
-	
+
 	init(with identifier: String) {
 		self.identifier = identifier
 		self.points = []
 	}
-	
+
 	// MARK: methods
-	
+
 	func add(point: HexPoint) {
 		self.points.append(point)
 	}

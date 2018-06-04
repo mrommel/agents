@@ -113,10 +113,8 @@ class ContinentFinder {
 			}
 		}
 
-		for index in 0..<256 {
-			if freeIdentifiers[index] {
-				return index
-			}
+		if let firstIndex = freeIdentifiers.index(where: { $0 == true }) {
+			return firstIndex
 		}
 
 		return ContinentConstants.kNoContinent

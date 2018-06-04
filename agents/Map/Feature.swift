@@ -10,15 +10,15 @@ import Foundation
 import SceneKit
 
 enum Feature {
-	
+
 	case forestMixed
 	case forestPine
 	case forestRain
 	case oasis
-	
+
 	case hill
 	case mountain
-	
+
 	var description: String {
 		switch self {
 		case .forestMixed:
@@ -35,7 +35,7 @@ enum Feature {
 			return "Mountain"
 		}
 	}
-	
+
 	var textureNameHex: String {
 		switch self {
 		case .forestMixed:
@@ -52,7 +52,7 @@ enum Feature {
 			return "hex_mountain"
 		}
 	}
-	
+
 	var zLevel: CGFloat {
 		switch self {
 		case .forestMixed:

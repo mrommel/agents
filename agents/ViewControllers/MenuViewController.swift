@@ -14,7 +14,7 @@ struct MenuItem {
 }
 
 class MenuViewController: UITableViewController {
-	
+
 	let menuItems: [MenuItem] = [
 		MenuItem(title: "Game", segue: "goToGame"),
 		MenuItem(title: "Options", segue: "goToOptions")
@@ -24,11 +24,11 @@ class MenuViewController: UITableViewController {
 // MARK: UITableViewDataSource
 
 extension MenuViewController {
-	
+
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
-	
+
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return menuItems.count
 	}
@@ -37,16 +37,16 @@ extension MenuViewController {
 // MARK: UITableViewDelegate
 
 extension MenuViewController {
-	
+
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
+
 		let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
 		let menuItem = menuItems[indexPath.row]
 		cell.textLabel?.text = "\(menuItem.title)"
-		
+
 		return cell
 	}
-	
+
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let menuItem = menuItems[indexPath.row]
 		self.performSegue(withIdentifier: menuItem.segue, sender: self)

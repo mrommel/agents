@@ -9,7 +9,7 @@
 import Foundation
 
 enum Terrain {
-	
+
 	case plain
 	case grass
 	case desert
@@ -17,11 +17,11 @@ enum Terrain {
 	case snow
 	case ocean
 	case shore
-	
+
 	// types for map generation
 	case water
 	case ground
-	
+
 	var description: String {
 		switch self {
 		case .ocean:
@@ -38,15 +38,15 @@ enum Terrain {
 			return "Tundra"
 		case .snow:
 			return "Snow"
-			
-		// -------
+
+			// -------
 		case .water:
 			return "Water"
 		case .ground:
 			return "Ground"
 		}
 	}
-	
+
 	var textureNameHex: String {
 		switch self {
 		case .ocean:
@@ -63,8 +63,8 @@ enum Terrain {
 			return "hex_tundra"
 		case .snow:
 			return "hex_snow"
-			
-		// -------
+
+			// -------
 		case .water:
 			return "hex_water"
 		case .ground:
