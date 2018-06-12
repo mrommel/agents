@@ -107,7 +107,6 @@
 		040FBE6620171F2300D397E2 /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		040FBE682017B4A300D397E2 /* AStarPathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPathFinder.swift; sourceTree = "<group>"; };
 		040FBE6E2017D3EF00D397E2 /* HexMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMap.swift; sourceTree = "<group>"; };
-		041B7A51202111ED00EBF4D6 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = agents/Playground.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		041B98FE204C3A7C001F0E16 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		041B9901204C3AD8001F0E16 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		041B9903204C3D24001F0E16 /* MapGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGenerator.swift; sourceTree = "<group>"; };
@@ -141,6 +140,8 @@
 		0451D59820376EB900E7C882 /* VillageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageViewController.swift; sourceTree = "<group>"; };
 		04C4C548203DB92B00477A1F /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		04C4C54A20405EF600477A1F /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
+		04C6F70F20C6DA7300229C8B /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		04C6F71020C6DAA000229C8B /* Units.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Units.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		04F0384920221C1F0011B79C /* HexLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexLayout.swift; sourceTree = "<group>"; };
 		04F0384B20221C6D0011B79C /* HexPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPoint.swift; sourceTree = "<group>"; };
 		04F0384D202221080011B79C /* HexMapDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexMapDisplay.swift; sourceTree = "<group>"; };
@@ -186,6 +187,8 @@
 		040FBE03201137BA00D397E2 = {
 			isa = PBXGroup;
 			children = (
+				04C6F71020C6DAA000229C8B /* Units.playground */,
+				04C6F70F20C6DA7300229C8B /* Playground.playground */,
 				041B98FE204C3A7C001F0E16 /* README.md */,
 				040FBE0E201137BA00D397E2 /* agents */,
 				040FBE26201137BB00D397E2 /* agentsTests */,
@@ -208,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				041B9900204C3ABF001F0E16 /* Game */,
-				041B7A51202111ED00EBF4D6 /* Playground.playground */,
 				040FBE5F20171A7F00D397E2 /* Map */,
 				04481D9C2031F300001F04FA /* Objects */,
 				040FBE4620113F4400D397E2 /* Util */,
