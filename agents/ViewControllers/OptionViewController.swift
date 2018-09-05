@@ -11,9 +11,13 @@ import UIKit
 class OptionViewController: UITableViewController {
 
 	let menuItems: [MenuItem] = [
-		MenuItem(title: "Game", segue: "goToGame"),
-		MenuItem(title: "Options", segue: "goToOptions")
+		MenuItem(title: "Dummy", segue: nil),
+		MenuItem(title: "Simlation", segue: "goToSimlation")
 	]
+
+	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+		return nil
+	}
 }
 
 // MARK: UITableViewDataSource
@@ -44,6 +48,9 @@ extension OptionViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let menuItem = menuItems[indexPath.row]
-		self.performSegue(withIdentifier: menuItem.segue, sender: self)
+
+		if let segue = menuItem.segue {
+			self.performSegue(withIdentifier: segue, sender: self)
+		}
 	}
 }

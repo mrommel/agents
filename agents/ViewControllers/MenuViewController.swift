@@ -10,7 +10,7 @@ import UIKit
 
 struct MenuItem {
 	let title: String
-	let segue: String
+	let segue: String?
 }
 
 class MenuViewController: UITableViewController {
@@ -19,6 +19,10 @@ class MenuViewController: UITableViewController {
 		MenuItem(title: "Game", segue: "goToGame"),
 		MenuItem(title: "Options", segue: "goToOptions")
 	]
+
+	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+		return nil
+	}
 }
 
 // MARK: UITableViewDataSource
@@ -49,6 +53,9 @@ extension MenuViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let menuItem = menuItems[indexPath.row]
-		self.performSegue(withIdentifier: menuItem.segue, sender: self)
+		
+		if let segue = menuItem.segue {
+			self.performSegue(withIdentifier: segue, sender: self)
+		}
 	}
 }
