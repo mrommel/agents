@@ -57,6 +57,11 @@
 		0451D5952037637700E7C882 /* EgyptBoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D5942037637700E7C882 /* EgyptBoy.swift */; };
 		0451D597203765A100E7C882 /* Village.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D596203765A100E7C882 /* Village.swift */; };
 		0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D59820376EB900E7C882 /* VillageViewController.swift */; };
+		049CACE82145BB1B00990CF5 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACE72145BB1B00990CF5 /* Property.swift */; };
+		049CACEA2145BB4400990CF5 /* PropertyRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACE92145BB4400990CF5 /* PropertyRelation.swift */; };
+		049CACEC2145BB6E00990CF5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACEB2145BB6E00990CF5 /* Category.swift */; };
+		049CACEE2145BF0000990CF5 /* BirthRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACED2145BF0000990CF5 /* BirthRate.swift */; };
+		049CACF02145C0E200990CF5 /* Religiosity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACEF2145C0E200990CF5 /* Religiosity.swift */; };
 		04C4C549203DB92B00477A1F /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4C548203DB92B00477A1F /* Field.swift */; };
 		04C4C54B20405EF600477A1F /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4C54A20405EF600477A1F /* Building.swift */; };
 		04F0384A20221C1F0011B79C /* HexLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384920221C1F0011B79C /* HexLayout.swift */; };
@@ -142,6 +147,11 @@
 		0451D5942037637700E7C882 /* EgyptBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgyptBoy.swift; sourceTree = "<group>"; };
 		0451D596203765A100E7C882 /* Village.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Village.swift; sourceTree = "<group>"; };
 		0451D59820376EB900E7C882 /* VillageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageViewController.swift; sourceTree = "<group>"; };
+		049CACE72145BB1B00990CF5 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		049CACE92145BB4400990CF5 /* PropertyRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyRelation.swift; sourceTree = "<group>"; };
+		049CACEB2145BB6E00990CF5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		049CACED2145BF0000990CF5 /* BirthRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthRate.swift; sourceTree = "<group>"; };
+		049CACEF2145C0E200990CF5 /* Religiosity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Religiosity.swift; sourceTree = "<group>"; };
 		04C4C548203DB92B00477A1F /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		04C4C54A20405EF600477A1F /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		04C6F70F20C6DA7300229C8B /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -343,6 +353,11 @@
 			isa = PBXGroup;
 			children = (
 				04391C38213E62F4000357AC /* Simulation.swift */,
+				049CACE72145BB1B00990CF5 /* Property.swift */,
+				049CACE92145BB4400990CF5 /* PropertyRelation.swift */,
+				049CACEB2145BB6E00990CF5 /* Category.swift */,
+				049CACED2145BF0000990CF5 /* BirthRate.swift */,
+				049CACEF2145C0E200990CF5 /* Religiosity.swift */,
 			);
 			path = Simulation;
 			sourceTree = "<group>";
@@ -577,6 +592,7 @@
 				04391C36213DD2C1000357AC /* SimulationViewController.swift in Sources */,
 				04F12D54201A6B8D007A8817 /* Array2D.swift in Sources */,
 				040FBE532011D80B00D397E2 /* OptionViewController.swift in Sources */,
+				049CACE82145BB1B00990CF5 /* Property.swift in Sources */,
 				04F0384E202221080011B79C /* HexMapDisplay.swift in Sources */,
 				040FBE4520113D8200D397E2 /* MenuViewController.swift in Sources */,
 				04F0384A20221C1F0011B79C /* HexLayout.swift in Sources */,
@@ -586,13 +602,16 @@
 				041B9908204C4988001F0E16 /* PerlinGenerator.swift in Sources */,
 				04C4C549203DB92B00477A1F /* Field.swift in Sources */,
 				04C4C54B20405EF600477A1F /* Building.swift in Sources */,
+				049CACF02145C0E200990CF5 /* Religiosity.swift in Sources */,
 				040FBE12201137BA00D397E2 /* GameViewController.swift in Sources */,
 				04F12D56201A7531007A8817 /* IntegerExtension.swift in Sources */,
 				041B9906204C42D7001F0E16 /* HeightMap.swift in Sources */,
+				049CACEE2145BF0000990CF5 /* BirthRate.swift in Sources */,
 				040FBE692017B4A300D397E2 /* AStarPathFinder.swift in Sources */,
 				04F038502024997F0011B79C /* Continent.swift in Sources */,
 				040FBE4220113D4700D397E2 /* GameScene.swift in Sources */,
 				041B991D204C8C6F001F0E16 /* Terrain.swift in Sources */,
+				049CACEC2145BB6E00990CF5 /* Category.swift in Sources */,
 				040FBE6120171A9700D397E2 /* Tile.swift in Sources */,
 				04F0384C20221C6D0011B79C /* HexPoint.swift in Sources */,
 				040FBE10201137BA00D397E2 /* AppDelegate.swift in Sources */,
@@ -610,6 +629,7 @@
 				04481DA22031F67A001F04FA /* EgyptLady.swift in Sources */,
 				04391C39213E62F4000357AC /* Simulation.swift in Sources */,
 				041B990F204C4BBB001F0E16 /* HexPointWithCorner.swift in Sources */,
+				049CACEA2145BB4400990CF5 /* PropertyRelation.swift in Sources */,
 				04FC594D2034484C00251E7F /* GameObjectEngine.swift in Sources */,
 				0451D597203765A100E7C882 /* Village.swift in Sources */,
 				041B9902204C3AD8001F0E16 /* Game.swift in Sources */,
