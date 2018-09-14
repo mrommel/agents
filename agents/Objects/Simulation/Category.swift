@@ -16,4 +16,6 @@ enum Category {
 	case foreign
 	case lawOrder
 	case publicServices
+
+	case `static`
 }

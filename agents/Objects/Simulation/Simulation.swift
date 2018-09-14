@@ -22,19 +22,28 @@ class Simulation {
 	var birthRate: BirthRate
 	var religiosity: Religiosity
 
-	var happiness: Property
+	var happiness: Happiness
+
+	var properties: [Property] = []
 
 	// Policies
 
 	init() {
 		self.population = Property(name: "Population", category: .core, value: 1000) // total number
+		self.properties.append(self.population)
 
 		self.birthRate = BirthRate()
+		self.properties.append(self.birthRate)
 		self.religiosity = Religiosity()
-		self.happiness = Property(name: "Happiness", category: .core, value: 0.8) // in percent
+		self.properties.append(self.religiosity)
+		self.happiness = Happiness()
+		self.properties.append(self.happiness)
 
+		// connect properties
+		self.population.add(property: self.birthRate, formula: "v+0.9*x")
 		self.birthRate.add(property: self.religiosity, formula: "0.9*x")
-		self.population.add(property: self.birthRate, formula: "")
+		self.religiosity.add(property: StaticProperty(value: 0.8))
+		self.happiness.add(property: StaticProperty(value: 0.8))
 	}
 
 	func iterate() {
@@ -52,13 +61,13 @@ class Simulation {
 	private func doIterate() {
 
 		// first we need to do the calculation
-		self.population.calculate()
-		self.birthRate.calculate()
-		self.happiness.calculate()
+		for property in properties {
+			property.calculate()
+		}
 
 		// then we need to push the value
-		self.population.push()
-		self.birthRate.push()
-		self.happiness.push()
+		for property in properties {
+			property.push()
+		}
 	}
 }

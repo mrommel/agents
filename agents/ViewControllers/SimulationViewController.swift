@@ -25,6 +25,8 @@ class SimulationViewController: UITableViewController {
 
 		self.menuItems.append(MenuPropertyItem(property: simulation.population))
 		self.menuItems.append(MenuPropertyItem(property: simulation.happiness))
+		self.menuItems.append(MenuPropertyItem(property: simulation.religiosity))
+		self.menuItems.append(MenuPropertyItem(property: simulation.birthRate))
 	}
 
 	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

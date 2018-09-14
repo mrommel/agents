@@ -23,7 +23,7 @@ class Property {
 		self.values.append(value)
 	}
 
-	func add(property: Property, formula: String, delay: Int = 0) {
+	func add(property: Property, formula: String = "x", delay: Int = 0) {
 		self.add(propertyRelation: PropertyRelation(property: property, formula: formula, delay: delay))
 	}
 
