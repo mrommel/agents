@@ -20,6 +20,9 @@ class Simulation {
 	var population: Property
 
 	var birthRate: BirthRate
+	var mortalityRate: MortalityRate
+	var health: Health
+
 	var religiosity: Religiosity
 
 	var happiness: Happiness
@@ -29,19 +32,33 @@ class Simulation {
 	// Policies
 
 	init() {
-		self.population = Property(name: "Population", category: .core, value: 1000) // total number
+		self.population = Property(name: "Population", description: "Population desc", category: .core, value: 1000) // total number
 		self.properties.append(self.population)
 
-		self.birthRate = BirthRate()
+		self.birthRate = BirthRate() // 0..1
 		self.properties.append(self.birthRate)
+		self.mortalityRate = MortalityRate() // 0..1
+		self.properties.append(self.mortalityRate)
+		self.health = Health()
+		self.properties.append(self.health)
+
 		self.religiosity = Religiosity()
 		self.properties.append(self.religiosity)
 		self.happiness = Happiness()
 		self.properties.append(self.happiness)
 
 		// connect properties
-		self.population.add(property: self.birthRate, formula: "v+0.9*x")
-		self.birthRate.add(property: self.religiosity, formula: "0.9*x")
+		self.population.add(property: self.population, formula: "x")
+		self.population.add(property: self.birthRate, formula: "0.02*x*v")
+		self.population.add(property: self.mortalityRate, formula: "-0.02*x*v")
+		
+		self.birthRate.add(property: self.religiosity, formula: "0.7*x")
+		self.birthRate.add(property: self.health, formula: "(x-0.5)^0.7")
+
+		self.mortalityRate.add(property: StaticProperty(value: 0.5))
+
+		self.health.add(property: StaticProperty(value: 0.7))
+
 		self.religiosity.add(property: StaticProperty(value: 0.8))
 		self.happiness.add(property: StaticProperty(value: 0.8))
 	}

@@ -11,14 +11,16 @@ import Foundation
 class Property {
 
 	let name: String
+	let description: String
 	let category: Category
 	var values: [Double] = []
 	var inputs: [PropertyRelation] = []
 
 	var stashedValue: Double = 0.0
 
-	init(name: String, category: Category, value: Double) {
+	init(name: String, description: String, category: Category, value: Double) {
 		self.name = name
+		self.description = description
 		self.category = category
 		self.values.append(value)
 	}

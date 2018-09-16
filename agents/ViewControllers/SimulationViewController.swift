@@ -27,6 +27,8 @@ class SimulationViewController: UITableViewController {
 		self.menuItems.append(MenuPropertyItem(property: simulation.happiness))
 		self.menuItems.append(MenuPropertyItem(property: simulation.religiosity))
 		self.menuItems.append(MenuPropertyItem(property: simulation.birthRate))
+		self.menuItems.append(MenuPropertyItem(property: simulation.mortalityRate))
+		self.menuItems.append(MenuPropertyItem(property: simulation.health))
 	}
 
 	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -51,6 +53,12 @@ extension SimulationViewController {
 	}
 }
 
+extension Double {
+	func format(with format: String) -> String {
+		return String(format: "%\(format)f", self)
+	}
+}
+
 // MARK: UITableViewDelegate
 
 extension SimulationViewController {
@@ -62,11 +70,12 @@ extension SimulationViewController {
 		switch indexPath.section {
 		case 0:
 			cell.textLabel?.text = "Iterate"
+			cell.detailTextLabel?.text = ""
 		default:
 			let menuItem = menuItems[indexPath.row]
 			if let property = menuItem.property {
 				cell.textLabel?.text = "\(property.name)"
-				cell.detailTextLabel?.text = "\(property.value())"
+				cell.detailTextLabel?.text = "\(property.value().format(with: ".2"))"
 			}
 		}
 

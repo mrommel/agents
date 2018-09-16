@@ -25,6 +25,6 @@ import Foundation
 class BirthRate: Property {
 
 	init() {
-		super.init(name: "BirthRate", category: .core, value: 0.5) // 0..<10
+		super.init(name: "BirthRate", description: "BirthRate desc", category: .core, value: 0.6) // 0..<10
 	}
 }

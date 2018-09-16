@@ -11,6 +11,6 @@ import Foundation
 class Happiness: Property {
 
 	init() {
-		super.init(name: "Happiness", category: .core, value: 0.8) // in percent
+		super.init(name: "Happiness", description: "Happiness desc", category: .core, value: 0.8) // in percent
 	}
 }
