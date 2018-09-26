@@ -175,7 +175,7 @@ class MapGenerator {
 		for x in 0..<width {
 			for y in 0..<height {
 
-				let latitude = fabs(Float(height / 2 - y)) / Float(height / 2)
+				let latitude = abs(Float(height / 2 - y)) / Float(height / 2)
 
 				if latitude > 0.8 {
 					self.zones[x, y] = .polar

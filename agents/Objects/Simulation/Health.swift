@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class Health: Property {
 
 	init() {
