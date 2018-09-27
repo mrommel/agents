@@ -64,4 +64,8 @@ class Property {
 	func push(value: Double) {
 		self.values.insert(value, at: 0)
 	}
+
+	func valueText() -> String {
+		return "\(self.value().format(with: ".2"))"
+	}
 }

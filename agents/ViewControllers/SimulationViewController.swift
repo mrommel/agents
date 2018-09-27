@@ -17,6 +17,7 @@ class SimulationViewController: UITableViewController {
 	let simulation: Simulation = Simulation()
 
 	var menuItems: [MenuPropertyItem] = []
+	var iteration = 0
 
 	override func viewDidLoad() {
 		self.title = "Simulation"
@@ -29,6 +30,8 @@ class SimulationViewController: UITableViewController {
 		self.menuItems.append(MenuPropertyItem(property: simulation.birthRate))
 		self.menuItems.append(MenuPropertyItem(property: simulation.mortalityRate))
 		self.menuItems.append(MenuPropertyItem(property: simulation.health))
+		self.menuItems.append(MenuPropertyItem(property: simulation.foodSecurity))
+		self.menuItems.append(MenuPropertyItem(property: simulation.lifeSpan))
 	}
 
 	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -70,12 +73,12 @@ extension SimulationViewController {
 		switch indexPath.section {
 		case 0:
 			cell.textLabel?.text = "Iterate"
-			cell.detailTextLabel?.text = ""
+			cell.detailTextLabel?.text = "\(self.iteration)"
 		default:
 			let menuItem = menuItems[indexPath.row]
 			if let property = menuItem.property {
 				cell.textLabel?.text = "\(property.name)"
-				cell.detailTextLabel?.text = "\(property.value().format(with: ".2"))"
+				cell.detailTextLabel?.text = property.valueText()
 			}
 		}
 
@@ -87,6 +90,7 @@ extension SimulationViewController {
 		switch indexPath.section {
 		case 0:
 			self.simulation.iterate()
+			self.iteration += 1
 		default: break
 		}
 	}
