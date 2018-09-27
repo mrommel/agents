@@ -68,4 +68,20 @@ class Property {
 	func valueText() -> String {
 		return "\(self.value().format(with: ".2"))"
 	}
+
+	func nameOfValue(from steps: [String]) -> String {
+
+		let stepIncrement = 1.0 / Double(steps.count)
+		var stepValue = 0.0
+
+		for step in steps {
+			if self.value().between(from: stepValue, to: stepValue + stepIncrement) {
+				return step
+			}
+
+			stepValue += stepIncrement
+		}
+
+		return "---"
+	}
 }
