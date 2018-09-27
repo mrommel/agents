@@ -51,14 +51,11 @@ class Simulation {
 		self.population.add(property: self.population, formula: "x")
 		self.population.add(property: self.birthRate, formula: "0.02*x*v")
 		self.population.add(property: self.mortalityRate, formula: "-0.02*x*v")
-		
 		self.birthRate.add(property: self.religiosity, formula: "0.7*x")
 		self.birthRate.add(property: self.health, formula: "(x-0.5)^0.7")
 
 		self.mortalityRate.add(property: StaticProperty(value: 0.5))
-
 		self.health.add(property: StaticProperty(value: 0.7))
-
 		self.religiosity.add(property: StaticProperty(value: 0.8))
 		self.happiness.add(property: StaticProperty(value: 0.8))
 	}

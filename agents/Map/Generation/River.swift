@@ -62,7 +62,7 @@ class River {
 	///   - to: end point of the edge
 	/// - Returns: `RiverPoint`, which is the edge of point `from` and `to`
 	private func generateRiverEdgeSameTile(from: HexPointWithCorner, to: HexPointWithCorner) -> RiverEdge {
-		
+
 		if from.corner == .northeast && to.corner == .east {
 			return RiverEdge(with: from.point, and: .southEast)
 		} else if from.corner == .east && to.corner == .northeast {

@@ -6,7 +6,7 @@ target 'agents' do
 	#pod 'PiwikTracker', '4.2.0'
 	#pod 'SwiftRecord', '0.0.6'
 	#pod 'SwiftEventBus', '~> 2.1.2'
-	pod 'SwiftLint'
+	pod 'SwiftLint', '0.27.0'
 
 	target 'agentsTests' do
 		inherit! :search_paths

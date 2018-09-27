@@ -62,4 +62,5 @@ identifier_name:
     - b2
     - b3
     - any
+    - in
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
