@@ -8,7 +8,9 @@
 
 import Foundation
 
-/// <#Description#>
+/// LifeSpan
+///
+/// https://en.wikipedia.org/wiki/Life_expectancy
 class LifeSpan: Property {
 
 	let steps = ["0-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "81-90", "91-100"]
