@@ -14,3 +14,9 @@ extension Double {
 		return from <= self && self <= to
 	}
 }
+
+extension Double {
+	func format(with format: String) -> String {
+		return String(format: "%\(format)f", self)
+	}
+}

@@ -71,4 +71,11 @@ class Policy: Property {
 
 		}
 	}
+
+	/// change selection
+	///
+	/// - Parameter index: new selected index
+	func select(at index: Int) {
+		self.selectionIndex = index
+	}
 }

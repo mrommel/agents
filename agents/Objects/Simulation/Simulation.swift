@@ -34,7 +34,9 @@ class Simulation {
 	var properties: [Property] = []
 
 	// Policies
-	var policy: Policy
+	var policy0: Policy
+	var policy1: Policy
+	var policy2: Policy
 
 	init() {
 
@@ -62,10 +64,20 @@ class Simulation {
 		self.properties.append(self.grossDomesticProduct)
 
 		// policies
-		let policy1 = PolicySelection(name: "abc", description: "abc", value: 0.0, enabled: true)
-		let policy2 = PolicySelection(name: "abc2", description: "abc2", value: 0.2, enabled: true)
-		let policies = [policy1, policy2]
-		self.policy = Policy(name: "Sample Policy", description: "Sample Policy", category: .core, selections: policies, initialSelection: policy2)
+		let policy0Selection1 = PolicySelection(name: "abc", description: "abc", value: 0.0, enabled: true)
+		let policy0Selection2 = PolicySelection(name: "abc2", description: "abc2", value: 0.2, enabled: true)
+		let policy0Selections = [policy0Selection1, policy0Selection2]
+		self.policy0 = Policy(name: "Sample Policy0", description: "Sample Policy", category: .core, selections: policy0Selections, initialSelection: policy0Selection2)
+
+		let policy1Selection1 = PolicySelection(name: "abc2", description: "abc2", value: 0.0, enabled: true)
+		let policy1Selection2 = PolicySelection(name: "def2", description: "def2", value: 0.3, enabled: true)
+		let policy1Selections = [policy1Selection1, policy1Selection2]
+		self.policy1 = Policy(name: "Sample Policy1", description: "Sample Policy2", category: .core, selections: policy1Selections, initialSelection: policy1Selection2)
+
+		let policy2Selection1 = PolicySelection(name: "abc3", description: "abc3", value: 0.1, enabled: true)
+		let policy2Selection2 = PolicySelection(name: "def3", description: "def3", value: 0.3, enabled: true)
+		let policy2Selections = [policy2Selection1, policy2Selection2]
+		self.policy2 = Policy(name: "Sample Policy2", description: "Sample Policy2", category: .core, selections: policy2Selections, initialSelection: policy2Selection2)
 
 		// population impacts
 		self.population.add(property: self.population, formula: "x") // keep self value

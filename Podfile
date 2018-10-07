@@ -7,6 +7,7 @@ target 'agents' do
 	#pod 'SwiftRecord', '0.0.6'
 	#pod 'SwiftEventBus', '~> 2.1.2'
 	pod 'SwiftLint', '0.27.0'
+	#pod 'SwiftChart'
 
 	target 'agentsTests' do
 		inherit! :search_paths

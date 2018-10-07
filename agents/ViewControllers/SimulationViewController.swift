@@ -28,12 +28,17 @@ class SimulationViewController: UITableViewController {
 
 	var policyPickerView: UIPickerView!
 	var policyTextField: UITextField!
+	var pickerView: UIPickerView?
 
+	/* view model */
 	let simulation: Simulation = Simulation()
 
 	var menuItems: [MenuPropertyItem] = []
 	var policyItems: [MenuPropertyItem] = []
+	var selectedPolicy: MenuPropertyItem?
+
 	var iteration = 0
+	/* view model */
 
 	override func viewDidLoad() {
 		self.title = "Simulation"
@@ -50,7 +55,9 @@ class SimulationViewController: UITableViewController {
 		self.menuItems.append(MenuPropertyItem(property: simulation.lifeSpan))
 		self.menuItems.append(MenuPropertyItem(property: simulation.grossDomesticProduct))
 
-		self.policyItems.append(MenuPropertyItem(property: simulation.policy))
+		self.policyItems.append(MenuPropertyItem(property: simulation.policy0))
+		self.policyItems.append(MenuPropertyItem(property: simulation.policy1))
+		self.policyItems.append(MenuPropertyItem(property: simulation.policy2))
 	}
 
 	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -77,12 +84,6 @@ extension SimulationViewController {
 	}
 }
 
-extension Double {
-	func format(with format: String) -> String {
-		return String(format: "%\(format)f", self)
-	}
-}
-
 // MARK: UITableViewDelegate
 
 extension SimulationViewController {
@@ -91,26 +92,30 @@ extension SimulationViewController {
 
 		switch indexPath.section {
 		case 0:
-			let cell = tableView.dequeueReusableCell(withIdentifier: "PropertyTableViewCell", for: indexPath) as! PropertyTableViewCell
-			cell.textLabel?.text = "Iterate"
-			cell.valueLabel?.text = "\(self.iteration)"
-			return cell
+			if let cell = tableView.dequeueReusableCell(withIdentifier: "PropertyTableViewCell", for: indexPath) as? PropertyTableViewCell {
+				cell.textLabel?.text = "Iterate"
+				cell.valueLabel?.text = "\(self.iteration)"
+				return cell
+			}
 		case 1:
 			let menuItem = self.menuItems[indexPath.row]
 			if let property = menuItem.property {
-				let cell = tableView.dequeueReusableCell(withIdentifier: "PropertyTableViewCell", for: indexPath) as! PropertyTableViewCell
-				cell.textLabel?.text = "\(property.name)"
-				cell.valueLabel?.text = property.valueText()
-				return cell
+				if let cell = tableView.dequeueReusableCell(withIdentifier: "PropertyTableViewCell", for: indexPath) as? PropertyTableViewCell {
+					cell.textLabel?.text = "\(property.name)"
+					cell.valueLabel?.text = property.valueText()
+					return cell
+				}
 			}
 		default:
 			let menuItem = self.policyItems[indexPath.row]
 			if let property = menuItem.property {
-				let cell = tableView.dequeueReusableCell(withIdentifier: "PolicyTableViewCell", for: indexPath) as! PolicyTableViewCell
-				cell.textLabel?.text = "\(property.name)"
-				cell.valueField?.text = property.valueText()
-				cell.valueField.delegate = self
-				return cell
+				if let cell = tableView.dequeueReusableCell(withIdentifier: "PolicyTableViewCell", for: indexPath) as? PolicyTableViewCell {
+					cell.textLabel?.text = "\(property.name)"
+					cell.valueField?.text = property.valueText()
+					cell.valueField.tag = indexPath.row
+					cell.valueField.delegate = self
+					return cell
+				}
 			}
 		}
 
@@ -123,23 +128,29 @@ extension SimulationViewController {
 		case 0:
 			self.simulation.iterate()
 			self.iteration += 1
-			break
 		case 1:
+			// todo
 			break
 		default:
-			//setupPicker(for: )
-			break
+			if let cell = tableView.cellForRow(at: indexPath) as? PolicyTableViewCell {
+				setupPicker(for: cell.valueField)
+			}
 		}
 	}
 
-	func setupPicker(for textField: UITextField) {
+	func setupPicker(for textField: UITextField?) {
+
+		self.selectedPolicy = self.policyItems[textField?.tag ?? 0]
 
 		// UIPickerView
-		let myPickerView = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
-		myPickerView.delegate = self
-		myPickerView.dataSource = self
-		myPickerView.backgroundColor = UIColor.white
-		textField.inputView = myPickerView
+		self.pickerView = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+		self.pickerView?.delegate = self
+		self.pickerView?.dataSource = self
+		self.pickerView?.backgroundColor = UIColor.white
+		if let policy = self.selectedPolicy?.property as? Policy {
+			self.pickerView?.selectRow(policy.selectionIndex, inComponent: 0, animated: true) // pre-select
+		}
+		textField?.inputView = self.pickerView
 
 		// ToolBar
 		let toolBar = UIToolbar()
@@ -149,20 +160,35 @@ extension SimulationViewController {
 		toolBar.sizeToFit()
 
 		// Adding Button ToolBar
-		let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(SimulationViewController.doneClick))
-		doneButton.tag = 
+		let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(SimulationViewController.doneClick(sender:)))
+		doneButton.tag = textField?.tag ?? 0
 		let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-		let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(SimulationViewController.cancelClick))
+		let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(SimulationViewController.cancelClick(sender:)))
+		cancelButton.tag = textField?.tag ?? 0
 		toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
 		toolBar.isUserInteractionEnabled = true
-		textField.inputAccessoryView = toolBar
+		textField?.inputAccessoryView = toolBar
 	}
 
-	@objc func doneClick() {
-		//txt_pickUpData.resignFirstResponder()
+	@objc func doneClick(sender: UIBarButtonItem) {
+
+		let selectedRow = self.pickerView?.selectedRow(inComponent: 0) ?? 0
+		if let policy = self.selectedPolicy?.property as? Policy {
+			let newValue = policy.selections[selectedRow].name
+
+			policy.select(at: selectedRow)
+
+			if let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 2)) as? PolicyTableViewCell {
+				cell.valueField.text = newValue
+				cell.valueField.resignFirstResponder()
+			}
+		}
 	}
-	@objc func cancelClick() {
-		//txt_pickUpData.resignFirstResponder()
+
+	@objc func cancelClick(sender: UIBarButtonItem) {
+		if let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 2)) as? PolicyTableViewCell {
+			cell.valueField.resignFirstResponder()
+		}
 	}
 }
 
@@ -189,7 +215,12 @@ extension SimulationViewController: SimulationDelegate {
 extension SimulationViewController: UIPickerViewDelegate {
 
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		return ["abc", "def"][row]
+
+		if let policy = self.selectedPolicy?.property as? Policy {
+			return policy.selections[row].name
+		}
+
+		return "???"
 	}
 }
 
@@ -204,6 +235,11 @@ extension SimulationViewController: UIPickerViewDataSource {
 
 	// The number of rows of data
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return 2
+
+		if let policy = self.selectedPolicy?.property as? Policy {
+			return policy.selections.count
+		}
+
+		return 1
 	}
 }
