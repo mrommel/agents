@@ -1,0 +1,15 @@
+/* 
+  Localized.strings
+  agents
+
+  Created by Michael Rommel on 07.10.18.
+  Copyright © 2018 Michael Rommel. All rights reserved.
+*/
+
+// general
+"Picker.Done" = "Fini";
+"Picker.Cancel" = "Annuler";
+
+// Simulation
+"Simulation.Title" = "Simulation";
+"Simulation.Iterate" = "Tourner";

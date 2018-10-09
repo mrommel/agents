@@ -66,6 +66,7 @@
 		0451D5952037637700E7C882 /* EgyptBoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D5942037637700E7C882 /* EgyptBoy.swift */; };
 		0451D597203765A100E7C882 /* Village.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D596203765A100E7C882 /* Village.swift */; };
 		0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D59820376EB900E7C882 /* VillageViewController.swift */; };
+		047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F6216CEC0D008E9D05 /* PrimarySchools.swift */; };
 		047CA09C216A8DC1001C4745 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 047CA09E216A8DC1001C4745 /* Localizable.strings */; };
 		047CA0A1216A8FFB001C4745 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A0216A8FFA001C4745 /* R.generated.swift */; };
 		047CA0A4216A9277001C4745 /* SimulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A3216A9277001C4745 /* SimulationViewModel.swift */; };
@@ -169,9 +170,12 @@
 		0451D5942037637700E7C882 /* EgyptBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgyptBoy.swift; sourceTree = "<group>"; };
 		0451D596203765A100E7C882 /* Village.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Village.swift; sourceTree = "<group>"; };
 		0451D59820376EB900E7C882 /* VillageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageViewController.swift; sourceTree = "<group>"; };
+		047344F6216CEC0D008E9D05 /* PrimarySchools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySchools.swift; sourceTree = "<group>"; };
 		047CA09D216A8DC1001C4745 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		047CA0A0216A8FFA001C4745 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		047CA0A3216A9277001C4745 /* SimulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModel.swift; sourceTree = "<group>"; };
+		047CA0A5216B3946001C4745 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		047CA0A6216B3952001C4745 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		049CACE72145BB1B00990CF5 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		049CACE92145BB4400990CF5 /* PropertyRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyRelation.swift; sourceTree = "<group>"; };
 		049CACEB2145BB6E00990CF5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -470,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				04F973812161F4D200FB573F /* Policy.swift */,
+				047344F6216CEC0D008E9D05 /* PrimarySchools.swift */,
 			);
 			path = Policies;
 			sourceTree = "<group>";
@@ -570,6 +575,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				fr,
 			);
 			mainGroup = 040FBE03201137BA00D397E2;
 			productRefGroup = 040FBE0D201137BA00D397E2 /* Products */;
@@ -757,6 +764,7 @@
 				041B990F204C4BBB001F0E16 /* HexPointWithCorner.swift in Sources */,
 				049CACEA2145BB4400990CF5 /* PropertyRelation.swift in Sources */,
 				04FC594D2034484C00251E7F /* GameObjectEngine.swift in Sources */,
+				047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */,
 				0451D597203765A100E7C882 /* Village.swift in Sources */,
 				041B9902204C3AD8001F0E16 /* Game.swift in Sources */,
 				041B9915204C4D0D001F0E16 /* FlowDirection.swift in Sources */,
@@ -818,6 +826,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				047CA09D216A8DC1001C4745 /* en */,
+				047CA0A5216B3946001C4745 /* de */,
+				047CA0A6216B3952001C4745 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -829,6 +839,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -888,6 +899,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -47,19 +47,13 @@ class SimulationViewModel {
 	init() {
 		self.screenTitle = R.string.localizable.simulationTitle()
 
-		self.menuItems.append(MenuPropertyItem(property: simulation.population))
-		self.menuItems.append(MenuPropertyItem(property: simulation.happiness))
-		self.menuItems.append(MenuPropertyItem(property: simulation.religiosity))
-		self.menuItems.append(MenuPropertyItem(property: simulation.birthRate))
-		self.menuItems.append(MenuPropertyItem(property: simulation.mortalityRate))
-		self.menuItems.append(MenuPropertyItem(property: simulation.health))
-		self.menuItems.append(MenuPropertyItem(property: simulation.foodSecurity))
-		self.menuItems.append(MenuPropertyItem(property: simulation.lifeSpan))
-		self.menuItems.append(MenuPropertyItem(property: simulation.grossDomesticProduct))
+		for property in self.simulation.properties {
+			self.menuItems.append(MenuPropertyItem(property: property))
+		}
 
-		self.policyItems.append(MenuPolicyItem(policy: simulation.policy0))
-		self.policyItems.append(MenuPolicyItem(policy: simulation.policy1))
-		self.policyItems.append(MenuPolicyItem(policy: simulation.policy2))
+		for policy in self.simulation.policies {
+			self.policyItems.append(MenuPolicyItem(policy: policy))
+		}
 	}
 
 	func iterateSimulation() {
