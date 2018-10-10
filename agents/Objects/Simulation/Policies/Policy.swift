@@ -44,11 +44,11 @@ class Policy: Property {
 	}
 
 	override func add(property: Property, formula: String = "x", delay: Int = 0) {
-		assert(false, "Policies can't have external impact ")
+		assert(false, "Policies can't have external impact")
 	}
 
 	override func add(propertyRelation: PropertyRelation) {
-		assert(false, "Policies can't have external impact ")
+		assert(false, "Policies can't have external impact")
 	}
 
 	/// we need to override the Property behavior

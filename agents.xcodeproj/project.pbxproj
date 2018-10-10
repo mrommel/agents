@@ -67,6 +67,7 @@
 		0451D597203765A100E7C882 /* Village.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D596203765A100E7C882 /* Village.swift */; };
 		0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D59820376EB900E7C882 /* VillageViewController.swift */; };
 		047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F6216CEC0D008E9D05 /* PrimarySchools.swift */; };
+		047344FA216DC85E008E9D05 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F9216DC85E008E9D05 /* Event.swift */; };
 		047CA09C216A8DC1001C4745 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 047CA09E216A8DC1001C4745 /* Localizable.strings */; };
 		047CA0A1216A8FFB001C4745 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A0216A8FFA001C4745 /* R.generated.swift */; };
 		047CA0A4216A9277001C4745 /* SimulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A3216A9277001C4745 /* SimulationViewModel.swift */; };
@@ -171,6 +172,7 @@
 		0451D596203765A100E7C882 /* Village.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Village.swift; sourceTree = "<group>"; };
 		0451D59820376EB900E7C882 /* VillageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageViewController.swift; sourceTree = "<group>"; };
 		047344F6216CEC0D008E9D05 /* PrimarySchools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySchools.swift; sourceTree = "<group>"; };
+		047344F9216DC85E008E9D05 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		047CA09D216A8DC1001C4745 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		047CA0A0216A8FFA001C4745 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		047CA0A3216A9277001C4745 /* SimulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModel.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		04391C37213E62E4000357AC /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
+				047344F8216DC83F008E9D05 /* Events */,
 				04F9738321621F4E00FB573F /* Properties */,
 				04F9738421621F6300FB573F /* Policies */,
 				04391C38213E62F4000357AC /* Simulation.swift */,
@@ -440,6 +443,14 @@
 				041B9922204D7FC1001F0E16 /* AreaSprites.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		047344F8216DC83F008E9D05 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				047344F9216DC85E008E9D05 /* Event.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 		047CA0A2216A9264001C4745 /* ViewModels */ = {
@@ -763,6 +774,7 @@
 				04391C39213E62F4000357AC /* Simulation.swift in Sources */,
 				041B990F204C4BBB001F0E16 /* HexPointWithCorner.swift in Sources */,
 				049CACEA2145BB4400990CF5 /* PropertyRelation.swift in Sources */,
+				047344FA216DC85E008E9D05 /* Event.swift in Sources */,
 				04FC594D2034484C00251E7F /* GameObjectEngine.swift in Sources */,
 				047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */,
 				0451D597203765A100E7C882 /* Village.swift in Sources */,

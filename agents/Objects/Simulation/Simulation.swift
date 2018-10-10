@@ -36,9 +36,12 @@ class Simulation {
 	// Policies
 	var primarySchools: PrimarySchools
 	var policy1: Policy
-	var policy2: Policy
 
 	var policies: [Policy] = []
+
+	// Events
+
+	var events: [Event] = []
 
 	init() {
 
@@ -74,12 +77,6 @@ class Simulation {
 		let policy1Selections = [policy1Selection1, policy1Selection2]
 		self.policy1 = Policy(name: "Sample Policy1", description: "Sample Policy2", category: .core, selections: policy1Selections, initialSelection: policy1Selection2)
 		self.policies.append(self.policy1)
-
-		let policy2Selection1 = PolicySelection(name: "abc3", description: "abc3", value: 0.1, enabled: true)
-		let policy2Selection2 = PolicySelection(name: "def3", description: "def3", value: 0.3, enabled: true)
-		let policy2Selections = [policy2Selection1, policy2Selection2]
-		self.policy2 = Policy(name: "Sample Policy2", description: "Sample Policy2", category: .core, selections: policy2Selections, initialSelection: policy2Selection2)
-		self.policies.append(self.policy2)
 
 		// population impacts
 		self.population.add(property: self.population, formula: "x") // keep self value
@@ -130,13 +127,29 @@ class Simulation {
 	private func doIterate() {
 
 		// first we need to do the calculation
-		for property in properties {
+		for property in self.properties {
 			property.calculate()
 		}
 
+		for policy in self.policies {
+			policy.calculate()
+		}
+
+		for event in self.events {
+			event.calculate()
+		}
+
 		// then we need to push the value
-		for property in properties {
+		for property in self.properties {
 			property.push()
+		}
+
+		for policy in self.policies {
+			policy.push()
+		}
+
+		for event in self.events {
+			event.push()
 		}
 	}
 }
