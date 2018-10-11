@@ -35,13 +35,19 @@ class Simulation {
 
 	// Policies
 	var primarySchools: PrimarySchools
-	var policy1: Policy
+	var sewage: Sewage
 
 	var policies: [Policy] = []
 
 	// Events
 
+	var earthQuake: Earthquake
+
 	var events: [Event] = []
+
+	// Grudges
+
+	var grudges: [Grudge] = []
 
 	init() {
 
@@ -72,11 +78,12 @@ class Simulation {
 		self.primarySchools = PrimarySchools()
 		self.policies.append(self.primarySchools)
 
-		let policy1Selection1 = PolicySelection(name: "abc2", description: "abc2", value: 0.0, enabled: true)
-		let policy1Selection2 = PolicySelection(name: "def2", description: "def2", value: 0.3, enabled: true)
-		let policy1Selections = [policy1Selection1, policy1Selection2]
-		self.policy1 = Policy(name: "Sample Policy1", description: "Sample Policy2", category: .core, selections: policy1Selections, initialSelection: policy1Selection2)
-		self.policies.append(self.policy1)
+		self.sewage = Sewage()
+		self.policies.append(self.sewage)
+
+		// events
+		self.earthQuake = Earthquake()
+		self.events.append(self.earthQuake)
 
 		// population impacts
 		self.population.add(property: self.population, formula: "x") // keep self value
@@ -139,6 +146,22 @@ class Simulation {
 			event.calculate()
 		}
 
+		// find event
+		let maxScore = self.events.max(by: { $0.value() < $1.value() })?.value() ?? 0
+		let allEventsWithMaxScore = self.events.filter { $0.value() == maxScore }
+
+		if !allEventsWithMaxScore.isEmpty {
+
+			let eventThatTriggered = allEventsWithMaxScore.randomItem()
+			self.grudges.append(contentsOf: eventThatTriggered.grudges(for: self))
+
+			// TODO: show alert for eventThatTriggered
+		}
+
+		for grudge in self.grudges {
+			grudge.calculate()
+		}
+
 		// then we need to push the value
 		for property in self.properties {
 			property.push()
@@ -150,6 +173,10 @@ class Simulation {
 
 		for event in self.events {
 			event.push()
+		}
+
+		for grudge in self.grudges {
+			grudge.push()
 		}
 	}
 }

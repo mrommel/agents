@@ -68,6 +68,9 @@
 		0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D59820376EB900E7C882 /* VillageViewController.swift */; };
 		047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F6216CEC0D008E9D05 /* PrimarySchools.swift */; };
 		047344FA216DC85E008E9D05 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F9216DC85E008E9D05 /* Event.swift */; };
+		047344FC216DF61E008E9D05 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344FB216DF61E008E9D05 /* Earthquake.swift */; };
+		047344FE216E0934008E9D05 /* Sewage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344FD216E0934008E9D05 /* Sewage.swift */; };
+		04734500216F9E4C008E9D05 /* Grudge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344FF216F9E4C008E9D05 /* Grudge.swift */; };
 		047CA09C216A8DC1001C4745 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 047CA09E216A8DC1001C4745 /* Localizable.strings */; };
 		047CA0A1216A8FFB001C4745 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A0216A8FFA001C4745 /* R.generated.swift */; };
 		047CA0A4216A9277001C4745 /* SimulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A3216A9277001C4745 /* SimulationViewModel.swift */; };
@@ -173,6 +176,9 @@
 		0451D59820376EB900E7C882 /* VillageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageViewController.swift; sourceTree = "<group>"; };
 		047344F6216CEC0D008E9D05 /* PrimarySchools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySchools.swift; sourceTree = "<group>"; };
 		047344F9216DC85E008E9D05 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		047344FB216DF61E008E9D05 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
+		047344FD216E0934008E9D05 /* Sewage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sewage.swift; sourceTree = "<group>"; };
+		047344FF216F9E4C008E9D05 /* Grudge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grudge.swift; sourceTree = "<group>"; };
 		047CA09D216A8DC1001C4745 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		047CA0A0216A8FFA001C4745 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		047CA0A3216A9277001C4745 /* SimulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModel.swift; sourceTree = "<group>"; };
@@ -449,6 +455,8 @@
 			isa = PBXGroup;
 			children = (
 				047344F9216DC85E008E9D05 /* Event.swift */,
+				047344FF216F9E4C008E9D05 /* Grudge.swift */,
+				047344FB216DF61E008E9D05 /* Earthquake.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -486,6 +494,7 @@
 			children = (
 				04F973812161F4D200FB573F /* Policy.swift */,
 				047344F6216CEC0D008E9D05 /* PrimarySchools.swift */,
+				047344FD216E0934008E9D05 /* Sewage.swift */,
 			);
 			path = Policies;
 			sourceTree = "<group>";
@@ -725,6 +734,7 @@
 				040107CA215D1913006FBB2A /* Double.swift in Sources */,
 				04312EAB214AF98900E8AA6D /* Happiness.swift in Sources */,
 				041B990B204C4B3B001F0E16 /* MapSize.swift in Sources */,
+				047344FC216DF61E008E9D05 /* Earthquake.swift in Sources */,
 				04391C36213DD2C1000357AC /* SimulationViewController.swift in Sources */,
 				04F12D54201A6B8D007A8817 /* Array2D.swift in Sources */,
 				040107C7215CF22B006FBB2A /* LifeSpan.swift in Sources */,
@@ -746,12 +756,14 @@
 				040107CC215E6F1D006FBB2A /* GrossDomesticProduct.swift in Sources */,
 				04F12D56201A7531007A8817 /* IntegerExtension.swift in Sources */,
 				041B9906204C42D7001F0E16 /* HeightMap.swift in Sources */,
+				047344FE216E0934008E9D05 /* Sewage.swift in Sources */,
 				049CACEE2145BF0000990CF5 /* BirthRate.swift in Sources */,
 				040FBE692017B4A300D397E2 /* AStarPathFinder.swift in Sources */,
 				04F038502024997F0011B79C /* Continent.swift in Sources */,
 				04F973822161F4D200FB573F /* Policy.swift in Sources */,
 				040FBE4220113D4700D397E2 /* GameScene.swift in Sources */,
 				041B991D204C8C6F001F0E16 /* Terrain.swift in Sources */,
+				04734500216F9E4C008E9D05 /* Grudge.swift in Sources */,
 				049CACEC2145BB6E00990CF5 /* Category.swift in Sources */,
 				047CA0A4216A9277001C4745 /* SimulationViewModel.swift in Sources */,
 				040FBE6120171A9700D397E2 /* Tile.swift in Sources */,
