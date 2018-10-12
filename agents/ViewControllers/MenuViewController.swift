@@ -53,7 +53,7 @@ extension MenuViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let menuItem = menuItems[indexPath.row]
-		
+
 		if let segue = menuItem.segue {
 			self.performSegue(withIdentifier: segue, sender: self)
 		}

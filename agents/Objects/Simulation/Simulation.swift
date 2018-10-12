@@ -118,6 +118,8 @@ class Simulation {
 		self.religiosity.add(property: StaticProperty(value: 0.8)) // TODO: remove
 		self.happiness.add(property: StaticProperty(value: 0.8)) // TODO: remove
 		self.grossDomesticProduct.add(property: StaticProperty(value: 0.001)) // TODO: remove
+
+		self.earthQuake.add(property: RandomProperty(minimum: 0.01, maximum: 0.03)) //
 	}
 
 	func iterate() {
@@ -150,6 +152,7 @@ class Simulation {
 		// find event
 		let maxScore = self.events.max(by: { $0.value() < $1.value() })?.value() ?? 0
 		let allEventsWithMaxScore = self.events.filter { $0.value() == maxScore }
+		print("Best score: \(maxScore) => \(allEventsWithMaxScore.count) items")
 
 		if !allEventsWithMaxScore.isEmpty {
 
