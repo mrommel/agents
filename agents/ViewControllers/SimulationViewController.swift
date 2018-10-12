@@ -43,7 +43,7 @@ extension SimulationViewController: SimulationDelegate {
 		let alert = UIAlertController(title: R.string.localizable.simulationEvent(),
 									  message: event?.description,
 									  preferredStyle: UIAlertController.Style.alert)
-		
+
 		alert.addAction(UIAlertAction(title: R.string.localizable.generalOkay(),
 									  style: .default,
 									  handler: { _ in
@@ -99,7 +99,7 @@ extension SimulationViewController {
 			if let policy = menuItem?.policy {
 				if let cell = tableView.dequeueReusableCell(withIdentifier: PolicyTableViewCell.identifier, for: indexPath) as? PolicyTableViewCell {
 					cell.textLabel?.text = "\(policy.name)"
-					cell.valueField?.text = policy.valueText()
+					cell.valueField?.text = policy.selection.name
 					cell.valueField.tag = indexPath.row
 					cell.valueField.delegate = self
 					return cell
