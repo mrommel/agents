@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Rswift
 
 class SimulationViewController: UITableViewController {
 
@@ -35,6 +36,20 @@ extension SimulationViewController: SimulationDelegate {
 
 	func iterationComplete() {
 		self.tableView.reloadData()
+	}
+
+	func simulationTriggered(by event: Event?) {
+
+		let alert = UIAlertController(title: R.string.localizable.simulationEvent(),
+									  message: event?.description,
+									  preferredStyle: UIAlertController.Style.alert)
+		
+		alert.addAction(UIAlertAction(title: R.string.localizable.generalOkay(),
+									  style: .default,
+									  handler: { _ in
+			// handle user clicked
+		}))
+		self.present(alert, animated: true, completion: nil)
 	}
 }
 

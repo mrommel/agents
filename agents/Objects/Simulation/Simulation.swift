@@ -10,6 +10,7 @@ import Foundation
 
 protocol SimulationDelegate: class {
 	func iterationComplete()
+	func simulationTriggered(by event: Event?)
 }
 
 class Simulation {
@@ -155,7 +156,10 @@ class Simulation {
 			let eventThatTriggered = allEventsWithMaxScore.randomItem()
 			self.grudges.append(contentsOf: eventThatTriggered.grudges(for: self))
 
-			// TODO: show alert for eventThatTriggered
+			DispatchQueue.main.async {
+				// Update the UI
+				self.delegate?.simulationTriggered(by: eventThatTriggered)
+			}
 		}
 
 		for grudge in self.grudges {

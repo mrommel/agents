@@ -6,9 +6,13 @@
 */
 
 // general
-"Picker.Done" = "Fertig";
-"Picker.Cancel" = "Abbrechen";
+"General.Okay" 							= "Okay";
+
+// picker
+"Picker.Done" 							= "Fertig";
+"Picker.Cancel" 						= "Abbrechen";
 
 // Simulation
-"Simulation.Title" = "Simulation";
-"Simulation.Iterate" = "Runde";
+"Simulation.Title" 						= "Simulation";
+"Simulation.Iterate" 					= "Runde";
+"Simulation.Event" 						= "Ereignis";
