@@ -10,12 +10,12 @@ import Foundation
 
 class Event: Property {
 
-	init(name: String, description: String, category: Category) {
+	init(name: String, summary: String, category: Category) {
 
-		super.init(name: name, description: description, category: category, value: 0.0)
+		super.init(name: name, summary: summary, category: category, value: 0.0)
 	}
 
-	func grudges(for simulation: Simulation?) -> [Grudge] {
+	func effects(for simulation: Simulation?) -> [Effect] {
 
 		assertionFailure("Subclasses need to implement this method")
 

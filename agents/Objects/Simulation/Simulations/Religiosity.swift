@@ -12,6 +12,6 @@ import Foundation
 class Religiosity: Property {
 
 	init() {
-		super.init(name: "Religiosity", description: "Religiosity desc", category: .core, value: 0.8)
+		super.init(name: "Religiosity", summary: "Religiosity desc", category: .core, value: 0.8)
 	}
 }

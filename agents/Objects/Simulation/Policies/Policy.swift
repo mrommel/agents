@@ -29,7 +29,7 @@ class Policy: Property {
 	let selections: [PolicySelection]
 	var selectionIndex: Int
 
-	init(name: String, description: String, category: Category, selections: [PolicySelection], initialSelection: PolicySelection) {
+	init(name: String, summary: String, category: Category, selections: [PolicySelection], initialSelection: PolicySelection) {
 
 		self.selections = selections
 
@@ -40,7 +40,7 @@ class Policy: Property {
 
 		self.selectionIndex = selectedIndex
 
-		super.init(name: name, description: description, category: category, value: initialSelection.value)
+		super.init(name: name, summary: summary, category: category, value: initialSelection.value)
 	}
 
 	override func add(property: Property, formula: String = "x", delay: Int = 0) {

@@ -11,18 +11,22 @@ import Foundation
 class Property {
 
 	let name: String
-	let description: String
+	let summary: String
 	let category: Category
 	var values: [Double] = []
 	var inputs: [PropertyRelation] = []
 
 	var stashedValue: Double = 0.0
 
-	init(name: String, description: String, category: Category, value: Double) {
+	init(name: String, summary: String, category: Category, value: Double) {
 		self.name = name
-		self.description = description
+		self.summary = summary
 		self.category = category
 		self.values.append(value)
+	}
+
+	func setup(with simulation: Simulation) {
+		assertionFailure("Subclasses need to implement this method")
 	}
 
 	func add(property: Property, formula: String = "x", delay: Int = 0) {

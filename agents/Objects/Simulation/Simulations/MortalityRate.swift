@@ -12,6 +12,6 @@ import Foundation
 class MortalityRate: Property {
 
 	init() {
-		super.init(name: "MortalityRate", description: "MortalityRate desc", category: .core, value: 0.5) // 0..<10
+		super.init(name: "MortalityRate", summary: "MortalityRate desc", category: .core, value: 0.5) // 0..<10
 	}
 }

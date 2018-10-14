@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040107C3215CEC18006FBB2A /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040107C2215CEC18006FBB2A /* Population.swift */; };
-		040107C5215CEC9D006FBB2A /* FoodSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040107C4215CEC9D006FBB2A /* FoodSecurity.swift */; };
+		040107C5215CEC9D006FBB2A /* FoodPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040107C4215CEC9D006FBB2A /* FoodPrice.swift */; };
 		040107C7215CF22B006FBB2A /* LifeSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040107C6215CF22B006FBB2A /* LifeSpan.swift */; };
 		040107CA215D1913006FBB2A /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040107C9215D1913006FBB2A /* Double.swift */; };
 		040107CC215E6F1D006FBB2A /* GrossDomesticProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040107CB215E6F1D006FBB2A /* GrossDomesticProduct.swift */; };
@@ -66,12 +66,19 @@
 		0451D5952037637700E7C882 /* EgyptBoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D5942037637700E7C882 /* EgyptBoy.swift */; };
 		0451D597203765A100E7C882 /* Village.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D596203765A100E7C882 /* Village.swift */; };
 		0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D59820376EB900E7C882 /* VillageViewController.swift */; };
+		045B47BA2173392900217822 /* Conservatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B47B92173392900217822 /* Conservatives.swift */; };
+		045B47BC2173888600217822 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B47BB2173888600217822 /* Group.swift */; };
 		047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F6216CEC0D008E9D05 /* PrimarySchools.swift */; };
 		047344FA216DC85E008E9D05 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F9216DC85E008E9D05 /* Event.swift */; };
 		047344FC216DF61E008E9D05 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344FB216DF61E008E9D05 /* Earthquake.swift */; };
 		047344FE216E0934008E9D05 /* Sewage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344FD216E0934008E9D05 /* Sewage.swift */; };
-		04734500216F9E4C008E9D05 /* Grudge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344FF216F9E4C008E9D05 /* Grudge.swift */; };
+		04734500216F9E4C008E9D05 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344FF216F9E4C008E9D05 /* Effect.swift */; };
 		0473450221709C54008E9D05 /* RandomProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473450121709C54008E9D05 /* RandomProperty.swift */; };
+		0473450421728607008E9D05 /* MonumentVandalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473450321728607008E9D05 /* MonumentVandalized.swift */; };
+		0473450621728786008E9D05 /* CrimeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473450521728786008E9D05 /* CrimeRate.swift */; };
+		0473450821728A0E008E9D05 /* Poverty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473450721728A0E008E9D05 /* Poverty.swift */; };
+		0473450A21729042008E9D05 /* Unemployment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473450921729042008E9D05 /* Unemployment.swift */; };
+		0473450C217296E6008E9D05 /* Education.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473450B217296E6008E9D05 /* Education.swift */; };
 		047CA09C216A8DC1001C4745 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 047CA09E216A8DC1001C4745 /* Localizable.strings */; };
 		047CA0A1216A8FFB001C4745 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A0216A8FFA001C4745 /* R.generated.swift */; };
 		047CA0A4216A9277001C4745 /* SimulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A3216A9277001C4745 /* SimulationViewModel.swift */; };
@@ -110,7 +117,7 @@
 
 /* Begin PBXFileReference section */
 		040107C2215CEC18006FBB2A /* Population.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
-		040107C4215CEC9D006FBB2A /* FoodSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSecurity.swift; sourceTree = "<group>"; };
+		040107C4215CEC9D006FBB2A /* FoodPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPrice.swift; sourceTree = "<group>"; };
 		040107C6215CF22B006FBB2A /* LifeSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSpan.swift; sourceTree = "<group>"; };
 		040107C9215D1913006FBB2A /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		040107CB215E6F1D006FBB2A /* GrossDomesticProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrossDomesticProduct.swift; sourceTree = "<group>"; };
@@ -175,12 +182,19 @@
 		0451D5942037637700E7C882 /* EgyptBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgyptBoy.swift; sourceTree = "<group>"; };
 		0451D596203765A100E7C882 /* Village.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Village.swift; sourceTree = "<group>"; };
 		0451D59820376EB900E7C882 /* VillageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageViewController.swift; sourceTree = "<group>"; };
+		045B47B92173392900217822 /* Conservatives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conservatives.swift; sourceTree = "<group>"; };
+		045B47BB2173888600217822 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		047344F6216CEC0D008E9D05 /* PrimarySchools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySchools.swift; sourceTree = "<group>"; };
 		047344F9216DC85E008E9D05 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		047344FB216DF61E008E9D05 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
 		047344FD216E0934008E9D05 /* Sewage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sewage.swift; sourceTree = "<group>"; };
-		047344FF216F9E4C008E9D05 /* Grudge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grudge.swift; sourceTree = "<group>"; };
+		047344FF216F9E4C008E9D05 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		0473450121709C54008E9D05 /* RandomProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomProperty.swift; sourceTree = "<group>"; };
+		0473450321728607008E9D05 /* MonumentVandalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentVandalized.swift; sourceTree = "<group>"; };
+		0473450521728786008E9D05 /* CrimeRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrimeRate.swift; sourceTree = "<group>"; };
+		0473450721728A0E008E9D05 /* Poverty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poverty.swift; sourceTree = "<group>"; };
+		0473450921729042008E9D05 /* Unemployment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unemployment.swift; sourceTree = "<group>"; };
+		0473450B217296E6008E9D05 /* Education.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Education.swift; sourceTree = "<group>"; };
 		047CA09D216A8DC1001C4745 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		047CA0A0216A8FFA001C4745 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		047CA0A3216A9277001C4745 /* SimulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModel.swift; sourceTree = "<group>"; };
@@ -404,8 +418,9 @@
 		04391C37213E62E4000357AC /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
+				045B47B82173391400217822 /* Groups */,
 				047344F8216DC83F008E9D05 /* Events */,
-				04F9738321621F4E00FB573F /* Properties */,
+				04F9738321621F4E00FB573F /* Simulations */,
 				04F9738421621F6300FB573F /* Policies */,
 				04391C38213E62F4000357AC /* Simulation.swift */,
 			);
@@ -453,12 +468,22 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
+		045B47B82173391400217822 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				045B47B92173392900217822 /* Conservatives.swift */,
+				045B47BB2173888600217822 /* Group.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
 		047344F8216DC83F008E9D05 /* Events */ = {
 			isa = PBXGroup;
 			children = (
 				047344F9216DC85E008E9D05 /* Event.swift */,
-				047344FF216F9E4C008E9D05 /* Grudge.swift */,
+				047344FF216F9E4C008E9D05 /* Effect.swift */,
 				047344FB216DF61E008E9D05 /* Earthquake.swift */,
+				0473450321728607008E9D05 /* MonumentVandalized.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -471,7 +496,7 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		04F9738321621F4E00FB573F /* Properties */ = {
+		04F9738321621F4E00FB573F /* Simulations */ = {
 			isa = PBXGroup;
 			children = (
 				049CACE72145BB1B00990CF5 /* Property.swift */,
@@ -485,11 +510,15 @@
 				04023FC4214BE42F00CE5AC2 /* MortalityRate.swift */,
 				049CACEF2145C0E200990CF5 /* Religiosity.swift */,
 				04023FC6214C4E7800CE5AC2 /* Health.swift */,
-				040107C4215CEC9D006FBB2A /* FoodSecurity.swift */,
+				040107C4215CEC9D006FBB2A /* FoodPrice.swift */,
 				040107C6215CF22B006FBB2A /* LifeSpan.swift */,
 				040107CB215E6F1D006FBB2A /* GrossDomesticProduct.swift */,
+				0473450521728786008E9D05 /* CrimeRate.swift */,
+				0473450721728A0E008E9D05 /* Poverty.swift */,
+				0473450921729042008E9D05 /* Unemployment.swift */,
+				0473450B217296E6008E9D05 /* Education.swift */,
 			);
-			path = Properties;
+			path = Simulations;
 			sourceTree = "<group>";
 		};
 		04F9738421621F6300FB573F /* Policies */ = {
@@ -752,10 +781,13 @@
 				040FBE4820113F5E00D397E2 /* Global.swift in Sources */,
 				041B9908204C4988001F0E16 /* PerlinGenerator.swift in Sources */,
 				04C4C549203DB92B00477A1F /* Field.swift in Sources */,
-				040107C5215CEC9D006FBB2A /* FoodSecurity.swift in Sources */,
+				040107C5215CEC9D006FBB2A /* FoodPrice.swift in Sources */,
+				0473450C217296E6008E9D05 /* Education.swift in Sources */,
 				04C4C54B20405EF600477A1F /* Building.swift in Sources */,
+				0473450A21729042008E9D05 /* Unemployment.swift in Sources */,
 				049CACF02145C0E200990CF5 /* Religiosity.swift in Sources */,
 				040FBE12201137BA00D397E2 /* GameViewController.swift in Sources */,
+				045B47BA2173392900217822 /* Conservatives.swift in Sources */,
 				040107CC215E6F1D006FBB2A /* GrossDomesticProduct.swift in Sources */,
 				04F12D56201A7531007A8817 /* IntegerExtension.swift in Sources */,
 				041B9906204C42D7001F0E16 /* HeightMap.swift in Sources */,
@@ -766,8 +798,9 @@
 				04F973822161F4D200FB573F /* Policy.swift in Sources */,
 				040FBE4220113D4700D397E2 /* GameScene.swift in Sources */,
 				041B991D204C8C6F001F0E16 /* Terrain.swift in Sources */,
-				04734500216F9E4C008E9D05 /* Grudge.swift in Sources */,
+				04734500216F9E4C008E9D05 /* Effect.swift in Sources */,
 				049CACEC2145BB6E00990CF5 /* Category.swift in Sources */,
+				0473450821728A0E008E9D05 /* Poverty.swift in Sources */,
 				047CA0A4216A9277001C4745 /* SimulationViewModel.swift in Sources */,
 				040FBE6120171A9700D397E2 /* Tile.swift in Sources */,
 				04F0384C20221C6D0011B79C /* HexPoint.swift in Sources */,
@@ -791,6 +824,7 @@
 				041B990F204C4BBB001F0E16 /* HexPointWithCorner.swift in Sources */,
 				049CACEA2145BB4400990CF5 /* PropertyRelation.swift in Sources */,
 				047344FA216DC85E008E9D05 /* Event.swift in Sources */,
+				045B47BC2173888600217822 /* Group.swift in Sources */,
 				04FC594D2034484C00251E7F /* GameObjectEngine.swift in Sources */,
 				047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */,
 				0451D597203765A100E7C882 /* Village.swift in Sources */,
@@ -800,11 +834,13 @@
 				041B9917204C50E5001F0E16 /* Random.swift in Sources */,
 				04F03852202499BC0011B79C /* ContinentFinder.swift in Sources */,
 				040FBE6520171ED500D397E2 /* HexDirection.swift in Sources */,
+				0473450421728607008E9D05 /* MonumentVandalized.swift in Sources */,
 				04FC596E20372A6A00251E7F /* GameObjectAction.swift in Sources */,
 				047CA0A1216A8FFB001C4745 /* R.generated.swift in Sources */,
 				041B9921204C9219001F0E16 /* Area.swift in Sources */,
 				041B9919204C5137001F0E16 /* ArrayExtension.swift in Sources */,
 				040107C3215CEC18006FBB2A /* Population.swift in Sources */,
+				0473450621728786008E9D05 /* CrimeRate.swift in Sources */,
 				041B9923204D7FC1001F0E16 /* AreaSprites.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

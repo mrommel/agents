@@ -11,6 +11,6 @@ import Foundation
 class StaticProperty: Property {
 
 	init(value: Double) {
-		super.init(name: "static", description: "", category: .static, value: value)
+		super.init(name: "static", summary: "", category: .static, value: value)
 	}
 }

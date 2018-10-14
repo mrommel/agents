@@ -11,14 +11,19 @@ import Foundation
 class Earthquake: Event {
 
 	init() {
-		super.init(name: "Earthquake", description: "An Earthquake happend", category: .core)
+		super.init(name: "Earthquake",
+				   summary: "An Earthquake happend",
+				   category: .core)
 	}
 
-	override func grudges(for simulation: Simulation?) -> [Grudge] {
+	override func effects(for simulation: Simulation?) -> [Effect] {
 
-		let grudgeOnHealth = Grudge(name: "Earthquake", description: "Earthquake", value: 0.9, decay: 0.7)
-		simulation?.health.add(property: grudgeOnHealth, formula: "0.1*x", delay: 1)
+		let effectOnHealth = Effect(name: "Earthquake effect on Health", value: 0.9, decay: 0.7)
+		simulation?.health.add(property: effectOnHealth, formula: "-0.1*x", delay: 1)
 
-		return [grudgeOnHealth]
+		let decayEffect = Effect(name: "Earthquake decay", value: -1.0, decay: 0.9) //
+		simulation?.earthQuakeEvent.add(property: decayEffect)
+
+		return [effectOnHealth, decayEffect]
 	}
 }

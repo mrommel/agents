@@ -41,7 +41,7 @@ extension SimulationViewController: SimulationDelegate {
 	func simulationTriggered(by event: Event?) {
 
 		let alert = UIAlertController(title: R.string.localizable.simulationEvent(),
-									  message: event?.description,
+									  message: event?.summary,
 									  preferredStyle: UIAlertController.Style.alert)
 
 		alert.addAction(UIAlertAction(title: R.string.localizable.generalOkay(),

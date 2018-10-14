@@ -28,9 +28,14 @@ class Simulation {
 	var religiosity: Religiosity
 
 	var happiness: Happiness
-	var foodSecurity: FoodSecurity
+	var foodPrice: FoodPrice
 
 	var grossDomesticProduct: GrossDomesticProduct
+
+	var crimeRate: CrimeRate
+	var povertyRate: Poverty
+	var unemployment: Unemployment
+	var education: Education
 
 	var properties: [Property] = []
 
@@ -42,13 +47,20 @@ class Simulation {
 
 	// Events
 
-	var earthQuake: Earthquake
+	var earthQuakeEvent: Earthquake
+	var monumentVandalizedEvent: MonumentVandalized
 
 	var events: [Event] = []
 
-	// Grudges
+	// Groups
 
-	var grudges: [Grudge] = []
+	var conservatives: Conservatives
+
+	var groups: [Group] = []
+
+	// Effects
+
+	var effects: [Effect] = []
 
 	init() {
 
@@ -69,11 +81,23 @@ class Simulation {
 		self.happiness = Happiness()
 		self.properties.append(self.happiness)
 
-		self.foodSecurity = FoodSecurity()
-		self.properties.append(self.foodSecurity)
+		self.foodPrice = FoodPrice()
+		self.properties.append(self.foodPrice)
 
 		self.grossDomesticProduct = GrossDomesticProduct()
 		self.properties.append(self.grossDomesticProduct)
+
+		self.crimeRate = CrimeRate()
+		self.properties.append(self.crimeRate)
+
+		self.povertyRate = Poverty()
+		self.properties.append(self.povertyRate)
+
+		self.unemployment = Unemployment()
+		self.properties.append(self.unemployment)
+
+		self.education = Education()
+		self.properties.append(self.education)
 
 		// policies
 		self.primarySchools = PrimarySchools()
@@ -83,13 +107,23 @@ class Simulation {
 		self.policies.append(self.sewage)
 
 		// events
-		self.earthQuake = Earthquake()
-		self.events.append(self.earthQuake)
+		self.earthQuakeEvent = Earthquake()
+		self.events.append(self.earthQuakeEvent)
 
-		// population impacts
-		self.population.add(property: self.population, formula: "x") // keep self value
-		self.population.add(property: self.birthRate, formula: "0.02*x*v")
-		self.population.add(property: self.mortalityRate, formula: "-0.02*x*v")
+		self.monumentVandalizedEvent = MonumentVandalized()
+		self.events.append(self.monumentVandalizedEvent)
+
+		// groups
+		self.conservatives = Conservatives()
+		self.groups.append(self.conservatives)
+
+		// setup impacts
+		self.population.setup(with: self)
+
+		self.grossDomesticProduct.setup(with: self)
+
+		self.unemployment.setup(with: self)
+		self.education.setup(with: self)
 
 		// birth rate impacts
 		self.birthRate.add(property: self.religiosity, formula: "0.7*x") // the more religious, the higher the birth rate
@@ -99,10 +133,10 @@ class Simulation {
 		// mortality rate impacts
 		self.mortalityRate.add(property: StaticProperty(value: 0.5)) // keep self value
 		self.mortalityRate.add(property: self.health, formula: "-0.3*x")
-		self.mortalityRate.add(property: self.foodSecurity, formula: "0.5*x") // foodsecurity reduces mortality
+		self.mortalityRate.add(property: self.foodPrice, formula: "0.5*x") // foodsecurity reduces mortality
 
 		// foodSecurity impacts
-		self.foodSecurity.add(property: StaticProperty(value: 0.4)) // keep self value
+		self.foodPrice.add(property: StaticProperty(value: 0.2)) // keep self value
 		// different sources of food, stable surplus
 
 		// lifespan
@@ -114,12 +148,15 @@ class Simulation {
 		self.health.add(property: StaticProperty(value: 0.7)) // keep self value
 		self.health.add(property: self.lifeSpan, formula: "0.2*ln(x)") // lifespan decreases health
 
+		// crime rate
+		self.crimeRate.setup(with: self)
+
 		// rest
 		self.religiosity.add(property: StaticProperty(value: 0.8)) // TODO: remove
 		self.happiness.add(property: StaticProperty(value: 0.8)) // TODO: remove
-		self.grossDomesticProduct.add(property: StaticProperty(value: 0.001)) // TODO: remove
 
-		self.earthQuake.add(property: RandomProperty(minimum: 0.01, maximum: 0.03)) //
+		self.earthQuakeEvent.add(property: RandomProperty(minimum: 0.01, maximum: 0.03)) //
+		self.monumentVandalizedEvent.add(property: self.crimeRate)
 	}
 
 	func iterate() {
@@ -149,6 +186,10 @@ class Simulation {
 			event.calculate()
 		}
 
+		for group in self.groups {
+			group.calculate()
+		}
+
 		// find event
 		let maxScore = self.events.max(by: { $0.value() < $1.value() })?.value() ?? 0
 		let allEventsWithMaxScore = self.events.filter { $0.value() == maxScore }
@@ -157,7 +198,7 @@ class Simulation {
 		if !allEventsWithMaxScore.isEmpty {
 
 			let eventThatTriggered = allEventsWithMaxScore.randomItem()
-			self.grudges.append(contentsOf: eventThatTriggered.grudges(for: self))
+			self.effects.append(contentsOf: eventThatTriggered.effects(for: self))
 
 			DispatchQueue.main.async {
 				// Update the UI
@@ -165,8 +206,8 @@ class Simulation {
 			}
 		}
 
-		for grudge in self.grudges {
-			grudge.calculate()
+		for effect in self.effects {
+			effect.calculate()
 		}
 
 		// then we need to push the value
@@ -182,8 +223,17 @@ class Simulation {
 			event.push()
 		}
 
-		for grudge in self.grudges {
-			grudge.push()
+		for group in self.groups {
+			group.push()
 		}
+
+		for effect in self.effects {
+			effect.push()
+		}
+
+		// filter grudges that are too small
+		print("- before filtering \(self.effects) effects")
+		self.effects = self.effects.filter { abs($0.value()) > 0.01 }
+		print("- after filtering \(self.effects) effects")
 	}
 }

@@ -19,7 +19,7 @@ class Sewage: Policy {
 		let waterTreatmentSelection = PolicySelection(name: "Water Treatment", description: "Sewage in the middle of the street", value: 0.9, enabled: false)
 
 		super.init(name: "Sewage",
-				   description: "Sewage description",
+				   summary: "Sewage description",
 				   category: .core,
 				   selections: [noSewageSelection, middleStreetSewageSelection, sewageFarmsSelection, waterTreatmentSelection],
 				   initialSelection: noSewageSelection)
