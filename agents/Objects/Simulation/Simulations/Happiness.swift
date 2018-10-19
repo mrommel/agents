@@ -13,4 +13,11 @@ class Happiness: Property {
 	init() {
 		super.init(name: "Happiness", summary: "Happiness desc", category: .core, value: 0.8) // in percent
 	}
+
+	override func setup(with simulation: Simulation) {
+
+		self.add(property: StaticProperty(value: 0.8)) // TODO: remove
+
+		simulation.properties.append(self)
+	}
 }

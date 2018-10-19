@@ -19,7 +19,9 @@ class Unemployment: Property {
 	}
 
 	override func setup(with simulation: Simulation) {
-		
+
 		self.add(property: simulation.grossDomesticProduct, formula: "0-(0.95*x)")
+
+		simulation.properties.append(self)
 	}
 }

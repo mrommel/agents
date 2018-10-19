@@ -16,4 +16,12 @@ class FoodPrice: Property {
 				   category: .publicServices,
 				   value: 0.2)
 	}
+
+	override func setup(with simulation: Simulation) {
+
+		self.add(property: StaticProperty(value: 0.2)) // keep self value
+		// different sources of food, stable surplus
+
+		simulation.properties.append(self)
+	}
 }

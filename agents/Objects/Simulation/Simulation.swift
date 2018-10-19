@@ -58,6 +58,12 @@ class Simulation {
 
 	var groups: [Group] = []
 
+	// Situations
+
+	var homelessness: Homelessness
+
+	var situations: [Situation] = []
+
 	// Effects
 
 	var effects: [Effect] = []
@@ -65,98 +71,61 @@ class Simulation {
 	init() {
 
 		self.population = Population() // total number
-		self.properties.append(self.population)
-
 		self.birthRate = BirthRate() // 0..1
-		self.properties.append(self.birthRate)
 		self.mortalityRate = MortalityRate() // 0..1
-		self.properties.append(self.mortalityRate)
 		self.health = Health()
-		self.properties.append(self.health)
 		self.lifeSpan = LifeSpan()
-		self.properties.append(self.lifeSpan)
-
 		self.religiosity = Religiosity()
-		self.properties.append(self.religiosity)
 		self.happiness = Happiness()
-		self.properties.append(self.happiness)
-
 		self.foodPrice = FoodPrice()
-		self.properties.append(self.foodPrice)
-
 		self.grossDomesticProduct = GrossDomesticProduct()
-		self.properties.append(self.grossDomesticProduct)
-
 		self.crimeRate = CrimeRate()
-		self.properties.append(self.crimeRate)
-
 		self.povertyRate = Poverty()
-		self.properties.append(self.povertyRate)
-
 		self.unemployment = Unemployment()
-		self.properties.append(self.unemployment)
-
 		self.education = Education()
-		self.properties.append(self.education)
 
 		// policies
 		self.primarySchools = PrimarySchools()
-		self.policies.append(self.primarySchools)
-
 		self.sewage = Sewage()
-		self.policies.append(self.sewage)
 
 		// events
 		self.earthQuakeEvent = Earthquake()
-		self.events.append(self.earthQuakeEvent)
-
 		self.monumentVandalizedEvent = MonumentVandalized()
-		self.events.append(self.monumentVandalizedEvent)
 
 		// groups
 		self.conservatives = Conservatives()
-		self.groups.append(self.conservatives)
 
-		// setup impacts
+		// situations
+		self.homelessness = Homelessness()
+
+		// setup properties
 		self.population.setup(with: self)
-
+		self.birthRate.setup(with: self)
+		self.mortalityRate.setup(with: self)
+		self.health.setup(with: self)
+		self.lifeSpan.setup(with: self)
+		self.religiosity.setup(with: self)
+		self.happiness.setup(with: self)
+		self.foodPrice.setup(with: self)
 		self.grossDomesticProduct.setup(with: self)
-
+		self.crimeRate.setup(with: self)
+		self.povertyRate.setup(with: self)
 		self.unemployment.setup(with: self)
 		self.education.setup(with: self)
 
-		// birth rate impacts
-		self.birthRate.add(property: self.religiosity, formula: "0.7*x") // the more religious, the higher the birth rate
-		self.birthRate.add(property: self.health, formula: "(x-0.5)^0.7") // good health increases the birth rate
-		self.birthRate.add(property: self.lifeSpan, formula: "(x-0.5)^0.7") // lifespan reduces the birth rate (the older the people, the lower the relative timeframe when women can get pregnant
+		// setup policies
+		self.primarySchools.setup(with: self)
+		self.sewage.setup(with: self)
 
-		// mortality rate impacts
-		self.mortalityRate.add(property: StaticProperty(value: 0.5)) // keep self value
-		self.mortalityRate.add(property: self.health, formula: "-0.3*x")
-		self.mortalityRate.add(property: self.foodPrice, formula: "0.5*x") // foodsecurity reduces mortality
+		// setup events
+		self.earthQuakeEvent.setup(with: self)
+		self.monumentVandalizedEvent.setup(with: self)
 
-		// foodSecurity impacts
-		self.foodPrice.add(property: StaticProperty(value: 0.2)) // keep self value
-		// different sources of food, stable surplus
+		// setup groups
+		self.conservatives.setup(with: self)
 
-		// lifespan
-		self.lifeSpan.add(property: StaticProperty(value: 0.4)) // keep self value
-		self.lifeSpan.add(property: self.health, formula: "0.2*x") // health increases lifespan
-		self.lifeSpan.add(property: self.grossDomesticProduct, formula: "0.2*(7.02*ln(x*60000)+6.9)*0.01") // more gdp, more life span - https://en.wikipedia.org/wiki/Life_expectancy#/media/File:LifeExpectancy_GDPperCapita.png
-
-		// health impacts
-		self.health.add(property: StaticProperty(value: 0.7)) // keep self value
-		self.health.add(property: self.lifeSpan, formula: "0.2*ln(x)") // lifespan decreases health
-
-		// crime rate
-		self.crimeRate.setup(with: self)
-
-		// rest
-		self.religiosity.add(property: StaticProperty(value: 0.8)) // TODO: remove
-		self.happiness.add(property: StaticProperty(value: 0.8)) // TODO: remove
-
-		self.earthQuakeEvent.add(property: RandomProperty(minimum: 0.01, maximum: 0.03)) //
-		self.monumentVandalizedEvent.add(property: self.crimeRate)
+		// setup situations
+		self.homelessness.setup(with: self)
 	}
 
 	func iterate() {
@@ -231,9 +200,24 @@ class Simulation {
 			effect.push()
 		}
 
-		// filter grudges that are too small
-		print("- before filtering \(self.effects) effects")
+		// filter effects that are too small
+		//print("- before filtering \(self.effects) effects")
 		self.effects = self.effects.filter { abs($0.value()) > 0.01 }
-		print("- after filtering \(self.effects) effects")
+		//print("- after filtering \(self.effects) effects")
+	}
+}
+
+extension Simulation: SituationDelegate {
+
+	func start(situation: Situation?) {
+		if let situation = situation {
+			print("Situation started: \(situation.name)")
+		}
+	}
+
+	func end(situation: Situation?) {
+		if let situation = situation {
+			print("Situation endedb: \(situation.name)")
+		}
 	}
 }

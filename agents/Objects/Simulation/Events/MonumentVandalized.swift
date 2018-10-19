@@ -26,4 +26,12 @@ class MonumentVandalized: Event {
 
 		return [effectOnConservatives, decayEffect]
 	}
+
+	override func setup(with simulation: Simulation) {
+
+		self.add(property: RandomProperty(minimum: 0.01, maximum: 0.2))
+		self.add(property: simulation.crimeRate, formula: "0.3*x")
+
+		simulation.events.append(self)
+	}
 }

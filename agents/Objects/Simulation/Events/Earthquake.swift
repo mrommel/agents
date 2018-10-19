@@ -26,4 +26,11 @@ class Earthquake: Event {
 
 		return [effectOnHealth, decayEffect]
 	}
+
+	override func setup(with simulation: Simulation) {
+
+		self.add(property: RandomProperty(minimum: 0.01, maximum: 0.03)) //
+
+		simulation.events.append(self)
+	}
 }

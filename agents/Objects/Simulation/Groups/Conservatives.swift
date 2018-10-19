@@ -17,4 +17,9 @@ class Conservatives: Group {
 				   moodValue: 0.6,
 				   frequencyValue: 0.25)
 	}
+
+	override func setup(with simulation: Simulation) {
+
+		simulation.groups.append(self)
+	}
 }

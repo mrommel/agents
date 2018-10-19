@@ -18,6 +18,8 @@ class Population: Property {
 		self.add(property: simulation.population, formula: "x") // keep self value
 		self.add(property: simulation.birthRate, formula: "0.02*x*v")
 		self.add(property: simulation.mortalityRate, formula: "-0.02*x*v")
+
+		simulation.properties.append(self)
 	}
 
 	override func valueText() -> String {

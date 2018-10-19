@@ -23,5 +23,7 @@ class CrimeRate: Property {
 		self.add(property: simulation.unemployment, formula: "0.17*(x^5)")
 		self.add(property: simulation.povertyRate, formula: "0.41*(x^2)", delay: 4)
 		self.add(property: simulation.education, formula: "-0.12*(x^6)")
+
+		simulation.properties.append(self)
 	}
 }

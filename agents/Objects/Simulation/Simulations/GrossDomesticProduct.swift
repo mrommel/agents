@@ -20,7 +20,8 @@ class GrossDomesticProduct: Property {
 	override func setup(with simulation: Simulation) {
 
 		self.add(property: StaticProperty(value: 0.001)) // TODO: remove
-		
+
+		simulation.properties.append(self)
 	}
 
 	override func valueText() -> String {

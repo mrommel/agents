@@ -17,4 +17,11 @@ class Poverty: Property {
 				   category: .welfare,
 				   value: 0.64)
 	}
+
+	override func setup(with simulation: Simulation) {
+
+		// TODO add inputs
+
+		simulation.properties.append(self)
+	}
 }

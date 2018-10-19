@@ -36,4 +36,8 @@ class Group {
 		self.mood.push()
 		self.frequency.push()
 	}
+
+	func setup(with simulation: Simulation) {
+		assertionFailure("Subclasses need to implement this method")
+	}
 }
