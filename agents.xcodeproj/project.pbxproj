@@ -68,6 +68,10 @@
 		0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451D59820376EB900E7C882 /* VillageViewController.swift */; };
 		045979A32179FF4C006803CF /* Situation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045979A22179FF4C006803CF /* Situation.swift */; };
 		045979A62179FFCA006803CF /* Homelessness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045979A52179FFCA006803CF /* Homelessness.swift */; };
+		045979A8217A0C6A006803CF /* Poor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045979A7217A0C6A006803CF /* Poor.swift */; };
+		045979AA217A0F2C006803CF /* MinisterialScandal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045979A9217A0F2C006803CF /* MinisterialScandal.swift */; };
+		045979AC217A1136006803CF /* All.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045979AB217A1136006803CF /* All.swift */; };
+		045979AE217A11B8006803CF /* Religious.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045979AD217A11B8006803CF /* Religious.swift */; };
 		045B47BA2173392900217822 /* Conservatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B47B92173392900217822 /* Conservatives.swift */; };
 		045B47BC2173888600217822 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B47BB2173888600217822 /* Group.swift */; };
 		047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F6216CEC0D008E9D05 /* PrimarySchools.swift */; };
@@ -186,6 +190,10 @@
 		0451D59820376EB900E7C882 /* VillageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageViewController.swift; sourceTree = "<group>"; };
 		045979A22179FF4C006803CF /* Situation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Situation.swift; sourceTree = "<group>"; };
 		045979A52179FFCA006803CF /* Homelessness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homelessness.swift; sourceTree = "<group>"; };
+		045979A7217A0C6A006803CF /* Poor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poor.swift; sourceTree = "<group>"; };
+		045979A9217A0F2C006803CF /* MinisterialScandal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinisterialScandal.swift; sourceTree = "<group>"; };
+		045979AB217A1136006803CF /* All.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = All.swift; sourceTree = "<group>"; };
+		045979AD217A11B8006803CF /* Religious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Religious.swift; sourceTree = "<group>"; };
 		045B47B92173392900217822 /* Conservatives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conservatives.swift; sourceTree = "<group>"; };
 		045B47BB2173888600217822 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		047344F6216CEC0D008E9D05 /* PrimarySchools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySchools.swift; sourceTree = "<group>"; };
@@ -502,7 +510,10 @@
 		045B47B82173391400217822 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
+				045979AB217A1136006803CF /* All.swift */,
 				045B47B92173392900217822 /* Conservatives.swift */,
+				045979A7217A0C6A006803CF /* Poor.swift */,
+				045979AD217A11B8006803CF /* Religious.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -512,6 +523,7 @@
 			children = (
 				047344FB216DF61E008E9D05 /* Earthquake.swift */,
 				0473450321728607008E9D05 /* MonumentVandalized.swift */,
+				045979A9217A0F2C006803CF /* MinisterialScandal.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -791,6 +803,7 @@
 				047344FC216DF61E008E9D05 /* Earthquake.swift in Sources */,
 				04391C36213DD2C1000357AC /* SimulationViewController.swift in Sources */,
 				04F12D54201A6B8D007A8817 /* Array2D.swift in Sources */,
+				045979AE217A11B8006803CF /* Religious.swift in Sources */,
 				040107C7215CF22B006FBB2A /* LifeSpan.swift in Sources */,
 				045979A62179FFCA006803CF /* Homelessness.swift in Sources */,
 				040FBE532011D80B00D397E2 /* OptionViewController.swift in Sources */,
@@ -840,6 +853,7 @@
 				0451D5952037637700E7C882 /* EgyptBoy.swift in Sources */,
 				0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */,
 				04312EAD214AFD1B00E8AA6D /* StaticProperty.swift in Sources */,
+				045979A8217A0C6A006803CF /* Poor.swift in Sources */,
 				04481D9320249C95001F04FA /* BitArray.swift in Sources */,
 				041B9912204C4C07001F0E16 /* RiverEdge.swift in Sources */,
 				041B990D204C4B5A001F0E16 /* ClimateZone.swift in Sources */,
@@ -853,6 +867,7 @@
 				047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */,
 				0451D597203765A100E7C882 /* Village.swift in Sources */,
 				041B9902204C3AD8001F0E16 /* Game.swift in Sources */,
+				045979AC217A1136006803CF /* All.swift in Sources */,
 				041B9915204C4D0D001F0E16 /* FlowDirection.swift in Sources */,
 				04FC594B20338C7600251E7F /* Rabbit.swift in Sources */,
 				041B9917204C50E5001F0E16 /* Random.swift in Sources */,
@@ -865,6 +880,7 @@
 				041B9919204C5137001F0E16 /* ArrayExtension.swift in Sources */,
 				040107C3215CEC18006FBB2A /* Population.swift in Sources */,
 				0473450621728786008E9D05 /* CrimeRate.swift in Sources */,
+				045979AA217A0F2C006803CF /* MinisterialScandal.swift in Sources */,
 				041B9923204D7FC1001F0E16 /* AreaSprites.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

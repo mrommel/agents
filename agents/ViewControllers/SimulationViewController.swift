@@ -56,7 +56,7 @@ extension SimulationViewController: SimulationDelegate {
 extension SimulationViewController {
 
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		return 3
+		return 4
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,8 +66,12 @@ extension SimulationViewController {
 			return 1
 		case 1:
 			return self.viewModel?.menuItems.count ?? 0
-		default:
+		case 2:
 			return self.viewModel?.policyItems.count ?? 0
+		case 3:
+			return self.viewModel?.situationItems.count ?? 0
+		default:
+			return 0
 		}
 	}
 }
@@ -75,6 +79,18 @@ extension SimulationViewController {
 // MARK: UITableViewDelegate
 
 extension SimulationViewController {
+
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		switch(section) {
+		case 0: return "Actions"
+		case 1: return "Properties"
+		case 2: return "Policies"
+		case 3: return "Situations"
+
+		default: return ""
+
+		}
+	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -94,7 +110,7 @@ extension SimulationViewController {
 					return cell
 				}
 			}
-		default:
+		case 2:
 			let menuItem = self.viewModel?.policyItems[indexPath.row]
 			if let policy = menuItem?.policy {
 				if let cell = tableView.dequeueReusableCell(withIdentifier: PolicyTableViewCell.identifier, for: indexPath) as? PolicyTableViewCell {
@@ -105,9 +121,24 @@ extension SimulationViewController {
 					return cell
 				}
 			}
+		case 3:
+			let situationItem = self.viewModel?.situationItems[indexPath.row]
+			if let situation = situationItem?.situation {
+				if let cell = tableView.dequeueReusableCell(withIdentifier: SituationTableViewCell.identifier, for: indexPath) as? SituationTableViewCell {
+					cell.textLabel?.text = "\(situation.name)"
+					cell.valueLabel?.text = situation.valueText()
+					return cell
+				}
+			}
+		default:
+			break
 		}
 
-		return tableView.dequeueReusableCell(withIdentifier: PropertyTableViewCell.identifier, for: indexPath) as! PropertyTableViewCell
+		if let cell = tableView.dequeueReusableCell(withIdentifier: PropertyTableViewCell.identifier, for: indexPath) as? PropertyTableViewCell {
+			return cell
+		}
+
+		fatalError("invalid return")
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

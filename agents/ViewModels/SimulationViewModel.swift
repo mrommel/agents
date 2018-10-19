@@ -17,6 +17,10 @@ struct MenuPolicyItem {
 	let policy: Policy?
 }
 
+struct MenuSituationItem {
+	let situation: Situation?
+}
+
 class PropertyTableViewCell: UITableViewCell {
 
 	static let identifier = "PropertyTableViewCell"
@@ -33,6 +37,14 @@ class PolicyTableViewCell: UITableViewCell {
 	@IBOutlet var valueField: UITextField!
 }
 
+class SituationTableViewCell: UITableViewCell {
+
+	static let identifier = "SituationTableViewCell"
+
+	@IBOutlet var titleLabel: UILabel!
+	@IBOutlet var valueLabel: UILabel!
+}
+
 class SimulationViewModel {
 
 	let screenTitle: String
@@ -40,6 +52,7 @@ class SimulationViewModel {
 
 	var menuItems: [MenuPropertyItem] = []
 	var policyItems: [MenuPolicyItem] = []
+	var situationItems: [MenuSituationItem] = []
 	var selectedPolicy: MenuPolicyItem?
 
 	var iteration = 0
@@ -53,6 +66,10 @@ class SimulationViewModel {
 
 		for policy in self.simulation.policies {
 			self.policyItems.append(MenuPolicyItem(policy: policy))
+		}
+
+		for situation in self.simulation.situations {
+			self.situationItems.append(MenuSituationItem(situation: situation))
 		}
 	}
 

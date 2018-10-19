@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SituationDelegate {
+protocol SituationDelegate: class {
 	func start(situation: Situation?)
 	func end(situation: Situation?)
 }
@@ -22,7 +22,7 @@ class Situation: Property {
 
 	var enabled: Bool = false
 
-	var delegate: SituationDelegate?
+	weak var delegate: SituationDelegate?
 
 	init(name: String, summary: String, startMessage: String, startTrigger: Double, endMessage: String, endTrigger: Double, category: Category) {
 
