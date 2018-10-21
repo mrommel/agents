@@ -48,7 +48,7 @@ class SituationTableViewCell: UITableViewCell {
 class SimulationViewModel {
 
 	let screenTitle: String
-	let simulation: Simulation = Simulation()
+	let globalSimulation: GlobalSimulation = GlobalSimulation()
 
 	var menuItems: [MenuPropertyItem] = []
 	var policyItems: [MenuPolicyItem] = []
@@ -60,21 +60,21 @@ class SimulationViewModel {
 	init() {
 		self.screenTitle = R.string.localizable.simulationTitle()
 
-		for property in self.simulation.properties {
+		for property in self.globalSimulation.properties {
 			self.menuItems.append(MenuPropertyItem(property: property))
 		}
 
-		for policy in self.simulation.policies {
+		for policy in self.globalSimulation.policies {
 			self.policyItems.append(MenuPolicyItem(policy: policy))
 		}
 
-		for situation in self.simulation.situations {
+		for situation in self.globalSimulation.situations {
 			self.situationItems.append(MenuSituationItem(situation: situation))
 		}
 	}
 
 	func iterateSimulation() {
-		self.simulation.iterate()
+		self.globalSimulation.iterate()
 		self.iteration += 1
 	}
 

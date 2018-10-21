@@ -52,7 +52,7 @@
 		04312EAB214AF98900E8AA6D /* Happiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04312EAA214AF98900E8AA6D /* Happiness.swift */; };
 		04312EAD214AFD1B00E8AA6D /* StaticProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04312EAC214AFD1B00E8AA6D /* StaticProperty.swift */; };
 		04391C36213DD2C1000357AC /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04391C35213DD2C1000357AC /* SimulationViewController.swift */; };
-		04391C39213E62F4000357AC /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04391C38213E62F4000357AC /* Simulation.swift */; };
+		04391C39213E62F4000357AC /* GlobalSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04391C38213E62F4000357AC /* GlobalSimulation.swift */; };
 		0447FDF62087A8D200FB6DF8 /* HexPointWithCornerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF52087A8D200FB6DF8 /* HexPointWithCornerTests.swift */; };
 		0447FDF82087AA5000FB6DF8 /* HeightMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF72087AA5000FB6DF8 /* HeightMapTests.swift */; };
 		0447FDFA20891E2100FB6DF8 /* TileHexMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDF920891E2100FB6DF8 /* TileHexMapTests.swift */; };
@@ -174,7 +174,7 @@
 		04312EAA214AF98900E8AA6D /* Happiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Happiness.swift; sourceTree = "<group>"; };
 		04312EAC214AFD1B00E8AA6D /* StaticProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProperty.swift; sourceTree = "<group>"; };
 		04391C35213DD2C1000357AC /* SimulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
-		04391C38213E62F4000357AC /* Simulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulation.swift; sourceTree = "<group>"; };
+		04391C38213E62F4000357AC /* GlobalSimulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSimulation.swift; sourceTree = "<group>"; };
 		0447FDF52087A8D200FB6DF8 /* HexPointWithCornerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPointWithCornerTests.swift; sourceTree = "<group>"; };
 		0447FDF72087AA5000FB6DF8 /* HeightMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightMapTests.swift; sourceTree = "<group>"; };
 		0447FDF920891E2100FB6DF8 /* TileHexMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileHexMapTests.swift; sourceTree = "<group>"; };
@@ -436,7 +436,7 @@
 				047344F8216DC83F008E9D05 /* Events */,
 				04F9738321621F4E00FB573F /* Simulations */,
 				04F9738421621F6300FB573F /* Policies */,
-				04391C38213E62F4000357AC /* Simulation.swift */,
+				04391C38213E62F4000357AC /* GlobalSimulation.swift */,
 			);
 			path = Simulation;
 			sourceTree = "<group>";
@@ -858,7 +858,7 @@
 				041B9912204C4C07001F0E16 /* RiverEdge.swift in Sources */,
 				041B990D204C4B5A001F0E16 /* ClimateZone.swift in Sources */,
 				04481DA22031F67A001F04FA /* EgyptLady.swift in Sources */,
-				04391C39213E62F4000357AC /* Simulation.swift in Sources */,
+				04391C39213E62F4000357AC /* GlobalSimulation.swift in Sources */,
 				041B990F204C4BBB001F0E16 /* HexPointWithCorner.swift in Sources */,
 				049CACEA2145BB4400990CF5 /* PropertyRelation.swift in Sources */,
 				047344FA216DC85E008E9D05 /* Event.swift in Sources */,

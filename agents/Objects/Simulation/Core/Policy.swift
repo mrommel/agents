@@ -79,7 +79,7 @@ class Policy: Property {
 		self.selectionIndex = index
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		simulation.policies.append(self)
 	}

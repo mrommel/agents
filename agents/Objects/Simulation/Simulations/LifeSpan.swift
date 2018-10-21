@@ -19,7 +19,7 @@ class LifeSpan: Property {
 		super.init(name: "LifeSpan", summary: "Life expectancy is a statistical measure of the average time an organism is expected to live, based on the year of its birth, its current age and other demographic factors including gender.", category: .core, value: 0.4)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		// lifespan
 		self.add(property: StaticProperty(value: 0.4)) // keep self value

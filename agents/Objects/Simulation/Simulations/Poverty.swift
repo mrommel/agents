@@ -18,7 +18,7 @@ class Poverty: Property {
 				   value: 0.64)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		// TODO add inputs
 

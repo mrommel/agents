@@ -16,7 +16,7 @@ class MinisterialScandal: Event {
 				   category: .core)
 	}
 
-	override func effects(for simulation: Simulation?) -> [Effect] {
+	override func effects(for simulation: GlobalSimulation?) -> [Effect] {
 
 		let effectOnAll = Effect(name: "MinisterialScandal effect on All", value: -0.10, decay: 0.740)
 		simulation?.all.mood.add(property: effectOnAll, formula: "x", delay: 1)
@@ -33,7 +33,7 @@ class MinisterialScandal: Event {
 		return [effectOnAll, effectOnConservatives, effectOnReligious, decayEffect]
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		self.add(property: RandomProperty(minimum: 0.01, maximum: 0.2))
 		/*self.add(property: simulation.winning, formula: "0.7*x")*/

@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol SimulationDelegate: class {
+protocol GlobalSimulationDelegate: class {
 	func iterationComplete()
 	func simulationTriggered(by event: Event?)
 }
 
-class Simulation {
+class GlobalSimulation {
 
-	weak var delegate: SimulationDelegate?
+	weak var delegate: GlobalSimulationDelegate?
 
 	// Values / Properties
 	var population: Population = Population() // total number
@@ -167,7 +167,7 @@ class Simulation {
 	}
 }
 
-extension Simulation: SituationDelegate {
+extension GlobalSimulation: SituationDelegate {
 
 	func start(situation: Situation?) {
 		if let situation = situation {

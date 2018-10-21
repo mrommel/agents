@@ -30,7 +30,7 @@ class Homelessness: Situation {
 		// Suicide,0+(0.4*x)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		self.add(property: StaticProperty(value: 0.1))
 		self.add(property: simulation.povertyRate, formula: "0.9*x")

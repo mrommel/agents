@@ -15,7 +15,7 @@ class Religiosity: Property {
 		super.init(name: "Religiosity", summary: "Religiosity desc", category: .core, value: 0.8)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		self.add(property: StaticProperty(value: 0.8)) // TODO: remove
 

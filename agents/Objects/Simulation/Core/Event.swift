@@ -15,7 +15,7 @@ class Event: Property {
 		super.init(name: name, summary: summary, category: category, value: 0.0)
 	}
 
-	func effects(for simulation: Simulation?) -> [Effect] {
+	func effects(for simulation: GlobalSimulation?) -> [Effect] {
 
 		assertionFailure("Subclasses need to implement this method")
 

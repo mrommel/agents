@@ -35,7 +35,7 @@ class Situation: Property {
 		super.init(name: name, summary: summary, category: category, value: 0)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 		self.delegate = simulation
 		simulation.situations.append(self)
 	}

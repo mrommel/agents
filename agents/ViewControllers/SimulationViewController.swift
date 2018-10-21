@@ -20,7 +20,7 @@ class SimulationViewController: UITableViewController {
 	override func viewDidLoad() {
 
 		self.viewModel = SimulationViewModel()
-		self.viewModel?.simulation.delegate = self
+		self.viewModel?.globalSimulation.delegate = self
 
 		self.title = self.viewModel?.screenTitle
 	}
@@ -32,7 +32,7 @@ class SimulationViewController: UITableViewController {
 
 // MARK: SimulationDelegate
 
-extension SimulationViewController: SimulationDelegate {
+extension SimulationViewController: GlobalSimulationDelegate {
 
 	func iterationComplete() {
 		self.tableView.reloadData()

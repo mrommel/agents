@@ -18,7 +18,7 @@ class All: Group {
 				   frequencyValue: 1.0)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		simulation.groups.append(self)
 	}

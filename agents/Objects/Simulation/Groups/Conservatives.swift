@@ -18,7 +18,7 @@ class Conservatives: Group {
 				   frequencyValue: 0.25)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		simulation.groups.append(self)
 	}

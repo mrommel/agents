@@ -16,7 +16,7 @@ class Earthquake: Event {
 				   category: .core)
 	}
 
-	override func effects(for simulation: Simulation?) -> [Effect] {
+	override func effects(for simulation: GlobalSimulation?) -> [Effect] {
 
 		let effectOnHealth = Effect(name: "Earthquake effect on Health", value: 0.9, decay: 0.7)
 		simulation?.health.add(property: effectOnHealth, formula: "-0.1*x", delay: 1)
@@ -27,7 +27,7 @@ class Earthquake: Event {
 		return [effectOnHealth, decayEffect]
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		self.add(property: RandomProperty(minimum: 0.01, maximum: 0.03)) //
 

@@ -14,7 +14,7 @@ class Population: Property {
 		super.init(name: "Population", summary: "", category: .core, value: 1000.0)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 		self.add(property: simulation.population, formula: "x") // keep self value
 		self.add(property: simulation.birthRate, formula: "0.02*x*v")
 		self.add(property: simulation.mortalityRate, formula: "-0.02*x*v")

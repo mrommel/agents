@@ -37,7 +37,7 @@ class Group {
 		self.frequency.push()
 	}
 
-	func setup(with simulation: Simulation) {
+	func setup(with simulation: GlobalSimulation) {
 		assertionFailure("Subclasses need to implement this method")
 	}
 }

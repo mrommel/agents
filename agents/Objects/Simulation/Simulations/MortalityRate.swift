@@ -15,7 +15,7 @@ class MortalityRate: Property {
 		super.init(name: "MortalityRate", summary: "MortalityRate desc", category: .core, value: 0.5) // 0..<10
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		self.add(property: StaticProperty(value: 0.5)) // keep self value
 		self.add(property: simulation.health, formula: "-0.3*x")

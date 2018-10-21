@@ -17,7 +17,7 @@ class Health: Property {
 				   value: 0.7)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		self.add(property: StaticProperty(value: 0.7)) // keep self value
 		self.add(property: simulation.lifeSpan, formula: "0.2*ln(x)") // lifespan decreases health

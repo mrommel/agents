@@ -18,7 +18,7 @@ class Religious: Group {
 				   frequencyValue: 0.2)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		simulation.groups.append(self)
 	}

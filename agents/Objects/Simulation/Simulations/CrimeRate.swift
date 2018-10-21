@@ -18,7 +18,7 @@ class CrimeRate: Property {
 				   value: 0.6)
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		self.add(property: simulation.unemployment, formula: "0.17*(x^5)")
 		self.add(property: simulation.povertyRate, formula: "0.41*(x^2)", delay: 4)

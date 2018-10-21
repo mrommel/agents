@@ -16,7 +16,7 @@ class MonumentVandalized: Event {
 				   category: .core)
 	}
 
-	override func effects(for simulation: Simulation?) -> [Effect] {
+	override func effects(for simulation: GlobalSimulation?) -> [Effect] {
 
 		let effectOnConservatives = Effect(name: "MonumentVandalized effect on Conservatives", value: -0.44, decay: 0.800)
 		simulation?.conservatives.mood.add(property: effectOnConservatives, formula: "-0.1*x", delay: 1)
@@ -27,7 +27,7 @@ class MonumentVandalized: Event {
 		return [effectOnConservatives, decayEffect]
 	}
 
-	override func setup(with simulation: Simulation) {
+	override func setup(with simulation: GlobalSimulation) {
 
 		self.add(property: RandomProperty(minimum: 0.01, maximum: 0.2))
 		self.add(property: simulation.crimeRate, formula: "0.3*x")
