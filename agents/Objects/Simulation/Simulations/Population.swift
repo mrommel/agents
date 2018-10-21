@@ -8,18 +8,18 @@
 
 import Foundation
 
-class Population: Property {
+class Population: Simulation {
 
 	init() {
 		super.init(name: "Population", summary: "", category: .core, value: 1000.0)
 	}
 
 	override func setup(with simulation: GlobalSimulation) {
-		self.add(property: simulation.population, formula: "x") // keep self value
-		self.add(property: simulation.birthRate, formula: "0.02*x*v")
-		self.add(property: simulation.mortalityRate, formula: "-0.02*x*v")
+		self.add(simulation: simulation.population, formula: "x") // keep self value
+		self.add(simulation: simulation.birthRate, formula: "0.02*x*v")
+		self.add(simulation: simulation.mortalityRate, formula: "-0.02*x*v")
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 
 	override func valueText() -> String {

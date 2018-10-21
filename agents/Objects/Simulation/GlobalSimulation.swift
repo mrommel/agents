@@ -17,7 +17,7 @@ class GlobalSimulation {
 
 	weak var delegate: GlobalSimulationDelegate?
 
-	// Values / Properties
+	// Values / Simulations
 	var population: Population = Population() // total number
 	var birthRate: BirthRate = BirthRate() // 0..1
 	var mortalityRate: MortalityRate = MortalityRate() // 0..1
@@ -32,7 +32,7 @@ class GlobalSimulation {
 	var unemployment: Unemployment = Unemployment()
 	var education: Education = Education()
 
-	var properties: [Property] = []
+	var simulations: [Simulation] = []
 
 	// Policies
 	var primarySchools: PrimarySchools = PrimarySchools()
@@ -118,7 +118,7 @@ class GlobalSimulation {
 	private func doIterate() {
 
 		// first we need to do the calculation
-		self.properties.forEach { $0.calculate() }
+		self.simulations.forEach { $0.calculate() }
 		self.policies.forEach { $0.calculate() }
 		self.events.forEach { $0.calculate() }
 		self.groups.forEach { $0.calculate() }
@@ -134,7 +134,7 @@ class GlobalSimulation {
 		}
 
 		// then we need to push the value
-		self.properties.forEach { $0.push() }
+		self.simulations.forEach { $0.push() }
 		self.policies.forEach { $0.push() }
 		self.events.forEach { $0.push() }
 		self.groups.forEach { $0.push() }

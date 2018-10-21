@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Happiness: Property {
+class Happiness: Simulation {
 
 	init() {
 		super.init(name: "Happiness", summary: "Happiness desc", category: .core, value: 0.8) // in percent
@@ -16,8 +16,8 @@ class Happiness: Property {
 
 	override func setup(with simulation: GlobalSimulation) {
 
-		self.add(property: StaticProperty(value: 0.8)) // TODO: remove
+		self.add(simulation: StaticProperty(value: 0.8)) // TODO: remove
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 }

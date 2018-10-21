@@ -65,7 +65,7 @@ extension SimulationViewController {
 		case 0:
 			return 1
 		case 1:
-			return self.viewModel?.menuItems.count ?? 0
+			return self.viewModel?.simulationItems.count ?? 0
 		case 2:
 			return self.viewModel?.policyItems.count ?? 0
 		case 3:
@@ -102,11 +102,11 @@ extension SimulationViewController {
 				return cell
 			}
 		case 1:
-			let menuItem = self.viewModel?.menuItems[indexPath.row]
-			if let property = menuItem?.property {
+			let simulationItem = self.viewModel?.simulationItems[indexPath.row]
+			if let simulation = simulationItem?.simulation {
 				if let cell = tableView.dequeueReusableCell(withIdentifier: PropertyTableViewCell.identifier, for: indexPath) as? PropertyTableViewCell {
-					cell.textLabel?.text = "\(property.name)"
-					cell.valueLabel?.text = property.valueText()
+					cell.textLabel?.text = "\(simulation.name)"
+					cell.valueLabel?.text = simulation.valueText()
 					return cell
 				}
 			}

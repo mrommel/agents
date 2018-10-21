@@ -13,16 +13,16 @@ class Group {
 	var name: String
 	var summary: String
 
-	var mood: Property
-	var frequency: Property
+	var mood: Simulation
+	var frequency: Simulation
 
 	init(name: String, summary: String, moodValue: Double, frequencyValue: Double) {
 
 		self.name = name
 		self.summary = summary
 
-		self.mood = Property(name: "\(self.name) mood", summary: "", category: .groups, value: moodValue)
-		self.frequency = Property(name: "\(self.name) freq", summary: "", category: .groups, value: frequencyValue)
+		self.mood = Simulation(name: "\(self.name) mood", summary: "", category: .groups, value: moodValue)
+		self.frequency = Simulation(name: "\(self.name) freq", summary: "", category: .groups, value: frequencyValue)
 	}
 
 	func calculate() {

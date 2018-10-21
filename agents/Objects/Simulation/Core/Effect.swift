@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Effect: Property {
+class Effect: Simulation {
 
 	private var decay: Double = 0.9
 

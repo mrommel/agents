@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RandomProperty: Property {
+class RandomProperty: Simulation {
 
 	var minimum: Double = 0.0
 	var maximum: Double = 0.0

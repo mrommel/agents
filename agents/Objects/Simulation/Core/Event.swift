@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Event: Property {
+class Event: Simulation {
 
 	init(name: String, summary: String, category: Category) {
 

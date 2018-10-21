@@ -8,13 +8,14 @@
 
 import Foundation
 
-class PropertyRelation {
-	let property: Property
+class SimulationRelation {
+
+	let simulation: Simulation
 	let formula: String
 	let delay: Int
 
-	init(property: Property, formula: String, delay: Int = 0) {
-		self.property = property
+	init(simulation: Simulation, formula: String, delay: Int = 0) {
+		self.simulation = simulation
 		self.formula = formula
 		self.delay = 0
 	}

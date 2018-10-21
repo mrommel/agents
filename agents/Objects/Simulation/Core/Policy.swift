@@ -24,7 +24,7 @@ class PolicySelection {
 }
 
 /// a Policy is a Property that can be modified by he user
-class Policy: Property {
+class Policy: Simulation {
 
 	let selections: [PolicySelection]
 	var selectionIndex: Int
@@ -43,11 +43,11 @@ class Policy: Property {
 		super.init(name: name, summary: summary, category: category, value: initialSelection.value)
 	}
 
-	override func add(property: Property, formula: String = "x", delay: Int = 0) {
+	override func add(simulation: Simulation, formula: String = "x", delay: Int = 0) {
 		assert(false, "Policies can't have external impact")
 	}
 
-	override func add(propertyRelation: PropertyRelation) {
+	override func add(simulationRelation: SimulationRelation) {
 		assert(false, "Policies can't have external impact")
 	}
 

@@ -8,13 +8,13 @@
 
 import Foundation
 
-class Property {
+class Simulation {
 
 	let name: String
 	let summary: String
 	let category: Category
 	var values: [Double] = []
-	var inputs: [PropertyRelation] = []
+	var inputs: [SimulationRelation] = []
 
 	var stashedValue: Double = 0.0
 
@@ -29,12 +29,12 @@ class Property {
 		assertionFailure("Subclasses need to implement this method")
 	}
 
-	func add(property: Property, formula: String = "x", delay: Int = 0) {
-		self.add(propertyRelation: PropertyRelation(property: property, formula: formula, delay: delay))
+	func add(simulation: Simulation, formula: String = "x", delay: Int = 0) {
+		self.add(simulationRelation: SimulationRelation(simulation: simulation, formula: formula, delay: delay))
 	}
 
-	func add(propertyRelation: PropertyRelation) {
-		self.inputs.append(propertyRelation)
+	func add(simulationRelation: SimulationRelation) {
+		self.inputs.append(simulationRelation)
 	}
 
 	func calculate() {
@@ -46,7 +46,7 @@ class Property {
 			let expression = NSExpression(format: relation.formula)
 			let dict = NSMutableDictionary()
 			dict.setValue(self.value(with: 0), forKey: "v")
-			dict.setValue(relation.property.value(with: relation.delay), forKey: "x")
+			dict.setValue(relation.simulation.value(with: relation.delay), forKey: "x")
 			if let tempVal = expression.expressionValue(with: dict, context: nil) as? Double {
 				self.stashedValue += tempVal
 			}

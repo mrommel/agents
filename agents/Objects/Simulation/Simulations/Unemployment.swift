@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Unemployment: Property {
+class Unemployment: Simulation {
 
 	init() {
 
@@ -20,8 +20,8 @@ class Unemployment: Property {
 
 	override func setup(with simulation: GlobalSimulation) {
 
-		self.add(property: simulation.grossDomesticProduct, formula: "0-(0.95*x)")
+		self.add(simulation: simulation.grossDomesticProduct, formula: "0-(0.95*x)")
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 }

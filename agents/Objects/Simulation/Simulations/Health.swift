@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Health: Property {
+class Health: Simulation {
 
 	init() {
 		super.init(name: "Health",
@@ -19,9 +19,9 @@ class Health: Property {
 
 	override func setup(with simulation: GlobalSimulation) {
 
-		self.add(property: StaticProperty(value: 0.7)) // keep self value
-		self.add(property: simulation.lifeSpan, formula: "0.2*ln(x)") // lifespan decreases health
+		self.add(simulation: StaticProperty(value: 0.7)) // keep self value
+		self.add(simulation: simulation.lifeSpan, formula: "0.2*ln(x)") // lifespan decreases health
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 }

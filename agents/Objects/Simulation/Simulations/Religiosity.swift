@@ -9,7 +9,7 @@
 import Foundation
 
 // https://en.wikipedia.org/wiki/Religiosity
-class Religiosity: Property {
+class Religiosity: Simulation {
 
 	init() {
 		super.init(name: "Religiosity", summary: "Religiosity desc", category: .core, value: 0.8)
@@ -17,8 +17,8 @@ class Religiosity: Property {
 
 	override func setup(with simulation: GlobalSimulation) {
 
-		self.add(property: StaticProperty(value: 0.8)) // TODO: remove
+		self.add(simulation: StaticProperty(value: 0.8)) // TODO: remove
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 }

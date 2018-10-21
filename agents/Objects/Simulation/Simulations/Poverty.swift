@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Poverty: Property {
+class Poverty: Simulation {
 
 	init() {
 
@@ -22,6 +22,6 @@ class Poverty: Property {
 
 		// TODO add inputs
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 }

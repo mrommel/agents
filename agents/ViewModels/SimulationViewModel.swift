@@ -9,8 +9,8 @@
 import UIKit
 import Rswift
 
-struct MenuPropertyItem {
-	let property: Property?
+struct MenuSimulationItem {
+	let simulation: Simulation?
 }
 
 struct MenuPolicyItem {
@@ -50,7 +50,7 @@ class SimulationViewModel {
 	let screenTitle: String
 	let globalSimulation: GlobalSimulation = GlobalSimulation()
 
-	var menuItems: [MenuPropertyItem] = []
+	var simulationItems: [MenuSimulationItem] = []
 	var policyItems: [MenuPolicyItem] = []
 	var situationItems: [MenuSituationItem] = []
 	var selectedPolicy: MenuPolicyItem?
@@ -60,8 +60,8 @@ class SimulationViewModel {
 	init() {
 		self.screenTitle = R.string.localizable.simulationTitle()
 
-		for property in self.globalSimulation.properties {
-			self.menuItems.append(MenuPropertyItem(property: property))
+		for simulation in self.globalSimulation.simulations {
+			self.simulationItems.append(MenuSimulationItem(simulation: simulation))
 		}
 
 		for policy in self.globalSimulation.policies {

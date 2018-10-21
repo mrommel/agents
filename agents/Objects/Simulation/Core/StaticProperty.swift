@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StaticProperty: Property {
+class StaticProperty: Simulation {
 
 	init(value: Double) {
 		super.init(name: "static", summary: "", category: .static, value: value)

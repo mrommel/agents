@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GrossDomesticProduct: Property {
+class GrossDomesticProduct: Simulation {
 
 	init() {
 		super.init(name: "Gross Domestic Product",
@@ -19,9 +19,9 @@ class GrossDomesticProduct: Property {
 
 	override func setup(with simulation: GlobalSimulation) {
 
-		self.add(property: StaticProperty(value: 0.001)) // TODO: remove
+		self.add(simulation: StaticProperty(value: 0.001)) // TODO: remove
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 
 	override func valueText() -> String {

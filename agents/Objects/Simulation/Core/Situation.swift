@@ -13,7 +13,7 @@ protocol SituationDelegate: class {
 	func end(situation: Situation?)
 }
 
-class Situation: Property {
+class Situation: Simulation {
 
 	var startMessage: String
 	var startTrigger: Double

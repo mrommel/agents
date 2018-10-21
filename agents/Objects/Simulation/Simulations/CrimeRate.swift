@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CrimeRate: Property {
+class CrimeRate: Simulation {
 
 	init() {
 
@@ -20,10 +20,10 @@ class CrimeRate: Property {
 
 	override func setup(with simulation: GlobalSimulation) {
 
-		self.add(property: simulation.unemployment, formula: "0.17*(x^5)")
-		self.add(property: simulation.povertyRate, formula: "0.41*(x^2)", delay: 4)
-		self.add(property: simulation.education, formula: "-0.12*(x^6)")
+		self.add(simulation: simulation.unemployment, formula: "0.17*(x^5)")
+		self.add(simulation: simulation.povertyRate, formula: "0.41*(x^2)", delay: 4)
+		self.add(simulation: simulation.education, formula: "-0.12*(x^6)")
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 }

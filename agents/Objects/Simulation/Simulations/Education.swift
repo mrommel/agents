@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Education: Property {
+class Education: Simulation {
 
 	init() {
 
@@ -22,9 +22,9 @@ class Education: Property {
 
 	override func setup(with simulation: GlobalSimulation) {
 
-		self.add(property: simulation.primarySchools, formula: "0.1+0.3*x", delay: 8)
+		self.add(simulation: simulation.primarySchools, formula: "0.1+0.3*x", delay: 8)
 		// religious schools - monk schools
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 }

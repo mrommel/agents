@@ -11,7 +11,7 @@ import Foundation
 /// LifeSpan
 ///
 /// https://en.wikipedia.org/wiki/Life_expectancy
-class LifeSpan: Property {
+class LifeSpan: Simulation {
 
 	let steps = ["0-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "81-90", "91-100"]
 
@@ -22,11 +22,11 @@ class LifeSpan: Property {
 	override func setup(with simulation: GlobalSimulation) {
 
 		// lifespan
-		self.add(property: StaticProperty(value: 0.4)) // keep self value
-		self.add(property: simulation.health, formula: "0.2*x") // health increases lifespan
-		self.add(property: simulation.grossDomesticProduct, formula: "0.2*(7.02*ln(x*60000)+6.9)*0.01") // more gdp, more life span - https://en.wikipedia.org/wiki/Life_expectancy#/media/File:LifeExpectancy_GDPperCapita.png
+		self.add(simulation: StaticProperty(value: 0.4)) // keep self value
+		self.add(simulation: simulation.health, formula: "0.2*x") // health increases lifespan
+		self.add(simulation: simulation.grossDomesticProduct, formula: "0.2*(7.02*ln(x*60000)+6.9)*0.01") // more gdp, more life span - https://en.wikipedia.org/wiki/Life_expectancy#/media/File:LifeExpectancy_GDPperCapita.png
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 
 	override func valueText() -> String {

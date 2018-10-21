@@ -88,8 +88,8 @@
 		047CA09C216A8DC1001C4745 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 047CA09E216A8DC1001C4745 /* Localizable.strings */; };
 		047CA0A1216A8FFB001C4745 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A0216A8FFA001C4745 /* R.generated.swift */; };
 		047CA0A4216A9277001C4745 /* SimulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CA0A3216A9277001C4745 /* SimulationViewModel.swift */; };
-		049CACE82145BB1B00990CF5 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACE72145BB1B00990CF5 /* Property.swift */; };
-		049CACEA2145BB4400990CF5 /* PropertyRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACE92145BB4400990CF5 /* PropertyRelation.swift */; };
+		049CACE82145BB1B00990CF5 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACE72145BB1B00990CF5 /* Simulation.swift */; };
+		049CACEA2145BB4400990CF5 /* SimulationRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACE92145BB4400990CF5 /* SimulationRelation.swift */; };
 		049CACEC2145BB6E00990CF5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACEB2145BB6E00990CF5 /* Category.swift */; };
 		049CACEE2145BF0000990CF5 /* BirthRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACED2145BF0000990CF5 /* BirthRate.swift */; };
 		049CACF02145C0E200990CF5 /* Religiosity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACEF2145C0E200990CF5 /* Religiosity.swift */; };
@@ -212,8 +212,8 @@
 		047CA0A3216A9277001C4745 /* SimulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewModel.swift; sourceTree = "<group>"; };
 		047CA0A5216B3946001C4745 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		047CA0A6216B3952001C4745 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		049CACE72145BB1B00990CF5 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
-		049CACE92145BB4400990CF5 /* PropertyRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyRelation.swift; sourceTree = "<group>"; };
+		049CACE72145BB1B00990CF5 /* Simulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulation.swift; sourceTree = "<group>"; };
+		049CACE92145BB4400990CF5 /* SimulationRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationRelation.swift; sourceTree = "<group>"; };
 		049CACEB2145BB6E00990CF5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		049CACED2145BF0000990CF5 /* BirthRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthRate.swift; sourceTree = "<group>"; };
 		049CACEF2145C0E200990CF5 /* Religiosity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Religiosity.swift; sourceTree = "<group>"; };
@@ -485,8 +485,8 @@
 		045979A12179E6BD006803CF /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				049CACE72145BB1B00990CF5 /* Property.swift */,
-				049CACE92145BB4400990CF5 /* PropertyRelation.swift */,
+				049CACE72145BB1B00990CF5 /* Simulation.swift */,
+				049CACE92145BB4400990CF5 /* SimulationRelation.swift */,
 				049CACEB2145BB6E00990CF5 /* Category.swift */,
 				04312EAC214AFD1B00E8AA6D /* StaticProperty.swift */,
 				0473450121709C54008E9D05 /* RandomProperty.swift */,
@@ -807,7 +807,7 @@
 				040107C7215CF22B006FBB2A /* LifeSpan.swift in Sources */,
 				045979A62179FFCA006803CF /* Homelessness.swift in Sources */,
 				040FBE532011D80B00D397E2 /* OptionViewController.swift in Sources */,
-				049CACE82145BB1B00990CF5 /* Property.swift in Sources */,
+				049CACE82145BB1B00990CF5 /* Simulation.swift in Sources */,
 				04F0384E202221080011B79C /* HexMapDisplay.swift in Sources */,
 				040FBE4520113D8200D397E2 /* MenuViewController.swift in Sources */,
 				04F0384A20221C1F0011B79C /* HexLayout.swift in Sources */,
@@ -860,7 +860,7 @@
 				04481DA22031F67A001F04FA /* EgyptLady.swift in Sources */,
 				04391C39213E62F4000357AC /* GlobalSimulation.swift in Sources */,
 				041B990F204C4BBB001F0E16 /* HexPointWithCorner.swift in Sources */,
-				049CACEA2145BB4400990CF5 /* PropertyRelation.swift in Sources */,
+				049CACEA2145BB4400990CF5 /* SimulationRelation.swift in Sources */,
 				047344FA216DC85E008E9D05 /* Event.swift in Sources */,
 				045B47BC2173888600217822 /* Group.swift in Sources */,
 				04FC594D2034484C00251E7F /* GameObjectEngine.swift in Sources */,

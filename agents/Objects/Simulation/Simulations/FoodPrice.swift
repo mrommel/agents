@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FoodPrice: Property {
+class FoodPrice: Simulation {
 
 	init() {
 		super.init(name: "Food Price",
@@ -19,9 +19,9 @@ class FoodPrice: Property {
 
 	override func setup(with simulation: GlobalSimulation) {
 
-		self.add(property: StaticProperty(value: 0.2)) // keep self value
+		self.add(simulation: StaticProperty(value: 0.2)) // keep self value
 		// different sources of food, stable surplus
 
-		simulation.properties.append(self)
+		simulation.simulations.append(self)
 	}
 }
