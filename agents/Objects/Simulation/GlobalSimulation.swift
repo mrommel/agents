@@ -31,6 +31,7 @@ class GlobalSimulation {
 	var povertyRate: Poverty = Poverty()
 	var unemployment: Unemployment = Unemployment()
 	var education: Education = Education()
+	var transportSpeed: TransportSpeed = TransportSpeed()
 
 	var simulations: [Simulation] = []
 
@@ -67,6 +68,10 @@ class GlobalSimulation {
 
 	var effects: [Effect] = []
 
+	// Technics
+
+	var technics: Technics = Technics()
+
 	init() {
 
 		// setup properties
@@ -83,6 +88,7 @@ class GlobalSimulation {
 		self.povertyRate.setup(with: self)
 		self.unemployment.setup(with: self)
 		self.education.setup(with: self)
+		self.transportSpeed.setup(with: self)
 
 		// setup policies
 		self.primarySchools.setup(with: self)
@@ -101,6 +107,8 @@ class GlobalSimulation {
 
 		// setup situations
 		self.homelessness.setup(with: self)
+
+		self.technics.setup(with: self)
 	}
 
 	func iterate() {
