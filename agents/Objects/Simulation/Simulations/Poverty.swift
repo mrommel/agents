@@ -18,10 +18,10 @@ class Poverty: Simulation {
 				   value: 0.64)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
+	override func setup(with global: GlobalSimulation) {
 
 		// TODO add inputs
 
-		simulation.simulations.append(self)
+		global.simulations.add(simulation: self)
 	}
 }

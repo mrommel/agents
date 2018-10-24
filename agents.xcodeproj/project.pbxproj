@@ -91,6 +91,11 @@
 		04669ECA217F709B00188C00 /* Sailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669EC9217F709B00188C00 /* Sailing.swift */; };
 		04669ECC217F70B200188C00 /* Wheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669ECB217F70B200188C00 /* Wheel.swift */; };
 		04669ECE217F70C700188C00 /* Trapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669ECD217F70C700188C00 /* Trapping.swift */; };
+		04669ED021807AC500188C00 /* Simulations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669ECF21807AC500188C00 /* Simulations.swift */; };
+		04669ED22180A5DF00188C00 /* Policies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669ED12180A5DF00188C00 /* Policies.swift */; };
+		04669ED42180A75A00188C00 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669ED32180A75A00188C00 /* Events.swift */; };
+		04669ED62180A93A00188C00 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669ED52180A93A00188C00 /* Groups.swift */; };
+		04669ED82180A9CB00188C00 /* Situations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669ED72180A9CB00188C00 /* Situations.swift */; };
 		047344F7216CEC0D008E9D05 /* PrimarySchools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F6216CEC0D008E9D05 /* PrimarySchools.swift */; };
 		047344FA216DC85E008E9D05 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344F9216DC85E008E9D05 /* Event.swift */; };
 		047344FC216DF61E008E9D05 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047344FB216DF61E008E9D05 /* Earthquake.swift */; };
@@ -230,6 +235,11 @@
 		04669EC9217F709B00188C00 /* Sailing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sailing.swift; sourceTree = "<group>"; };
 		04669ECB217F70B200188C00 /* Wheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheel.swift; sourceTree = "<group>"; };
 		04669ECD217F70C700188C00 /* Trapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trapping.swift; sourceTree = "<group>"; };
+		04669ECF21807AC500188C00 /* Simulations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulations.swift; sourceTree = "<group>"; };
+		04669ED12180A5DF00188C00 /* Policies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Policies.swift; sourceTree = "<group>"; };
+		04669ED32180A75A00188C00 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		04669ED52180A93A00188C00 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
+		04669ED72180A9CB00188C00 /* Situations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Situations.swift; sourceTree = "<group>"; };
 		047344F6216CEC0D008E9D05 /* PrimarySchools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySchools.swift; sourceTree = "<group>"; };
 		047344F9216DC85E008E9D05 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		047344FB216DF61E008E9D05 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
@@ -540,6 +550,7 @@
 		045979A42179FFBB006803CF /* Situations */ = {
 			isa = PBXGroup;
 			children = (
+				04669ED72180A9CB00188C00 /* Situations.swift */,
 				045979A52179FFCA006803CF /* Homelessness.swift */,
 			);
 			path = Situations;
@@ -568,6 +579,7 @@
 		045B47B82173391400217822 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
+				04669ED52180A93A00188C00 /* Groups.swift */,
 				045979AB217A1136006803CF /* All.swift */,
 				045B47B92173392900217822 /* Conservatives.swift */,
 				045979A7217A0C6A006803CF /* Poor.swift */,
@@ -579,6 +591,7 @@
 		047344F8216DC83F008E9D05 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				04669ED32180A75A00188C00 /* Events.swift */,
 				047344FB216DF61E008E9D05 /* Earthquake.swift */,
 				0473450321728607008E9D05 /* MonumentVandalized.swift */,
 				045979A9217A0F2C006803CF /* MinisterialScandal.swift */,
@@ -597,6 +610,7 @@
 		04F9738321621F4E00FB573F /* Simulations */ = {
 			isa = PBXGroup;
 			children = (
+				04669ECF21807AC500188C00 /* Simulations.swift */,
 				040107C2215CEC18006FBB2A /* Population.swift */,
 				04312EAA214AF98900E8AA6D /* Happiness.swift */,
 				049CACED2145BF0000990CF5 /* BirthRate.swift */,
@@ -618,6 +632,7 @@
 		04F9738421621F6300FB573F /* Policies */ = {
 			isa = PBXGroup;
 			children = (
+				04669ED12180A5DF00188C00 /* Policies.swift */,
 				047344F6216CEC0D008E9D05 /* PrimarySchools.swift */,
 				047344FD216E0934008E9D05 /* Sewage.swift */,
 			);
@@ -857,7 +872,9 @@
 				040FBE18201137BA00D397E2 /* agents.xcdatamodeld in Sources */,
 				041B991F204C8CAB001F0E16 /* Feature.swift in Sources */,
 				040107CA215D1913006FBB2A /* Double.swift in Sources */,
+				04669ED021807AC500188C00 /* Simulations.swift in Sources */,
 				04312EAB214AF98900E8AA6D /* Happiness.swift in Sources */,
+				04669ED22180A5DF00188C00 /* Policies.swift in Sources */,
 				041B990B204C4B3B001F0E16 /* MapSize.swift in Sources */,
 				047344FC216DF61E008E9D05 /* Earthquake.swift in Sources */,
 				04391C36213DD2C1000357AC /* SimulationViewController.swift in Sources */,
@@ -874,6 +891,7 @@
 				04F12D58201A758F007A8817 /* FloatExtension.swift in Sources */,
 				04023FC7214C4E7800CE5AC2 /* Health.swift in Sources */,
 				040FBE4820113F5E00D397E2 /* Global.swift in Sources */,
+				04669ED42180A75A00188C00 /* Events.swift in Sources */,
 				041B9908204C4988001F0E16 /* PerlinGenerator.swift in Sources */,
 				04C4C549203DB92B00477A1F /* Field.swift in Sources */,
 				040107C5215CEC9D006FBB2A /* FoodPrice.swift in Sources */,
@@ -889,6 +907,7 @@
 				045B47BA2173392900217822 /* Conservatives.swift in Sources */,
 				040107CC215E6F1D006FBB2A /* GrossDomesticProduct.swift in Sources */,
 				04F12D56201A7531007A8817 /* IntegerExtension.swift in Sources */,
+				04669ED82180A9CB00188C00 /* Situations.swift in Sources */,
 				041B9906204C42D7001F0E16 /* HeightMap.swift in Sources */,
 				047344FE216E0934008E9D05 /* Sewage.swift in Sources */,
 				04669ECA217F709B00188C00 /* Sailing.swift in Sources */,
@@ -958,6 +977,7 @@
 				045979AA217A0F2C006803CF /* MinisterialScandal.swift in Sources */,
 				04669ECE217F70C700188C00 /* Trapping.swift in Sources */,
 				041B9923204D7FC1001F0E16 /* AreaSprites.swift in Sources */,
+				04669ED62180A93A00188C00 /* Groups.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

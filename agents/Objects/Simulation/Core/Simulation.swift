@@ -26,7 +26,7 @@ class Simulation {
 		self.values.append(value)
 	}
 
-	func setup(with simulation: GlobalSimulation) {
+	func setup(with global: GlobalSimulation) {
 		assertionFailure("Subclasses need to implement this method")
 	}
 

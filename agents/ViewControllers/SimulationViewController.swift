@@ -96,46 +96,64 @@ extension SimulationViewController {
 
 		switch indexPath.section {
 		case 0:
-			if let cell = tableView.dequeueReusableCell(withIdentifier: PropertyTableViewCell.identifier, for: indexPath) as? PropertyTableViewCell {
-				cell.textLabel?.text = R.string.localizable.simulationIterate()
-				cell.valueLabel?.text = "\(self.viewModel?.iteration ?? 0)"
-				return cell
-			}
+			return self.setupIterationButton(for: indexPath)
 		case 1:
-			let simulationItem = self.viewModel?.simulationItems[indexPath.row]
-			if let simulation = simulationItem?.simulation {
-				if let cell = tableView.dequeueReusableCell(withIdentifier: PropertyTableViewCell.identifier, for: indexPath) as? PropertyTableViewCell {
-					cell.textLabel?.text = "\(simulation.name)"
-					cell.valueLabel?.text = simulation.valueText()
-					return cell
-				}
-			}
+			return self.setupSimulationCell(for: indexPath)
 		case 2:
-			let menuItem = self.viewModel?.policyItems[indexPath.row]
-			if let policy = menuItem?.policy {
-				if let cell = tableView.dequeueReusableCell(withIdentifier: PolicyTableViewCell.identifier, for: indexPath) as? PolicyTableViewCell {
-					cell.textLabel?.text = "\(policy.name)"
-					cell.valueField?.text = policy.selection.name
-					cell.valueField.tag = indexPath.row
-					cell.valueField.delegate = self
-					return cell
-				}
-			}
+			return self.setupPolicyCell(for: indexPath)
 		case 3:
-			let situationItem = self.viewModel?.situationItems[indexPath.row]
-			if let situation = situationItem?.situation {
-				if let cell = tableView.dequeueReusableCell(withIdentifier: SituationTableViewCell.identifier, for: indexPath) as? SituationTableViewCell {
-					cell.textLabel?.text = "\(situation.name)"
-					cell.valueLabel?.text = situation.valueText()
-					return cell
-				}
-			}
+			return self.setupSituationCell(for: indexPath)
 		default:
 			break
 		}
 
+		fatalError("invalid return")
+	}
+
+	func setupIterationButton(for indexPath: IndexPath) -> UITableViewCell {
+
 		if let cell = tableView.dequeueReusableCell(withIdentifier: PropertyTableViewCell.identifier, for: indexPath) as? PropertyTableViewCell {
+			cell.textLabel?.text = R.string.localizable.simulationIterate()
+			cell.valueLabel?.text = "\(self.viewModel?.iteration ?? 0)"
 			return cell
+		}
+
+		fatalError("invalid return")
+	}
+
+	func setupSimulationCell(for indexPath: IndexPath) -> UITableViewCell {
+
+		if let simulationItem = self.viewModel?.simulationItems[indexPath.row], let simulation = simulationItem.simulation {
+			if let cell = tableView.dequeueReusableCell(withIdentifier: PropertyTableViewCell.identifier, for: indexPath) as? PropertyTableViewCell {
+				cell.textLabel?.text = "\(simulation.name)"
+				cell.valueLabel?.text = simulation.valueText()
+				return cell
+			}
+		}
+
+		fatalError("invalid return")
+	}
+
+	func setupPolicyCell(for indexPath: IndexPath) -> UITableViewCell {
+
+		if let policyItem = self.viewModel?.policyItems[indexPath.row], let policy = policyItem.policy {
+			if let cell = tableView.dequeueReusableCell(withIdentifier: PolicyTableViewCell.identifier, for: indexPath) as? PolicyTableViewCell {
+				cell.setup(with: policy, at: indexPath.row, delegate: self)
+				return cell
+			}
+		}
+
+		fatalError("invalid return")
+	}
+
+	func setupSituationCell(for indexPath: IndexPath) -> UITableViewCell {
+
+		if let situationItem = self.viewModel?.situationItems[indexPath.row], let situation = situationItem.situation {
+			if let cell = tableView.dequeueReusableCell(withIdentifier: SituationTableViewCell.identifier, for: indexPath) as? SituationTableViewCell {
+				cell.textLabel?.text = "\(situation.name)"
+				cell.valueLabel?.text = situation.valueText()
+				return cell
+			}
 		}
 
 		fatalError("invalid return")

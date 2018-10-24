@@ -17,11 +17,11 @@ class FoodPrice: Simulation {
 				   value: 0.2)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
+	override func setup(with global: GlobalSimulation) {
 
 		self.add(simulation: StaticProperty(value: 0.2)) // keep self value
 		// different sources of food, stable surplus
 
-		simulation.simulations.append(self)
+		global.simulations.add(simulation: self)
 	}
 }

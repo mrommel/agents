@@ -14,12 +14,12 @@ class Population: Simulation {
 		super.init(name: "Population", summary: "", category: .core, value: 1000.0)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
-		self.add(simulation: simulation.population, formula: "x") // keep self value
-		self.add(simulation: simulation.birthRate, formula: "0.02*x*v")
-		self.add(simulation: simulation.mortalityRate, formula: "-0.02*x*v")
+	override func setup(with global: GlobalSimulation) {
+		self.add(simulation: global.simulations.population, formula: "x") // keep self value
+		self.add(simulation: global.simulations.birthRate, formula: "0.02*x*v")
+		self.add(simulation: global.simulations.mortalityRate, formula: "-0.02*x*v")
 
-		simulation.simulations.append(self)
+		global.simulations.add(simulation: self)
 	}
 
 	override func valueText() -> String {

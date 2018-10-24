@@ -18,10 +18,10 @@ class Unemployment: Simulation {
 				   value: 0.4)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
+	override func setup(with global: GlobalSimulation) {
 
-		self.add(simulation: simulation.grossDomesticProduct, formula: "0-(0.95*x)")
+		self.add(simulation: global.simulations.grossDomesticProduct, formula: "0-(0.95*x)")
 
-		simulation.simulations.append(self)
+		global.simulations.add(simulation: self)
 	}
 }

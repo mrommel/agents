@@ -25,11 +25,11 @@ class TransportSpeed: Simulation {
 				   value: 0.1)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
+	override func setup(with global: GlobalSimulation) {
 
-		self.add(technic: simulation.technics.masonry, formula: "0.1*x")
+		self.add(technic: global.technics.masonry, formula: "0.1*x")
 
-		simulation.simulations.append(self)
+		global.simulations.add(simulation: self)
 	}
 
 	/*override func valueText() -> String {

@@ -15,12 +15,12 @@ class MortalityRate: Simulation {
 		super.init(name: "MortalityRate", summary: "MortalityRate desc", category: .core, value: 0.5) // 0..<10
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
+	override func setup(with global: GlobalSimulation) {
 
 		self.add(simulation: StaticProperty(value: 0.5)) // keep self value
-		self.add(simulation: simulation.health, formula: "-0.3*x")
-		self.add(simulation: simulation.foodPrice, formula: "0.5*x") // foodsecurity reduces mortality
+		self.add(simulation: global.simulations.health, formula: "-0.3*x")
+		self.add(simulation: global.simulations.foodPrice, formula: "0.5*x") // foodsecurity reduces mortality
 
-		simulation.simulations.append(self)
+		global.simulations.add(simulation: self)
 	}
 }

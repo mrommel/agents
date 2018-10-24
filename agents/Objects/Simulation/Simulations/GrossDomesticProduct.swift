@@ -17,11 +17,11 @@ class GrossDomesticProduct: Simulation {
 				   value: 0.001)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
+	override func setup(with global: GlobalSimulation) {
 
 		self.add(simulation: StaticProperty(value: 0.001)) // TODO: remove
 
-		simulation.simulations.append(self)
+		global.simulations.add(simulation: self)
 	}
 
 	override func valueText() -> String {

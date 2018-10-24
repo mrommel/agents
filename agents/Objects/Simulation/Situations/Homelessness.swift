@@ -30,10 +30,10 @@ class Homelessness: Situation {
 		// Suicide,0+(0.4*x)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
+	override func setup(with global: GlobalSimulation) {
 
 		self.add(simulation: StaticProperty(value: 0.1))
-		self.add(simulation: simulation.povertyRate, formula: "0.9*x")
+		self.add(simulation: global.simulations.povertyRate, formula: "0.9*x")
 		//StateHousing,0-(0.4*x)
 		//PrivateHousing,0-(0.4*x)
 		//UnemployedBenefit,0-(0.3*x)
@@ -42,6 +42,6 @@ class Homelessness: Situation {
 		//PropertyTax,0+(0.04*x)
 		//Immigration,0+(0.06*x),4
 
-		super.setup(with: simulation)
+		super.setup(with: global)
 	}
 }

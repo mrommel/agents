@@ -35,6 +35,13 @@ class PolicyTableViewCell: UITableViewCell {
 
 	@IBOutlet var titleLabel: UILabel!
 	@IBOutlet var valueField: UITextField!
+
+	func setup(with policy: Policy, at row: Int, delegate: UITextFieldDelegate) {
+		self.textLabel?.text = "\(policy.name)"
+		self.valueField?.text = policy.selection.name
+		self.valueField.tag = row
+		self.valueField.delegate = delegate
+	}
 }
 
 class SituationTableViewCell: UITableViewCell {

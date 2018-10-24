@@ -20,6 +20,6 @@ class Conservatives: Group {
 
 	override func setup(with simulation: GlobalSimulation) {
 
-		simulation.groups.append(self)
+		simulation.groups.add(group: self)
 	}
 }

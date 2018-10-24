@@ -20,11 +20,11 @@ class Education: Simulation {
 		// effects: WorkerProductivity,-0.2+(x*0.4)	RacialTension,0-(0.08*x)	CrimeRate,-0.12*(x^6)	ViolentCrimeRate,-0.12*(x^4)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
+	override func setup(with global: GlobalSimulation) {
 
-		self.add(simulation: simulation.primarySchools, formula: "0.1+0.3*x", delay: 8)
+		self.add(simulation: global.policies.primarySchools, formula: "0.1+0.3*x", delay: 8)
 		// religious schools - monk schools
 
-		simulation.simulations.append(self)
+		global.simulations.add(simulation: self)
 	}
 }
