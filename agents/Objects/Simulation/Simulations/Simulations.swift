@@ -91,7 +91,7 @@ extension Simulations: Sequence {
 		}
 
 		mutating func next() -> Simulation? {
-			let simulation = self.simulations[index]
+			let simulation = self.simulations[safe: index]
 			index += 1
 			return simulation
 		}

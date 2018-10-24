@@ -115,6 +115,7 @@
 		049CACEC2145BB6E00990CF5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACEB2145BB6E00990CF5 /* Category.swift */; };
 		049CACEE2145BF0000990CF5 /* BirthRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACED2145BF0000990CF5 /* BirthRate.swift */; };
 		049CACF02145C0E200990CF5 /* Religiosity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CACEF2145C0E200990CF5 /* Religiosity.swift */; };
+		049ED6132180B846000B1FA3 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049ED6122180B846000B1FA3 /* Collection.swift */; };
 		04C4C549203DB92B00477A1F /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4C548203DB92B00477A1F /* Field.swift */; };
 		04C4C54B20405EF600477A1F /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4C54A20405EF600477A1F /* Building.swift */; };
 		04F0384A20221C1F0011B79C /* HexLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0384920221C1F0011B79C /* HexLayout.swift */; };
@@ -261,6 +262,7 @@
 		049CACEB2145BB6E00990CF5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		049CACED2145BF0000990CF5 /* BirthRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthRate.swift; sourceTree = "<group>"; };
 		049CACEF2145C0E200990CF5 /* Religiosity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Religiosity.swift; sourceTree = "<group>"; };
+		049ED6122180B846000B1FA3 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		04C4C548203DB92B00477A1F /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		04C4C54A20405EF600477A1F /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		04C6F70F20C6DA7300229C8B /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				040107C9215D1913006FBB2A /* Double.swift */,
+				049ED6122180B846000B1FA3 /* Collection.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -920,6 +923,7 @@
 				041B991D204C8C6F001F0E16 /* Terrain.swift in Sources */,
 				04669EB6217F6FE600188C00 /* Era.swift in Sources */,
 				04734500216F9E4C008E9D05 /* Effect.swift in Sources */,
+				049ED6132180B846000B1FA3 /* Collection.swift in Sources */,
 				049CACEC2145BB6E00990CF5 /* Category.swift in Sources */,
 				04669EC4217F706B00188C00 /* Masonry.swift in Sources */,
 				0473450821728A0E008E9D05 /* Poverty.swift in Sources */,

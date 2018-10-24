@@ -55,7 +55,7 @@ extension Policies: Sequence {
 		}
 
 		mutating func next() -> Policy? {
-			let policy = self.policies[index]
+			let policy = self.policies[safe: index]
 			index += 1
 			return policy
 		}

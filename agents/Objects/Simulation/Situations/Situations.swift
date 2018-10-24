@@ -52,7 +52,7 @@ extension Situations: Sequence {
 		}
 
 		mutating func next() -> Situation? {
-			let situation = self.situations[index]
+			let situation = self.situations[safe: index]
 			index += 1
 			return situation
 		}
