@@ -16,5 +16,6 @@ class Agriculture: Technic {
 
 	override func setup(with simulation: GlobalSimulation) {
 		// NOOP
+		super.setup(with: simulation)
 	}
 }

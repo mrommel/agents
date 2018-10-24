@@ -25,6 +25,8 @@ class Technics {
 	var trapping: Trapping
 	var writing: Writing
 
+	fileprivate var techs: [Technic] = []
+
 	init() {
 
 		// era: ancient
@@ -44,6 +46,7 @@ class Technics {
 
 	func setup(with simulation: GlobalSimulation) {
 
+		// era: ancient
 		self.agriculture.setup(with: simulation)
 		self.animalHusbandry.setup(with: simulation)
 		self.archery.setup(with: simulation)
@@ -55,5 +58,21 @@ class Technics {
 		self.sailing.setup(with: simulation)
 		self.wheel.setup(with: simulation)
 		self.trapping.setup(with: simulation)
+		self.writing.setup(with: simulation)
+	}
+
+	func add(technic: Technic) {
+
+		self.techs.append(technic)
+	}
+
+	func numberOfInvented() -> Int {
+
+		return self.techs.filter { $0.invented }.count
+	}
+
+	func evaluate() {
+
+		self.techs.forEach { $0.evaluate() }
 	}
 }

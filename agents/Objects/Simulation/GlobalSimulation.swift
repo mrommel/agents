@@ -126,6 +126,7 @@ class GlobalSimulation {
 	private func doIterate() {
 
 		// first we need to do the calculation
+		self.technics.evaluate()
 		self.simulations.forEach { $0.calculate() }
 		self.policies.forEach { $0.calculate() }
 		self.events.forEach { $0.calculate() }
@@ -186,6 +187,15 @@ extension GlobalSimulation: SituationDelegate {
 	func end(situation: Situation?) {
 		if let situation = situation {
 			print("Situation ended: \(situation.name)")
+		}
+	}
+}
+
+extension GlobalSimulation: TechnicDelegate {
+
+	func invented(technic: Technic?) {
+		if let technic = technic {
+			print("Technic invented: \(technic.name) => \(self.technics.numberOfInvented()) techs invented")
 		}
 	}
 }

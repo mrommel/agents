@@ -16,5 +16,7 @@ class Masonry: Technic {
 
 	override func setup(with simulation: GlobalSimulation) {
 		self.add(requirement: simulation.technics.mining)
+
+		super.setup(with: simulation)
 	}
 }

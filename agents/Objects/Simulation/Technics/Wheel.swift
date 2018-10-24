@@ -17,5 +17,7 @@ class Wheel: Technic {
 	override func setup(with simulation: GlobalSimulation) {
 		self.add(requirement: simulation.technics.animalHusbandry)
 		self.add(requirement: simulation.technics.archery)
+
+		super.setup(with: simulation)
 	}
 }

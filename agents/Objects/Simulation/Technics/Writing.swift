@@ -16,5 +16,7 @@ class Writing: Technic {
 
 	override func setup(with simulation: GlobalSimulation) {
 		self.add(requirement: simulation.technics.pottery)
+
+		super.setup(with: simulation)
 	}
 }

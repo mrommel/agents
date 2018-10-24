@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol TechnicDelegate: class {
+	func invented(technic: Technic?)
+}
+
 class Technic {
 
 	var name: String
@@ -15,6 +19,8 @@ class Technic {
 	var propability: Double // 0..1 - 0.1 means 10%
 	fileprivate var requirements: [Technic] = []
 	var invented: Bool
+
+	weak var delegate: TechnicDelegate?
 
 	init(name: String, era: Era, propability: Double, invented: Bool = false) {
 		self.name = name
@@ -24,11 +30,14 @@ class Technic {
 	}
 
 	func add(requirement: Technic) {
+
 		self.requirements.append(requirement)
 	}
 
 	func setup(with simulation: GlobalSimulation) {
-		assertionFailure("Subclasses need to implement this method")
+
+		self.delegate = simulation
+		simulation.technics.add(technic: self)
 	}
 
 	func evaluate() {
@@ -43,6 +52,9 @@ class Technic {
 		// random number
 		if Double.random(minimum: 0.0, maximum: 1.0) < propability {
 			self.invented = true
+
+			// inform ui
+			self.delegate?.invented(technic: self)
 		}
 	}
 }

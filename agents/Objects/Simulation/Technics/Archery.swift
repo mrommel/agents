@@ -16,5 +16,7 @@ class Archery: Technic {
 
 	override func setup(with simulation: GlobalSimulation) {
 		self.add(requirement: simulation.technics.agriculture)
+
+		super.setup(with: simulation)
 	}
 }
