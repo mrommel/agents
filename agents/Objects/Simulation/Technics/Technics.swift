@@ -44,21 +44,21 @@ class Technics {
 		self.writing = Writing()
 	}
 
-	func setup(with simulation: GlobalSimulation) {
+	func setup(with global: GlobalSimulation) {
 
 		// era: ancient
-		self.agriculture.setup(with: simulation)
-		self.animalHusbandry.setup(with: simulation)
-		self.archery.setup(with: simulation)
-		self.bronzeWorking.setup(with: simulation)
-		self.calendar.setup(with: simulation)
-		self.masonry.setup(with: simulation)
-		self.mining.setup(with: simulation)
-		self.pottery.setup(with: simulation)
-		self.sailing.setup(with: simulation)
-		self.wheel.setup(with: simulation)
-		self.trapping.setup(with: simulation)
-		self.writing.setup(with: simulation)
+		self.agriculture.setup(with: global)
+		self.animalHusbandry.setup(with: global)
+		self.archery.setup(with: global)
+		self.bronzeWorking.setup(with: global)
+		self.calendar.setup(with: global)
+		self.masonry.setup(with: global)
+		self.mining.setup(with: global)
+		self.pottery.setup(with: global)
+		self.sailing.setup(with: global)
+		self.wheel.setup(with: global)
+		self.trapping.setup(with: global)
+		self.writing.setup(with: global)
 	}
 
 	func add(technic: Technic) {

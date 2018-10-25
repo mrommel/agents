@@ -8,14 +8,93 @@
 
 import Foundation
 
+enum TerrainInfo: CaseIterable {
+
+	case ocean
+	case shore
+	case plain
+	case grassland
+	case desert
+	case swamp
+	case tundra
+}
+
+enum FeatureInfo: CaseIterable {
+
+	case forest
+	case rainforest
+	case hill
+	case mountain
+	case isle
+}
+
+enum ResourceInfo: CaseIterable {
+
+	case coal
+	case ironore
+	case copperore
+}
+
+class TileInfo {
+
+	let terrain: TerrainInfo
+	let features: [FeatureInfo]
+	let resource: ResourceInfo?
+
+	init(terrain: TerrainInfo, features: [FeatureInfo]) {
+		self.terrain = terrain
+		self.features = features
+		self.resource = Double.random(minimum: 0.0, maximum: 1.0) < 0.1 ? ResourceInfo.allCases.randomItem() : nil
+	}
+
+	var mineralsPropability: Double {
+
+		var value = 0.0
+
+		if self.terrain == .desert {
+			value = 0.1
+		}
+
+		if self.resource != nil {
+			value += 0.2
+		}
+
+		return value
+	}
+
+	var animalsPropability: Double {
+
+		var value = 0.0
+
+		if self.terrain == .desert {
+			value = 0.1
+		}
+
+		if self.features.contains(.hill) || self.features.contains(.rainforest) {
+			value += 0.1
+		}
+
+		if self.features.contains(.forest) {
+			value += 0.2
+		}
+
+		return value
+	}
+}
+
 protocol GlobalSimulationDelegate: class {
+
 	func iterationComplete()
-	func simulationTriggered(by event: Event?)
+
+	func triggered(event: Event?)
+	func invented(technic: Technic?)
+	func started(situation: Situation?)
+	func ended(situation: Situation?)
 }
 
 class GlobalSimulation {
 
-	weak var delegate: GlobalSimulationDelegate?
+	let tileInfo: TileInfo
 
 	var simulations: Simulations
 	var policies: Policies
@@ -23,12 +102,13 @@ class GlobalSimulation {
 	var groups: Groups
 	var situations: Situations
 	var technics: Technics
+	var effects: Effects
 
-	// Effects
+	weak var delegate: GlobalSimulationDelegate?
 
-	var effects: [Effect] = []
+	init(tileInfo: TileInfo) {
 
-	init() {
+		self.tileInfo = tileInfo
 
 		// init
 		self.simulations = Simulations()
@@ -37,6 +117,7 @@ class GlobalSimulation {
 		self.groups = Groups()
 		self.situations = Situations()
 		self.technics = Technics()
+		self.effects = Effects()
 
 		// setup
 		self.simulations.setup(with: self)
@@ -68,13 +149,13 @@ class GlobalSimulation {
 		self.events.calculate()
 		self.groups.calculate()
 		self.situations.calculate()
-		self.effects.forEach { $0.calculate() }
+		self.effects.calculate()
 
 		// find event
 		if let event = self.events.findBestEvent(with: self) {
 			DispatchQueue.main.async {
-				// Update the UI
-				self.delegate?.simulationTriggered(by: event)
+				// Inform the UI
+				self.delegate?.triggered(event: event)
 			}
 		}
 
@@ -84,12 +165,10 @@ class GlobalSimulation {
 		self.events.push()
 		self.groups.push()
 		self.situations.push()
-		self.effects.forEach { $0.push() }
+		self.effects.push()
 
 		// filter effects that are too small
-		//print("- before filtering \(self.effects) effects")
-		self.effects = self.effects.filter { abs($0.value()) > 0.01 }
-		//print("- after filtering \(self.effects) effects")
+		self.effects.reduce()
 	}
 }
 
@@ -97,13 +176,19 @@ extension GlobalSimulation: SituationDelegate {
 
 	func start(situation: Situation?) {
 		if let situation = situation {
-			print("Situation started: \(situation.name)")
+			DispatchQueue.main.async {
+				// Inform the UI
+				self.delegate?.started(situation: situation)
+			}
 		}
 	}
 
 	func end(situation: Situation?) {
 		if let situation = situation {
-			print("Situation ended: \(situation.name)")
+			DispatchQueue.main.async {
+				// Inform the UI
+				self.delegate?.ended(situation: situation)
+			}
 		}
 	}
 }
@@ -112,7 +197,10 @@ extension GlobalSimulation: TechnicDelegate {
 
 	func invented(technic: Technic?) {
 		if let technic = technic {
-			print("Technic invented: \(technic.name) => \(self.technics.numberOfInvented()) techs invented")
+			DispatchQueue.main.async {
+				// Inform the UI
+				self.delegate?.invented(technic: technic)
+			}
 		}
 	}
 }

@@ -11,12 +11,14 @@ import Foundation
 class Masonry: Technic {
 
 	init() {
-		super.init(name: "Masonry", era: .ancient, propability: 0.1)
+		super.init(name: "Masonry",
+				   era: .ancient,
+				   propability: 0.01)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
-		self.add(requirement: simulation.technics.mining)
+	override func setup(with global: GlobalSimulation) {
+		self.add(requirement: global.technics.mining)
 
-		super.setup(with: simulation)
+		super.setup(with: global)
 	}
 }

@@ -38,7 +38,7 @@ extension SimulationViewController: GlobalSimulationDelegate {
 		self.tableView.reloadData()
 	}
 
-	func simulationTriggered(by event: Event?) {
+	func triggered(event: Event?) {
 
 		let alert = UIAlertController(title: R.string.localizable.simulationEvent(),
 									  message: event?.summary,
@@ -50,6 +50,18 @@ extension SimulationViewController: GlobalSimulationDelegate {
 			// handle user clicked
 		}))
 		self.present(alert, animated: true, completion: nil)
+	}
+
+	func invented(technic: Technic?) {
+		print("Technic invented: \(technic?.name ?? "---")")
+	}
+
+	func started(situation: Situation?) {
+		print("Situation started: \(situation?.name ?? "---")")
+	}
+
+	func ended(situation: Situation?) {
+		print("Situation ended: \(situation?.name ?? "---")")
 	}
 }
 

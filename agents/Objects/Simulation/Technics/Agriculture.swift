@@ -11,7 +11,7 @@ import Foundation
 class Agriculture: Technic {
 
 	init() {
-		super.init(name: "Agriculture", era: .ancient, propability: 0.2, invented: true)
+		super.init(name: "Agriculture", era: .ancient, propability: 1.0, invented: true)
 	}
 
 	override func setup(with simulation: GlobalSimulation) {

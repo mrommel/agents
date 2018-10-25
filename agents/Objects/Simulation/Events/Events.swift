@@ -55,7 +55,7 @@ class Events {
 			let eventThatTriggered = allEventsWithMaxScore.randomItem()
 			let newEffects = eventThatTriggered.effects(for: global)
 			newEffects.forEach { $0.calculate() }
-			global.effects += newEffects
+			global.effects.add(effects: newEffects)
 
 			return eventThatTriggered
 		}

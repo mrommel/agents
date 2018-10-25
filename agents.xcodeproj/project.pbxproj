@@ -77,6 +77,7 @@
 		045979B5217DBFCC006803CF /* TechnicRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045979B4217DBFCC006803CF /* TechnicRelation.swift */; };
 		045B47BA2173392900217822 /* Conservatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B47B92173392900217822 /* Conservatives.swift */; };
 		045B47BC2173888600217822 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B47BB2173888600217822 /* Group.swift */; };
+		045D4CEB218217A6000E912B /* Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D4CEA218217A6000E912B /* Effects.swift */; };
 		04669EB4217F6FC600188C00 /* Writing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669EB3217F6FC600188C00 /* Writing.swift */; };
 		04669EB6217F6FE600188C00 /* Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669EB5217F6FE600188C00 /* Era.swift */; };
 		04669EB8217F6FFB00188C00 /* Technic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04669EB7217F6FFB00188C00 /* Technic.swift */; };
@@ -222,6 +223,7 @@
 		045979B4217DBFCC006803CF /* TechnicRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicRelation.swift; sourceTree = "<group>"; };
 		045B47B92173392900217822 /* Conservatives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conservatives.swift; sourceTree = "<group>"; };
 		045B47BB2173888600217822 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		045D4CEA218217A6000E912B /* Effects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effects.swift; sourceTree = "<group>"; };
 		04669EB3217F6FC600188C00 /* Writing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writing.swift; sourceTree = "<group>"; };
 		04669EB5217F6FE600188C00 /* Era.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Era.swift; sourceTree = "<group>"; };
 		04669EB7217F6FFB00188C00 /* Technic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technic.swift; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 				047344F9216DC85E008E9D05 /* Event.swift */,
 				045B47BB2173888600217822 /* Group.swift */,
 				047344FF216F9E4C008E9D05 /* Effect.swift */,
+				045D4CEA218217A6000E912B /* Effects.swift */,
 				04F973812161F4D200FB573F /* Policy.swift */,
 				045979A22179FF4C006803CF /* Situation.swift */,
 				04669EB5217F6FE600188C00 /* Era.swift */,
@@ -924,6 +927,7 @@
 				04669EB6217F6FE600188C00 /* Era.swift in Sources */,
 				04734500216F9E4C008E9D05 /* Effect.swift in Sources */,
 				049ED6132180B846000B1FA3 /* Collection.swift in Sources */,
+				045D4CEB218217A6000E912B /* Effects.swift in Sources */,
 				049CACEC2145BB6E00990CF5 /* Category.swift in Sources */,
 				04669EC4217F706B00188C00 /* Masonry.swift in Sources */,
 				0473450821728A0E008E9D05 /* Poverty.swift in Sources */,

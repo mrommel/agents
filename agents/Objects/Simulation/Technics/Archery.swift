@@ -11,7 +11,7 @@ import Foundation
 class Archery: Technic {
 
 	init() {
-		super.init(name: "Archery", era: .ancient, propability: 0.1)
+		super.init(name: "Archery", era: .ancient, propability: 0.01)
 	}
 
 	override func setup(with simulation: GlobalSimulation) {

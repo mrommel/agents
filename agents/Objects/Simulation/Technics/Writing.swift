@@ -11,7 +11,9 @@ import Foundation
 class Writing: Technic {
 
 	init() {
-		super.init(name: "Writing", era: .ancient, propability: 0.1)
+		super.init(name: "Writing",
+				   era: .ancient,
+				   propability: 0.01)
 	}
 
 	override func setup(with simulation: GlobalSimulation) {

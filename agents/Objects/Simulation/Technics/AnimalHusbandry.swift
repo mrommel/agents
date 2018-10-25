@@ -11,12 +11,15 @@ import Foundation
 class AnimalHusbandry: Technic {
 
 	init() {
-		super.init(name: "Animal husbandry", era: .ancient, propability: 0.2)
+		super.init(name: "Animal husbandry", era: .ancient, propability: 0.001)
 	}
 
-	override func setup(with simulation: GlobalSimulation) {
-		self.add(requirement: simulation.technics.agriculture)
+	override func setup(with global: GlobalSimulation) {
 
-		super.setup(with: simulation)
+		// TODO: change propability based on animals that exist on the tile
+
+		self.add(requirement: global.technics.agriculture)
+
+		super.setup(with: global)
 	}
 }

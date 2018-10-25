@@ -55,7 +55,7 @@ class SituationTableViewCell: UITableViewCell {
 class SimulationViewModel {
 
 	let screenTitle: String
-	let globalSimulation: GlobalSimulation = GlobalSimulation()
+	let globalSimulation: GlobalSimulation
 
 	var simulationItems: [MenuSimulationItem] = []
 	var policyItems: [MenuPolicyItem] = []
@@ -65,6 +65,10 @@ class SimulationViewModel {
 	var iteration = 0
 
 	init() {
+
+		let tileInfo = TileInfo(terrain: .plain, features: [])
+		self.globalSimulation = GlobalSimulation(tileInfo: tileInfo)
+
 		self.screenTitle = R.string.localizable.simulationTitle()
 
 		for simulation in self.globalSimulation.simulations {

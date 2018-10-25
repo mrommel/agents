@@ -11,7 +11,7 @@ import Foundation
 class Pottery: Technic {
 
 	init() {
-		super.init(name: "Pottery", era: .ancient, propability: 0.1)
+		super.init(name: "Pottery", era: .ancient, propability: 0.01)
 	}
 
 	override func setup(with simulation: GlobalSimulation) {

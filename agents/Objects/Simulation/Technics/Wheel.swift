@@ -11,10 +11,13 @@ import Foundation
 class Wheel: Technic {
 
 	init() {
-		super.init(name: "Wheel", era: .ancient, propability: 0.1)
+		super.init(name: "Wheel", era: .ancient, propability: 0.001)
 	}
 
 	override func setup(with simulation: GlobalSimulation) {
+
+		// TODO: change propability based on plains adjacent to the tile
+
 		self.add(requirement: simulation.technics.animalHusbandry)
 		self.add(requirement: simulation.technics.archery)
 
