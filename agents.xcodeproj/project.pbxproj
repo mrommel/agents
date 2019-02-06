@@ -59,7 +59,6 @@
 		0447FDFC20891EEF00FB6DF8 /* ContinentFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDFB20891EEF00FB6DF8 /* ContinentFinderTests.swift */; };
 		0447FDFE208A22F200FB6DF8 /* AreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDFD208A22F200FB6DF8 /* AreaTests.swift */; };
 		0447FE00208A293E00FB6DF8 /* HexPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447FDFF208A293E00FB6DF8 /* HexPointTests.swift */; };
-		04481D9320249C95001F04FA /* BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9220249C95001F04FA /* BitArray.swift */; };
 		04481D9E2031F314001F04FA /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9D2031F314001F04FA /* Professor.swift */; };
 		04481DA02031F333001F04FA /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481D9F2031F333001F04FA /* GameObject.swift */; };
 		04481DA22031F67A001F04FA /* EgyptLady.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04481DA12031F67A001F04FA /* EgyptLady.swift */; };
@@ -133,6 +132,7 @@
 		04FC596E20372A6A00251E7F /* GameObjectAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC596D20372A6A00251E7F /* GameObjectAction.swift */; };
 		612838CF6ADF041C55D1A728 /* Pods_agentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F9F5759196E7E81CD0F565 /* Pods_agentsTests.framework */; };
 		6B42F3C8D330A305DDEC5BA7 /* Pods_agents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BD55899141983D7AB5D100 /* Pods_agents.framework */; };
+		C922C517220B65CB00AA0542 /* BitArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C922C516220B65CB00AA0542 /* BitArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,7 +205,6 @@
 		0447FDFB20891EEF00FB6DF8 /* ContinentFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentFinderTests.swift; sourceTree = "<group>"; };
 		0447FDFD208A22F200FB6DF8 /* AreaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaTests.swift; sourceTree = "<group>"; };
 		0447FDFF208A293E00FB6DF8 /* HexPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPointTests.swift; sourceTree = "<group>"; };
-		04481D9220249C95001F04FA /* BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitArray.swift; sourceTree = "<group>"; };
 		04481D9D2031F314001F04FA /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		04481D9F2031F333001F04FA /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		04481DA12031F67A001F04FA /* EgyptLady.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EgyptLady.swift; sourceTree = "<group>"; };
@@ -287,6 +286,7 @@
 		6F52BFC3480C3CE4F716FD82 /* Pods-agents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agents.release.xcconfig"; path = "Pods/Target Support Files/Pods-agents/Pods-agents.release.xcconfig"; sourceTree = "<group>"; };
 		A5BD55899141983D7AB5D100 /* Pods_agents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_agents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C596E4DD43F81191D757F3F3 /* Pods-agentsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agentsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-agentsUITests/Pods-agentsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C922C516220B65CB00AA0542 /* BitArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitArray.swift; sourceTree = "<group>"; };
 		E3F9F5759196E7E81CD0F565 /* Pods_agentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_agentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E941395F82C54B77A9AD8D32 /* Pods-agentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agentsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-agentsTests/Pods-agentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1EBDEC28AA6CCA734875517 /* Pods-agents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-agents.debug.xcconfig"; path = "Pods/Target Support Files/Pods-agents/Pods-agents.debug.xcconfig"; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 				04F12D53201A6B8D007A8817 /* Array2D.swift */,
 				04F12D55201A7531007A8817 /* IntegerExtension.swift */,
 				04F12D57201A758F007A8817 /* FloatExtension.swift */,
-				04481D9220249C95001F04FA /* BitArray.swift */,
+				C922C516220B65CB00AA0542 /* BitArray.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -935,6 +935,7 @@
 				045979B5217DBFCC006803CF /* TechnicRelation.swift in Sources */,
 				04669EB4217F6FC600188C00 /* Writing.swift in Sources */,
 				04669EBC217F702800188C00 /* AnimalHusbandry.swift in Sources */,
+				C922C517220B65CB00AA0542 /* BitArray.swift in Sources */,
 				040FBE6120171A9700D397E2 /* Tile.swift in Sources */,
 				04F0384C20221C6D0011B79C /* HexPoint.swift in Sources */,
 				040FBE10201137BA00D397E2 /* AppDelegate.swift in Sources */,
@@ -952,7 +953,6 @@
 				0451D59920376EB900E7C882 /* VillageViewController.swift in Sources */,
 				04312EAD214AFD1B00E8AA6D /* StaticProperty.swift in Sources */,
 				045979A8217A0C6A006803CF /* Poor.swift in Sources */,
-				04481D9320249C95001F04FA /* BitArray.swift in Sources */,
 				041B9912204C4C07001F0E16 /* RiverEdge.swift in Sources */,
 				041B990D204C4B5A001F0E16 /* ClimateZone.swift in Sources */,
 				04481DA22031F67A001F04FA /* EgyptLady.swift in Sources */,

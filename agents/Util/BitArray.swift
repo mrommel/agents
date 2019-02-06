@@ -1,289 +1,124 @@
 //
 //  BitArray.swift
-//  Buckets
+//  BuildBloomFilteriOS
 //
-//  Created by Mauricio Santos on 2/23/15.
-//  Copyright (c) 2015 Mauricio Santos. All rights reserved.
+//  Created by Tim Palade on 3/14/17.
+//  MIT License.
 //
 import Foundation
 
-/// An array of boolean values stored
-/// using individual bits, thus providing a
-/// very small memory footprint. It has most of the features of a
-/// standard array such as constant time random access and
-/// amortized constant time insertion at the end of the array.
-///
-/// Conforms to `MutableCollection`, `ExpressibleByArrayLiteral`
-/// , `Equatable`, `Hashable`, `CustomStringConvertible`
-public struct BitArray {
+final class BitArray: NSObject, NSCoding {
 
-	// MARK: Creating a BitArray
+    //Array of bits manipulation
+    typealias WordType = UInt64
 
-	/// Constructs an empty bit array.
-	public init() { }
+    private var array: [WordType] = []
 
-	/// Constructs a bit array from a `Bool` sequence, such as an array.
-	public init<S: Sequence>(_ elements: S) where S.Iterator.Element == Bool {
-		for value in elements {
-			append(value)
-		}
-	}
+    init(count: Int) {
+        super.init()
+        self.array = self.buildArray(count: count)
+    }
 
-	/// Constructs a new bit array from an `Int` array representation.
-	/// All values different from 0 are considered `true`.
-	public init(intRepresentation: [Int]) {
-		bits.reserveCapacity((intRepresentation.count / Constants.IntSize) + 1)
-		for value in intRepresentation {
-			append(value != 0)
-		}
-	}
+    public func valueOfBit(at index: Int) -> Bool {
+        return self.valueOfBit(in: self.array, at: index)
+    }
 
-	/// Constructs a new bit array with `count` bits set to the specified value.
-	public init(repeating repeatedValue: Bool, count: Int) {
-		precondition(!isEmpty, "Can't construct BitArray with count < 0")
+    public func setValueOfBit(value: Bool, at index: Int) {
+        self.setValueOfBit(in: &self.array, at: index, value: value)
+    }
 
-		let numberOfInts = (count / Constants.IntSize) + 1
-		let intValue = repeatedValue ? ~0: 0
-		bits = [Int](repeating: intValue, count: numberOfInts)
-		self.count = count
+    public func count() -> Int {
+        return self.array.count * intSize - 1
+    }
 
-		if repeatedValue {
-			bits[bits.count - 1] = 0
-			let missingBits = count % Constants.IntSize
-			self.count = count - missingBits
-			for _ in 0..<missingBits {
-				append(repeatedValue)
-			}
-			cardinality = count
-		}
-	}
+    //Archieve/Unarchive
 
-	// MARK: Querying a BitArray
+    func archived() -> Data {
+        return NSKeyedArchiver.archivedData(withRootObject: self)
+    }
 
-	/// Number of bits stored in the bit array.
-	public fileprivate(set) var count = 0
+    class func unarchived(fromData data: Data) -> BitArray? {
+        return NSKeyedUnarchiver.unarchiveObject(with: data) as? BitArray
+    }
 
-	/// The first bit, or nil if the bit array is empty.
-	public var first: Bool? {
-		return isEmpty ? nil : valueAtIndex(0)
-	}
+    //NSCoding
 
-	/// The last bit, or nil if the bit array is empty.
-	public var last: Bool? {
-		return isEmpty ? nil : valueAtIndex(count - 1)
-	}
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.array, forKey: "internalBitArray")
+    }
 
-	/// The number of bits set to `true` in the bit array.
-	public fileprivate(set) var cardinality = 0
+    init?(coder aDecoder: NSCoder) {
+        super.init()
+        let array: [WordType] = aDecoder.decodeObject(forKey: "internalBitArray") as? [WordType] ?? []
+        self.array = array
+    }
 
-	// MARK: Adding and Removing Bits
+    //Private API
 
-	/// Adds a new `Bool` as the last bit.
-	public mutating func append(_ bit: Bool) {
-		if realIndexPath(count).arrayIndex >= bits.count {
-			bits.append(0)
-		}
-		setValue(bit, atIndex: count)
-		count += 1
-	}
+    private func valueOfBit(in array: [WordType], at index: Int) -> Bool {
+        checkIndexBound(index: index, lowerBound: 0, upperBound: array.count * intSize - 1)
+        let (arrayIndex, bitIndexVal) = bitIndex(at: index)
+        let bit = array[arrayIndex]
+        return valueOf(bit: bit, atIndex: bitIndexVal)
+    }
 
-	/// Inserts a bit into the array at a given index.
-	/// Use this method to insert a new bit anywhere within the range
-	/// of existing bits, or as the last bit. The index must be less
-	/// than or equal to the number of bits in the bit array. If you
-	/// attempt to remove a bit at a greater index, you’ll trigger an error.
-	public mutating func insert(_ bit: Bool, at index: Int) {
-		checkIndex(index, lessThan: count + 1)
-		append(bit)
-		for indexVal in stride(from: (count - 2), through: index, by: -1) {
-			let iBit = valueAtIndex(indexVal)
-			setValue(iBit, atIndex: indexVal + 1)
-		}
-		setValue(bit, atIndex: index)
+    private func setValueOfBit(in array: inout[WordType], at index: Int, value: Bool) {
+        checkIndexBound(index: index, lowerBound: 0, upperBound: array.count * intSize - 1)
+        let (arrayIndex, bitIndexVal) = bitIndex(at: index)
+        let bit = array[arrayIndex]
+        let newBit = setValueFor(bit: bit, value: value, atIndex: bitIndexVal)
+        array[arrayIndex] = newBit
+    }
 
-	}
+    //Constants
+    private let intSize = MemoryLayout<WordType>.size * 8
 
-	/// Removes the last bit from the bit array and returns it.
-	///
-	/// - returns: The last bit, or nil if the bit array is empty.
-	@discardableResult
-	public mutating func removeLast() -> Bool {
-		if let value = last {
-			setValue(false, atIndex: count - 1)
-			count -= 1
-			return value
-		}
-		preconditionFailure("Array is empty")
-	}
+    //bit masks
 
-	/// Removes the bit at the given index and returns it.
-	/// The index must be less than the number of bits in the
-	/// bit array. If you attempt to remove a bit at a
-	/// greater index, you’ll trigger an error.
-	@discardableResult
-	public mutating func remove(at index: Int) -> Bool {
-		checkIndex(index)
-		let bit = valueAtIndex(index)
+    func invertedIndex(index: Int) -> Int {
+        return intSize - 1 - index
+    }
 
-		for indexValue in (index + 1)..<count {
-			let iBit = valueAtIndex(indexValue)
-			setValue(iBit, atIndex: indexValue - 1)
-		}
+    func mask(index: Int) -> WordType {
+        checkIndexBound(index: index, lowerBound: 0, upperBound: intSize - 1)
+        return 1 << WordType(invertedIndex(index: index))
+    }
 
-		removeLast()
-		return bit
-	}
+    func negative(index: Int) -> WordType {
+        checkIndexBound(index: index, lowerBound: 0, upperBound: intSize - 1)
+        return ~(1 << WordType(invertedIndex(index: index)))
+    }
 
-	/// Removes all the bits from the array, and by default
-	/// clears the underlying storage buffer.
-	public mutating func removeAll(keepingCapacity keep: Bool = false) {
-		if !keep {
-			bits.removeAll(keepingCapacity: false)
-		} else {
-			bits[0 ..< bits.count] = [0]
-		}
-		count = 0
-		cardinality = 0
-	}
+    //return (arrayIndex for word containing the bit, bitIndex inside the word)
+    private func bitIndex(at index: Int) -> (Int, Int) {
+        return(index / intSize, index % intSize)
+    }
 
-	// MARK: Private Properties and Helper Methods
+    private func buildArray(count: Int) -> [WordType] {
+        //words contain intSize bits each
+        let numWords = count / intSize + 1
+        return Array.init(repeating: WordType(0), count: numWords)
+    }
 
-	/// Structure holding the bits.
-	fileprivate var bits = [Int]()
+    //Bit manipulation
+    private func valueOf(bit: WordType, atIndex index: Int) -> Bool {
+        checkIndexBound(index: index, lowerBound: 0, upperBound: intSize - 1)
+        return (bit & mask(index: index) != 0)
+    }
 
-	fileprivate func valueAtIndex(_ logicalIndex: Int) -> Bool {
-		let indexPath = realIndexPath(logicalIndex)
-		var mask = 1 << indexPath.bitIndex
-		mask = mask & bits[indexPath.arrayIndex]
-		return mask != 0
-	}
+    private func setValueFor(bit: WordType, value: Bool, atIndex index: Int) -> WordType {
+        checkIndexBound(index: index, lowerBound: 0, upperBound: intSize - 1)
+        if value {
+            return (bit | mask(index: index))
+        }
+        return bit & negative(index: index)
+    }
 
-	fileprivate mutating func setValue(_ newValue: Bool, atIndex logicalIndex: Int) {
-		let indexPath = realIndexPath(logicalIndex)
-		let mask = 1 << indexPath.bitIndex
-		let oldValue = mask & bits[indexPath.arrayIndex] != 0
-
-		switch (oldValue, newValue) {
-		case (false, true):
-			cardinality += 1
-		case (true, false):
-			cardinality -= 1
-		default:
-			break
-		}
-
-		if newValue {
-			bits[indexPath.arrayIndex] |= mask
-		} else {
-			bits[indexPath.arrayIndex] &= ~mask
-		}
-	}
-
-	fileprivate func realIndexPath(_ logicalIndex: Int) -> (arrayIndex: Int, bitIndex: Int) {
-		return (logicalIndex / Constants.IntSize, logicalIndex % Constants.IntSize)
-	}
-
-	fileprivate func checkIndex(_ index: Int, lessThan: Int? = nil) {
-		let bound = lessThan == nil ? count : lessThan
-		precondition(!isEmpty && index < bound!, "Index out of range (\(index))")
-	}
-
-	// MARK: Constants
-
-	fileprivate struct Constants {
-		// Int size in bits
-		static let IntSize = MemoryLayout<Int>.size * 8
-	}
-}
-
-extension BitArray: MutableCollection {
-
-	// MARK: MutableCollection Protocol Conformance
-
-	/// Always zero, which is the index of the first bit when non-empty.
-	public var startIndex: Int {
-		return 0
-	}
-
-	/// Always `count`, which the successor of the last valid
-	/// subscript argument.
-	public var endIndex: Int {
-		return count
-	}
-
-	/// Returns the position immediately after the given index.
-	///
-	/// - Parameter i: A valid index of the collection. `i` must be less than
-	///   `endIndex`.
-	/// - Returns: The index value immediately after `i`.
-	public func index(after indexValue: Int) -> Int {
-		return indexValue + 1
-	}
-
-	/// Provides random access to individual bits using square bracket noation.
-	/// The index must be less than the number of items in the bit array.
-	/// If you attempt to get or set a bit at a greater
-	/// index, you’ll trigger an error.
-	public subscript(index: Int) -> Bool {
-		get {
-			checkIndex(index)
-			return valueAtIndex(index)
-		}
-		set {
-			checkIndex(index)
-			setValue(newValue, atIndex: index)
-		}
-	}
-}
-
-extension BitArray: ExpressibleByArrayLiteral {
-
-	// MARK: ExpressibleByArrayLiteral Protocol Conformance
-
-	/// Constructs a bit array using a `Bool` array literal.
-	/// `let example: BitArray = [true, false, true]`
-	public init(arrayLiteral elements: Bool...) {
-		bits.reserveCapacity((elements.count / Constants.IntSize) + 1)
-		for element in elements {
-			append(element)
-		}
-	}
-}
-
-extension BitArray: CustomStringConvertible {
-
-	// MARK: CustomStringConvertible Protocol Conformance
-
-	/// A string containing a suitable textual
-	/// representation of the bit array.
-	public var description: String {
-		return "[" + self.map { "\($0)" }.joined(separator: ", ") + "]"
-	}
-}
-
-extension BitArray: Equatable {
-}
-
-// MARK: BitArray Equatable Protocol Conformance
-/// Returns `true` if and only if the bit arrays contain the same bits in the same order.
-public func == (lhs: BitArray, rhs: BitArray) -> Bool {
-	if lhs.count != rhs.count || lhs.cardinality != rhs.cardinality {
-		return false
-	}
-	return lhs.elementsEqual(rhs)
-}
-
-extension BitArray: Hashable {
-	// MARK: Hashable Protocol Conformance
-
-	/// The hash value.
-	/// `x == y` implies `x.hashValue == y.hashValue`
-	public var hashValue: Int {
-		var result = 43
-		result = (31 ^ result) ^ count
-		for element in self {
-			result = (31 ^ result) ^ element.hashValue
-		}
-		return result
-	}
+    //Util
+    private func checkIndexBound(index: Int, lowerBound: Int, upperBound: Int) {
+        if(index < lowerBound || index > upperBound)
+        {
+            NSException.init(name: NSExceptionName(rawValue: "BitArray Exception"), reason: "index out of bounds", userInfo: nil).raise()
+        }
+    }
 }

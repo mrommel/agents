@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//import Buckets
 
 class ContinentFinder {
 
@@ -100,7 +101,7 @@ class ContinentFinder {
 
 	func firstFreeIdentifier() -> Int {
 
-		var freeIdentifiers = BitArray(repeating: true, count: 256)
+		/*var freeIdentifiers = BitArray(repeating: true, count: 256)
 
 		for x in 0..<self.continentIdentifiers.columns {
 			for y in 0..<self.continentIdentifiers.rows {
@@ -115,7 +116,7 @@ class ContinentFinder {
 
 		if let firstIndex = freeIdentifiers.index(where: { $0 == true }) {
 			return firstIndex
-		}
+		}*/
 
 		return ContinentConstants.kNoContinent
 	}

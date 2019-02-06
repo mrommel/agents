@@ -267,7 +267,9 @@ class GameScene: SKScene {
 		})
 		alertController.addAction(cancelButton)
 
-		self.viewController?.navigationController!.present(alertController, animated: true, completion: nil)
+        if let viewController = self.viewController?.navigationController {
+            viewController.present(alertController, animated: true, completion: nil)
+        }
 	}
 
 	func showNeighborPicker(of gameObject: GameObject, for gameObjectAction: GameObjectActionWithPoint) {
