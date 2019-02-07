@@ -11,14 +11,14 @@ import Foundation
 // https://en.wikipedia.org/wiki/Religiosity
 class Religiosity: Simulation {
 
-	init() {
-		super.init(name: "Religiosity", summary: "Religiosity desc", category: .core, value: 0.8)
-	}
+    init() {
+        super.init(name: "Religiosity", summary: "Religiosity desc", category: .core, value: 0.8)
+    }
 
-	override func setup(with global: GlobalSimulation) {
+    override func setup(with global: GlobalSimulation) {
 
-		self.add(simulation: StaticProperty(value: 0.8)) // TODO: remove
+        self.add(simulation: StaticProperty(value: 0.8)) // TODO: remove
 
-		global.simulations.add(simulation: self)
-	}
+        global.simulations.add(simulation: self)
+    }
 }

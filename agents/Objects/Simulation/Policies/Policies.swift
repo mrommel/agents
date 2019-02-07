@@ -10,58 +10,58 @@ import Foundation
 
 class Policies {
 
-	var primarySchools: PrimarySchools = PrimarySchools()
-	var sewage: Sewage = Sewage()
+    var primarySchools: PrimarySchools = PrimarySchools()
+    var sewage: Sewage = Sewage()
 
-	fileprivate var policies: [Policy] = []
+    fileprivate var policies: [Policy] = []
 
-	init() {
+    init() {
 
-		self.primarySchools = PrimarySchools()
-		self.sewage = Sewage()
-	}
+        self.primarySchools = PrimarySchools()
+        self.sewage = Sewage()
+    }
 
-	func setup(with global: GlobalSimulation) {
+    func setup(with global: GlobalSimulation) {
 
-		self.primarySchools.setup(with: global)
-		self.sewage.setup(with: global)
-	}
+        self.primarySchools.setup(with: global)
+        self.sewage.setup(with: global)
+    }
 
-	func add(policy: Policy) {
+    func add(policy: Policy) {
 
-		self.policies.append(policy)
-	}
+        self.policies.append(policy)
+    }
 
-	func calculate() {
+    func calculate() {
 
-		self.policies.forEach { $0.calculate() }
-	}
+        self.policies.forEach { $0.calculate() }
+    }
 
-	func push() {
+    func push() {
 
-		self.policies.forEach { $0.push() }
-	}
+        self.policies.forEach { $0.push() }
+    }
 }
 
 extension Policies: Sequence {
 
-	struct PoliciesIterator: IteratorProtocol {
+    struct PoliciesIterator: IteratorProtocol {
 
-		private var index = 0
-		private let policies: [Policy]
+        private var index = 0
+        private let policies: [Policy]
 
-		init(policies: [Policy]) {
-			self.policies = policies
-		}
+        init(policies: [Policy]) {
+            self.policies = policies
+        }
 
-		mutating func next() -> Policy? {
-			let policy = self.policies[safe: index]
-			index += 1
-			return policy
-		}
-	}
+        mutating func next() -> Policy? {
+            let policy = self.policies[safe: index]
+            index += 1
+            return policy
+        }
+    }
 
-	func makeIterator() -> PoliciesIterator {
-		return PoliciesIterator(policies: self.policies)
-	}
+    func makeIterator() -> PoliciesIterator {
+        return PoliciesIterator(policies: self.policies)
+    }
 }

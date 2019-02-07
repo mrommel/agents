@@ -444,13 +444,6 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		041B98FB2045EFC0001F0E16 /* Structures */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Structures;
-			sourceTree = "<group>";
-		};
 		041B9900204C3ABF001F0E16 /* Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,7 +510,6 @@
 			isa = PBXGroup;
 			children = (
 				04391C37213E62E4000357AC /* Simulation */,
-				041B98FB2045EFC0001F0E16 /* Structures */,
 				04481D9F2031F333001F04FA /* GameObject.swift */,
 				04FC596D20372A6A00251E7F /* GameObjectAction.swift */,
 				04FC594C2034484C00251E7F /* GameObjectEngine.swift */,

@@ -10,13 +10,13 @@ import Foundation
 
 class Archery: Technic {
 
-	init() {
-		super.init(name: "Archery", era: .ancient, propability: 0.01)
-	}
+    init() {
+        super.init(name: "Archery", era: .ancient, propability: 0.01)
+    }
 
-	override func setup(with simulation: GlobalSimulation) {
-		self.add(requirement: simulation.technics.agriculture)
+    override func setup(with simulation: GlobalSimulation) {
+        self.add(requirement: simulation.technics.agriculture)
 
-		super.setup(with: simulation)
-	}
+        super.setup(with: simulation)
+    }
 }

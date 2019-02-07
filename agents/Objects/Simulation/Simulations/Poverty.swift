@@ -10,18 +10,18 @@ import Foundation
 
 class Poverty: Simulation {
 
-	init() {
+    init() {
 
-		super.init(name: "Poverty",
-				   summary: "The poverty threshold or poverty line is the minimum level of income deemed adequate in a particular country to meet the basic needs of human survival, including food, clothing, shelter, and healthcare.",
-				   category: .welfare,
-				   value: 0.64)
-	}
+        super.init(name: "Poverty",
+            summary: "The poverty threshold or poverty line is the minimum level of income deemed adequate in a particular country to meet the basic needs of human survival, including food, clothing, shelter, and healthcare.",
+            category: .welfare,
+            value: 0.64)
+    }
 
-	override func setup(with global: GlobalSimulation) {
+    override func setup(with global: GlobalSimulation) {
 
-		// TODO add inputs
+        // TODO add inputs
 
-		global.simulations.add(simulation: self)
-	}
+        global.simulations.add(simulation: self)
+    }
 }

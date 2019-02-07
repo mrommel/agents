@@ -10,15 +10,13 @@ import Foundation
 
 class Masonry: Technic {
 
-	init() {
-		super.init(name: "Masonry",
-				   era: .ancient,
-				   propability: 0.01)
-	}
+    init() {
+        super.init(name: "Masonry", era: .ancient, propability: 0.01)
+    }
 
-	override func setup(with global: GlobalSimulation) {
-		self.add(requirement: global.technics.mining)
+    override func setup(with global: GlobalSimulation) {
+        self.add(requirement: global.technics.mining)
 
-		super.setup(with: global)
-	}
+        super.setup(with: global)
+    }
 }

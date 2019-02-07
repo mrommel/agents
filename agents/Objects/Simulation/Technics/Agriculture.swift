@@ -10,12 +10,12 @@ import Foundation
 
 class Agriculture: Technic {
 
-	init() {
-		super.init(name: "Agriculture", era: .ancient, propability: 1.0, invented: true)
-	}
+    init() {
+        super.init(name: "Agriculture", era: .ancient, propability: 1.0, invented: true)
+    }
 
-	override func setup(with simulation: GlobalSimulation) {
-		// NOOP
-		super.setup(with: simulation)
-	}
+    override func setup(with simulation: GlobalSimulation) {
+        // NOOP
+        super.setup(with: simulation)
+    }
 }

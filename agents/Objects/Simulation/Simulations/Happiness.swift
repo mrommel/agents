@@ -10,14 +10,14 @@ import Foundation
 
 class Happiness: Simulation {
 
-	init() {
-		super.init(name: "Happiness", summary: "Happiness desc", category: .core, value: 0.8) // in percent
-	}
+    init() {
+        super.init(name: "Happiness", summary: "Happiness desc", category: .core, value: 0.8) // in percent
+    }
 
-	override func setup(with global: GlobalSimulation) {
+    override func setup(with global: GlobalSimulation) {
 
-		self.add(simulation: StaticProperty(value: 0.8)) // TODO: remove
+        self.add(simulation: StaticProperty(value: 0.8)) // TODO: remove
 
-		global.simulations.add(simulation: self)
-	}
+        global.simulations.add(simulation: self)
+    }
 }

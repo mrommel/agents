@@ -10,16 +10,16 @@ import Foundation
 
 class Mining: Technic {
 
-	init() {
-		super.init(name: "Mining", era: .ancient, propability: 0.01)
-	}
+    init() {
+        super.init(name: "Mining", era: .ancient, propability: 0.01)
+    }
 
-	override func setup(with global: GlobalSimulation) {
+    override func setup(with global: GlobalSimulation) {
 
-		self.propability = global.tileInfo.mineralsPropability
+        self.propability = global.tileInfo.mineralsPropability
 
-		self.add(requirement: global.technics.agriculture)
+        self.add(requirement: global.technics.agriculture)
 
-		super.setup(with: global)
-	}
+        super.setup(with: global)
+    }
 }

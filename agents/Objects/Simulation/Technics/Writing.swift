@@ -10,15 +10,13 @@ import Foundation
 
 class Writing: Technic {
 
-	init() {
-		super.init(name: "Writing",
-				   era: .ancient,
-				   propability: 0.01)
-	}
+    init() {
+        super.init(name: "Writing", era: .ancient, propability: 0.01)
+    }
 
-	override func setup(with simulation: GlobalSimulation) {
-		self.add(requirement: simulation.technics.pottery)
+    override func setup(with simulation: GlobalSimulation) {
+        self.add(requirement: simulation.technics.pottery)
 
-		super.setup(with: simulation)
-	}
+        super.setup(with: simulation)
+    }
 }

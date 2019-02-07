@@ -17,22 +17,22 @@ import Foundation
 // - flight
 class TransportSpeed: Simulation {
 
-	init() {
+    init() {
 
-		super.init(name: "Transport Speed",
-				   summary: "Speed that it takes to get from point A to B. Includes good and people travelles",
-				   category: .economy,
-				   value: 0.1)
-	}
+        super.init(name: "Transport Speed",
+            summary: "Speed that it takes to get from point A to B. Includes good and people travelles",
+            category: .economy,
+            value: 0.1)
+    }
 
-	override func setup(with global: GlobalSimulation) {
+    override func setup(with global: GlobalSimulation) {
 
-		self.add(technic: global.technics.masonry, formula: "0.1*x")
+        self.add(technic: global.technics.masonry, formula: "0.1*x")
 
-		global.simulations.add(simulation: self)
-	}
+        global.simulations.add(simulation: self)
+    }
 
-	/*override func valueText() -> String {
+    /*override func valueText() -> String {
 
 	}*/
 }
